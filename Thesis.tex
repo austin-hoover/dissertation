@@ -1,0 +1,159 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OIST Doctoral Thesis
+% LaTeX Template
+% Version 0.3 (2018/03)
+%
+% Original author:
+% Jeremie Gillet
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------
+%	REQUIRED PACKAGES AND  CONFIGURATIONS
+%-------------------------------------------------------------------------------
+\documentclass[final]{oist_thesis} % Final version for thesis submission
+
+% The documentclass oist_thesis includes the following packages: geometry, caption, xkeyval
+
+\usepackage[english]{babel} % The document is in English
+\usepackage[utf8]{inputenc} % UTF8 encoding
+\usepackage[T1]{fontenc} % Font encoding
+
+\usepackage{graphicx} % For including images
+\graphicspath{{./Images/}} % Specifies the directory where pictures are stored
+
+\usepackage{eso-pic} % For the background picture on the title page
+
+\usepackage{setspace} % For using single or double spacing
+\usepackage{longtable} % tables that can span several pages
+\usepackage{pdfpages} % To include a pdf files of your published papers as an appendix
+\usepackage{fancyhdr} % For the headers
+\usepackage[hidelinks]{hyperref} % Adds clickable links at references
+\usepackage{subcaption}
+
+%----------------------------------------------------------------------------------------
+%	ADD YOUR PACKAGES (be careful of package interaction)
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsthm, amsmath, amssymb, amsfonts, bbm, bm} % Math symbols
+\usepackage{fontspec} % More fonts
+% \usepackage[parfill]{parskip} % Gaps instead of indents
+\usepackage{gensymb} % \degree symbol
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{flafter}
+\usepackage{notoccite}
+\usepackage{booktabs}
+\usepackage[export]{adjustbox}
+
+%----------------------------------------------------------------------------------------
+%	ADD YOUR DEFINITIONS AND COMMANDS
+%----------------------------------------------------------------------------------------
+
+% Example of New Commands
+\newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\e}[1]{\times 10^{#1}}  % Powers of 10 notation
+
+% Example of Defining a theorem box for Criteria 
+\newtheorem{critere}{Criterion}
+\newcommand{\crit}[2]{
+	\begin{center}
+		\fbox{ \begin{minipage}[c]{0.9 \textwidth}
+				\begin{critere}
+					\textbf{\textup{ #1}} --- #2
+				\end{critere}
+	\end{minipage}  } \end{center}
+}
+
+% Make new figures appear on their own page immediately after their first reference.
+\renewcommand\floatpagefraction{0} % default 0.5
+
+%----------------------------------------------------------------------------------------
+%	PICK YOUR BIBLIOGRAPHY STYLE
+%----------------------------------------------------------------------------------------
+
+\usepackage[square, numbers, sort&compress]{natbib} % for bibliography - Square brackets, citing references with numbers, citations sorted by appearance in the text and compressed (as in [4-7])
+
+% \bibliographystyle{Preasmble/physics_bibstyle} % You may use a different style adapted to your field
+% \bibliographystyle{abbrvnat} % You may use a different style adapted to your field
+\bibliographystyle{unsrtnat}
+
+%-------------------------------------------------------------------------------
+%	TITLE PAGE
+%-------------------------------------------------------------------------------
+
+\begin{document}
+% \setmainfont{Arial}
+\pagestyle{empty} % No page numbers
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
+
+\puttitle{
+	title=Towards the physical realization of a self-consistent phase space distribution, % Title of the thesis
+	name=Austin Hoover, % Author name
+	supervisor=Sarah Cousineau, % Supervisor name
+	cosupervisor=Nick Evans, % Co-Supervisor name, remove this line if there is none
+	submissiondate={May 2022}  % Submission date "Month, year"
+}
+
+%-------------------------------------------------------------------------------
+%	PREAMBLE PAGES (delete unnecessary pages)
+%-------------------------------------------------------------------------------
+
+\startpreamble
+
+% \input{Preamble/declaration}
+\input{Preamble/abstract}
+\input{Preamble/acknowledgments}
+% \input{Preamble/abbreviations}
+% \input{Preamble/glossary}
+% \input{Preamble/nomenclature}
+% \input{Preamble/dedication}
+
+%-------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES
+%-------------------------------------------------------------------------------
+
+\singlespacing
+\unnumberedchapter{Contents}
+\tableofcontents % Write out the Table of Contents
+\thesisspacing
+\unnumberedchapter{List of Figures}
+\listoffigures % Write out the List of Figures
+\unnumberedchapter{List of Tables}
+\listoftables % Write out the List of Tables
+
+%-------------------------------------------------------------------------------
+%	THESIS MAIN TEXT
+%-------------------------------------------------------------------------------
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\numberedchapter
+\input{MainText/chapter1}
+\input{MainText/chapter2}
+\input{MainText/chapter3}
+\input{MainText/chapter4}
+\input{MainText/chapter5}
+\input{MainText/chapter6}
+
+%-------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%-------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+\unnumberedchapter{Bibliography} % Title of the unnumbered chapter
+\bibliography{Preamble/Thesis_bibliography} % The references information are stored in the file named "Thesis_bibliography.bib"
+
+%-------------------------------------------------------------------------------
+%	APPENDICES (optional)
+%-------------------------------------------------------------------------------
+
+% \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+% \appendix
+
+% \numberedchapter % Regular chapters following
+% \input{MainText/appendixA}
+% % \input{MainText/appendixB}
+% % \input{MainText/appendixC}
+
+\end{document}
