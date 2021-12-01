@@ -129,7 +129,7 @@ with $l = 1,2$. The phase space coordinate vector $\mathbf{x} = (x, x', y, y')^T
 \begin{equation}
     \mathbf{x} = Re \left\{
         \sqrt{2 J_1} \, \mathbf{v}_1 \, e^{-i\psi_1}
-        + \sqrt{2 J_1} \, \mathbf{v}_2 \, e^{-i\psi_2}
+        + \sqrt{2 J_2} \, \mathbf{v}_2 \, e^{-i\psi_2}
     \right\},
 \end{equation}
 %
@@ -350,7 +350,7 @@ Another is the Waterbag distribution, which is a uniformly filled ellipsoid:
     f_{wb} \propto \Theta(1 - T),
 \end{equation}
 %
-where $Theta$ is the Heaviside step function. Another is the KV distribution, which is a uniformly populated ellipsoidal shell:
+where $\Theta$ is the Heaviside step function. Another is the KV distribution, which is a uniformly populated ellipsoidal shell:
 %
 \begin{equation}
     f_{kv} \propto \delta(1 - T)
@@ -496,7 +496,7 @@ Equilibrium solutions to the Vlasov equation in the presence of time-dependent l
 
 The KV distribution produces a closed set of differential equations for its envelope — the elliptical boundary containing the beam particles — due to its linear space charge forces. The second-order instabilities involve linear forces only, so they appear in the envelope equations. We use a FODO cell with a zero-current tune of $100\degree$ corresponding to the second-to-bottom line on the left-most plot in Fig.~\ref{fig:stopbands}. The initial distribution is first matched to the lattice, then tracked for 500 cells by integrating the KV envelope equations. Fig.~\ref{fig:envelope_instability} shows the horizontal and vertical envelopes as the depressed KV tune is decreased from $90\degree$ to $71\degree$, crossing the stopband. This is known as the envelope instability. It is assumed to be real, but its existence has not yet been experimentally confirmed.
 
-Observation of the higher-order stopbands requires PIC simulation. We choose a zero-current tune of 90\degree; according to Fig.~\ref{fig:stopbands}, a third-order and fourth-order instability should occur at a depressed tune of 45\degree and 30\degree, respectively. Fig.~\ref{fig:coherent_instabilities} shows the simulated evolution in PyORBIT for three different distributions: KV, Waterbag, and Gaussian. (Note that while the simulations in [Ref: Hofmann] used a bunched beam, coasting beams were used in this simulation.)
+Observation of the higher-order stopbands requires PIC simulation. We choose a zero-current tune of 90\degree; according to Fig.~\ref{fig:stopbands}, a third-order and fourth-order instability should occur at a depressed tune of 45\degree and 30\degree, respectively. Fig.~\ref{fig:coherent_instabilities} shows the simulated evolution in PyORBIT for three different distributions: KV, Waterbag, and Gaussian. (Note that while the simulations in \cite{Hofmann2017Book} used a bunched beam, coasting beams were used in this simulation.)
 %
 \begin{figure}[!p]
     \begin{subfigure}[b]{0.45\textwidth}
@@ -518,7 +518,7 @@ Observation of the higher-order stopbands requires PIC simulation. We choose a z
     \label{fig:coherent_instabilities}
 \end{figure}
 %
-The instabilities violently affect the KV distribution, resulting in nearly three-fold emittance growth over a few periods, but their effect is less pronounced in the other distributions. Thus, it is assumed that higher-order coherent instabilities, while interesting, are not important in real beams with a large tune spread. It is argued that Landau damping is responsible.
+The instabilities violently affect the KV distribution, but their effect is less pronounced in the other distributions. Thus, it is assumed that higher-order coherent instabilities, while interesting, are not important in real beams with a large tune spread. It is argued that Landau damping is responsible.
 
 
 \section{Self-consistent phase space distributions}\label{sec:Self-consistent phase space distributions}
