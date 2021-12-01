@@ -42,10 +42,10 @@ where $\mathcal{F}$ represents the Fourier transform. For a grid with $N$ bins p
 
 Care must be taken when choosing the number of macroparticles, grid size, and integration step size. In the following simulations, 128 bins are used in each dimension. The number of macroparticles changes during injection, but the final number of particles is usually at least $3 \times 10^{5}$.
 
-Computational time increases with the grid dimensions. In rings where the coasting beam approximation is valid, the longitudinal and transverse dimensions are treated separately. In PyORBIT, a longitudinal space charge node acts on the bunch once per turn. Two models are included for the transverse space charge calculation: the 2.5D model and the sliced model. In the 2.5D model, Poisson’s equation is solved once for a charge density obtained by projecting the entire bunch onto the $x$-$y$ plane; the transverse space charge forces are then weighted according to the longitudinal density. In the sliced model, the bunch is longitudinally sliced, and Poisson’s equation is solved for each slice. 
+In rings where the coasting beam approximation is valid, the longitudinal and transverse dimensions are treated separately. In PyORBIT, a longitudinal space charge node acts on the bunch once per turn. Two models are included for the transverse space charge calculation: the 2.5D model and the sliced model. In the 2.5D model, Poisson’s equation is solved once for a charge density obtained by projecting the entire bunch onto the $x$-$y$ plane; the transverse space charge forces are then weighted according to the longitudinal density. In the sliced model, the bunch is longitudinally sliced, and Poisson’s equation is solved for each slice. 
 
 
-\subsection{Impedance and other effects}
+\subsection{Other nonlinear effects}
 
 Impedance is the interaction of the charged particles with the conducting vacuum chamber. […]
 
@@ -59,6 +59,23 @@ The injection process is simulated by adding particles to the bunch at the foil 
 %
 %
 The beam Twiss parameters are usually assumed to be matched to the lattice ($\beta_x \approx \beta_y \approx 10$ m/rad, $\alpha_x \approx \alpha_y \approx 0$ rad), but recent measurements indicate that they could be significantly different, particularly the $\alpha$ parameter which determines the beam divergence. To be safe, we use values close to these measurements. A Gaussian distribution is used for the longitudinal distribution with RMS energy spread of a few MeV. Since the minipulse is much smaller than the final accumulated pulse, the exact details of the minipulse distribution are not important.
+
+
+
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter3/snapshots.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.0cm}
+    \vfill
+    \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter3/emittances.png}
+    \end{subfigure}
+    \caption{Simulation of elliptical painting.}
+    \label{fig:my_label}
+\end{figure}
 
 
 
