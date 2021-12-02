@@ -44,12 +44,23 @@ Care must be taken when choosing the number of macroparticles, grid size, and in
 
 In rings where the coasting beam approximation is valid, the longitudinal and transverse dimensions are treated separately. In PyORBIT, a longitudinal space charge node acts on the bunch once per turn. Two models are included for the transverse space charge calculation: the 2.5D model and the sliced model. In the 2.5D model, Poisson’s equation is solved once for a charge density obtained by projecting the entire bunch onto the $x$-$y$ plane; the transverse space charge forces are then weighted according to the longitudinal density. In the sliced model, the bunch is longitudinally sliced, and Poisson’s equation is solved for each slice. 
 
+\subsection{Impedance}
 
-\subsection{Other nonlinear effects}
+In the discussion of space charge thus far, the beam was assumed to be in free space. In reality, the beam is in a conducting vacuum chamber. Charged particles leave so-called wake fields on the conducting surface, which then act on other particles or on the same particle in a ring. [...]
 
-Impedance is the interaction of the charged particles with the conducting vacuum chamber. […]
+\subsection{Fringe fields and other effects}
 
-Another important effect in the SNS is Coulomb scattering during passage through the stripper foil. […]
+Quadrupole, dipole, and solenoid magnets are finite in length; the magnetic fields outside the core are nonlinear. These are referred to as fringe fields. [...]
+
+Another important effect during charge-exchange injection is Coulomb scattering during passage through the stripper foil. [...].
+
+
+
+\section{Fringe field correction}
+
+It was found in \cite{Holmes2018} that in an otherwise linear lattice, fringe fields tend to destroy any cross-plane correlations in the beam when the tunes are near the difference resonance $\nu_x \approx \nu_y$. To demonstrate this, we track a Danilov distribution in a linearized version of the SNS ring. Fig.~\ref{} shows the results when fringe fields are included as the horizontal and vertical tunes move toward each other. There is clearly nonlinear coupling between the horizontal and vertical motion; in the end, the distribution is a superposition of rotating and counter-rotating modes and the intrinsic emittances reduce to the apparent emittances. [...]
+
+In Fig.~\ref{} the simulation is repeated with a solenoid magnet inserted in the ring. The Danilov distribution now maintains its form.
 
 
 
@@ -59,7 +70,6 @@ The injection process is simulated by adding particles to the bunch at the foil 
 %
 %
 The beam Twiss parameters are usually assumed to be matched to the lattice ($\beta_x \approx \beta_y \approx 10$ m/rad, $\alpha_x \approx \alpha_y \approx 0$ rad), but recent measurements indicate that they could be significantly different, particularly the $\alpha$ parameter which determines the beam divergence. To be safe, we use values close to these measurements. A Gaussian distribution is used for the longitudinal distribution with RMS energy spread of a few MeV. Since the minipulse is much smaller than the final accumulated pulse, the exact details of the minipulse distribution are not important.
-
 
 
 \begin{figure}[!p]
