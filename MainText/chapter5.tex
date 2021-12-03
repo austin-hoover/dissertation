@@ -1,11 +1,12 @@
 \chapter{Experiments} \label{chap-5}
 
-This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapter \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in chapter \ref{chap-4} were used to measure the painted distribution. Recall from chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the dogmatic of this dissertation. Thus, the beams created in the following experiments were not expected to be optimal. It was hoped, however, that they would be clearly distinguishable from a production beam produced by correlated painting. 
+[Grammar is unchecked...]
+This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapter \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in chapter \ref{chap-4} were used to measure the painted distribution. Recall from chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the dogmatic of this dissertation. Thus, the beams created in the following experiments were not expected to be optimal. Nonetheless, it was hoped that the beams would be clearly distinguishable from a production beam produced by correlated painting. 
 
 
 \section{Experimental procedure}
 
-The SNS reserves approximately one day per month for accelerator physics experiments. Experiments are performed in the SNS control room using the OpenXAL framework. OpenXAL provides a high-level interface to perform tasks such as changing magnet strengths, triggering the beam, etc. It can also perform single-particle or envelope tracking using an online model of the accelerator. OpenXAL scripts are written in Java or Jython and are executed from the command line. Many graphical user interface (GUI) OpenXAL applications have been developed over the history of the SNS and are available for use in the control room. 
+Accelerator physics experiments are performed in the SNS control room using the OpenXAL framework. OpenXAL provides a high-level interface to perform tasks such as changing magnet strengths, triggering the beam, etc. It can also perform single-particle or envelope tracking using an online model of the accelerator. OpenXAL scripts are written in Java or Jython and are executed from the command line. Many graphical user interface (GUI) OpenXAL applications have been developed over the history of the SNS and are available for use in the control room. 
 
 The following steps are taken during the experimental setup:
 %
@@ -15,6 +16,9 @@ The following steps are taken during the experimental setup:
     %
     \item
     The horizontal and vertical tunes are set to the same value using the Ring Optics Control (ROC) application. ROC varies several quadrupoles until the model tunes are equal to the desired tunes. The tunes are measured using turn-by-turn BPM readings from a single minipulse in the ring. Generally, the measured and model tunes are not quite equal; we therefore shift the ROC input tunes until they agree with the measured tunes. The measured tunes are assumed to be accurate to at least two decimal places.
+    %
+    \item
+    (Optional: Modify the injection region in some way to increase the effective kicker strength.)
     %
     \item
     The eight injection kicker magnets are calibrated using the Ring Injection Control (RIC) application, as described in chapter \ref{chap-1}. 
@@ -37,15 +41,44 @@ The second measurement is the tomographic reconstruction from $x$-$y$ projection
 
 \section{Experiment 1}
 
-At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed. Although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested. 
+The SNS reserves approximately one day per month for accelerator physics experiments, and various experiments must compete for time within this twenty-four hour period. At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed; although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested in reality. And the SNS energy had not yet been decreased — a time-consuming and possibly error-prone task. The goal of Experiment 1 was therefore to push the painting coordinates $x$ and $y'$ to their limits at 1 GeV.
 
-The SNS energy had also not yet been decreased.
+Simulations predict that the distribution will undergo significant change during injection, especially without the presence of solenoid magnets in the ring; therefore, it is interesting to measure the distribution not only at its final state, but also at the intermediate states. Using the fixed-optics method, ten measurements can be performed within one hour. 
 
-The goal of Experiment 1 was therefore to push the painting coordinates $x$ and $y'$ to their limits at 1 GeV.
+\subsection{Elliptical-ish painting}
+
+Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1_waterfall_prod}.
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter5/exp1_waterfall_prod.png}
+    \caption{Measured wire-scanner profiles during injection for a 1 GeV production beam, 500 injected turns.}
+    \label{fig:exp1_waterfall_prod}
+\end{figure}
+%
+Each subplot shows the evolution of the projection onto a single wire during injection; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, $u$. That the closed orbit starts offset from the foil is evident from initial two peaks in the $x$ and $y$ projections. The distribution forms a ring or donut in $x$-$x'$ and $y$-$y'$. The hollow center eventually becomes partially filled due to space charge and other nonlinear effects.
+
+
+
+
+\subsection{Elliptical-ish painting}
+
+[... We should probably show some screenshots of the RIC application. Maybe not here, but somewhere. ...]
+
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter5/exp1_waterfall_ellipticalish.png}
+    \caption{Measured wire-scanner profiles during injection for a 1 GeV beam. Initial painting coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final painting coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
+    \label{fig:exp1_waterfall_ellipticalish}
+\end{figure}
+%
+
 
 
 \section{Experiment 2}
 
+[... Mention failed attempt to optimize the orbit corrector dipoles in the injection region. ...]
 
 
 \section{Experiment 3}
