@@ -44,21 +44,33 @@ Care must be taken when choosing the number of macroparticles, grid size, and in
 
 In rings where the coasting beam approximation is valid, the longitudinal and transverse dimensions are treated separately. In PyORBIT, a longitudinal space charge node acts on the bunch once per turn. Two models are included for the transverse space charge calculation: the 2.5D model and the sliced model. In the 2.5D model, Poisson’s equation is solved once for a charge density obtained by projecting the entire bunch onto the $x$-$y$ plane; the transverse space charge forces are then weighted according to the longitudinal density. In the sliced model, the bunch is longitudinally sliced, and Poisson’s equation is solved for each slice. 
 
-\subsection{Impedance}
+\subsection{Wake fields}
 
-In the discussion of space charge thus far, the beam was assumed to be in free space. In reality, the beam is in a conducting vacuum chamber. Charged particles leave so-called wake fields on the conducting surface, which then act on other particles or on the same particle in a ring. [...]
+In the discussion of space charge thus far, the beam was assumed to be in free space. In reality, the beam is in a conducting vacuum chamber. Charged particles leave so-called wake fields on the conducting surface, which then act on other particles or on the same particle in a ring, possibly leading to instability. The treatment of wake fields can be challenging and is introduced in \cite{Chao1993}. No details are described here; we just mention that PyORBIT takes these effects into account.
 
-\subsection{Fringe fields and other effects}
+
+\subsection{Fringe fields}
 
 Quadrupole, dipole, and solenoid magnets are finite in length; the magnetic fields outside the core are nonlinear. These are referred to as fringe fields. [...]
 
-Another important effect during charge-exchange injection is Coulomb scattering during passage through the stripper foil. [...].
+
+\subsection{Other effects}
+
+An important effect during charge-exchange injection is Coulomb scattering during passage through the stripper foil. [...].
+
+Finally, longitudinal focusing in the ring is provided by two RF cavities. The harmonic frequency $h$ is defined as the RF frequency divided by the revolution frequency of the beam; one cavity operates at $h = 1$ and the other operates at $h = 2$, both at an amplitude near 5 kV. The energy gain $\Delta \epsilon$ for a particle passing through the cavity is approximated as  
+%
+\begin{equation}
+    \Delta \epsilon = q V \sin((h \phi + \phi_0).
+\end{equation}
+%
+The particle phase $\phi$ is zero for the synchronous particle.
 
 
 
 \section{Fringe field correction}
 
-It was found in \cite{Holmes2018} that in an otherwise linear lattice, fringe fields tend to destroy any cross-plane correlations in the beam when the tunes are near the difference resonance $\nu_x \approx \nu_y$. To demonstrate this, we track a Danilov distribution in a linearized version of the SNS ring. Fig.~\ref{} shows the results when fringe fields are included as the horizontal and vertical tunes move toward each other. There is clearly nonlinear coupling between the horizontal and vertical motion; in the end, the distribution is a superposition of rotating and counter-rotating modes and the intrinsic emittances reduce to the apparent emittances. [...]
+It was found in \cite{Holmes2018} that in an otherwise linear lattice, fringe fields tend to eliminate any cross-plane correlations in the beam when the tunes are near the difference resonance $\nu_x \approx \nu_y$. To demonstrate this, we track a Danilov distribution in a linearized version of the SNS ring. Fig.~\ref{} shows the results when fringe fields are included as the horizontal and vertical tunes move toward each other. There is clearly nonlinear coupling between the horizontal and vertical motion; in the end, the distribution is a superposition of rotating and counter-rotating modes and the intrinsic emittances reduce to the apparent emittances. [...]
 
 In Fig.~\ref{} the simulation is repeated with a solenoid magnet inserted in the ring. The Danilov distribution now maintains its form.
 
