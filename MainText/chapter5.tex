@@ -4,7 +4,7 @@
 This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapter \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in chapter \ref{chap-4} were used to measure the painted distribution. Recall from chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the dogmatic of this dissertation. Thus, the beams created in the following experiments were not expected to be optimal. Nonetheless, it was hoped that the beams would be clearly distinguishable from a production beam produced by correlated painting. 
 
 
-\section{Experimental procedure}
+\section{Procedure}
 
 Accelerator physics experiments are performed in the SNS control room using the OpenXAL framework. OpenXAL provides a high-level interface to perform tasks such as changing magnet strengths, triggering the beam, etc. It can also perform single-particle or envelope tracking using an online model of the accelerator. OpenXAL scripts are written in Java or Jython and are executed from the command line. Many graphical user interface (GUI) OpenXAL applications have been developed over the history of the SNS and are available for use in the control room. 
 
@@ -47,7 +47,7 @@ Simulations predict that the distribution will undergo significant change during
 
 \subsection{Correlated painting}
 
-Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}.
+Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -64,9 +64,6 @@ Before setting up for elliptical painting, a production beam was measured for co
     \label{fig:exp1a_wsmeas}
 \end{figure}
 %
-Each subplot shows the evolution of the projection onto a single wire during injection; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, $u$. That the closed orbit starts offset from the foil is evident from initial two peaks in the $x$ and $y$ projections. The distribution forms a ring or donut in $x$-$x'$ and $y$-$y'$. The hollow center eventually becomes partially filled due to space charge and other nonlinear effects.
-
-
 %
 \begin{figure}[!p]
     \centering
@@ -84,12 +81,20 @@ Each subplot shows the evolution of the projection onto a single wire during inj
 \end{figure}
 %
 
+Each subplot in Fig.~\ref{fig:exp1a_wsmeas} shows the evolution of the projection onto a single wire during injection; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, or $u$. That the closed orbit starts offset from the foil is evident from initial two peaks in the $x$ and $y$ projections. The distribution forms a ring or donut in $x$-$x'$ and $y$-$y'$, and the hollow center eventually becomes partially filled due to space charge and other nonlinear effects.
+
+The main feature of Fig.~\ref{fig:exp1a_emittances} is that there is very little measured cross-plane correlation in the beam, as expected for the correlated painting method. The error bars are instead calculated by repeating the reconstruction many times with noise added to the measured moments, then taking the mean and standard deviation over the trials. Previous measurements indicate that the moments estimated from the profiles have less than 2\% variation if repeated multiple times. This can lead to asymmetric error bars, which will be shown in the next sections. 
+
+[Simulation]
 
 
 \subsection{Elliptical-ish painting}
 
+Next, we attempted to carry out elliptical painting. First, [as shown in Fig.~\ref{},] the horizontal and vertical tunes were set to 6.18. Then, next was to move the closed orbit to the foil. This was found to be possible in the vertical plane but impossible in the horizontal plane; the minimum distance from the foil was 10 mm. Additionally, the maximum possible vertical slope was 0.7 mrad. It was decided to continue with the painting method using initial coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad) and final coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad). The initial beam would be a donut in $x$-$x'$ and a point in $y$-$y'$. In real space, it would be a flat horizontal line with higher density on the two ends of the line. In other words, injected particles would move along an ellipse in the $x$-$y$ plane with zero vertical size. As time progressed, the horizontal and vertical size of the ellipse would grow at different rates depending on the maximum painting $x$ and $y'$ coordinates. This is all assuming linear transport and non-interacting particles. Without a computer, it is unclear what would happen with the inclusion of space charge.
+
 [... We should probably show some screenshots of the RIC application. Maybe not here, but somewhere. ...]
 
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -106,7 +111,6 @@ Each subplot shows the evolution of the projection onto a single wire during inj
     \label{fig:exp1b_wsmeas}
 \end{figure}
 %
-
 %
 \begin{figure}[!p]
     \centering
@@ -123,9 +127,17 @@ Each subplot shows the evolution of the projection onto a single wire during inj
     \label{fig:exp1b_emittances}
 \end{figure}
 %
+Notice the difference in the growth of the vertical beam size in comparison with the horizontal size. The $x$-$x'$ distribution is a donut that fills in over time while also growing in radius, hence the relative lack of growth in the horizontal beam size. The vertical beam size, on the other hand, starts at a small value and increases throughout injection, as desired. Additionally, there is now a clear separation between the intrinsic emittances.
+
+[Some thoughts: Might want to mention something about the comparison with the target images. We seem to be over-estimating the horizontal size and under-estimating the vertical size. Additionally, although the initial image is significantly tilted, the wire-scanner measurement gets the tilt angle wrong. This decreases my trust in these measurements. On the other hand, the $x$-$x'$ reconstruction has produced values very close to the model prediction for a production beam. Also, the intrinsic emittances are a complicated function of the beam moments, so they are probably not so sensitive to these systematic errors. Maybe what we have is some systematic error in the beam size due to the small number of points in the wire-scans?]
+
 
 
 \section{Experiment 2}
+
+In Experiment 2, the beam energy was lowered to 0.8 GeV for the first time. The closed orbit was successfuly reached to the foil, and a maximum vertical slope of 1.1 mrad was achieved. 
+
+Before beginning the emittance measurement, we attempted to change the orbit corrector dipoles in the injection region to increase the maximum vertical slope. 
 
 [... Mention failed attempt to optimize the orbit corrector dipoles in the injection region. ...]
 
