@@ -41,23 +41,48 @@ The second measurement is the tomographic reconstruction from $x$-$y$ projection
 
 \section{Experiment 1}
 
-The SNS reserves approximately one day per month for accelerator physics experiments, and various experiments must compete for time within this twenty-four hour period. At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed; although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested in reality. And the SNS energy had not yet been decreased — a time-consuming and possibly error-prone task. The goal of Experiment 1 was therefore to push the painting coordinates $x$ and $y'$ to their limits at 1 GeV.
+The SNS reserves approximately one day per month for accelerator physics experiments, and various experiments must compete for time within this twenty-four hour period. At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed; although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested in reality. And the SNS energy had not yet been decreased — a time-consuming and possibly error-prone task. The goal of Experiment 1 was therefore to push the injected coordinates $x$ and $y'$ to their limits at 1 GeV.
 
 Simulations predict that the distribution will undergo significant change during injection, especially without the presence of solenoid magnets in the ring; therefore, it is interesting to measure the distribution not only at its final state, but also at the intermediate states. Using the fixed-optics method, ten measurements can be performed within one hour. 
 
-\subsection{Elliptical-ish painting}
+\subsection{Correlated painting}
 
-Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1_waterfall_prod}.
+Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}.
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=\textwidth]{Images/chapter5/exp1_waterfall_prod.png}
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1a/waterfall.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.25cm}
+    \vfill
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1a/rms.png}
+    \end{subfigure}
     \caption{Measured wire-scanner profiles during injection for a 1 GeV production beam, 500 injected turns.}
-    \label{fig:exp1_waterfall_prod}
+    \label{fig:exp1a_wsmeas}
 \end{figure}
 %
 Each subplot shows the evolution of the projection onto a single wire during injection; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, $u$. That the closed orbit starts offset from the foil is evident from initial two peaks in the $x$ and $y$ projections. The distribution forms a ring or donut in $x$-$x'$ and $y$-$y'$. The hollow center eventually becomes partially filled due to space charge and other nonlinear effects.
 
+
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1a/emittances.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{0.0cm}
+    \vfill
+    \begin{subfigure}{0.8\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1a/corner.png}
+    \end{subfigure}
+    \caption{Reconstructed emittances and covariance ellipses of a 1 GeV production beam during injection (500 turns). In this and subsequent figures, light/dark ellipses correspond to the start/end of injection.}
+    \label{fig:exp1a_emittances}
+\end{figure}
+%
 
 
 
@@ -68,20 +93,112 @@ Each subplot shows the evolution of the projection onto a single wire during inj
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=\textwidth]{Images/chapter5/exp1_waterfall_ellipticalish.png}
-    \caption{Measured wire-scanner profiles during injection for a 1 GeV beam. Initial painting coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final painting coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
-    \label{fig:exp1_waterfall_ellipticalish}
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/waterfall.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.25cm}
+    \vfill
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/rms.png}
+    \end{subfigure}
+    \caption{Measured wire-scanner profiles during injection for a 1 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
+    \label{fig:exp1b_wsmeas}
 \end{figure}
 %
 
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/emittances.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{-0.2cm}
+    \vfill
+    \begin{subfigure}{0.8\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/corner.png}
+    \end{subfigure}
+    \caption{Reconstructed emittances and covariance ellipses for a 1 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
+    \label{fig:exp1b_emittances}
+\end{figure}
+%
 
 
 \section{Experiment 2}
 
 [... Mention failed attempt to optimize the orbit corrector dipoles in the injection region. ...]
 
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp2/waterfall.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.25cm}
+    \vfill
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp2/rms.png}
+    \end{subfigure}
+    \caption{Measured wire-scanner profiles during injection for a 0.8 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 1.1 mrad).}
+    \label{fig:exp2_wsmeas}
+\end{figure}
+%
+
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp2/emittances.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{-0.2cm}
+    \vfill
+    \begin{subfigure}{0.8\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp2/corner.png}
+    \end{subfigure}
+    \caption{Reconstructed emittances and covariance ellipses of a 0.8 GeV beam during injection. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 1.1 mrad).}
+    \label{fig:exp2_emittances}
+\end{figure}
+%
 
 \section{Experiment 3}
+
+
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp3/waterfall.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.25cm}
+    \vfill
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp3/rms.png}
+    \end{subfigure}
+    \caption{Measured wire-scanner profiles during injection for a 0.8 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (31 mm, 0 mrad, 0 mm, 1.1 mrad).}
+    \label{fig:exp3_wsmeas}
+\end{figure}
+%
+
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp3/emittances.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{-0.2cm}
+    \vfill
+    \begin{subfigure}{0.8\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp3/corner.png}
+    \end{subfigure}
+    \caption{Reconstructed emittances and covariance ellipses of a 0.8 GeV beam during injection. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (31 mm, 0 mrad, 0 mm, 1.1 mrad).}
+    \label{fig:exp3_emittances}
+\end{figure}
+%
 
 
 
