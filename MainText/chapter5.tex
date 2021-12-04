@@ -1,7 +1,7 @@
 \chapter{Experiments} \label{chap-5}
 
 [Grammar is unchecked...]
-This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapter \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in chapter \ref{chap-4} were used to measure the painted distribution. Recall from chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the dogmatic of this dissertation. Thus, the beams created in the following experiments were not expected to be optimal. Nonetheless, it was hoped that the beams would be clearly distinguishable from a production beam produced by correlated painting. 
+This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapter \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in chapter \ref{chap-4} were used to measure the painted distribution. Recall from chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the timeframe of this dissertation. Thus, the beams created in the following experiments were not expected to be optimal. Nonetheless, it was hoped that the beams would be clearly distinguishable from a production beam produced by correlated painting. 
 
 
 \section{Procedure}
@@ -15,16 +15,16 @@ The following steps are taken during the experimental setup:
     The beam energy is lowered from 1.0 GeV to 0.8 GeV by turning off several RF cavities at the end of the linac. This is performed by the SNS operations team. Generally, lowering the energy causes other accelerator components to trip or malfunction due to the modified timing system; these must be corrected one-by-one. The first attempt to lower the energy to 0.8 GeV took over six hours.
     %
     \item
-    The horizontal and vertical tunes are set to the same value using the Ring Optics Control (ROC) application. ROC varies several quadrupoles until the model tunes are equal to the desired tunes. The tunes are measured using turn-by-turn BPM readings from a single minipulse in the ring. Generally, the measured and model tunes are not quite equal; we therefore shift the ROC input tunes until they agree with the measured tunes. The measured tunes are assumed to be accurate to at least two decimal places.
+    The horizontal and vertical tunes are set to the same value using the Ring Optics Control (ROC) application. ROC varies several quadrupoles until the model tunes are equal to the desired tunes. The tunes are measured using turn-by-turn BPM readings from a single minipulse in the ring. Generally, the measured and model tunes are not quite equal; we therefore shift the ROC input tunes until the measured tunes converge to the desired tunes. 
     %
     \item
-    (Optional: Modify the injection region in some way to increase the effective kicker strength.)
+    (Optional: Modify the injection region in some way to assist the injection kickers.)
     %
     \item
     The eight injection kicker magnets are calibrated using the Ring Injection Control (RIC) application, as described in chapter \ref{chap-1}. 
     %
     \item
-    The initial/final kicker voltages are determined to obtain the desired closed-orbit coordinates at the foil, as described in \ref{chap-1}.
+    The initial/final kicker voltages are determined to obtain the desired closed-orbit coordinates at the foil, as described in chapter \ref{chap-1}.
     %
     \item
     The initial/final voltages are connected with a square root waveform; the waveform is applied to the injection kickers. The duration of the waveform — the painting time — is chosen at this step but can be easily changed later on. The painting time determines the number of minipulses in the final distribution; i.e., the beam intensity.
@@ -34,20 +34,22 @@ The following steps are taken during the experimental setup:
     %
 \end{enumerate}
 %
-The next task is to prepare for the measurements. For the wire-scanner measurement, the first step is to modify the RTBT optics using the application developed as part of this dissertation. If the fixed-optics method is used, the optics are changed immediately. If the multi-optics method is used, the optics are pre-computed and stored for later use. The SNS employs a sophisticated machine protection system (MPS) that will cause the machine to trip if the RTBT quadrupole strengths wander outside a certain window, so this window is extended beforehand. Additionally, MPS will activate if the fractional change in field strength is too large; to solve this problem, the field strength is changed in small steps. Wire-scanner data acquisition is performed by the Profile Tools and Analysis (PTA) application. The beam is set to a pulse frequency of 1 Hz, and the beam loss monitors in the wire-scanner region are masked due to the higher-than-normal losses when the wires cross the beam core. After the four wire-scanners complete their scan, a time-stamped file containing the measured profiles along with their statistical properties (mean, standard deviation, etc.). 
+The next task is to prepare for the measurements. For the wire-scanner measurement, the first step is to modify the RTBT optics using the application developed as part of this dissertation. If the fixed-optics method is used, the optics are changed immediately. If the multi-optics method is used, the optics are pre-computed and stored for later use. The SNS employs a sophisticated machine protection system (MPS) that will cause the machine to trip if the RTBT quadrupole strengths wander outside a certain window, so this window is extended beforehand. Additionally, MPS will activate if the fractional change in field strength is too large; to solve this problem, the field strength is changed in small steps. Wire-scanner data acquisition is performed by the Profile Tools and Analysis (PTA) application. The beam is set to a pulse frequency of 1 Hz, and the beam loss monitors in the wire-scanner region are masked due to the higher-than-normal losses when the wires cross the beam core. After the four wire-scanners complete their scan, a time-stamped file is produced containing the measured profiles.
 
-The second measurement is the tomographic reconstruction from $x$-$y$ projections on the target. Since the optics calculation is time-consuming, it is generally run in the background while wire-scans are collected; the quadrupole strengths are saved to a file. Since the use the target images for tomographic reconstruction was proposed late in this research, the target scan was only performed in the last of the following experiments.
+The second measurement is the tomographic reconstruction from $x$-$y$ projections on the target. Since the optics calculation is time-consuming, it can be run in the background while wire-scans are collected. Since the use the target images for tomographic reconstruction was proposed late in this research, the target scan was only performed in the last of the following experiments.
 
 
 \section{Experiment 1}
 
-The SNS reserves approximately one day per month for accelerator physics experiments, and various experiments must compete for time within this twenty-four hour period. At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed; although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested in reality. And the SNS energy had not yet been decreased — a time-consuming and possibly error-prone task. The goal of Experiment 1 was therefore to push the injected coordinates $x$ and $y'$ to their limits at 1 GeV.
+The SNS reserves approximately one day per month for accelerator physics experiments, and various experiments must compete for time within this twenty-four hour period. At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed. Although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested. And the SNS energy had not yet been decreased — a time-consuming and possibly error-prone task. The goal of Experiment 1 was therefore to push the injected coordinates $x$ and $y'$ to their limits at 1 GeV.
 
 Simulations predict that the distribution will undergo significant change during injection, especially without the presence of solenoid magnets in the ring; therefore, it is interesting to measure the distribution not only at its final state, but also at the intermediate states. Using the fixed-optics method, ten measurements can be performed within one hour. 
 
-\subsection{Correlated painting}
+\subsection{Experiment 1a: correlated painting}
 
-Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp1a_emittances}.
+Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. 
+
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -60,7 +62,7 @@ Before setting up for elliptical painting, a production beam was measured for co
     \begin{subfigure}{\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1a/rms.png}
     \end{subfigure}
-    \caption{Measured wire-scanner profiles during injection for a 1 GeV production beam, 500 injected turns.}
+    \caption{Measured wire-scanner profiles of a 1GeV production beam during injection (500 injected turns).}
     \label{fig:exp1a_wsmeas}
 \end{figure}
 %
@@ -68,13 +70,11 @@ Before setting up for elliptical painting, a production beam was measured for co
 \begin{figure}[!p]
     \centering
     \begin{subfigure}{0.6\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter5/exp1a/emittances.png}
-    \end{subfigure}
-    \vfill
-    \vspace*{0.0cm}
-    \vfill
-    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1a/corner.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.39\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1a/emittances.png}
     \end{subfigure}
     \caption{Reconstructed emittances and covariance ellipses of a 1 GeV production beam during injection (500 turns). In this and subsequent figures, light/dark ellipses correspond to the start/end of injection.}
     \label{fig:exp1a_emittances}
@@ -83,14 +83,15 @@ Before setting up for elliptical painting, a production beam was measured for co
 
 Each subplot in Fig.~\ref{fig:exp1a_wsmeas} shows the evolution of the projection onto a single wire during injection; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, or $u$. That the closed orbit starts offset from the foil is evident from initial two peaks in the $x$ and $y$ projections. The distribution forms a ring or donut in $x$-$x'$ and $y$-$y'$, and the hollow center eventually becomes partially filled due to space charge and other nonlinear effects.
 
-The main feature of Fig.~\ref{fig:exp1a_emittances} is that there is very little measured cross-plane correlation in the beam, as expected for the correlated painting method. The error bars are instead calculated by repeating the reconstruction many times with noise added to the measured moments, then taking the mean and standard deviation over the trials. Previous measurements indicate that the moments estimated from the profiles have less than 2\% variation if repeated multiple times. This can lead to asymmetric error bars, which will be shown in the next sections. 
+The main feature of Fig.~\ref{fig:exp1a_emittances} is that there is very little measured cross-plane correlation in the beam, as expected for the correlated painting method. The error bars are calculated by repeating the reconstruction many times with noise added to the measured moments, then taking the mean and standard deviation over the trials. This can lead to asymmetric error bars, which will be shown in the next sections. (Previous measurements indicate that the moments estimated from the profiles have less than 2\% variation if repeated multiple times.)
+
 
 [Simulation]
 
 
-\subsection{Elliptical-ish painting}
+\subsection{Experiment 1b: elliptical-ish painting}
 
-Next, we attempted to carry out elliptical painting. First, [as shown in Fig.~\ref{},] the horizontal and vertical tunes were set to 6.18. Then, next was to move the closed orbit to the foil. This was found to be possible in the vertical plane but impossible in the horizontal plane; the minimum distance from the foil was 10 mm. Additionally, the maximum possible vertical slope was 0.7 mrad. It was decided to continue with the painting method using initial coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad) and final coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad). The initial beam would be a donut in $x$-$x'$ and a point in $y$-$y'$. In real space, it would be a flat horizontal line with higher density on the two ends of the line. In other words, injected particles would move along an ellipse in the $x$-$y$ plane with zero vertical size. As time progressed, the horizontal and vertical size of the ellipse would grow at different rates depending on the maximum painting $x$ and $y'$ coordinates. This is all assuming linear transport and non-interacting particles. Without a computer, it is unclear what would happen with the inclusion of space charge.
+Next, we attempted to carry out elliptical painting. First, [as shown in Fig.~\ref{},] the horizontal and vertical tunes were set to 6.18. The next step was to move the closed orbit to the foil. This was found to be possible in the vertical plane but impossible in the horizontal plane; the minimum distance from the foil was 10 mm. Additionally, the maximum possible vertical slope was 0.7 mrad. It was decided to continue with the painting method using initial coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad) and final coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad). The initial beam would be a donut in $x$-$x'$ and a point in $y$-$y'$. In real space, it would be a flat horizontal line with higher density on the two ends of the line. In other words, injected particles would move along an ellipse in the $x$-$y$ plane with zero vertical size. As time progressed, the horizontal and vertical size of the ellipse would grow at different rates depending on the maximum painting $x$ and $y'$ coordinates. This is all assuming linear transport and non-interacting particles. Without a computer, it is unclear what would happen with the inclusion of space charge.
 
 [... We should probably show some screenshots of the RIC application. Maybe not here, but somewhere. ...]
 
@@ -107,7 +108,7 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and
     \begin{subfigure}{\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1b/rms.png}
     \end{subfigure}
-    \caption{Measured wire-scanner profiles during injection for a 1 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
+    \caption{Measured wire-scanner profiles of a 1 GeV beam during injection. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
     \label{fig:exp1b_wsmeas}
 \end{figure}
 %
@@ -115,32 +116,60 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and
 \begin{figure}[!p]
     \centering
     \begin{subfigure}{0.6\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/emittances.png}
-    \end{subfigure}
-    \vfill
-    \vspace*{-0.2cm}
-    \vfill
-    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1b/corner.png}
     \end{subfigure}
-    \caption{Reconstructed emittances and covariance ellipses for a 1 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
+    \hfill
+    \begin{subfigure}[t]{0.39\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/emittances.png}
+    \end{subfigure}
+    \caption{Reconstructed emittances and covariance ellipses of a 1 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad).}
     \label{fig:exp1b_emittances}
 \end{figure}
 %
 Notice the difference in the growth of the vertical beam size in comparison with the horizontal size. The $x$-$x'$ distribution is a donut that fills in over time while also growing in radius, hence the relative lack of growth in the horizontal beam size. The vertical beam size, on the other hand, starts at a small value and increases throughout injection, as desired. Additionally, there is now a clear separation between the intrinsic emittances.
 
-[Some thoughts: Might want to mention something about the comparison with the target images. We seem to be over-estimating the horizontal size and under-estimating the vertical size. Additionally, although the initial image is significantly tilted, the wire-scanner measurement gets the tilt angle wrong. This decreases my trust in these measurements. On the other hand, the $x$-$x'$ reconstruction has produced values very close to the model prediction for a production beam. Also, the intrinsic emittances are a complicated function of the beam moments, so they are probably not so sensitive to these systematic errors. Maybe what we have is some systematic error in the beam size due to the small number of points in the wire-scans?]
+[Some thoughts: Might want to mention something about the comparison with the target images. We seem to be over-estimating the horizontal size and under-estimating the vertical size. Additionally, although the initial image is significantly tilted, the wire-scanner measurement gets the tilt angle wrong. This decreases my trust in these measurements. On the other hand, the $x$-$x'$ reconstruction has produced values that are close to the model prediction for a production beam. Also, the intrinsic emittances are a complicated function of the beam moments, so they are probably not so sensitive to these systematic errors. Maybe what we have is some systematic error in the beam size due to the small number of points in the wire-scans?]
+
+We close with a PIC simulation of this case in Fig.~\ref{fig:exp1b_sim}. 
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{0.85\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/sim_snapshots.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.0cm}
+    \vfill
+    \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp1b/sim_emittances.png}
+    \end{subfigure}
+    \caption{Simulation of experiment 1b. [RE-RUN WITH SLICED SPACE CHARGE AND TRANSVERSE IMPEDANCE.]}
+    \label{fig:exp1b_sim}
+\end{figure}
+%
+Again, keep in mind that the $\beta$ functions at the injection point are not exactly the same as in the experiment, so the absolute values of the emittances are not expected to agree. Instead, we hope to see qualitative agreement with the measured emittance growth. And we do: the e 
+
 
 
 
 \section{Experiment 2}
 
-In Experiment 2, the beam energy was lowered to 0.8 GeV for the first time. The closed orbit was successfuly reached to the foil, and a maximum vertical slope of 1.1 mrad was achieved. 
+In Experiment 2, the beam energy was lowered to 0.8 GeV for the first time. The closed orbit was able to reach the foil, and a maximum vertical slope of ${y'}_{max} \approx 1.1$ mrad was achieved. This is significantly smaller that the 1.7 mrad used in the simulations from \cite{Holmes2018}. 
 
-Before beginning the emittance measurement, we attempted to change the orbit corrector dipoles in the injection region to increase the maximum vertical slope. 
+In the setup procedure, an optional step was listed: 3. Modify the injection region in some way to assist the injection kickers. There are several tricks that can be played to increase ${y'}_{max}$. One option would be to move the foil farther into the beam pipe, but this is undesired because it would require modification of the trajectory of the surviving hydrogen ions. Another option is to use the vertical orbit corrector dipoles in the injection region to increase the maximum vertical slope. This is not straightforward in reality because the correctors are already used to flatten the orbit during neutron production.
 
-[... Mention failed attempt to optimize the orbit corrector dipoles in the injection region. ...]
+There are two correctors before and after the foil. Our strategy was to manually change the first two correctors, then use the second two correctors and every other corrector in the ring to flatten the orbit (using an existing Orbit Correction application). There are four options for the sign of the changes applied to the first two correctors: $\uparrow\uparrow$, $\uparrow\downarrow$, $\downarrow\uparrow$, $\downarrow\downarrow$. For each option, a small change was applied to the dipole currents and the injection kickers were asked to maximize the vertical slope at the foil. This did not work; modifying the correctors lead to significnat closed-orbit waves throughout the ring that could not be flattened. The use of orbit correctors is left as a future optimization. 
 
+The remaining free parameters are the beam intensity and the maximum horizontal position $x_{max}$. Assuming $\alpha \approx 0$ at the injection point, the ratio of painted emittances is
+%
+\begin{equation}
+    \frac{\varepsilon_y}{\varepsilon_x} \approx 
+    \beta_x \beta_y \left(\frac{{y'}_{max}}{x_{max}}\right)^2 
+\end{equation}
+%
+It is desirable to paint equal emittances. In simulations, this can easily be achieved since the $\beta$ functions are known. In reality, the exact $\beta$ functions are unknown. The model $\beta$ functions at the injection point are both near 10 mm/mrad; for $y'_{max}$ = 1 mrad, this would require $x_{max}$ = 10 mm — a small beam. But we must keep in mind that the ratio is quite sensitive to changes in $\beta_{x, y}$; for example, $\beta_x$ = $\beta_y$ = 11 m/rad would produce $\varepsilon_y / \varepsilon_x \approx 1.5$. We decided to use $x_{max}$ = 21 mm. The beam intensity was kept at 500 injected turns, or roughly $0.75 \times 10^{14}$ protons.
+
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp2_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -153,30 +182,34 @@ Before beginning the emittance measurement, we attempted to change the orbit cor
     \begin{subfigure}{\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp2/rms.png}
     \end{subfigure}
-    \caption{Measured wire-scanner profiles during injection for a 0.8 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 1.1 mrad).}
+    \caption{Measured wire-scanner profiles during injection of a 0.8 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 1.1 mrad).}
     \label{fig:exp2_wsmeas}
 \end{figure}
 %
-
 %
 \begin{figure}[!p]
     \centering
     \begin{subfigure}{0.6\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter5/exp2/emittances.png}
-    \end{subfigure}
-    \vfill
-    \vspace*{-0.2cm}
-    \vfill
-    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp2/corner.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.39\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp2/emittances.png}
     \end{subfigure}
     \caption{Reconstructed emittances and covariance ellipses of a 0.8 GeV beam during injection. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 1.1 mrad).}
     \label{fig:exp2_emittances}
 \end{figure}
 %
+The apparent emittances increase linearly from a small initial value, as desired. The intrinsic emittances begin to split in the late stages of injection. 
+
+Simulations show that space charge is very strong at this intensity, energy, and beam size. 
+
+
 
 \section{Experiment 3}
 
+
+The goal of experiment 3 was to observe how the measured intrinsic emittances responded to the 
 
 %
 \begin{figure}[!p]
@@ -190,22 +223,19 @@ Before beginning the emittance measurement, we attempted to change the orbit cor
     \begin{subfigure}{\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp3/rms.png}
     \end{subfigure}
-    \caption{Measured wire-scanner profiles during injection for a 0.8 GeV beam. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (31 mm, 0 mrad, 0 mm, 1.1 mrad).}
+    \caption{Measured wire-scanner profiles of a 0.8 GeV beam during injection. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (31 mm, 0 mrad, 0 mm, 1.1 mrad). 400 injected turns.}
     \label{fig:exp3_wsmeas}
 \end{figure}
 %
-
 %
 \begin{figure}[!p]
     \centering
     \begin{subfigure}{0.6\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter5/exp3/emittances.png}
-    \end{subfigure}
-    \vfill
-    \vspace*{-0.2cm}
-    \vfill
-    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp3/corner.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.39\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp3/emittances.png}
     \end{subfigure}
     \caption{Reconstructed emittances and covariance ellipses of a 0.8 GeV beam during injection. Initial injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (0 mm, 0 mrad, 0 mm, 0 mrad). Final injected coordinates: ($x$, $x'$, $y$, $y'$) $\approx$ (31 mm, 0 mrad, 0 mm, 1.1 mrad).}
     \label{fig:exp3_emittances}
