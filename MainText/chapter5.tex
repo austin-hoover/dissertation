@@ -49,7 +49,7 @@ Simulations predict that the distribution will undergo significant change during
 
 Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. 
 
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp1a_emittances}.
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses at the target are shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -76,7 +76,7 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and
     \begin{subfigure}[t]{0.39\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1a/emittances.png}
     \end{subfigure}
-    \caption{Reconstructed emittances and covariance ellipses of a 1 GeV production beam during injection (500 turns). In this and subsequent figures, light/dark ellipses correspond to the start/end of injection.}
+    \caption{Reconstructed emittances and covariance ellipses of a 1 GeV production beam during injection (500 turns). In this and subsequent figures, the reconstruction is performed at the target, and the light/dark ellipses correspond to the start/end of injection.}
     \label{fig:exp1a_emittances}
 \end{figure}
 %
@@ -85,8 +85,22 @@ Each subplot in Fig.~\ref{fig:exp1a_wsmeas} shows the evolution of the projectio
 
 The main feature of Fig.~\ref{fig:exp1a_emittances} is that there is very little measured cross-plane correlation in the beam, as expected for the correlated painting method. The error bars are calculated by repeating the reconstruction many times with noise added to the measured moments, then taking the mean and standard deviation over the trials. This can lead to asymmetric error bars, which will be shown in the next sections. (Previous measurements indicate that the moments estimated from the profiles have less than 2\% variation if repeated multiple times.)
 
+It is also possible to reconstruct the covariance matrix at different locations in the lattice. Fig.~\ref{fig:exp1a_rec_betas_throughout} shows the reconstructed $\beta$ functions throughout the RTBT.
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/chapter5/exp1a/rec_betas_throughout.png}
+    \caption{Reconstructed $\beta$ functions for the beam in Experiment 1a.}
+    \label{fig:exp1a_rec_betas_throughout}
+\end{figure}
+%
+The model parameters are computed from the linear transfer matrix of the ring + RTBT. 
+
 
 [Simulation]
+
+
+
 
 
 \subsection{Experiment 1b: elliptical-ish painting}
@@ -95,7 +109,7 @@ Next, we attempted to carry out elliptical painting. First, [as shown in Fig.~\r
 
 [... We should probably show some screenshots of the RIC application. Maybe not here, but somewhere. ...]
 
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp1a_emittances}.
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and the reconstructed emittances and covariance ellipses at the target are shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -143,7 +157,7 @@ We close with a PIC simulation of this case in Fig.~\ref{fig:exp1b_sim}.
     \begin{subfigure}{0.7\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1b/sim_emittances.png}
     \end{subfigure}
-    \caption{Simulation of experiment 1b. [RE-RUN WITH SLICED SPACE CHARGE AND TRANSVERSE IMPEDANCE.]}
+    \caption{Simulation of experiment 1b. [RE-RUN WITH SLICED SPACE CHARGE AND TRANSVERSE IMPEDANCE. ALSO CHANGE BUNCH LENGTH TO 30/64]}
     \label{fig:exp1b_sim}
 \end{figure}
 %
@@ -169,7 +183,7 @@ The remaining free parameters are the beam intensity and the maximum horizontal 
 %
 It is desirable to paint equal emittances. In simulations, this can easily be achieved since the $\beta$ functions are known. In reality, the exact $\beta$ functions are unknown. The model $\beta$ functions at the injection point are both near 10 mm/mrad; for $y'_{max}$ = 1 mrad, this would require $x_{max}$ = 10 mm — a small beam. But we must keep in mind that the ratio is quite sensitive to changes in $\beta_{x, y}$; for example, $\beta_x$ = $\beta_y$ = 11 m/rad would produce $\varepsilon_y / \varepsilon_x \approx 1.5$. We decided to use $x_{max}$ = 21 mm. The beam intensity was kept at 500 injected turns, or roughly $0.75 \times 10^{14}$ protons.
 
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}, and the reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp2_emittances}.
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}, and the reconstructed emittances and covariance ellipses at the target are shown in Fig.~\ref{fig:exp2_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -202,15 +216,29 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}, and 
 %
 The apparent emittances increase linearly from a small initial value, as desired. The intrinsic emittances begin to split in the late stages of injection. 
 
-Simulations show that space charge is very strong at this intensity, energy, and beam size. 
+Simulations show that space charge has a strong effect on the beam evolution at this intensity, energy, and emittance. [...]
+
+
+
+
+
+
+
 
 
 
 \section{Experiment 3}
 
-
-The goal of experiment 3 was to observe how the measured intrinsic emittances responded to the 
-
+The same setup for Experiment 2 was repeated for Experiment 3. One difference was that the bunch length was increased from roughly 30/64 of the ring length to 45/64 of the ring length. At the start of the experiment, the beam intensity and beam size were varied; at each setting, the emittances of the final distribution were reconstructed using four wire-scanner profiles. The results are shown in Fig.~\cite{fig:exp3_search}.
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter5/exp3/search.png}
+    \caption{Measured emittances vs. beam intensity for two different injected coordinates.}
+    \label{fig:exp3_search}
+\end{figure}
+%
+Space charge clearly has a large effect on the beam distribution. It is somewhat surprising that the split in the intrinsic emittances increased with the beam intensity. The middle cluster in the right subplot was identified as the most promising case, and the measurements of the previous two experiments were repeated. See Fig.~\ref{fig:exp3_wsmeas} and Fig.~\ref{fig:exp3_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -241,6 +269,18 @@ The goal of experiment 3 was to observe how the measured intrinsic emittances re
     \label{fig:exp3_emittances}
 \end{figure}
 %
+
+
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter5/exp3/compare_corr.png}
+    \caption{Reconstructed cross-plane correlation coefficients for Experiment 3 (left), Experiment 2 (middle), and Experiment 1a(right).}
+    \label{fig:exp3_compare_corr}
+\end{figure}
+%
+
+
 
 
 
