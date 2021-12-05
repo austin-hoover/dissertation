@@ -29,7 +29,7 @@
 
 \newcommand{\thesisspacing}{
     % \singlespacing
-    \setstretch{1.5}
+    % \setstretch{1.5}
 }
 
 \newcommand{\numberedchapter}{ % Preparation for numbered chapters
