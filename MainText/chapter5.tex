@@ -229,16 +229,16 @@ Simulations show that space charge has a strong effect on the beam evolution at 
 
 \section{Experiment 3}
 
-The same setup for Experiment 2 was repeated for Experiment 3. One difference was that the bunch length was increased from roughly 30/64 of the ring length to 45/64 of the ring length. At the start of the experiment, the beam intensity and beam size were varied; at each setting, the emittances of the final distribution were reconstructed using four wire-scanner profiles. The results are shown in Fig.~\cite{fig:exp3_search}.
+The same setup for Experiment 2 was repeated in Experiment 3. One difference was that the bunch length was increased from roughly 30/64 of the ring length to 45/64 of the ring length. At the start of the experiment, the beam intensity and beam size were varied; at each setting, the emittances of the final distribution were reconstructed using four wire-scanner profiles. The results are shown in Fig.~\ref{fig:exp3_search}.
 %
 \begin{figure}[!p]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter5/exp3/search.png}
-    \caption{Measured emittances vs. beam intensity for two different injected coordinates.}
+    \caption{Measured emittances vs. beam intensity for two sets of injected coordinates.}
     \label{fig:exp3_search}
 \end{figure}
 %
-Space charge clearly has a large effect on the beam distribution. It is somewhat surprising that the split in the intrinsic emittances increased with the beam intensity. The middle cluster in the right subplot was identified as the most promising case, and the measurements of the previous two experiments were repeated. See Fig.~\ref{fig:exp3_wsmeas} and Fig.~\ref{fig:exp3_emittances}.
+(The intensities are not exact; they are obtained by multiplying the nominal minipulse intensity by the number of injected turns.) Space charge clearly has an effect on the final distribution. It is somewhat surprising that the split in the intrinsic emittances increased with the beam intensity. The middle cluster in the right subplot was identified as the most interesting case, and the measurement process of the  of the previous two experiments were repeated. See Fig.~\ref{fig:exp3_wsmeas} and Fig.~\ref{fig:exp3_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -270,15 +270,40 @@ Space charge clearly has a large effect on the beam distribution. It is somewhat
 \end{figure}
 %
 
+[...]
 
 %
 \begin{figure}[!p]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter5/exp3/compare_corr.png}
-    \caption{Reconstructed cross-plane correlation coefficients for Experiment 3 (left), Experiment 2 (middle), and Experiment 1a(right).}
+    \caption{Reconstructed cross-plane correlation coefficients for Experiment 3 (left), Experiment 2 (middle), and Experiment 1a(right). [TO DO: ADD ERROR BARS].}
     \label{fig:exp3_compare_corr}
 \end{figure}
 %
+
+In this experiment, the target scan was performed. The initial script calculated $15 \times 15$ phase advances, storing all the images in one array. This caused the program to crash on step 150 due to a memory error. At this point, there was not much time remaining in the control room. A second script was run that used $7 \times 7$ phase advances. Unfortunately, it was overlooked that the optics in the RTBT had already been modified for the wire-scanner measurements; eventually, the required magnet changes were too large and it was decided to stop the program. A total of 43/49 images were collected.
+
+
+The pause between changing the optics, triggering the beam, and collecting the images was apparently not long enough, so there were several blanks and duplicates in the image set. The bunch length was inadvertently changed from 45/64 to 15/64 of the bunch length, so the distribution was not the same as in the wire-scanner measurement. A few of the images are shown in Fig.~\ref{fig:exp3_target_scan}. The $x$-$y$ correlation coefficient $r$ clearly depends on the phase advances, demonstrating that there is cross-plane correlation in the beam. If the wire-scanner reconstruction was accurate, that beam would have displayed larger variation in $r$; it is therefore possible that the change in bunch length eliminated much of the cross-plane correlation. Another possibility is that the distribution was relatively unchanged between the two measurements, and that the wire-scanner reconstruction was inaccurate. It is difficult to draw conclusions without repeating the measurement. 
+
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter5/exp3/target_scan/target_scan.png}
+    \caption{Scan of the phase advances at the target. Left: processed images on last two steps in the scan. Top right: $x$-$y$ correlation coefficients computed from the images. Bottom right: Phase advances at the target.}
+    \label{fig:exp3_target_scan}
+\end{figure}
+%
+
+Hock's method was applied to reconstruct the distribution from the images, using two iterations of SART for each 2D reconstruction. The projections of the reconstructed distribution are shown in Fig.~\ref{fig:exp3_rec_corner_Hock}
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Images/chapter5/exp3/target_scan/rec_corner_Hock.png}
+    \caption{Projections of the reconstructed phase space using Hock's method on the target images. [TO DO: GET RECONSTRUCTION GRID.]}
+    \label{fig:exp3_rec_corner_Hock}
+\end{figure}
+%
+Only seven 1D projections are used in each 2D reconstruction. 
 
 
 
@@ -286,6 +311,7 @@ Space charge clearly has a large effect on the beam distribution. It is somewhat
 
 \section{Experiment 4}
 
+[Jan. 2022]
 
 
 \section{Summary}
