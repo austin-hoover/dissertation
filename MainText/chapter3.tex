@@ -7,6 +7,7 @@ Holmes et al. recently performed PIC simulations in the original ORBIT code to d
 
 The PyORBIT code tracks a Bunch object containing the 6D phase space coordinates. The accelerator is modeled as a series of nodes, each of which modifies the phase space coordinates in some way. Following the TEAPOT approach [\ref{}], single particles are transported using symplectic maps derived from the Hamiltonian. Here, we briefly describe the approach to nonlinear magnetic fringe fields and collective effects. 
 
+
 \subsection{Space charge}
 
 A major component of beam physics simulations is the calculation of the space charge force. Direct Coloumb sums are currently infeasible. The Vlasov equation can be solved directly, but this is difficult in 2D and 3D. The particle-in-cell (PIC) method is a “best of both worlds” approach in which an $N$ particle bunch is represented by $M$ macroparticles, where $M \ll N$. The macroparticles are tracked according to Eq.~\eqref{eq:eom_with_spacecharge}. The electric field is obtained by solving Eq.~\eqref{eq:Poisson} on a grid. The key step is transforming between the discrete and continuous representation. The PIC loop is shown in Fig.~\ref{fig:pic_loop}. 
@@ -55,7 +56,7 @@ An important effect during charge-exchange injection is Coulomb scattering durin
 Finally, longitudinal focusing in the ring is provided by two RF cavities. The harmonic frequency $h$ is defined as the RF frequency divided by the revolution frequency of the beam; one cavity operates at $h = 1$ and the other operates at $h = 2$, both at an amplitude near 5 kV. The energy gain $\Delta \epsilon$ for a particle passing through the cavity is approximated as  
 %
 \begin{equation}
-    \Delta \epsilon = q V \sin((h \phi + \phi_0).
+    \Delta \epsilon = q V \sin(h \phi + \phi_0).
 \end{equation}
 %
 The particle phase $\phi$ is zero for the synchronous particle.

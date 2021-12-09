@@ -49,7 +49,7 @@ Simulations predict that the distribution will undergo significant change during
 
 Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. 
 
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses at the target are shown in Fig.~\ref{fig:exp1a_emittances}.
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses at BPM17, just before QH18, are shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -76,11 +76,10 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and
     \begin{subfigure}[t]{0.39\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1a/emittances.png}
     \end{subfigure}
-    \caption{Reconstructed emittances and covariance ellipses of a 1 GeV production beam during injection (500 turns). In this and subsequent figures, the reconstruction is performed at the target, and the light/dark ellipses correspond to the start/end of injection.}
+    \caption{Reconstructed emittances and covariance ellipses of a 1 GeV production beam during injection (500 turns). In this and subsequent figures, the reconstruction is performed at BPM17, and the light/dark ellipses correspond to the start/end of injection.}
     \label{fig:exp1a_emittances}
 \end{figure}
 %
-
 Each subplot in Fig.~\ref{fig:exp1a_wsmeas} shows the evolution of the projection onto a single wire during injection; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, or $u$. That the closed orbit starts offset from the foil is evident from initial two peaks in the $x$ and $y$ projections. The distribution forms a ring or donut in $x$-$x'$ and $y$-$y'$, and the hollow center eventually becomes partially filled due to space charge and other nonlinear effects.
 
 The main feature of Fig.~\ref{fig:exp1a_emittances} is that there is very little measured cross-plane correlation in the beam, as expected for the correlated painting method. The error bars are calculated by repeating the reconstruction many times with noise added to the measured moments, then taking the mean and standard deviation over the trials. This can lead to asymmetric error bars, which will be shown in the next sections. (Previous measurements indicate that the moments estimated from the profiles have less than 2\% variation if repeated multiple times.)
@@ -109,7 +108,7 @@ Next, we attempted to carry out elliptical painting. First, [as shown in Fig.~\r
 
 [... We should probably show some screenshots of the RIC application. Maybe not here, but somewhere. ...]
 
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and the reconstructed emittances and covariance ellipses at the target are shown in Fig.~\ref{fig:exp1a_emittances}.
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and the reconstructed emittances and covariance ellipses at BPM17 are shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -183,7 +182,7 @@ The remaining free parameters are the beam intensity and the maximum horizontal 
 %
 It is desirable to paint equal emittances. In simulations, this can easily be achieved since the $\beta$ functions are known. In reality, the exact $\beta$ functions are unknown. The model $\beta$ functions at the injection point are both near 10 mm/mrad; for $y'_{max}$ = 1 mrad, this would require $x_{max}$ = 10 mm — a small beam. But we must keep in mind that the ratio is quite sensitive to changes in $\beta_{x, y}$; for example, $\beta_x$ = $\beta_y$ = 11 m/rad would produce $\varepsilon_y / \varepsilon_x \approx 1.5$. We decided to use $x_{max}$ = 21 mm. The beam intensity was kept at 500 injected turns, or roughly $0.75 \times 10^{14}$ protons.
 
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}, and the reconstructed emittances and covariance ellipses at the target are shown in Fig.~\ref{fig:exp2_emittances}.
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}, and the reconstructed emittances and covariance ellipses at BPM17 are shown in Fig.~\ref{fig:exp2_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -238,7 +237,7 @@ The same setup for Experiment 2 was repeated in Experiment 3. One difference was
     \label{fig:exp3_search}
 \end{figure}
 %
-(The intensities are not exact; they are obtained by multiplying the nominal minipulse intensity by the number of injected turns.) Space charge clearly has an effect on the final distribution. It is somewhat surprising that the split in the intrinsic emittances increased with the beam intensity. The middle cluster in the right subplot was identified as the most interesting case, and the measurement process of the  of the previous two experiments were repeated. See Fig.~\ref{fig:exp3_wsmeas} and Fig.~\ref{fig:exp3_emittances}.
+(The intensities are not exact; they are obtained by multiplying the nominal minipulse intensity by the number of injected turns.) Space charge clearly has an effect on the final distribution. It is somewhat surprising that the split in the intrinsic emittances increased with the beam intensity. The middle cluster in the right subplot was identified as the most interesting case, and the measurement process of the  of the previous two experiments were repeated — see Fig.~\ref{fig:exp3_wsmeas} and Fig.~\ref{fig:exp3_emittances}.
 %
 \begin{figure}[!p]
     \centering
