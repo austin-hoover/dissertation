@@ -78,7 +78,7 @@ where $\mathcal{F}$ represents the Fourier transform. For a grid with $N$ bins p
 
 In rings where the coasting beam approximation is valid, the longitudinal and transverse dimensions are treated separately. In PyORBIT, a longitudinal space charge node acts on the bunch once per turn. Two models are included for the transverse space charge calculation: the 2.5D model and the sliced model. In the 2.5D model, Poisson’s equation is solved once for a charge density obtained by projecting the entire bunch onto the $x$-$y$ plane; the transverse space charge forces are then weighted according to the longitudinal density. In the sliced model, the bunch is longitudinally sliced, and Poisson’s equation is solved for each slice.
 
-In the discussion of space charge thus far, the beam was assumed to be in free space. In reality, the beam is in a conducting vacuum chamber. Charged particles leave so-called wake fields on the conducting surface, which then act on other particles or on the same particle on subsequent turns, possibly leading to instability. The treatment of wake fields can be challenging and is introduced in \cite{Chao1993}. No details are described here; we only mention that PyORBIT takes these effects into account.
+In the discussion of space charge thus far, the beam was assumed to be in free space; in reality, the beam is in a conducting vacuum chamber. Charged particles leave so-called wake fields on the conducting surface, which then act on other particles or the same particle on subsequent turns, possibly leading to instability. The treatment of wake fields can be challenging and is introduced in \cite{Chao1993}. No details are described here; we only mention that PyORBIT takes these effects into account.
 
 
 
@@ -105,7 +105,7 @@ In all simulations, the turn-by-turn covariance matrix of the distribution at th
 \section{Fringe field compensation}
 
 It is worth illuminating the finding from \cite{Holmes2018} that in an otherwise linear lattice, fringe fields tend to eliminate any cross-plane correlations in the beam when the tunes are near the difference resonance $\nu_x \approx \nu_y$. To demonstrate this, a Danilov distribution matched to a linearized version of the SNS ring was generated. Fringe fields were then turned on, and the particles were tracked without space charge. Fig.~\ref{fig:fringe_a} shows the turn-by-turn evolution of the distribution.
-%
+
 \begin{figure}[!p]
     \centering
     \includegraphics[width=0.7\textwidth]{Images/chapter3/fringe.png}
@@ -113,8 +113,7 @@ It is worth illuminating the finding from \cite{Holmes2018} that in an otherwise
     \label{fig:fringe_a}
     \vspace*{3cm}
 \end{figure}
-%
-%
+
 \begin{figure}[!p]
     \centering
     \includegraphics[width=0.7\textwidth]{Images/chapter3/fringe_solenoid.png}
@@ -122,8 +121,7 @@ It is worth illuminating the finding from \cite{Holmes2018} that in an otherwise
     \label{fig:fringe_b}
     \vspace*{3cm}
 \end{figure}
-%
-%
+
 \begin{figure}[!p]
     \centering
     \includegraphics[width=0.7\textwidth]{Images/chapter3/fringe_spacecharge.png}
@@ -131,9 +129,11 @@ It is worth illuminating the finding from \cite{Holmes2018} that in an otherwise
     \label{fig:fringe_c}
     \vspace*{3cm}
 \end{figure}
-%
 
-There is clearly nonlinear coupling between the horizontal and vertical motion; the final distribution is a superposition of rotating and counter-rotating modes. In Fig.~\ref{fig:fringe_b}, a solenoid magnet was added to the ring. The cross-plane correlations are now mostly maintained. The tunes $\nu_{1, 2}$ are no longer equal due to the linear coupling form the solenoid, so the resonance condition is avoided. In Fig.~\ref{fig:fringe_c}, the simulation was repeated with the inclusion of space charge instead of the solenoid magnet. An intensity of $10^{14}$ was used with the bunch length equal to the ring length. We see that space charge has a similar stabilizing effect on the distribution. 
+
+There is nonlinear coupling between the horizontal and vertical motion, and the final distribution is a superposition of rotating and counter-rotating modes. In Fig.~\ref{fig:fringe_b}, a solenoid magnet is added to the ring. The cross-plane correlations are now mostly maintained. The tunes $\nu_{1, 2}$ are no longer equal due to the linear coupling from the solenoid, so the resonance condition is avoided. In Fig.~\ref{fig:fringe_c}, the simulation is repeated with the inclusion of space charge instead of the solenoid magnet. An intensity of $10^{14}$ is used and the bunch length is equal to the ring length. It appears that a Danilov distribution will self-stabilize against the difference resonance when space charge is included.
+
+It is recommended, however, that solenoid magnets be added to the ring. The difficulty is
 
 
 
@@ -142,7 +142,7 @@ There is clearly nonlinear coupling between the horizontal and vertical motion; 
 
 \subsection{Best-case scenario}
 
-After optimization, the final simulation in \cite{Holmes2018} produced an approximate Danilov distribution. Only the final 1D projections of the distribution were displayed, and the intrinsic emittances were not calculated; it is therefore worth revisiting this simulation. Projections of the final distribution are shown in Fig.~\ref{fig:Holmes_corner_compare}.
+After optimization, the final simulation in \cite{Holmes2018} produced an approximate Danilov distribution. Only the final 1D projections of the distribution were displayed, and the intrinsic emittances were not calculated, so it is worth revisiting this simulation. Projections of the final distribution are shown in Fig.~\ref{fig:Holmes_corner_compare}.
 %
 \begin{figure}[!p]
     \centering
@@ -162,14 +162,13 @@ After optimization, the final simulation in \cite{Holmes2018} produced an approx
     \caption{Distribution from the final simulation in \cite{Holmes2018}.}
 \end{figure}
 %
-The faint pink lines in the figure represent the projections of an ideal Danilov distribution with the same Twiss parameters and apparent emittances as the simulated distribution. Although the 1D projections have developed tails from nonlinear effects during injection, they are relatively close to a the ideal case. The exception is the $x'$ projection, which has developed a sharp peak. The 2D projections are also not too far from ideal. Although the $x$-$y'$ and $y-x'$ projections have been broadened, they exhibit the correct correlations. And the beam is round in the $x$-$y$ plane. Fig.~\ref{fig:Holmes_emittances} shows that the smaller intrinsic emittance $\varepsilon_2$ remains close to its lower limit (0.3 mm~mrad, or the emittance of the injected minipulse) throughout injection. 
+The faint pink lines in the figure represent the projections of an ideal Danilov distribution with the same Twiss parameters and apparent emittances as the simulated distribution. Although the 1D projections have developed tails from nonlinear effects during injection, they are relatively close to the ideal case. The exception is the $x'$ projection, which has developed a sharp peak. The 2D projections are also not too far from ideal. Although the $x$-$y'$ and $y-x'$ projections have been broadened, they exhibit the correct correlations. And the beam is round in the $x$-$y$ plane. Fig.~\ref{fig:Holmes_emittances} shows that the smaller intrinsic emittance $\varepsilon_2$ remains close to its lower limit (0.3 mm~mrad, or the emittance of the injected minipulse) throughout injection. 
 
 Several steps were necessary to achieve this simulated result. First, as discussed in chapter \ref{chap-2}, the painting path was chosen to follow a line in the $x$-$y'$ plane. Second, also discussed in chapter \ref{chap-2}, the apparent emittances were kept somewhat equal. Third, the ring RF cavity voltages were decreased to better approximate a coasting beam. Fourth, the beam energy was lowered to 0.6 GeV to increase the effective kicker strength; additionally, orbit corrector dipoles in the injection region provided a closed bump. These modifications allowed a vertical slope of 1.58 mrad at the injection point. Fifth, the number of injected turns was reduced from 1000 to 300 to compensate for the increased space charge strength at the lower energy. Finally, a solenoid magnet was added to the ring to mitigate the effect of fringe fields. 
 
-This is likely the best-case scenario in the SNS. But as will be discussed in chapter \ref{chap-5}, new experimental constraints have come to light. The SNS energy cannot reach 0.6 GeV, and the use of orbit correctors in the injection region is difficult in reality. The net result is that the maximum vertical slope is limited, and that space charge will be less intense. Additionally the minipulse may be significantly mismatched at the injection point. Finally, a solenoid magnet will not be present during initial experiments in the SNS — at least not during the time frame of this work. The quality of the final distribution with these constraints should be simulated.
+This is likely the best-case scenario in the SNS. But as will be discussed in chapter \ref{chap-5}, new experimental constraints have come to light. The SNS energy cannot reach 0.6 GeV, and the use of orbit correctors in the injection region is difficult. The net result is that the maximum vertical slope is limited and that space charge will be less intense. Additionally, the minipulse may be significantly mismatched at the injection point. Finally, a solenoid magnet will not be present during initial experiments in the SNS — at least not during the time frame of this work. The quality of the final distribution with these constraints should be simulated.
 
 [Elliptical painting is carried out in the SNS in chapter \ref{chap-5}. After several of these experiments, a simulation will be shown for comparison. For now, [...]]
-
 [Some things we might show in this chapter:
 \begin{itemize}
     \item No solenoid
