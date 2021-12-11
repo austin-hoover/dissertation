@@ -155,7 +155,7 @@ We close with a PIC simulation of this case in Fig.~\ref{fig:exp1b_sim}.
     \begin{subfigure}{0.7\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1b/sim_emittances.png}
     \end{subfigure}
-    \caption{Simulation of experiment 1b. [RE-RUN WITH SLICED SPACE CHARGE AND TRANSVERSE IMPEDANCE. ALSO CHANGE BUNCH LENGTH TO 30/64]}
+    \caption{Simulation of experiment 1b. [RE-RUN WITH SLICED SPACE CHARGE AND TRANSVERSE IMPEDANCE. ALSO CHANGE BEAM LENGTH TO 30/64]}
     \label{fig:exp1b_sim}
 \end{figure}
 %
@@ -212,9 +212,9 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}, and 
     \label{fig:exp2_emittances}
 \end{figure}
 %
-The apparent emittances increase linearly from a small initial value, as desired. The intrinsic emittances begin to split in the late stages of injection. 
+The apparent emittances increase linearly from a small initial value, as desired. The intrinsic emittances begin to split, although not by much, at the end of injection.
 
-Simulations show that space charge has a strong effect on the beam evolution at this intensity, energy, and emittance. [...]
+A simulation of this case is shown in Fig.~\ref{fig:exp2_sim}.
 %
 \begin{figure}[!p]
     \centering
@@ -231,12 +231,13 @@ Simulations show that space charge has a strong effect on the beam evolution at 
     \label{fig:exp2_sim}
 \end{figure}
 %
+Notice that $\varepsilon_2$ begins to flatten after turn 100, but does not remain flat. Although the final $x$-$y'$ projection has a higher density along the painting path, the linear correlation is significantly blurred. This is likely because space charge has a strong effect on the evolution at this intensity, energy, and beam size. Nonetheless, the simulation predicts a "better" result than what was measured.
 
 
 
 \section{Experiment 3}
 
-The same setup for Experiment 2 was repeated in Experiment 3. One difference was that the bunch length was increased from roughly 30/64 of the ring length to 45/64 of the ring length. At the start of the experiment, the beam intensity and beam size were varied; at each setting, the emittances of the final distribution were reconstructed using four wire-scanner profiles. The results are shown in Fig.~\ref{fig:exp3_search}. (The intensities are not exact; they are obtained by multiplying the nominal minipulse intensity by the number of injected turns.) Space charge clearly has an effect on the final distribution. It is somewhat surprising that the split in the intrinsic emittances increased with the beam intensity. 
+The same setup for Experiment 2 was repeated in Experiment 3. One difference was that the beam length was increased from roughly 30/64 of the ring length to 45/64 of the ring length to better approximate a coasting beam. At the start of the experiment, the beam intensity and beam size were varied; at each setting, the emittances of the final distribution were reconstructed using four wire-scanner profiles. The results are shown in Fig.~\ref{fig:exp3_search}. (The intensities are not exact; they are obtained by multiplying the nominal minipulse intensity by the number of injected turns.) Space charge clearly has an effect on the final distribution. It is somewhat surprising that the split in the intrinsic emittances increased with the beam intensity. 
 %
 \begin{figure}[!p]
     \centering
@@ -279,8 +280,7 @@ The middle cluster in the right subplot was identified as the most interesting c
 \end{figure}
 % 
 
-The most striking feature of Fig.~\ref{fig:exp3_emittances} is that $\varepsilon_{1,2}$ significantly deviate from $\varepsilon_{x,y}$ after 300 turns. This is perhaps the l
-
+Notice that $\varepsilon_{1,2}$ significantly deviate from $\varepsilon_{x,y}$ after 300 turns. This was the largest cross-plane correlation measured so far. For additional comparison with the previous experiments, it is helpful to reconstruct the covariance matrix at different locations in the RTBT, which will not change the emittances but will change the correlations between the phase space coordinates. The reconstructed cross-plane correlation coefficients are plotted in Fig.~\ref{fig:exp3_compare_corr} for Experiment 1a, Experiment 2, and Experiment 3. 
 %
 \begin{figure}[!p]
     \centering
@@ -292,10 +292,9 @@ The most striking feature of Fig.~\ref{fig:exp3_emittances} is that $\varepsilon
 \end{figure}
 %
 
-The target scan was performed in this experiment. The initial script calculated $15 \times 15$ phase advances, storing all the images in one array. This caused the program to crash on step 150 due to a memory error. At this point, there was not much time remaining in the control room. A second script was run that used $7 \times 7$ phase advances. Unfortunately, it was overlooked that the optics in the RTBT had already been modified for the wire-scanner measurements; eventually, the required magnet changes were too large and it was decided to stop the program. A total of 43/49 images were collected.
+The target scan was also performed in this experiment. The initial script calculated $15 \times 15$ phase advances, storing all the images in one array. This caused the program to crash on step 150 due to a memory error. At this point, there was not much time remaining in the control room. A second script was run that used $7 \times 7$ phase advances. Unfortunately, it was overlooked that the optics in the RTBT had already been modified for the wire-scanner measurements; eventually, the required magnet changes were too large and it was decided to stop the program. A total of 43/49 images were collected.
 
-
-The pause between changing the optics, triggering the beam, and collecting the images was apparently not long enough, so there were several blanks and duplicates in the image set. The bunch length was inadvertently changed from 45/64 to 15/64 of the bunch length, so the distribution was not the same as in the wire-scanner measurement. A few of the images are shown in Fig.~\ref{fig:exp3_target_scan}. The $x$-$y$ correlation coefficient $r$ clearly depends on the phase advances, demonstrating that there is cross-plane correlation in the beam. If the wire-scanner reconstruction was accurate, that beam would have displayed larger variation in $r$; it is therefore possible that the change in bunch length eliminated much of the cross-plane correlation. Another possibility is that the distribution was relatively unchanged between the two measurements, and that the wire-scanner reconstruction was inaccurate. It is difficult to draw conclusions without repeating the measurement. 
+The pause between changing the optics, triggering the beam, and collecting the images was apparently not long enough, so there were several blanks and duplicates in the image set. The beam length was inadvertently changed from 45/64 to 15/64 of the beam length, so the distribution was not the same as in the wire-scanner measurement. A few of the images are shown in Fig.~\ref{fig:exp3_target_scan}. The $x$-$y$ correlation coefficient $r$ clearly depends on the phase advances, demonstrating that there is cross-plane correlation in the beam. But if the wire-scanner reconstruction was accurate, that beam would have displayed larger variation in $r$; it is possible that the change in beam length eliminated much of the cross-plane correlation. Another possibility is that the distribution was relatively unchanged between the two measurements, and that the wire-scanner reconstruction was inaccurate. It is difficult to draw conclusions without repeating the measurement. 
 
 \begin{figure}[!p]
     \centering
@@ -314,9 +313,26 @@ Hock's method was applied to reconstruct the distribution from the images, using
     \label{fig:exp3_rec_corner_Hock}
 \end{figure}
 %
-Only seven 1D projections are used in each 2D reconstruction. 
+Only seven 1D projections are used in each 2D reconstruction. Due to the limited number of projections, the reduced beam length, and the errors in the data collection script, no importance was given to this reconstruction.
 
-
+We conclude with a simulation of this experiment in Fig.~\ref{fig:exp3_sim}.
+% %
+% \begin{figure}[!p]
+%     \centering
+%     \begin{subfigure}{0.85\textwidth}
+%         \includegraphics[width=\textwidth]{Images/chapter5/exp3/sim_snapshots.png}
+%     \end{subfigure}
+%     \vfill
+%     \vspace*{1.0cm}
+%     \vfill
+%     \begin{subfigure}{0.7\textwidth}
+%         \includegraphics[width=\textwidth]{Images/chapter5/exp3/sim_emittances.png}
+%     \end{subfigure}
+%     \caption{Simulation of experiment 3.}
+%     \label{fig:exp2_sim}
+% \end{figure}
+% %
+This looks much closer to the best-case scenario from chapter \ref{chap-3}, even through solenoids are not present in the ring and the vertical slope from the kickers is limited. Again, the predicted ratio $\varepsilon_1 / \varepsilon_2$ is larger than what was measured; however, the simulations of Experiment 2/3 differ in a similar way to the measurements of Experiment 2/3. Namely, in Experiment 3, the smaller intrinsic emittance curve flattens as injection progresses and the final ratio $\varepsilon_1 / \varepsilon_2$ is larger than in Experiment 2. 
 
 
 
@@ -326,3 +342,5 @@ Only seven 1D projections are used in each 2D reconstruction.
 
 
 \section{Summary}
+
+The goal of the experiments in this chapter was to carry out elliptical painting in the SNS and measure the painted distribution. This has been accomplished. In Experiment 1, the Ring Injection Control (RIC) application was tested, and a procedure to efficiently measure the emittance during injection was identified. It was also found that lowering the beam energy was necessary to move the closed orbit to the foil. In Experiment 2, the beam energy was lowered to 0.8 GeV. Measurements showed that particles were injected near the closed orbit at the start of injection, and that the beam size grew with approximate square root time-dependence. A small split in the intrinsic emittances was measured near the end of injection. Simulations indicated that increasing the beam size would have a positive effect. In Experiment 3, the beam length, transverse size, and intensity were varied. The most promising case — 20\% reduction in beam intensity and 150\% increase in horizontal beam size — was investigated in more detail. A larger split in the intrinsic emittances was measured near the end of injection. Additionally, the tilt angle of the beam image on the target was shown to depend on the phase advances at the target. In Experiment 4, [...]. These results are promising: variation of the machine parameters has a significant effect on the painted distribution.
