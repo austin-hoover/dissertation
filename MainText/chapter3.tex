@@ -31,7 +31,7 @@ where the operator $:H:$ is defined by
 %
 [Ref: Holmes (forthcoming), Forest]. Symplectic maps connecting the initial and final phase space coordinates are derived for elements such as drifts, dipoles, quadrupoles, etc.
 
-Fringe fields need to be taken into account for elements of finite length, that is, the fields outside the start and end of the element. For example, the magnetic field in a solenoid has a transverse component near the edges that vanishes in the limit of infinite length. [...] [Ref: Forest]. The strength of fringe fields generally increases with the distance off-axis, so they are especially important in the injection region.
+Fringe fields need to be taken into account for elements of finite length, that is, the fields outside the start and end of the element. For example, the magnetic field in a solenoid has a transverse component near the edges that vanishes in the limit of infinite length. The strength of fringe fields generally increases with the distance off-axis, so they are especially important in the injection region. PyORBIT handles fringe fields using a hard-edge model in which a nonlinear mapping, correct to ? order, is applied at the start and end of the magnet.
 
 Longitudinal dynamics have not yet been discussed. Longitudinal focusing in the SNS ring is provided by two RF cavities. The harmonic frequency $h$ is defined as the RF frequency divided by the revolution frequency of the beam; one cavity operates at $h = 1$ and the other operates at $h = 2$, both at an amplitude near 5 kV. The energy gain $\Delta \epsilon$ for a particle passing through the cavity is approximated as  
 %
@@ -133,7 +133,7 @@ It is worth illuminating the finding from \cite{Holmes2018} that in an otherwise
 
 There is nonlinear coupling between the horizontal and vertical motion, and the final distribution is a superposition of rotating and counter-rotating modes. In Fig.~\ref{fig:fringe_b}, a solenoid magnet is added to the ring. The cross-plane correlations are now mostly maintained. The tunes $\nu_{1, 2}$ are no longer equal due to the linear coupling from the solenoid, so the resonance condition is avoided. In Fig.~\ref{fig:fringe_c}, the simulation is repeated with the inclusion of space charge instead of the solenoid magnet. An intensity of $10^{14}$ is used and the bunch length is equal to the ring length. It appears that a Danilov distribution will self-stabilize against the difference resonance when space charge is included.
 
-It is recommended, however, that solenoid magnets be added to the ring to carry out this painting scheme. The difficulty is that the fringe fields dominate at the beginning of injection, when the transverse displacement is maximum, before space charge has a chance to stabilize the beam. This will be evident in several of the following simulations.
+It is recommended, however, that solenoid magnets be added to the ring to carry out this painting scheme. The difficulty is that the fringe fields dominate at the beginning of injection, when the transverse displacement is maximum, before space charge has a chance to stabilize the beam.
 
 
 
@@ -160,6 +160,7 @@ The final simulation in \cite{Holmes2018} produced an approximate Danilov distri
         \label{fig:Holmes_emittances}
     \end{subfigure}
     \caption{Distribution from the final simulation in \cite{Holmes2018}.}
+    \label{fig:Holmes}
 \end{figure}
 %
 The faint pink lines represent the projections of an ideal Danilov distribution with the same Twiss parameters and apparent emittances as the simulated distribution. Although the 1D projections have developed tails, they are relatively close to the ideal case. The exception is the $x'$ projection, which has developed a sharp peak. The 2D projections are also not too far from ideal. Although the $x$-$y'$ and $y-x'$ projections have been broadened, they exhibit the correct correlations. And the beam is round in the $x$-$y$ plane. Fig.~\ref{fig:Holmes_emittances} shows that the smaller intrinsic emittance remains close to its lower limit throughout injection. 
@@ -168,26 +169,6 @@ Several steps were necessary to achieve this simulated result. First, the painti
 
 This is likely the best-case scenario in the SNS. But as will be discussed in chapter \ref{chap-5}, new experimental constraints have come to light. The SNS cannot reach 0.6 GeV, and the use of orbit correctors in the injection region is difficult. The net result is that the maximum vertical slope is limited and that space charge will be less intense. Additionally, the minipulse may be significantly mismatched at the injection point. Finally, a solenoid magnet will not be present during initial experiments in the SNS. The effect of these constraints should be examined with simulation.
 
-[Elliptical painting is carried out in the SNS in chapter \ref{chap-5}. After several of these experiments, a simulation will be shown for comparison. For now, [...]]
-[Some things we might show in this chapter:
-\begin{itemize}
-    \item No solenoid
-    \item Unequal emittances
-    \item Bipolar kickers]
-\end{itemize}
+Elliptical painting is carried out in the SNS in chapter \ref{chap-5}. After several of these experiments, a simulation will be shown for comparison. For now, we take a case similar to Fig.~\ref{fig:Holmes_corner_compare} and first remove the solenoid magnet, then reduce the maximum vertical slope at the injection point, then mismatch the injected beam from the linac. 
 
-
-% \begin{figure}[!p]
-%     \centering
-%     \begin{subfigure}{\textwidth}
-%         \includegraphics[width=\textwidth]{Images/chapter3/snapshots.png}
-%     \end{subfigure}
-%     \vfill
-%     \vspace*{1.0cm}
-%     \vfill
-%     \begin{subfigure}{0.7\textwidth}
-%         \includegraphics[width=\textwidth]{Images/chapter3/emittances.png}
-%     \end{subfigure}
-%     \caption{Simulation of elliptical painting.}
-%     \label{fig:my_label}
-% \end{figure}
+[...]
