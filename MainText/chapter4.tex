@@ -342,7 +342,7 @@ Hock's method was then applied to these projections. The 2D projections of the r
 %
 The main features of the original distribution are present in the reconstruction.
 
-This method is preferred because it leverages 2D reconstruction algorithms. Open-source implementations of these algorithms are widely available and the conditions needed for accurate reconstructions are well-understood, primarily due to the use of tomography in medical imaging.
+Hock's method has not yet been experimentally demonstrated, likely due to the long measurement time, but the method is preferred because it leverages 2D reconstruction algorithms. Open-source implementations of these algorithms are widely available and the conditions needed for accurate reconstructions are well-understood, primarily due to the use of tomography in medical imaging. 
 
 
 \subsection{Direct 4D reconstruction}
@@ -352,13 +352,13 @@ If the phase advances cannot be independently controlled or if only a very small
 
 \subsubsection{ART}
 
-Wolski et al. implemented a 4D version of ART in \cite{Wolski2020}. Each measurement produces the following set of equations:
+Each measured projection on the screen produces the following set of equations:
 %
 \begin{equation}\label{eq:art}
     \bm{\rho} = \mathbf{P} \bm{\psi}.
 \end{equation}
 %
-$\bm{\rho}$ is a vector of the pixel intensities on the screen and $\bm{\psi}$ is a vector of the phase space coordinates on the reconstruction grid. To form $\mathbf{P}$, we place a particle at the center of each bin in the reconstruction grid and track the particles to the screen using the transfer matrix. $\mathbf{P}_{i, j} = 1$ if particle $j$ landed in bin $i$ on the screen; otherwise, $\mathbf{P}_{i, j} = 0$. The equations produced by subsequent measurements are stacked, and the resulting system of equations is solved using a sparse least squares solver. 
+$\bm{\rho}$ is a vector of the pixel intensities on the screen and $\bm{\psi}$ is a vector of the phase space coordinates on the reconstruction grid. To form $\mathbf{P}$, we place a particle at the center of each bin in the reconstruction grid and track the particles to the screen using the transfer matrix. $\mathbf{P}_{i, j} = 1$ if particle $j$ landed in bin $i$ on the screen; otherwise, $\mathbf{P}_{i, j} = 0$. The equations produced by subsequent measurements are stacked, and the resulting system of equations is solved using a sparse least squares solver. This method has been used to reconstruct the phase space distribution in the Compact Linear Accelerator for Research and Applications (CLARA), a low-energy test facility \cite{Wolski2020}.
 
 For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measurement grid, and $n$ measurements, $\bm{\rho}$ has $nN^2$ elements, $\bm{\psi}$ has $n N^4$ elements, and $\mathbf{P}$ has $n N^2 \times N^4$ elements. In practice, these significant storage requirements limit the resolution of the reconstruction grid to $N \approx 50$. In Fig.~\ref{fig:tomo_sim_rec_art_proj_2D}, the method was applied to the same simulated distribution, but $7 \times 7$ projections were used instead of $15 \times 15$.
 %
@@ -372,9 +372,14 @@ For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measu
 There are streaking artifacts outside the beam core that are not present in Fig.~\ref{fig:tomo_sim_rec_hock_proj_2D}. 
 
 
-\subsubsection{Particle-based method}
+\subsubsection{Additional methods}
 
-[...]
+There are additional methods to reconstruct the 4D phase space distribution. We mention two here, although they are not used in this work.
+
+Among the distributions consistent with the measured projections, MENT selects the distribution with the maximum entropy. For example, without any measurements constraining the solution, MENT will produce a uniform distribution. It therefore has the ability to perform well with few projections, and has been used for 2D reconstruction in particle accelerators \cite{Hock2013a}. The downside is that the iterative numerical solution is difficult to implement. In principle, the method could be extended to reconstruct the 4D phase space distribution from $x$-$y$ projections.\footnote{In principle, 4D reconstruction could be performed with 1D projections from wire-scanners \cite{Sander1979}; however, it seems a priori unlikely for this to produce an accurate result — imagine reconstructing a 3D image from 1D projections.} An analytic MENT solution has been derived and used for 4D reconstruction of an SNS minipulse from $x$-$x'$ and $y$-$y'$ projections at a laser wire \cite{Wong-forthcoming}. 
+
+Another method, which we call the PIC method, is to generate a particle bunch, track the bunch to the screen, weight each particle by the measured signal at the bin where it fell on the screen, and generate new particles in the region of that particle according to its weight. The advantage of this method is that it does not assume linear transport, and that it can perform well with few projections. It was experimentally demonstrated by Wang et. al. in the Xi’an Proton Application Facility (XiPAF) using six projections \cite{Wang2019}. 
+
 
 
 \subsection{Implementation in the SNS}
