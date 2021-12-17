@@ -92,7 +92,7 @@
 	\begin{titlepage}
         \begin{spacing}{1.5}
         \begin{center}
-        	\Large\bf{\thesistitle}
+        	\LARGE\bf{\thesistitle}
         	\normalsize\rm
         	
         	\vspace*{\fill}
