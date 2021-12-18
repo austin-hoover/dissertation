@@ -328,7 +328,28 @@ We conclude with a simulation of this experiment in Fig.~\ref{fig:exp3_sim}.
     \label{fig:exp3_sim}
 \end{figure}
 %
-This looks much closer to the best-case scenario from chapter \ref{chap-3}, even through solenoids are not present in the ring and the vertical slope from the kickers is limited. Again, the predicted ratio $\varepsilon_1 / \varepsilon_2$ is larger than what was measured; however, the simulations of Experiment 2/3 differ in a similar way to the measurements of Experiment 2/3. Namely, in Experiment 3, the smaller intrinsic emittance curve flattens as injection progresses and the final ratio $\varepsilon_1 / \varepsilon_2$ is larger than in Experiment 2. 
+This looks closer to the best-case scenario from chapter \ref{chap-3}, even through solenoids are not present in the ring and the vertical slope from the kickers is limited. Again, the predicted ratio $\varepsilon_1 / \varepsilon_2$ is larger than what was measured; however, the simulations of Experiment 2/3 differ in a similar way to the measurements of Experiment 2/3. Namely, in Experiment 3, the smaller intrinsic emittance curve flattens as injection progresses and the final ratio $\varepsilon_1 / \varepsilon_2$ is larger than in Experiment 2. 
+
+One thing to note is that the zero-current tunes in the simulation were equal at $\nu_x = \nu_y = 6.18$. The measured tunes were also 6.18, but there may be some uncertainty in the measurement. The simulation was repeated as the horizontal tune was varied in steps of 0.005. At $\nu_x = 6.19$, there is not a large change from the original case. At $\nu_x = 6.2$, the cross-plane correlation in the beam is eliminated. In Fig.~\ref{fig:exp3_sim_nux6.195_nuy6.18}, the simulation is repeated with $\nu_x = 6.195$. 
+%
+\begin{figure}[!p]
+    \centering
+    \begin{subfigure}{0.85\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp3/sim_snapshots_nux6.195_nuy6.18.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.0cm}
+    \vfill
+    \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter5/exp3/sim_emittances_nux6.195_nuy6.18.png}
+    \end{subfigure}
+    \caption{Simulation of experiment 3 with $\nu_x = 6.195$, $\nu_y = 6.18$.}
+    \label{fig:exp3_sim_nux6.195_nuy6.18}
+\end{figure}
+%
+Let $t_{split}$ be the time at which the intrinsic emittances diverge from the apparent emittances. The effect of splitting the tunes is to push $t_{split}$ later in injection — in this case, near turn 200. The resulting emittance evolution more closely resembles the measurements in Fig.~\ref{fig:exp3_emittances}. 
+
+
 
 
 
