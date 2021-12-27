@@ -454,7 +454,7 @@ It is also possible for space charge itself to drive particle resonances \cite{H
     \label{fig:incoherent_instability}
 \end{figure}
 %
-A fourth-order resonance is excited as the depressed tune approaches 90 degrees. The smooth emittance growth during most of the simulation shows that the core of the beam remains matched, justifying the use of ``incoherent" to describe the effect. Higher-order resonances can also for different combinations of beam intensity and focusing strength.
+A fourth-order resonance is excited as the depressed tune approaches 90 degrees. The smooth emittance growth during most of the simulation shows that the core of the beam remains matched, justifying the use of ``incoherent" to describe the effect. Higher-order resonances can also occur for different combinations of beam intensity and focusing strength.
 
 
 \subsection{Coherent effects}
@@ -480,15 +480,17 @@ where the space charge potential $\Phi$ is determined from the Poisson equation:
 
 Equilibrium solutions to the Vlasov equation in the presence of time-dependent linear forces are discussed in the following section. For now, we take it for granted that there exists one such solution, called the KV distribution, that produces linear space charge forces ($E_x \propto x$, $E_y \propto y$). In \cite{Hofmann1983}, Hofmann et al. analytically studied perturbations of a round ($\varepsilon_x = \varepsilon_y$) KV distribution using the Vlasov equation in one of the simplest time-dependent cases: a FODO lattice with equal horizontal and vertical tunes. The result is shown in Fig.~\ref{fig:stopbands}, which plots the depressed tune as a function of beam intensity. Each thin line represents a different zero-current tune. The thick lines represent regions of instability.
 %
-\begin{figure}[p]
+\begin{figure}[!p]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter1/stopbands_hor.png}
-    \caption{Instability stopbands obtained from perturbations of a KV distribution with equal emittances in a FODO lattice. (From \cite{Hofmann1983}).\label{fig:stopbands}}
-    \vfill
-    \vspace*{2cm}
-    \vfill
+    \caption{Instability stopbands obtained from perturbations of a KV distribution with equal emittances in a FODO lattice. (From \cite{Hofmann1983}).}
+    \label{fig:stopbands}
+\end{figure}
+%
+\begin{figure}[!p]
+    \centering
     \includegraphics[width=\textwidth]{Images/chapter1/envelope_instability.png}
-    \caption{Integrated KV envelope equations in a FODO lattice as the depressed KV tune $\nu_x$ is decreased. The zero-current tune is 100\degree. \label{fig:envelope_instability}}
+    \caption{Integrated KV envelope equations in a FODO lattice as the depressed KV tune $\nu_x$ is decreased. The zero-current tune is 100\degree.} \label{fig:envelope_instability}
 \end{figure}
 %
 
@@ -546,7 +548,8 @@ Danilov et al. enumerated a class of self-consistent distributions in $2d$-dimen
     + \mathbf{e}'_i \cdot \mathbf{x}'}\right),
 \end{equation}
 %
-where $\mathbf{x}$, $\mathbf{x}'$ are the $d$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$, $\mathbf{e}'_i$ are vectors of constants. This is referred to as the $\{n,m\}$ case. It was proven that (a) the electric field within any uniformly filled ellipsoid is linear, and (b) any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces linear a linear electric field will do so under any linear transformation. 
+where $\mathbf{x}$, $\mathbf{x}'$ are the $d$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$, $\mathbf{e}'_i$ are vectors of constants. This is referred to as the $\{n,m\}$ case. It was proven that the electric field within any uniformly filled ellipsoid is linear, and that any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces a linear electric field will do so under any linear transformation.
+
 
 In other words, one class of self-consistent distributions are those that generate linear space charge forces and are constructed from quantities that are invariant in the presence of linear focusing. We now focus on the \{2, 0\} and \{2, 2\} cases. (Qin and Davidson derived a self-consistent distribution for $n = 2$ in \cite{Qin2013} using their recent parameterization of coupled motion, but made no reference to \cite{Danilov2003}. The connection between Danilov's work and Qin and Davidson's work should thus be explored in the future.)
 
@@ -635,15 +638,7 @@ Due to the cross-plane correlation in the Danilov distribution, the 4D emittance
     \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2} = \varepsilon_1\varepsilon_2.
 \end{equation}
 %
-The intrinsic emittances are found by a symplectic diagonalization of $\bm{\Sigma}$ and are nicely expressed as \cite{Xiao2013}
-%
-\begin{equation}
-    \varepsilon_{1, 2} = \frac{1}{2}\sqrt{
-      -tr\left[(\bm{\Sigma} \mathbf{U})^2\right] \pm \sqrt{tr^2\left[(\bm{\Sigma} \mathbf{U})^2\right] - 16|{\bm{\Sigma}}|},
-    }
-\end{equation}
-%
-where $\mathbf{U}$ is the unit symplectic matrix:
+The intrinsic emittances are found by a symplectic diagonalization of $\bm{\Sigma}$, i.e., they are the imaginary components of the eigenvalues of $\bm{\Sigma}\mathbf{U}$, where $\mathbf{U}$ is the unit symplectic matrix:
 %
 \begin{equation}
     \mathbf{U} = 
@@ -655,6 +650,14 @@ where $\mathbf{U}$ is the unit symplectic matrix:
     \end{bmatrix}.
 \end{equation}
 %
+The answer can be written compactly \cite{Xiao2013}:
+%
+\begin{equation}
+    \varepsilon_{1, 2} = \frac{1}{2}\sqrt{
+      -tr\left[(\bm{\Sigma} \mathbf{U})^2\right] \pm \sqrt{tr^2\left[(\bm{\Sigma} \mathbf{U})^2\right] - 16|{\bm{\Sigma}}|},
+    }
+\end{equation}
+%
 The intrinsic emittances are constants of the motion for any linear focusing system. Their product is less than or equal to the product of the apparent emittances \cite{Buon1993}. The delta functions in the Danilov distribution function cause the 4D emittance, and therefore one of the intrinsic emittances, to be zero. The following relationship holds:
 %
 \begin{equation} \label{eq:mode_emittances2}
@@ -662,7 +665,9 @@ The intrinsic emittances are constants of the motion for any linear focusing sys
     \varepsilon_2 = 0
 \end{equation}
 %
-or vice versa. Discussion of the Danilov envelope equations is reserved for chapter \ref{chap-2}.
+or vice versa. 
+
+Discussion of the Danilov envelope equations is reserved for chapter \ref{chap-2}.
 
 
 
@@ -843,7 +848,7 @@ Four dipole magnets align the horizontal orbit with the beam from the linac at t
 
 Each injection kicker magnet is given a waveform that scales the kicker voltage during injection. Once the initial and final voltages are known, they can be connected with a square root waveform to satisfy Eq.~\eqref{eq:elliptical_painting}. The time between the initial and final voltages (painting time) controls the final beam intensity. 
 
-To control the position and angle of the orbit at the injection point, it is first necessary to measure the position and angle of the orbit at the injection point. The position and angle can be measured indirectly as follows. A single minipulse is injected and stored in the ring, and its turn-by-turn mean transverse position is measured at one position using a beam-position-monitor (BPM). This is repeated for several minipulses and the average is taken. In the linear approximation, the mean position performs the pseudo-harmonic oscillations of Eq.~\eqref{eq:Hill_solution}; however, energy spread in the minipulse leads to decoherence — the mean position goes to zero. A Gaussian-damped sine wave is an accurate model of this process [\ref{}]:
+To control the position and angle of the orbit at the injection point, it is first necessary to measure the position and angle of the orbit at the injection point. This can be done indirectly as follows. A single minipulse is injected and stored in the ring, and its turn-by-turn mean transverse position is measured at one position using a beam-position-monitor (BPM). This is repeated for several minipulses and the average is taken. In the linear approximation, the mean position performs the pseudo-harmonic oscillations of Eq.~\eqref{eq:Hill_solution}; however, energy spread in the minipulse leads to decoherence — the mean position goes to zero. A Gaussian-damped sine wave is an accurate model of this process [\ref{}]:
 %
 \begin{equation}\label{eq:damped_sinusoid}
     x(t) = A_0 + A e^{kt^2} \cos{\left(\mu + \mu_0\right)},
