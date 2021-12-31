@@ -300,7 +300,7 @@ It is often sufficient to characterize a distribution by its covariance matrix {
     &= 
     \begin{bmatrix}
         \bm{\sigma}_{xx} & \bm{\sigma}_{xy} \\
-        \bm{\sigma}_{xy}^T & \bm{\sigma}_{yy}
+        \bm{\sigma}^T_{xy} & \bm{\sigma}_{yy}
     \end{bmatrix}.
 \end{aligned}
 \end{equation}
@@ -468,10 +468,10 @@ Coherent space charge effects involve self-consistent oscillations of the entire
 where \{...\} denotes the Poisson bracket and $H$ is the Hamiltonian. The Hamiltonian for a particle in an uncoupled linear lattice is given by
 %
 \begin{equation}
-    H = \frac{1}{2}p_x^2 + \frac{1}{2}p_y^2 + \frac{1}{2}k_{x}x^2 + \frac{1}{2}k_{y}y^2 + \frac{q}{m\gamma^3\beta^2c^2}\Phi
+    H = \frac{1}{2}{x'}^2 + \frac{1}{2}{y'}^2 + \frac{1}{2}k_{x}x^2 + \frac{1}{2}k_{y}y^2 + \frac{q}{m\gamma^3\beta^2c^2}\Phi
 \end{equation}
 %
-where the space charge potential $\Phi$ is determined from the Poisson equation:
+The space charge potential $\Phi$ is determined from the Poisson equation:
 %
 \begin{equation} \label{eq:Poisson}
     \nabla^2 \Phi = -\frac{q}{\epsilon_0}\iint{f}dx'dy'.
@@ -559,7 +559,7 @@ In other words, one class of self-consistent distributions are those that genera
 The $\{2, 0\}$ case corresponds to the KV distribution derived by Kapchinskij and Vladimirskij in 1959 \cite{Kapchinskij1959}. The distribution is a function of the Courant-Snyder invariants $J_x$ and $J_y$:
 %
 \begin{equation}
-    f(\mathbf{x}) = \frac{\lambda}{\pi^2 \varepsilon_x\varepsilon_y}
+    f(\mathbf{x}, \mathbf{x}') = \frac{\lambda}{\pi^2 \varepsilon_x\varepsilon_y}
     \delta \left(\frac{J_x}{\varepsilon_x} + \frac{J_y}{\varepsilon_y} -1 \right),
 \end{equation}
 %
@@ -579,8 +579,8 @@ where $c_x$ and $c_y$ are the horizontal and vertical semi-axes and $\epsilon_0$
 As mentioned in the previous section, the preservation of the linearity of the space charge force leads to a self-consistent set of differential equations for the evolution of the beam envelope. The KV envelope equations read:
 %
 \begin{align} \label{eq:KV_envelope}
-    \tilde{x}'' + k_{0x}(s)\tilde{x} - \frac{\varepsilon_x^2}{\tilde{x}^3} - \frac{Q}{2\left(\tilde{x} + \tilde{y}\right)} &= 0, \\
-    \tilde{y}'' + k_{0y}(s)\tilde{y} - \frac{\varepsilon_y^2}{\tilde{y}^3} - \frac{Q}{2\left(\tilde{x} + \tilde{y}\right)} &= 0. \nonumber
+    \tilde{x}'' + k_{x}(s)\tilde{x} - \frac{\varepsilon_x^2}{\tilde{x}^3} - \frac{Q}{2\left(\tilde{x} + \tilde{y}\right)} &= 0, \\
+    \tilde{y}'' + k_{y}(s)\tilde{y} - \frac{\varepsilon_y^2}{\tilde{y}^3} - \frac{Q}{2\left(\tilde{x} + \tilde{y}\right)} &= 0. \nonumber
 \end{align}
 %
 The RMS widths of the beam $\tilde{x} = \sqrt{\langle{{x^2}}}$ and $\tilde{y} = \sqrt{\langle{{y^2}}}$ are used instead of the true widths $c_x$ and $c_y$. They are simply related by a factor of two for a uniform density ellipse. The perveance $Q$ is a dimensionless measure of space charge strength:
