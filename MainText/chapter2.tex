@@ -42,24 +42,24 @@ where $\tilde{x}^2 = \langle{x^2}\rangle$ and $x$ and $y$ can be interchanged.
 
 \section{Matched envelope computation}
 
-The envelope of a matched beam in a periodic lattice satisfies 
+A matched beam in a periodic lattice satisfies 
 %
 \begin{equation} \label{eq:matched_sigma}
-    \bm{\sigma}(s) = \bm{\sigma}(s + L)
+    \bm{\Sigma}(s) = \bm{\Sigma}(s + L)
 \end{equation}
 %
-for all $s$, where $L$ is the period length and $\bm{\sigma}$ a vector of the ten unique elements of the covariance matrix. The problem of computing the matched envelope is as follows:
+for all $s$, where $L$ is the period length and $\bm{\Sigma}$ is the covariance matrix. The problem of computing the matched envelope is as follows:
 %
 \begin{equation}
 \begin{aligned}
-    & \underset{\bm{\sigma}}{\text{minimize}}
-    & & C(\bm{\sigma}) = \left\Vert{\mathbf{T} \bm{\sigma} - \bm{\sigma}}\right\Vert^2 \\
+    & \underset{\bm{\Sigma}}{\text{minimize}}
+    & & C(\bm{\Sigma}) = \left\Vert{\mathbf{M} \bm{\Sigma} \mathbf{M}^T - \bm{\Sigma}}\right\Vert^2 \\
     & \text{subject to}
     & & |\bm{\Sigma}| = 0,
 \end{aligned}
 \end{equation}
 %
-where $\mathbf{T} = \mathbf{T}(\bm{\sigma})$ is a map connecting the initial and final envelope after tracking through one lattice period. The constraint that the covariance matrix must be singular comes from Eq.~\eqref{eq:mode_emittances2}. Additionally, we would like to hold the nonzero intrinsic emittance fixed so that a unique solution is found for a given lattice and beam perveance. An iterative approach is needed since space charge causes $\mathbf{T}$ to depend on $\bm{\sigma}$ in a potentially complicated way which is unknown before tracking the beam. 
+where $\mathbf{M} = \mathbf{M}(\bm{\Sigma})$ is a linear transfer matrix connecting the initial and final covariance matrix, and $\Vert\dots\Vert$ is the matrix norm. The constraint that the covariance matrix must be singular comes from Eq.~\eqref{eq:mode_emittances2}. Additionally, we would like to hold the nonzero intrinsic emittance fixed so that a unique solution is found for a given lattice and beam perveance. An iterative approach is needed since space charge causes $\mathbf{M}$ to depend on $\bm{\Sigma}$ in a potentially complicated way which is unknown before tracking the beam. 
 
 
 \subsection{Motivation}

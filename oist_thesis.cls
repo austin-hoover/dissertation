@@ -58,6 +58,9 @@
 	\input{./MainText/publications}
 }
 
+% Change table of contents title
+\renewcommand*\contentsname{Table of contents}
+
 %-------------------------------------------------------------------------------
 %	BUILDING THE TITLE PAGE
 %-------------------------------------------------------------------------------
