@@ -462,19 +462,25 @@ A fourth-order resonance is excited as the depressed tune approaches 90 degrees.
 Coherent space charge effects involve self-consistent oscillations of the entire beam and are relevant for strong space charge \cite{book:Reiser, Wangler2008, Cousineau2003}. We may model the beam as a smooth distribution in phase space $f(\mathbf{x})$; neglecting collisions between particles, the evolution of $f$ is given by the Vlasov equation \cite{Vlasov1961}:
 %
 \begin{equation} \label{eq:Vlasov}
-    \frac{df}{ds} = \frac{\partial{f}}{\partial{s}} + \{H, f\} = 0,
+    \frac{d}{ds}{f(\mathbf{x}, \mathbf{x}', s)} = 
+    \frac{\partial{f}}{\partial{s}} +
+    \mathbf{x}' \cdot \frac{\partial{f}}{\partial{\mathbf{x}}} +
+    \mathbf{x}'' \cdot \frac{\partial{f}}{\partial{\mathbf{x'}}}
+    = 0,
 \end{equation}
 %
-where \{...\} denotes the Poisson bracket and $H$ is the Hamiltonian. The Hamiltonian for a particle in an uncoupled linear lattice is given by
+where $\mathbf{x} = (x, y)^T$. Hidden in Eq.~\eqref{eq:Vlasov} is the single-particle equation of motion, which for linear external fields is:
 %
 \begin{equation}
-    H = \frac{1}{2}{x'}^2 + \frac{1}{2}{y'}^2 + \frac{1}{2}k_{x}x^2 + \frac{1}{2}k_{y}y^2 + \frac{q}{m\gamma^3\beta^2c^2}\Phi
+    \mathbf{x}'' + \mathbf{K_0} \mathbf{x} + \mathbf{K_1} \mathbf{x}'
+    =
+    \frac{q}{m\gamma^3\beta^2c^2} \frac{\partial{\Phi}}{\partial\mathbf{x}},
 \end{equation}
 %
-The space charge potential $\Phi$ is determined from the Poisson equation:
+where $\mathbf{K}_{0, 1}$ are $2 \times 2$ matrices encompassing the external fields, and the space charge potential $\Phi$ is determined from the Poisson equation:
 %
 \begin{equation} \label{eq:Poisson}
-    \nabla^2 \Phi = -\frac{q}{\epsilon_0}\iint{f}dx'dy'.
+    \frac{\partial^2{\Phi}}{\partial{\mathbf{x}^2}} = -\frac{q}{\epsilon_0}\int_{-\infty}^{\infty}{f}d\mathbf{x}'.
 \end{equation}
 %
 
