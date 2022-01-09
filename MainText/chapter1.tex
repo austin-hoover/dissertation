@@ -1,13 +1,20 @@
 \chapter{Introduction}\label{chap-1}
 
-The maximum beam intensity in low-energy particle accelerators is limited by nonlinear space charge forces — forces between the charged particles in the beam. In the collisionless approximation, the evolution of a distribution of charged particles is given by the Vlasov equation. Equilibrium solutions to the Vlasov equation are difficult to find in the general case of linear time-dependent external forces. The few known solutions are those that generate linear space charge forces under any linear transformation. These solutions are referred to as self-consistent phase space distributions. This dissertation investigates whether one such distribution — the Danilov distribution — could be produced using a method called elliptical painting, particularly in the Spallation Neutron Source (SNS). In addition to the interesting theoretical properties stemming from its self-consistent nature, the vanishing four-dimensional emittance of the Danilov distribution makes it potentially useful for colliders and beam cooling applications.
+High-intensity particle accelerators are important tools for modern scientific research and industrial applications. They serve as drivers for secondary beam production (neutrons, neutrinos, muons, etc.) and are potentially useful for nuclear waste processing. In particular, spallation neutron sources have become vital to neutron scattering research.
 
-The structure of this introductory chapter is as follows. The relevant theory of high-intensity beam dynamics is reviewed in sections \ref{sec:Single-particle motion}-\ref{sec:Space charge}. The definition and properties of self-consistent distributions are discussed in \ref{sec:Self-consistent phase space distributions}, starting with the well-known KV distribution and ending with the lesser-known Danilov distribution. A method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in section \ref{sec:Producing a self-consistent distribution}. The project is further motivated by investigating the connection between the Danilov distribution and the recent interest in circular modes. Finally, the structure and goals of this dissertation are laid out in section \ref{sec:Goals of this dissertation}.
+The maximum beam intensity in these machines is limited by nonlinear space charge forces — forces between the charged particles in the beam. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it creates a radioactive environment in which hands-on maintenance of the various accelerator hardware is unsafe. Thus, reducing uncontrolled losses is of primary concern. The present state of the art is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of roughly $10^{-6}$. Space charge will become even more important in the design of future ten-megawatt accelerators. 
+ 
+In high-intensity circular accelerators (rings), space charge acts as a weak perturbation to the motion; however, its effects are noticeable if the beam is stored in the ring for a significant length of time. Rings are designed to produce stable motion, but the combination of the periodic electromagnetic fields of the accelerator \textit{and beam} may produce unstable motion. This is the fundamental limit on the beam intensity in rings. Additionally, if the beam's electric field has a strong nonlinear dependence on the particle coordinates, the number of stable configurations decreases. Thus, it is desirable to produce a beam in which the electric field has a linear dependence on the particle coordinates; for example, a uniform density ellipsoid. Several methods exist to this end, but they are fundamentally limited; new methods may be needed to reach higher intensities.
+ 
+In the collisionless approximation, the evolution of a distribution of charged particles is given by the Vlasov equation. Equilibrium solutions to the Vlasov equation are difficult to find in the general case of linear time-dependent external forces. The few known solutions are those that generate linear space charge forces under any linear transformation. These solutions are referred to as self-consistent phase space distributions. Self-consistent distributions have several theoretically interesting properties, and as mentioned in the previous paragraph, the linearity of the space charge force is attractive for high-intensity rings. This dissertation investigates whether one such distribution — the Danilov distribution — could be produced using a method called elliptical painting, particularly in the Spallation Neutron Source (SNS). An additional property of the Danilov distribution is its large angular momentum which makes it potentially useful for colliders and beam cooling applications.
+
+The structure of this introductory chapter is as follows. First, the relevant theory of high-intensity beam dynamics is reviewed in Section \ref{sec:High-intensity beam dynamics}. Next, The definition and properties of self-consistent distributions are discussed in \ref{sec:Self-consistent phase space distributions}, starting with the well-known KV distribution and ending with the lesser-known Danilov distribution. Finally, a method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in Section \ref{sec:Producing a self-consistent distribution}. Finally, the structure and goals of this dissertation are laid out in Section \ref{sec:Goals of this dissertation}.
 
 
 
+\section{High-intensity beam dynamics}\label{sec:High-intensity beam dynamics}
 
-\section{Single-particle motion}\label{sec:Single-particle motion}
+\subsection{Single-particle motion}
 
 We begin by describing the motion of a single particle in a circular accelerator (ring). We assume the existence of a closed orbit and use curvilinear coordinates in which $s$ is the location along the closed orbit and $x$ and $y$ are the horizontal and vertical transverse displacements. We then study oscillations in the transverse plane with the assumption of constant longitudinal velocity $\beta c$, where $c$ is the speed of light.
 
@@ -29,7 +36,7 @@ where $r_0$ is a constant, $\left\{ b_n \right\}$ are the multipole coefficients
 where $q$ is the particle charge and $m$ is the particle mass, and the prime represents differentiation with respect to $s$.
 
 
-\subsection{Linear dynamics}
+\subsubsection{Linear dynamics}
 
  Accelerators employ dipole fields ($b_1$) for bending and quadrupole fields ($b_2$) fields for focusing. Keeping only these terms, Eq.~\eqref{eq:transverse_eom} can be written as
 %
@@ -98,18 +105,17 @@ $\mathbf{V(0)}^{-1}$ transforms the phase space ellipse into a circle while pres
 Eq.~\eqref{eq:CS_parameterization} motivates the definition of normalized phase space coordinates $\mathbf{x}_n(s) = \mathbf{V}(s)^{-1} \mathbf{x}(s)$ in which the particle performs simple harmonic oscillations; i.e., rotates in a circle of area $J$ at frequency $2\pi\nu$. 
 
 
-\subsection{Linear (coupled) dynamics}
 
-In the presence of linear coupling, Eq.~\eqref{eq:Hill} takes the following form:
+
+\subsubsection{Linear (coupled) dynamics}
+
+In the presence of linear coupling, the equations of motion take the following form:
 %
 \begin{equation}\label{eq:single_particle_eom_coupled}
-\begin{aligned}
-    x'' + k_{11}(s)x + k_{13}(s)y + k_{14}(s)y' &= 0, \\
-    y'' + k_{33}(s)y + k_{31}(s)x + k_{32}(s)x' &= 0,
-\end{aligned}
+    \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = 0,
 \end{equation}
 %
-Liouville's theorem is no longer valid in two-dimensional (2D) phase space; instead, the particle moves along the boundary of an ellipsoid in 4D phase space ($x$-$x'$-$y$-$y'$). For example, Fig.~\ref{fig:skew_quad_single_particle_tbt} shows the turn-by-turn trajectory of a single particle in the presence of linear coupling from a rotated (skew) quadrupole.
+where $\mathbf{x} = (x, y)^T$ and $\mathbf{K}_{0, 1}$ are $2 \times 2$ matrices. The particle now moves along the boundary of an ellipsoid in 4D phase space ($x$-$x'$-$y$-$y'$), the volume of which is conserved. For example, Fig.~\ref{fig:skew_quad_single_particle_tbt} shows the turn-by-turn trajectory of a single particle in the presence of linear coupling from a rotated (skew) quadrupole.
 %
 \begin{figure}[!p]
     \centering
@@ -190,94 +196,19 @@ The meaning of the new parameters is illustrated in Fig.~\ref{fig:twiss4D}.
 The motion is simply the sum of two eigenvectors, each of which traces an ellipse when projected onto any 2D subspace. The frequency with which the ellipse is traced differs between the two modes; as a consequence, the horizontal and vertical amplitudes $J_x$ and $J_y$ are exchanged. The parameterization assigns a $\beta$ and $\alpha$ parameter to each ellipse. The parameters $\nu_1$ and $\nu_2$ are the phase differences between the horizontal ($x$-$x'$) and vertical ($y$-$y'$) parts of the eigenvectors, which determines the tilt angle of the ellipses traced in the cross-plane projections ($x$-$y$, $x$-$y'$, $y$-$x'$, $x'$-$y'$). Finally, $u$ determines the area of the ellipse traced by the eigenvectors in horizontal phase space relative to the ellipse in vertical phase space. 
 
 
-\subsection{Nonlinear resonances}
+\subsubsection{Nonlinear resonances}
 
-Nonlinear terms in Eq.~\eqref{eq:magnetic_field_expansion} are generally small but nonzero in reality. Following \cite{LundLecture1}, we return to one-dimensional motion and write
-%
-\begin{equation}\label{eq:Hill_nonlinear}
-    x'' + k(s) x = \Delta B,
-\end{equation}
-%
-where $\Delta B$ represents all the nonlinear terms in the expansion (and also linear deviations from the design fields). The stable solution $x_0$ when $\Delta B = 0$ is given by Eq.~\eqref{eq:Hill_solution}. We now define
-%
-\begin{equation}
-    \phi(s) = \frac{1}{\nu} \oint{\frac{ds}{\beta(s)}},
-\end{equation}
-%
-where $\nu$ is the tune. Moving to the normalized coordinate $u = x / \sqrt{\beta}$, with $\dot{u} = du/d\phi$ we have
-%
-\begin{equation}\label{eq:pert1}
-    \ddot{u} + \nu^2 u = -\nu^2 \sum_{n=0}^{\infty}{\left(\beta^{\frac{n+3}{2}} b_{n+1}\right) u^n}.
-\end{equation}
-%
-$\beta$ (the oscillation amplitude of the unperturbed motion) and $b_n$ (a multipole coefficient) are periodic in $\phi$ since they depend only on the position in the ring. Grouping these terms and Fourier expanding gives
-%
-\begin{equation}
-    \ddot{u} + \nu^2 u = -\nu^2 \sum_{n=0}^{\infty}\sum_{k=-\infty}^{\infty} C_{n,k} \, u^n \, e^{ik\phi}.
-\end{equation} 
-%
-We then perturb around $u_0$, the solution to the homogeneous equation, writing $u = u_0 + \delta u$, and keep only linear powers of $\delta u$. 
-%
-\begin{equation}
-    \ddot{\delta u} + \nu^2 \delta u \approx -\nu^2 \sum_{n=0}^{\infty}\sum_{k=-\infty}^{\infty} C_{n,k} \, u_0^n \, e^{ik\phi}.
-\end{equation}
-%
-Noting that
-%
-\begin{equation}
-    u_0^n \propto \cos^n(\nu\phi) = \frac{1}{2^n}\sum_{m=0}^{n} \binom{n}{m} e^{i(n-2m)\nu\phi},
-\end{equation} 
-%
-leads to
-%
-\begin{equation}\label{eq:pert2}
-    \ddot{\delta u} + \nu^2 \delta u \approx -\nu^2 \sum_{n=0}^{\infty}\sum_{k=-\infty}^{\infty} \sum_{m=0}^{n} {n \choose m} \frac{C_{n,k}}{2^n} e^{i\left[(n - 2m)\nu + k\right]\phi}.
-\end{equation}
-%
-A resonance condition may occur when any of the frequency components of the driving terms are close to the tune $\nu$; i.e., when
-%
-\begin{equation}
-    (n - 2m)\nu + k = \pm \nu.
-\end{equation}
-%
-Dipole terms correspond to integer tunes, quadrupole terms to 1/2 integer tunes, sextupole terms to 1/3 integer tunes, and so on. The same is true in the vertical dimension. The inclusion of coupling between $x$ and $y$ leads to the following resonance conditions:
+Nonlinear terms in Eq.~\eqref{eq:magnetic_field_expansion} are generally small but nonzero in reality. Furthermore, they are periodic since they occur once per turn. As detailed in Appendix \ref{app-A}, perturbation analysis shows that these terms may drive a resonance when 
 %
 \begin{equation}\label{eq:resonance_lines}
     M_x \nu_x + M_y \nu_y = N,
 \end{equation}
 %
-where $M_x$, $M_y$, and $N$ are integers and $|M_x| + |M_y|$ is the order of the resonance. These resonance lines are plotted in Fig.~\ref{fig:resonance_lines}.
-%
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=\textwidth]{Images/chapter1/resonance_lines.png}
-    \caption{Resonance lines in tune space defined by Eq.~\eqref{eq:resonance_lines}.}
-    \label{fig:resonance_lines}
-\end{figure}
-%
-\begin{figure}[!p]
-    \begin{subfigure}[b]{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter1/sextupole.png}
-        \label{fig:sextupole_a}
-    \end{subfigure}
-    \vfill
-    \vspace*{1.0cm}
-    \vfill
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/chapter1/sextupole_second_order.png}
-        \label{fig:sextupole_b}
-    \end{subfigure}
-    \caption{Third-order (top) and fourth/fifth-order (bottom) resonances excited by a sextupole perturbation to a linear lattice. (Adapted from \cite{Lee2011}.)}
-    \label{fig:sextupole}
-\end{figure}
-%
-The strength of the resonance varies inversely with the order; fourth-order and below are the primary concern in most machines, but higher-order effects may be important when the number of stored turns is large. 
-
-Nonlinear resonances can be studied quickly using mapping equations \cite{Reichl1992}. For illustration, Fig.~\ref{fig:sextupole} shows two numerical experiments from \cite{Lee2011} involving a sextupole perturbation to an otherwise linear lattice. The turn-by-turn trajectories of particles with several different initial amplitudes are plotted for different tunes $\nu_x$. The third-order resonance leads to a well-known triangular region of stability as the tune approaches 2/3. The bottom plot reveals fourth and fifth-order resonances only obtained from second-order perturbation analysis.
+where $\nu_{x, y}$ are the single-particle tunes, $M_x$, $M_y$, and $N$ are integers, and $|M_x| + |M_y|$ is the order of the resonance. The single-particle tunes must be precisely controlled to avoid the resonance lines; otherwise, particles may be driven to large amplitudes and eventually fall outside the machine aperture. The strength of the resonance varies inversely with the order: fourth-order and below are the primary concern in most machines, but higher-order effects may be important when the number of stored turns is large. 
 
 
-\section{Collective beam description}
+
+\subsection{Collective beam description}
 
 A beam is a distribution of particles in phase space. In the limit of many particles, we define a distribution function $f(\mathbf{x})$ such that $f(\mathbf{x}) d\mathbf{x}$ gives the number of particles in an infinitesimal volume of phase space $d\mathbf{x}$. The measurable quantities are generally the projections of the distribution; e.g.
 %
@@ -315,8 +246,9 @@ If a linear transformation $\mathbf{x} \rightarrow \mathbf{M}\mathbf{x}$ is appl
 %
 The covariance matrix defines an ellipsoid in phase space. The 4D emittance $\varepsilon_{4D}$ is proportional to the volume of this ellipsoid:
 %
+
 \begin{equation} 
-    \varepsilon_{4D} = \left|{\Sigma}\right|^{1/2}
+    \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2}
 \end{equation}
 %
 where $|...|$ is the determinant. The 4D emittance is conserved under any linear transformation. The horizontal and vertical emittances $\varepsilon_{x,y}$ are individually conserved if the transformation is uncoupled:
@@ -328,9 +260,37 @@ where $|...|$ is the determinant. The 4D emittance is conserved under any linear
 \end{aligned}
 \end{equation}
 %
-These correspond to the areas in the $x$-$x'$ and $y$-$y'$ planes. In the absence of cross-plane correlations ($\bm{\sigma}_{xy} = 0$), the 4D emittance is equal to the product of the horizontal and vertical emittances.
+These correspond to the areas in the $x$-$x'$ and $y$-$y'$ planes. 
 
-It is challenging to generate initial distributions for simulations \cite{Lund2009}. A simple strategy is to assume elliptical symmetry and construct a distribution from the single-particle invariants $J_{x,y}$. We define the ellipsoid parameter $T$ as 
+In the absence of cross-plane correlations ($\bm{\sigma}_{xy} = 0$), the 4D emittance is equal to the product of the horizontal and vertical emittances, which are referred to as the \textit{apparent} emittances from now on. Instead, the 4D emittance is the product of the \textit{intrinsic} emittances $\varepsilon_1$ and $\varepsilon_2$:
+%
+\begin{equation} \label{eq:mode_emittances1}
+    \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2} = \varepsilon_1\varepsilon_2 \le \varepsilon_x\varepsilon_y.
+\end{equation}
+%
+The intrinsic emittances are found by a symplectic diagonalization of $\bm{\Sigma}$, i.e., they are the imaginary components of the eigenvalues of $\bm{\Sigma}\mathbf{U}$, where $\mathbf{U}$ is the unit symplectic matrix:
+%
+\begin{equation}
+    \mathbf{U} = 
+    \begin{bmatrix}
+        0 & 1 & 0 & 0 \\
+        -1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & -1 & 0
+    \end{bmatrix}.
+\end{equation}
+%
+The answer can be written compactly \cite{Xiao2013}:
+%
+\begin{equation}
+    \varepsilon_{1, 2} = \frac{1}{2}\sqrt{
+      -tr\left[(\bm{\Sigma} \mathbf{U})^2\right] \pm \sqrt{tr^2\left[(\bm{\Sigma} \mathbf{U})^2\right] - 16|{\bm{\Sigma}}|},
+    }
+\end{equation}
+%
+The intrinsic emittances are individually conserved in any linear focusing system. Their product is less than or equal to the product of the apparent emittances \cite{Buon1993}.
+
+It is challenging to generate initial distributions for simulations \cite{Lund2009}. A simple strategy is to assume elliptical symmetry and construct a distribution from the single-particle invariants $J_{x,y}$.\footnote{Alternatively, the generalized invariants $J_{1, 2}$ can be used.} We define the ellipsoid parameter $T$ as 
 %
 \begin{equation}
     T = \frac{J_x}{\varepsilon_x} + \frac{J_y}{\varepsilon_y}
@@ -389,15 +349,13 @@ The 1D and 2D projections of these 4D distributions are shown in Fig.~\ref{fig:d
 
 
 
-\section{Space charge}\label{sec:Space charge}
+
+\subsection{Space charge}\label{sec:Space charge}
 
 Particle motion is also influenced by the beam space charge — the charge density of the beam in free space. The beam electric field $\mathbf{E} = (E_x, E_y)$ modifies the single-particle equation of motion:
 %
-\begin{equation} \label{eq:eom_with_spacecharge}
-\begin{aligned}
-    x'' + k_x(s)x &= \frac{q}{m \gamma^3 \beta^2 c^2} E_x, \\
-    y'' + k_y(s)y &= \frac{q}{m \gamma^3 \beta^2 c^2} E_y,
-\end{aligned}
+\begin{equation}\label{eq:eom_with_spacecharge}
+    \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = \frac{q}{m\gamma^3\beta^2c^2} \mathbf{E},
 \end{equation}
 %
 where $\gamma = \left( 1 - \beta^2 \right)^{-1/2}$. The Lorentz factors in the denominator of the space charge term are due to the attractive magnetic force between co-moving charges in the lab frame which cancels the electric force as $\beta \rightarrow 1$. We will make the coasting beam approximation — infinite length, uniform density, and constant momentum in the longitudinal plane — to reduce the problem to two dimensions. (This is generally invalid for linacs but locally valid for a transverse slice of a long distribution in a ring. It is equivalent to replacing particles with infinitely long uniform density charged rods.) 
@@ -405,22 +363,11 @@ where $\gamma = \left( 1 - \beta^2 \right)^{-1/2}$. The Lorentz factors in the d
 Following Hofmann \cite{Hofmann2017Book}, we divide space charge effects into two categories: incoherent effects involving the motion of single particles, and coherent effects involving the self-consistent motion of the entire beam. Although the two effects may be difficult to isolate during the beam evolution \cite{Hofmann2021}, the distinction is clear in some cases. 
 
 
-\subsection{Incoherent effects}
+\subsubsection{Incoherent effects}
 
-We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak. The electric field may be written as a sum of products of $x$ and $y$:
-%
-\begin{equation}\label{eq:space_charge_multipoles}
-    E_x(x, y) = \sum_{i, j}{c_{i, j} x^i y^j}.
-\end{equation}
-%
-These terms can be treated in a similar way to the magnetic multipoles of Eq.~\eqref{eq:magnetic_field_expansion}.
+We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak. If the beam's electric field is linear in the transverse coordinates, it will simply modify the external linear focusing; therefore, the single-particle tune is reduced in both planes. A primary concern in rings is that the depressed tunes are located near one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here.
 
-
-\subsubsection{Space charge tune shift}
-
-The linear terms in Eq.~\eqref{eq:space_charge_multipoles} modify the external linear focusing; therefore, the single-particle tune is reduced in both planes. A primary concern in rings is that the depressed tunes are located near one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here.
-
-The nonlinear terms in Eq.~\eqref{eq:space_charge_multipoles} result in a tune shift that depends on the particle amplitude, hence a spread of tunes. An intuitive explanation is that large-amplitude particles experience a weaker average electric field throughout one turn in the ring \cite{Franchetti2017}. A recent study of the space charge tune spread in rings is found in \cite{Hotchi2020}. Fig.~\ref{fig:jparc_montague}, taken from the paper, shows the simulated particle tunes in the Japan Proton Accelerator Research Center (J-PARC).
+If the electric field is nonlinear, the tune shift will depends on the particle amplitude, leading to a spread of tunes. An intuitive explanation is that large-amplitude particles experience a weaker average electric field throughout one turn in the ring \cite{Franchetti2017}. A recent study of the space charge tune spread in rings is found in \cite{Hotchi2020}. Fig.~\ref{fig:jparc_montague}, taken from the paper, shows the simulated tune spread in the Japan Proton Accelerator Research Center (J-PARC).
 %
 \begin{figure}[!p]
     \centering
@@ -430,36 +377,13 @@ The nonlinear terms in Eq.~\eqref{eq:space_charge_multipoles} result in a tune s
 \end{figure}
 %
 
-Thus, the beam intensity in rings is fundamentally limited by the incoherent space charge tune shift. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application.
+Thus, the beam intensity in rings is fundamentally limited by the incoherent space charge tune shift. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in this model.
 
 
-\subsubsection{Incoherent space charge resonances}
 
-%
-It is also possible for space charge itself to drive particle resonances \cite{Holmes1999, Jeon1999, Li2014, Kojima2019, Asvesta2020}. For illustration, we reproduce a numerical study from \cite{Hofmann2017Book} using PyORBIT \cite{Shishlo2015}, a particle-in-cell (PIC) code. Fig.~\ref{fig:incoherent_instability} shows a simulation of a truncated Gaussian distribution in a FODO lattice as the zero-current tune is decreased from 100\degree to 90\degree over 500 cells. The initial distribution has equal emittances in both planes and is matched to the lattice with a depressed tune of 92\degree.
-%
-\begin{figure}[!p]
-    \centering
-    \begin{subfigure}{\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter1/incoherent_resonance_fourth_order.png}
-        \label{fig:incoherent_instability_a}
-        \caption{}
-    \end{subfigure}
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter1/incoherent_resonance_fourth_order_emittance.png}
-        \label{fig:incoherent_instability_b}
-        \caption{}
-    \end{subfigure}
-    \caption{Simulation of a truncated Gaussian distribution in a FODO lattice. The zero-current tune is decreased from 100\degree to 90\degree over 500 cells. (a) $x$-$x'$ distribution. (b) RMS horizontal emittance. (Reproduced from \cite{Hofmann2017Book}.)}
-    \label{fig:incoherent_instability}
-\end{figure}
-%
-A fourth-order resonance is excited as the depressed tune approaches 90 degrees. The smooth emittance growth during most of the simulation shows that the core of the beam remains matched, justifying the use of ``incoherent" to describe the effect. Higher-order resonances can also occur for different combinations of beam intensity and focusing strength.
+\subsubsection{Coherent effects}
 
-
-\subsection{Coherent effects}
-
-Coherent space charge effects involve self-consistent oscillations of the entire beam and are relevant for strong space charge \cite{book:Reiser, Wangler2008, Cousineau2003}. We may model the beam as a smooth distribution in phase space $f(\mathbf{x})$; neglecting collisions between particles, the evolution of $f$ is given by the Vlasov equation \cite{Vlasov1961}:
+Coherent space charge effects involve self-consistent oscillations of the entire beam \cite{book:Reiser, Wangler2008, Cousineau2003}. We may model the beam as a smooth distribution in phase space $f(\mathbf{x}, \mathbf{x}', s)$; neglecting collisions between particles, the evolution of $f$ is given by the Vlasov equation \cite{Vlasov1961}:
 %
 \begin{equation} \label{eq:Vlasov}
     \frac{d}{ds}{f(\mathbf{x}, \mathbf{x}', s)} = 
@@ -469,7 +393,7 @@ Coherent space charge effects involve self-consistent oscillations of the entire
     = 0,
 \end{equation}
 %
-where $\mathbf{x} = (x, y)^T$. Hidden in Eq.~\eqref{eq:Vlasov} is the single-particle equation of motion, which for linear external fields is:
+Hidden in Eq.~\eqref{eq:Vlasov} is the single-particle equation of motion, which we rewrite as:
 %
 \begin{equation}
     \mathbf{x}'' + \mathbf{K_0} \mathbf{x} + \mathbf{K_1} \mathbf{x}'
@@ -477,54 +401,16 @@ where $\mathbf{x} = (x, y)^T$. Hidden in Eq.~\eqref{eq:Vlasov} is the single-par
     \frac{q}{m\gamma^3\beta^2c^2} \frac{\partial{\Phi}}{\partial\mathbf{x}},
 \end{equation}
 %
-where $\mathbf{K}_{0, 1}$ are $2 \times 2$ matrices encompassing the external fields, and the space charge potential $\Phi$ is determined from the Poisson equation:
+with the space charge potential $\Phi$ determined from the Poisson equation:
 %
 \begin{equation} \label{eq:Poisson}
-    \frac{\partial^2{\Phi}}{\partial{\mathbf{x}^2}} = -\frac{q}{\epsilon_0}\int_{-\infty}^{\infty}{f}d\mathbf{x}'.
+    \frac{\partial^2{\Phi}}{\partial{\mathbf{x}^2}} = -\frac{q}{\epsilon_0}
+    \int_{-\infty}^{\infty}{f}d\mathbf{x}'.
 \end{equation}
 %
 
-Equilibrium solutions to the Vlasov equation in the presence of time-dependent linear forces are discussed in the following section. For now, we take it for granted that there exists one such solution, called the KV distribution, that produces linear space charge forces ($E_x \propto x$, $E_y \propto y$). In \cite{Hofmann1983}, Hofmann et al. analytically studied perturbations of a round ($\varepsilon_x = \varepsilon_y$) KV distribution using the Vlasov equation in one of the simplest time-dependent cases: a FODO lattice with equal horizontal and vertical tunes. The result is shown in Fig.~\ref{fig:stopbands}, which plots the depressed tune as a function of beam intensity. Each thin line represents a different zero-current tune. The thick lines represent regions of instability.
-%
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=\textwidth]{Images/chapter1/stopbands_hor.png}
-    \caption{Instability stopbands obtained from perturbations of a KV distribution with equal emittances in a FODO lattice. (From \cite{Hofmann1983}).}
-    \label{fig:stopbands}
-\end{figure}
-%
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=\textwidth]{Images/chapter1/envelope_instability.png}
-    \caption{Integrated KV envelope equations in a FODO lattice as the depressed KV tune $\nu_x$ is decreased. The zero-current tune is 100\degree.} \label{fig:envelope_instability}
-\end{figure}
-%
+Analysis of the Vlasov equation is difficult in the general case of time-dependent external forces; thus, computer simulation must be used to understand the beam evolution. Equilibrium solutions exist, but are rare (see Section \ref{sec:Self-consistent phase space distributions}). Perturbations of the Vlasov equation around equilibrium solutions can be used to derive stability conditions for the coherent oscillations of the beam, albeit this is only feasible in simple cases. This idea is explored in Appendix \ref{app-B}. 
 
-The KV distribution produces a closed set of differential equations for its envelope — the elliptical boundary containing the beam particles — due to its linear space charge forces. The second-order instabilities involve linear forces only, so they appear in the envelope equations. We use a FODO cell with a zero-current tune of $100\degree$ corresponding to the second-to-bottom line on the left-most plot in Fig.~\ref{fig:stopbands}. The initial distribution is first matched to the lattice, then tracked for 500 cells by integrating the KV envelope equations. Fig.~\ref{fig:envelope_instability} shows the horizontal and vertical envelopes as the depressed KV tune is decreased from $90\degree$ to $71\degree$, crossing the stopband. This is known as the envelope instability. It is assumed to be real, but its existence has not yet been experimentally confirmed.
-
-Observation of the higher-order stopbands requires PIC simulation. We choose a zero-current tune of 90\degree; according to Fig.~\ref{fig:stopbands}, a third-order and fourth-order instability should occur at a depressed tune of 45\degree and 30\degree, respectively. Fig.~\ref{fig:coherent_instabilities} shows the simulated evolution in PyORBIT for three different distributions: KV, Waterbag, and Gaussian. (Note that while the simulations in \cite{Hofmann2017Book} used a bunched beam, coasting beams were used in this simulation.)
-%
-\begin{figure}[!p]
-    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter1/coherent_instability_fourth_order.png}
-        \label{fig:coherent_instabilities_a}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter1/coherent_instability_third_order.png}
-        \label{fig:f2}
-    \end{subfigure}
-    \vfill
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \includegraphics[width=0.8\textwidth]{Images/chapter1/coherent_instability_emittances.png}
-        \label{fig:coherent_instabilities_b}
-    \end{subfigure}
-    \caption{Simulated Gaussian, Waterbag, and KV distributions in a FODO lattice with a zero-current tune of 90\degree and depressed KV tunes of $\nu_x$ = 45\degree (top left) and 30\degree (top right).}
-    \label{fig:coherent_instabilities}
-\end{figure}
-%
-The instabilities violently affect the KV distribution, but their effect is less pronounced in the other distributions. Thus, it is assumed that high-order coherent instabilities, while interesting, are not important in real beams with a large tune spread. 
 
 
 
@@ -538,7 +424,8 @@ Any function constructed from single-particle invariants $\{C_i\}$ is an equilib
     \frac{d}{ds} f(\{C_i\}) = \sum_{i}{\frac{df}{dC_i}\frac{dC_i}{ds}} = 0.
 \end{equation}
 %
-One example of a single-particle invariant when the focusing is linear and time-dependent is the Courant-Snyder invariant of Eq.~\eqref{eq:CS invariant}. The inclusion of space charge complicates the identification of invariants; the only known equilibrium distributions are those that produce linear space charge forces. We label such distributions as \textit{self-consistent}: a self-consistent distribution produces linear space charge forces, and the linearity of the space charge force is conserved under any linear transformation. 
+One example of a single-particle invariant when the focusing is linear and time-dependent is the Courant-Snyder invariant of Eq.~\eqref{eq:CS invariant}. The inclusion of space charge complicates the identification of invariants, and the only known equilibrium distributions are those that produce linear space charge forces. We label such distributions as \textit{self-consistent}: a self-consistent distribution produces linear space charge forces, and the linearity of the space charge force is conserved under any linear transformation. 
+
 Self-consistent distributions possess several notable properties. First, the integro-differential system of equations in Eq.~\eqref{eq:Vlasov} is reduced to a system of ordinary differential equations. Second, nonlinear space charge effects are minimized: the emittance is conserved, the maximum space charge tune shift is minimized, and the space charge tune spread is eliminated. Third, higher-order coherent instabilities may be present in self-consistent distributions due to their small tune spread. Fourth, self-consistent distributions give rise to a uniform charge density.
 
 
@@ -555,7 +442,6 @@ Danilov et al. enumerated a class of self-consistent distributions in $2d$-dimen
 \end{equation}
 %
 where $\mathbf{x}$, $\mathbf{x}'$ are the $d$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$, $\mathbf{e}'_i$ are vectors of constants. This is referred to as the $\{n,m\}$ case. It was proven that the electric field within any uniformly filled ellipsoid is linear, and that any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces a linear electric field will do so under any linear transformation.
-
 
 In other words, one class of self-consistent distributions are those that generate linear space charge forces and are constructed from quantities that are invariant in the presence of linear focusing. We now focus on the \{2, 0\} and \{2, 2\} cases. (Qin and Davidson derived a self-consistent distribution for $n = 2$ in \cite{Qin2013} using their recent parameterization of coupled motion, but made no reference to \cite{Danilov2003}. The connection between Danilov's work and Qin and Davidson's work should thus be explored in the future.)
 
@@ -638,33 +524,7 @@ and $\mathbf{D}$ a $2 \times 2$ matrix. Similar to the KV distribution, any 2D p
 %
 The field is linear in $x$ and $y$, as required. And it is worth repeating: the linearity of the electric field is maintained under any linear transformation. The key difference from the KV distribution is that space charge linearly couples the horizontal and vertical motion of individual particles. The Courant-Snyder invariants $J_{x,y}$ are therefore replaced by the more general invariants $J_{1, 2}$, which are conserved even with the inclusion of space charge. 
 
-Due to the cross-plane correlation in the Danilov distribution, the 4D emittance is not the simple product of the horizontal and vertical emittances $\varepsilon_x$ and $\varepsilon_y$, which we refer to as the \textit{apparent} emittances from now on. Instead, the 4D emittance is the product of the \textit{intrinsic} emittances $\varepsilon_1$ and $\varepsilon_2$:
-%
-\begin{equation} \label{eq:mode_emittances1}
-    \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2} = \varepsilon_1\varepsilon_2.
-\end{equation}
-%
-The intrinsic emittances are found by a symplectic diagonalization of $\bm{\Sigma}$, i.e., they are the imaginary components of the eigenvalues of $\bm{\Sigma}\mathbf{U}$, where $\mathbf{U}$ is the unit symplectic matrix:
-%
-\begin{equation}
-    \mathbf{U} = 
-    \begin{bmatrix}
-        0 & 1 & 0 & 0 \\
-        -1 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 1 \\
-        0 & 0 & -1 & 0
-    \end{bmatrix}.
-\end{equation}
-%
-The answer can be written compactly \cite{Xiao2013}:
-%
-\begin{equation}
-    \varepsilon_{1, 2} = \frac{1}{2}\sqrt{
-      -tr\left[(\bm{\Sigma} \mathbf{U})^2\right] \pm \sqrt{tr^2\left[(\bm{\Sigma} \mathbf{U})^2\right] - 16|{\bm{\Sigma}}|},
-    }
-\end{equation}
-%
-The intrinsic emittances are constants of the motion for any linear focusing system. Their product is less than or equal to the product of the apparent emittances \cite{Buon1993}. The delta functions in the Danilov distribution function cause the 4D emittance, and therefore one of the intrinsic emittances, to be zero. The following relationship holds:
+The delta functions in the Danilov distribution function cause the four-dimensional emittance, and therefore one of the intrinsic emittances, to be zero. The following relationship has been found to hold:
 %
 \begin{equation} \label{eq:mode_emittances2}
     \varepsilon_1 = \varepsilon_x + \varepsilon_y, \quad
@@ -673,7 +533,7 @@ The intrinsic emittances are constants of the motion for any linear focusing sys
 %
 or vice versa. 
 
-Discussion of the Danilov envelope equations is reserved for chapter \ref{chap-2}.
+Discussion of the Danilov envelope equations is reserved for Chapter \ref{chap-2}.
 
 
 
@@ -736,7 +596,7 @@ Unfortunately, these methods do not apply to high-intensity proton rings. Distri
 
 \subsection{Phase space painting}
 
-Accelerators are often broken into stages; a common pattern is the injection of a beam from a linac into a ring followed by eventual extraction to a different section of the machine. Injection and extraction are accomplished using kicker magnets — dipole magnets with fast rise times.
+Accelerators are often broken into stages. A common pattern is the injection of a beam from a linac into a ring followed by eventual extraction to a different section of the machine. Injection and extraction are accomplished using kicker magnets — dipole magnets with fast rise times.
 
 In multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped of its electrons upon entering the ring, leaving only protons. This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While multi-turn injection is constrained to tens of turns, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}.
 
@@ -897,7 +757,7 @@ SNS injection kicker magnets have limited strengths and are unipolar, which limi
 
 The goal of this dissertation is to contribute to efforts to generate a Danilov distribution in the SNS ring. An additional goal is to improve the current understanding of the dynamics of the Danilov distribution with space charge.
 
-In chapter \ref{chap-2}, envelope equations describing the linear transport of the Danilov distribution are studied. In particular, insight is gained by computing the matched beam envelope in the presence of space charge and linear external coupling. In chapter \ref{chap-3}, particle-in-cell (PIC) simulations of elliptical painting in the SNS are carried out, building on previous work. In chapter \ref{chap-4}, methods are proposed to measure the similarity between a painted distribution in the SNS ring and a Danilov distribution. The methods are simulated and implemented in the SNS. In chapter \ref{chap-5}, elliptical painting is carried out in the SNS for the first time; measurements compared with simulation. Finally, implications and extensions of this work are discussed in chapter \ref{chap-6}.
+In Chapter \ref{chap-2}, envelope equations describing the linear transport of the Danilov distribution are studied. In particular, insight is gained by computing the matched beam envelope in the presence of space charge and linear external coupling. In Chapter \ref{chap-3}, particle-in-cell (PIC) simulations of elliptical painting in the SNS are described. In Chapter \ref{chap-4}, methods are proposed to measure the similarity between a painted distribution in the SNS ring and a Danilov distribution. The methods are simulated and implemented in the SNS. In Chapter \ref{chap-5}, elliptical painting is carried out in the SNS for the first time, and measurements are compared with simulation. Finally, implications and extensions of this work are discussed in Chapter \ref{chap-6}.
 
 
 
@@ -1009,7 +869,7 @@ In chapter \ref{chap-2}, envelope equations describing the linear transport of t
 
 % The maximum beam intensity in low-energy particle accelerators is limited by nonlinear space charge forces — forces between the charged particles in the beam. In the collisionless approximation, the evolution of a distribution of charged particles is given by the Vlasov equation. Equilibrium solutions to the Vlasov equation are difficult to find in the general case of linear time-dependent external forces. The few known solutions are those that generate linear space charge forces under any linear transformation. These solutions are referred to as self-consistent phase space distributions. This dissertation investigates whether one such distribution — the Danilov distribution — could be produced using a method called elliptical painting, particularly in the Spallation Neutron Source (SNS). In addition to the interesting theoretical properties stemming from its self-consistent nature, the vanishing four-dimensional emittance of the Danilov distribution makes it potentially useful for colliders and beam cooling applications.
 
-% The structure of this introductory chapter is as follows. The relevant theory of high-intensity beam dynamics is reviewed in sections \ref{sec:Single-particle motion}-\ref{sec:Space charge}. The definition and properties of self-consistent distributions are discussed in \ref{sec:Self-consistent phase space distributions}, starting with the well-known KV distribution and ending with the lesser-known Danilov distribution. A method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in section \ref{sec:Producing a self-consistent distribution}. The project is further motivated by investigating the connection between the Danilov distribution and the recent interest in circular modes. Finally, the structure and goals of this dissertation are laid out in section \ref{sec:Goals of this dissertation}.
+% The structure of this introductory chapter is as follows. The relevant theory of high-intensity beam dynamics is reviewed in sections \ref{sec:Single-particle motion}-\ref{sec:Space charge}. The definition and properties of self-consistent distributions are discussed in \ref{sec:Self-consistent phase space distributions}, starting with the well-known KV distribution and ending with the lesser-known Danilov distribution. A method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in Section \ref{sec:Producing a self-consistent distribution}. The project is further motivated by investigating the connection between the Danilov distribution and the recent interest in circular modes. Finally, the structure and goals of this dissertation are laid out in Section \ref{sec:Goals of this dissertation}.
 
 
 
@@ -1680,7 +1540,7 @@ In chapter \ref{chap-2}, envelope equations describing the linear transport of t
 % %
 % or vice versa. 
 
-% Discussion of the Danilov envelope equations is reserved for chapter \ref{chap-2}.
+% Discussion of the Danilov envelope equations is reserved for Chapter \ref{chap-2}.
 
 
 
@@ -1904,4 +1764,4 @@ In chapter \ref{chap-2}, envelope equations describing the linear transport of t
 
 % The goal of this dissertation is to contribute to efforts to generate a Danilov distribution in the SNS ring. An additional goal is to improve the current understanding of the dynamics of the Danilov distribution with space charge.
 
-% In chapter \ref{chap-2}, envelope equations describing the linear transport of the Danilov distribution are studied. In particular, insight is gained by computing the matched beam envelope in the presence of space charge and linear external coupling. In chapter \ref{chap-3}, particle-in-cell (PIC) simulations of elliptical painting in the SNS are carried out, building on previous work. In chapter \ref{chap-4}, methods are proposed to measure the similarity between a painted distribution in the SNS ring and a Danilov distribution. The methods are simulated and implemented in the SNS. In chapter \ref{chap-5}, elliptical painting is carried out in the SNS for the first time; measurements compared with simulation. Finally, implications and extensions of this work are discussed in chapter \ref{chap-6}.
+% In Chapter \ref{chap-2}, envelope equations describing the linear transport of the Danilov distribution are studied. In particular, insight is gained by computing the matched beam envelope in the presence of space charge and linear external coupling. In Chapter \ref{chap-3}, particle-in-cell (PIC) simulations of elliptical painting in the SNS are carried out, building on previous work. In Chapter \ref{chap-4}, methods are proposed to measure the similarity between a painted distribution in the SNS ring and a Danilov distribution. The methods are simulated and implemented in the SNS. In Chapter \ref{chap-5}, elliptical painting is carried out in the SNS for the first time; measurements compared with simulation. Finally, implications and extensions of this work are discussed in Chapter \ref{chap-6}.

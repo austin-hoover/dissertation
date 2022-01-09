@@ -18,12 +18,19 @@
 %-------------------------------------------------------------------------------
 %	HANDLING THE STYLE OF THE THESIS
 %-------------------------------------------------------------------------------
-
 % \renewcommand{\familydefault}{phv}
 
-\LoadClass[11pt, oneside]{book} % 12 pt font, one-sided book style
+\LoadClass[11pt, oneside]{book} 
 
-\RequirePackage[a4paper, includehead, headheight=0.6cm, inner=2.5cm ,outer=2.5cm, top=2.5 cm, bottom=2.5cm]{geometry}
+\RequirePackage[
+    a4paper, 
+    includehead, 
+    headheight=0.6cm, 
+    inner=2.5cm,
+    outer=2.5cm, 
+    top=2.5 cm,
+    bottom=2.5cm
+]{geometry}
 
 \RequirePackage[bf, font=onehalfspacing]{caption} % caption: FIG in bold, 1.5 line spacing in figure and table captions
 
@@ -40,31 +47,33 @@
 \newcommand{\unnumberedchapter}[1]{ % Preparation for unnumbered chapters
 	\cleardoublepage % To make sure the previous headers are passed
 	\phantomsection % To help hyperref link to the right page
+	\lhead{\bfseries #1} % Header
+}
+
+\newcommand{\unnumberedchapterintoc}[1]{ % Preparation for unnumbered chapters
+	\cleardoublepage % To make sure the previous headers are passed
+	\phantomsection % To help hyperref link to the right page
 	\addcontentsline{toc}{chapter}{#1} % Also adds the chapter name to the Contents
 	\lhead{\bfseries #1} % Header
 }
 
 \newcommand{\startpreamble}{
-	\pagestyle{fancy} % Change the header style
-	\fancyhf{}% Clear header and footer
+    \pagestyle{plain} % Change the header style
+	\fancyhf{} % Clear header and footer
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}} % Getting the chapter name right
 	\rhead{\thepage} % Page number at the right of the header
 	\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 	\setcounter{page}{2} % Include the title page in page counting
-	\thesisspacing % Double or single spacing
+	\thesisspacing 
 }
 
 \newcommand{\includepublications}{
 	\input{./MainText/publications}
 }
 
-% Change table of contents title
-\renewcommand*\contentsname{Table of contents}
-
 %-------------------------------------------------------------------------------
 %	BUILDING THE TITLE PAGE
 %-------------------------------------------------------------------------------
-
 \newcommand\BackgroundPic{% Adding background picture
 	\put(-250,-160){%
 		\parbox[b][\paperheight]{\paperwidth}{%

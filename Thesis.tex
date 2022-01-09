@@ -11,7 +11,8 @@
 %-------------------------------------------------------------------------------
 %	REQUIRED PACKAGES AND  CONFIGURATIONS
 %-------------------------------------------------------------------------------
-\documentclass[final]{oist_thesis} % Final version for thesis submission
+% Final version for thesis submission
+\documentclass[final]{oist_thesis} 
 
 % The documentclass oist_thesis includes the following packages: geometry, caption, xkeyval
 
@@ -46,10 +47,10 @@
 \usepackage[export]{adjustbox}
 \usepackage{graphbox}
 
+
 %----------------------------------------------------------------------------------------
 %	ADD YOUR DEFINITIONS AND COMMANDS
 %----------------------------------------------------------------------------------------
-
 % Example of New Commands
 \newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
 \newcommand{\eea}{\end{eqnarray}}
@@ -69,6 +70,15 @@
 % Make new figures appear on their own page immediately after their first reference.
 \renewcommand\floatpagefraction{0} % default 0.5
 
+% Change heading in table of contents
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}%
+    {Table of Contents}%
+}
+
+% Control spacing in list of figures.
+% \setlength{\cftbeforefigskip}{16pt} and \setlength{\cftbeforetabskip}{16pt}
+
 
 %----------------------------------------------------------------------------------------
 %	PICK YOUR BIBLIOGRAPHY STYLE
@@ -85,7 +95,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{document}
-% \setmainfont{Arial}
+% \setmainfont{Times}
 \pagestyle{empty} % No page numbers
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 
@@ -142,20 +152,25 @@
 %	BIBLIOGRAPHY
 %-------------------------------------------------------------------------------
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
-\unnumberedchapter{Bibliography} % Title of the unnumbered chapter
+% \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+\unnumberedchapterintoc{Bibliography} % Title of the unnumbered chapter
 \bibliography{Preamble/Thesis_bibliography} % The references information are stored in the file named "Thesis_bibliography.bib"
 
 %-------------------------------------------------------------------------------
 %	APPENDICES (optional)
 %-------------------------------------------------------------------------------
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+% \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 \appendix
 
 \numberedchapter % Regular chapters following
 \input{MainText/appendixA}
-% \input{MainText/appendixB}
+\input{MainText/appendixB}
 % \input{MainText/appendixC}
+
+%-------------------------------------------------------------------------------
+%	VITA
+%-------------------------------------------------------------------------------
+\input{MainText/vita}
 
 \end{document}

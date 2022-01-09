@@ -1,6 +1,6 @@
 \chapter{Experiments} \label{chap-5}
 
-This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapters \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in chapter \ref{chap-4} were used to measure the painted distribution. Recall from chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the time frame of this work. Thus, the beams created in the following experiments were not expected to be optimal. Nonetheless, it was hoped that the beams would be clearly distinguishable from a production beam produced by correlated painting. 
+This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapters \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in Chapter \ref{chap-4} were used to measure the painted distribution. Recall from Chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the time frame of this work. Thus, the beams created in the following experiments were not expected to be optimal. Nonetheless, it was hoped that the beams would be clearly distinguishable from a production beam produced by correlated painting. 
 
 
 \section{Procedure}
@@ -20,10 +20,10 @@ The following steps are taken during the experimental setup:
     (Optional: The injection region is modified in some way to assist the injection kickers.)
     %
     \item
-    The eight injection kicker magnets are calibrated using the Ring Injection Control (RIC) application, as described in chapter \ref{chap-1}. 
+    The eight injection kicker magnets are calibrated using the Ring Injection Control (RIC) application, as described in Chapter \ref{chap-1}. 
     %
     \item
-    The initial/final kicker voltages are determined to obtain the desired closed-orbit coordinates at the foil, as described in chapter \ref{chap-1}.
+    The initial/final kicker voltages are determined to obtain the desired closed-orbit coordinates at the foil, as described in Chapter \ref{chap-1}.
     %
     \item
     The initial/final voltages are connected with a square root waveform, and the waveform is applied to the injection kickers. The painting time (the duration of the waveform) is chosen at this step but can be changed later on. The painting time determines the number of minipulses in the final distribution, i.e., the beam intensity.
@@ -33,7 +33,7 @@ The following steps are taken during the experimental setup:
     %
 \end{enumerate}
 %
-The next task is to prepare for the measurements. For the wire-scanner measurement, the first step is to modify the RTBT optics using the application developed in chapter \ref{chap-4}. If the fixed-optics method is used, the optics are changed immediately. If the multi-optics method is used, the optics are pre-computed and stored for later use. The SNS employs a machine protection system (MPS) that will cause the machine to trip if the RTBT quadrupole strengths wander outside a certain window, so this window is extended beforehand. Additionally, MPS will activate if the fractional change in field strength is too large; to solve this problem, the field strength is changed in small steps. To perform the wire scans, the beam is set to a pulse frequency of 1 Hz, and the beam loss monitors in the wire-scanner region are masked due to the higher-than-normal losses when the wires cross the beam core. Wire-scanner data acquisition is performed by the Profile Tools and Analysis (PTA) application. After the four wire-scanners complete their scan, a time-stamped file is produced containing the measured profiles.
+The next task is to prepare for the measurements. For the wire-scanner measurement, the first step is to modify the RTBT optics using the application developed in Chapter \ref{chap-4}. If the fixed-optics method is used, the optics are changed immediately. If the multi-optics method is used, the optics are pre-computed and stored for later use. The SNS employs a machine protection system (MPS) that will cause the machine to trip if the RTBT quadrupole strengths wander outside a certain window, so this window is extended beforehand. Additionally, MPS will activate if the fractional change in field strength is too large; to solve this problem, the field strength is changed in small steps. To perform the wire scans, the beam is set to a pulse frequency of 1 Hz, and the beam loss monitors in the wire-scanner region are masked due to the higher-than-normal losses when the wires cross the beam core. Wire-scanner data acquisition is performed by the Profile Tools and Analysis (PTA) application. After the four wire-scanners complete their scan, a time-stamped file is produced containing the measured profiles.
 
 The second measurement is the tomographic reconstruction from $x$-$y$ projections on the target. Since the optics calculation is time-consuming, it can be run in the background while wire-scans are collected. The use of target images for tomographic reconstruction was proposed late in this research, so the target scan was only performed in the last of the following experiments.
 
@@ -302,16 +302,16 @@ The pause between changing the optics, triggering the beam, and collecting the i
 \end{figure}
 %
 
-Hock's method was applied to reconstruct the distribution from the images, using two iterations of SART for each 2D reconstruction. The projections of the reconstructed distribution in normalized phase space are shown in Fig.~\ref{fig:exp3_rec_corner_Hock}
-%
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=0.75\textwidth]{Images/chapter5/exp3/target_scan/rec_corner_Hock.png}
-    \caption{Projections of the reconstructed normalized phase space using Hock's method on the target images. [TO DO: GET RECONSTRUCTION GRID.]}
-    \label{fig:exp3_rec_corner_Hock}
-\end{figure}
-%
-Only seven 1D projections are used in each 2D reconstruction. Due to the limited number of projections, the reduced beam length, and the errors in the data collection script, no importance was given to this reconstruction.
+% Hock's method was applied to reconstruct the distribution from the images, using two iterations of SART for each 2D reconstruction. The projections of the reconstructed distribution in normalized phase space are shown in Fig.~\ref{fig:exp3_rec_corner_Hock}
+% %
+% \begin{figure}[!p]
+%     \centering
+%     \includegraphics[width=0.75\textwidth]{Images/chapter5/exp3/target_scan/rec_corner_Hock.png}
+%     \caption{Projections of the reconstructed normalized phase space using Hock's method on the target images. [TO DO: GET RECONSTRUCTION GRID.]}
+%     \label{fig:exp3_rec_corner_Hock}
+% \end{figure}
+% %
+% Only seven 1D projections are used in each 2D reconstruction. Due to the limited number of projections, the reduced beam length, and the errors in the data collection script, no importance was given to this reconstruction.
 
 We conclude with a simulation of this experiment in Fig.~\ref{fig:exp3_sim}.
 %
@@ -330,7 +330,7 @@ We conclude with a simulation of this experiment in Fig.~\ref{fig:exp3_sim}.
     \label{fig:exp3_sim}
 \end{figure}
 %
-This looks closer to the best-case scenario from chapter \ref{chap-3}, even through solenoids are not present in the ring and the vertical slope from the kickers is limited. Again, the predicted ratio $\varepsilon_1 / \varepsilon_2$ is larger than what was measured; however, the simulations of Experiment 2/3 differ in a similar way to the measurements of Experiment 2/3. Namely, in Experiment 3, the smaller intrinsic emittance curve flattens as injection progresses and the final ratio $\varepsilon_1 / \varepsilon_2$ is larger than in Experiment 2. 
+This looks closer to the best-case scenario from Chapter \ref{chap-3}, even through solenoids are not present in the ring and the vertical slope from the kickers is limited. Again, the predicted ratio $\varepsilon_1 / \varepsilon_2$ is larger than what was measured; however, the simulations of Experiment 2/3 differ in a similar way to the measurements of Experiment 2/3. Namely, in Experiment 3, the smaller intrinsic emittance curve flattens as injection progresses and the final ratio $\varepsilon_1 / \varepsilon_2$ is larger than in Experiment 2. 
 
 We note that the zero-current tunes in the simulation were equal at $\nu_x = \nu_y = 6.18$. The measured tunes were also 6.18, but there may be some uncertainty in the measurement. The simulation was repeated as the horizontal tune was varied in steps of 0.005. At $\nu_x = 6.19$, there was not a large change from the original case. At $\nu_x = 6.2$, the cross-plane correlation in the beam was eliminated. In Fig.~\ref{fig:exp3_sim_nux6.195_nuy6.18}, the simulation was repeated with $\nu_x = 6.195$. 
 %
