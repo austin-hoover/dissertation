@@ -270,25 +270,25 @@ Many algorithms exist to reconstruct 2D images from 1D projections, such as filt
     p_b(x_b) = \int_{-\infty}^{\infty} f(x_b, x'_b) dx'_b.
 \end{equation}
 %
-Let $\tilde{x}$ be the projection axis $x_b$ transported to $a$. $\tilde{x}_a$ is rotated by an angle $\theta$ relative to $x_a$ \cite{Hock2013a}: 
+The projection at $a$ will be along axis $\tilde{x}_a$, which is rotated at angle $\theta$ above the $x_a$ axis. The angle is computed from the transfer matrix: \cite{Hock2013a}: 
 %
 \begin{equation}\label{eq:proj_trans_1}
     \tan\theta = \frac{M_{12}}{M_{11}}.
 \end{equation}
 %
-The distance along the axis will be scaled:
+The distance along the projection will be scaled:
 %
 \begin{equation}\label{eq:proj_trans_2}
     r = \frac{x_b}{\tilde{x}_a} = \sqrt{M_{11}^2 + M_{12}^2}.
 \end{equation}
 %
-The projections are related by
+The projection must then be scaled to conserve area. The projections at $a$ and $b$ are related by 
 %
 \begin{equation}\label{eq:proj_trans_3}
-    p_a(\tilde{x}_a) = r p_b(r\tilde{x}_a).
+    p_a(\tilde{x}_a) = r p_b(r \tilde{x}_a).
 \end{equation}
 %
-Standard tomography algorithms can be applied to the transformed projections.
+Standard tomography algorithms can be applied to the scaled projections.
 
 It is also possible to reconstruct in normalized phase space \cite{Hock2011}. Recall the normalization matrix $\mathbf{V}$ from Eq.~\eqref{eq:CS_parameterization}. In normalized coordinates, the transfer matrix is a rotation matrix by an angle equal to the phase advance. It is straightforward to obtain the projections in the normalized phase space at $a$:
 %
@@ -300,7 +300,7 @@ It is also possible to reconstruct in normalized phase space \cite{Hock2011}. Re
 \end{aligned}
 \end{equation}
 %
-where $\mathbf{V}$ is a function of the Twiss parameters at $a$. The previous equations can be applied to the new matrix $\mathbf{M} \mathbf{V}$ to obtain the projections in the normalized phase space at $a$. After the image is reconstructed, the true distribution can be obtained by transforming the grid coordinates using $\mathbf{V}$ and interpolating at the transformed coordinates. Note that any Twiss parameters can be used to form $\mathbf{V}$; if the Twiss parameters are matched to the distribution, the rotation angle of the projection will be the phase advance from $a$ to $b$, and the reconstructed distribution will be circular in the normalized phase space. 
+where $\mathbf{V}$ is a function of the Twiss parameters at $a$. The previous equations can be applied to the new matrix $\mathbf{M} \mathbf{V}$ to obtain the projections in the normalized phase space at $a$. After the image is reconstructed, the true distribution can be obtained by transforming the grid coordinates using $\mathbf{V}$ and interpolating at the transformed coordinates. Note that any Twiss parameters can be used to form $\mathbf{V}$; if the Twiss parameters are matched to the distribution, the rotation angle of the projection will be the phase advance from $a$ to $b$, and the reconstructed distribution will be circular in the normalized phase space.
 
 
 
@@ -308,7 +308,7 @@ where $\mathbf{V}$ is a function of the Twiss parameters at $a$. The previous eq
 
 Recent work by Hock et al. reduces 4D reconstruction to a series of 2D reconstructions when the $x$-$y$ projections are available \cite{Hock2013a}. The method, which we refer to as Hock's method, is as follows. Assume that the horizontal and vertical angles (or phase advances) can be controlled independently. Let the angles in $x$-$x'$ be \{$\theta_{x_1}$, $\dots$, $\theta_{x_k}$, $\dots, \theta_{x_K}$\} and the angles in $y$-$y'$ be \{$\theta_{y_1}$, $\dots$, $\theta_{y_l}$, $\dots$, $\theta_{y_L}$\}. The projections are stored in an array $\mathbf{S}$, where $\mathbf{S}_{i,j,k,l}$ is the intensity at point ($x_i$, $y_j$) on the screen for angles $\theta_x = \theta_{x_k}$, $\theta_y = \theta_{y_l}$. We can immediately reconstruct a 3D projection of the distribution from this data. Consider a single row of the image — the intensity along the row gives a 1D projection onto the $x$ axis for a horizontal slice of the distribution. We have a set of these 1D projections at different $\theta_{x}$ which we can use to reconstruct the $x$-$x'$ distribution at this slice using any 1D $\rightarrow$ 2D reconstruction method. Repeating at each slice gives the array $\mathbf{D}$, where $\mathbf{D}_{j, l, r, s}$ is the density at $x = x_r$, $x' = x'_s$, $y = y_j$, for $\theta_{y} = \theta_{y_l}$. We then analyze the vertical plane. At each bin in the reconstructed $x$-$x'$ grid, we have a set of 1D projections of $y$-$y'$ at each $\theta_{y_l}$, thus, $y$-$y'$ can be reconstructed. This completes the reconstruction: we have an array $\mathbf{Z}$, where $\mathbf{Z}_{r, s, t, u}$ is the density at $x = x_r$, $x' = x_s$, $y = y_t$, $y' = y'_u$.
 
-To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes_corner_compare} was used. Simultaneous algebraic reconstruction (SART) was used for the 2D reconstructions. The accuracy of SART will depend on the number of projections and the range of projection angles. Fig.~\ref{fig:tomo_sim_art2D} demonstrates this by reconstructing the $x$-$x'$ distribution from 1D projections as these numbers are varied.
+To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes_corner_compare} was used. In \cite{Hock2013a}, filtered back-projection (FBP) was used in the 2D reconstructions. The disadvantage of FBP is that it requires many projections; simultaneous algebraic reconstruction (SART) is a possible alternative when the number of projections is small. The accuracy of SART will depend on the number of projections and the range of projection angles. Fig.~\ref{fig:tomo_sim_art2D} demonstrates this by reconstructing the $y$-$y'$ distribution from 1D projections as these numbers are varied.
 %
 \begin{figure}[!p]
     \centering
@@ -319,17 +319,16 @@ To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes_
     \vspace*{3.0cm}
 \end{figure}
 %
-It appears that if the projection angles are distributed over a significant range, the accuracy does not improve much beyond 10-15 projections. As discussed later, 15 projections is likely near the maximum possible in the SNS. Thus, for the 4D reconstruction, the phase advances in both planes were scanned over $180\degree$ in 15 steps; at each step, the distribution was transported to and then binned on a virtual screen. The reconstruction was performed in normalized phase space using the following Twiss parameters: $(\alpha_x, \alpha_y, \beta_x, \beta_y) = (
--0.030,\, 0.213,\, 17.027,\, 9.631)$, which are close, but not equal, to the statistical beam parameters: $\alpha_x, \alpha_y, \beta_x, \beta_y = (0.003,\, 0.125,\, 22.70,\, 11.88)$. Fig.~\ref{fig:tomo_sim_target_scan} shows the simulated images in normalized space. The screen resolution in the figure is $75 \times 75$.
+It appears that if the projection angles are distributed over a significant range, the accuracy does not improve much beyond 10-15 projections. As discussed later, 15 projections is likely near the maximum possible in the SNS. In the following simulated 4D reconstruction, the phase advances in both planes were scanned over $180\degree$ in 12 steps; at each step, the distribution was transported to and then binned on a virtual screen. The reconstruction was performed in normalized phase, and it was assumed that the distribution was matched to the lattice parameters. Fig.~\ref{fig:tomo_sim_target_scan} shows the simulated images in normalized space with a screen resolution of $75 \times 75$.
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=\textwidth]{Images/chapter4/tomo_sim_target_scan2.png}
+    \includegraphics[width=\textwidth]{Images/chapter4/tomo_sim_target_scan_full.png}
     \caption{Simulated $x$-$y$ projections as the horizontal (rows) and vertical (columns) phase advances are varied.}
     \label{fig:tomo_sim_target_scan}
 \end{figure}
 %
-Hock's method was then applied to these projections. The 2D projections of the reconstructed distribution are compared to the original distribution in Fig.~\ref{fig:tomo_sim_rec_hock_proj_2D}.
+Three SART iterations were used for each 2D reconstruction. The 2D projections of the reconstructed distribution are compared to the original distribution in Fig.~\ref{fig:tomo_sim_rec_hock_proj_2D} in normalized phase space.
 %
 \begin{figure}[!p]
     \centering
@@ -338,9 +337,8 @@ Hock's method was then applied to these projections. The 2D projections of the r
     \label{fig:tomo_sim_rec_hock_proj_2D}
 \end{figure}
 %
-The main features of the original distribution are present in the reconstruction.
 
-Hock's method has not yet been experimentally demonstrated, likely due to the long measurement time, but the method is preferred because it leverages 2D reconstruction algorithms. Open-source implementations of these algorithms are widely available and the conditions needed for accurate reconstructions are well-understood, primarily due to the use of tomography in medical imaging. 
+This method is preferred because it leverages 2D reconstruction algorithms. Open-source implementations of these algorithms are widely available and the conditions needed for accurate reconstructions are well-understood, primarily due to the use of tomography in medical imaging. 
 
 
 \subsection{Direct 4D reconstruction}
