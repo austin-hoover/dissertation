@@ -19,7 +19,6 @@
 \usepackage[english]{babel} % The document is in English
 \usepackage[utf8]{inputenc} % UTF8 encoding
 \usepackage[T1]{fontenc} % Font encoding
-
 \usepackage{graphicx} % For including images
 \graphicspath{{./Images/}} % Specifies the directory where pictures are stored
 
@@ -46,7 +45,8 @@
 \usepackage{booktabs}
 \usepackage[export]{adjustbox}
 \usepackage{graphbox}
-
+\usepackage{parskip} % skip line instead of indent.
+\usepackage{glossaries}
 
 %----------------------------------------------------------------------------------------
 %	ADD YOUR DEFINITIONS AND COMMANDS
@@ -76,24 +76,27 @@
     {Table of Contents}%
 }
 
-% Control spacing in list of figures.
-% \setlength{\cftbeforefigskip}{16pt} and \setlength{\cftbeforetabskip}{16pt}
+% Keep footnotes on one page.
+\interfootnotelinepenalty=10000
 
+% Don't apply parskip package to the TOC. The parskip package says that it won't affect the TOC, and I also tried \usepackage[tocskip=0pt]{parskip}, but that didnt' work.
+\newenvironment{toc}{
+    \setlength{\parskip}{0pt}
+}
 
 %----------------------------------------------------------------------------------------
 %	PICK YOUR BIBLIOGRAPHY STYLE
 %----------------------------------------------------------------------------------------
-
 \usepackage[square, numbers, sort&compress]{natbib} % for bibliography - Square brackets, citing references with numbers, citations sorted by appearance in the text and compressed (as in [4-7])
 
 % \bibliographystyle{Preasmble/physics_bibstyle} % You may use a different style adapted to your field
 % \bibliographystyle{abbrvnat} % You may use a different style adapted to your field
 \bibliographystyle{unsrtnat}
 
+
 %-------------------------------------------------------------------------------
 %	TITLE PAGE
 %-------------------------------------------------------------------------------
-
 \begin{document}
 % \setmainfont{Times}
 \pagestyle{empty} % No page numbers
@@ -117,7 +120,7 @@
 \input{Preamble/acknowledgments}
 \input{Preamble/abstract}
 % \input{Preamble/abbreviations}
-% \input{Preamble/glossary}
+\input{Preamble/glossary}
 % \input{Preamble/nomenclature}
 % \input{Preamble/dedication}
 
@@ -125,10 +128,11 @@
 %	LIST OF CONTENTS/FIGURES/TABLES
 %-------------------------------------------------------------------------------
 
-\singlespacing
 \unnumberedchapter{Table of Contents}
-\tableofcontents % Write out the Table of Contents
-\thesisspacing
+\begin{toc}
+    \singlespacing
+    \tableofcontents % Write out the Table of Contents
+\end{toc}
 \unnumberedchapter{List of Figures}
 \listoffigures % Write out the List of Figures
 % \unnumberedchapter{List of Tables}
