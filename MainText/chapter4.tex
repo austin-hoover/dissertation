@@ -22,7 +22,7 @@ The wire-scanners measure 1D projections of the distribution by sweeping a wire 
     .
 \end{equation}
 %
-The four wire-scanners can be run in parallel and take approximately five minutes to move across the beam and return to their original positions. Their default resolution is around 1 mm and their dynamic range is approximately 100. They are run at a beam pulse frequency of 1 Hz, with each data point corresponding to a separate beam pulse. 
+The four wire-scanners can be run in parallel and take approximately five minutes to move across the beam and return to their original positions. Their default step size is approximately 3 mm and their dynamic range is approximately 100. They are run at a beam pulse frequency of 1 Hz, with each data point corresponding to a separate beam pulse. 
 
 The SNS employs a target imaging system (TIS) to measure the 2D projection of the distribution on the target \cite{Blokland2010}. The SNS target is a stainless steel vessel containing liquid mercury. Its nose is prepared with a Cr:Al2O3 coating that releases light when impacted by the proton beam. Due to the high-radiation environment, the light is collected by a mirror, deflected, and focused onto an optical fiber bundle which guides the light to a camera some distance away. The TIS configuration is shown in Fig.~\ref{fig:tis}.
 %
@@ -46,10 +46,10 @@ The SNS employs a target imaging system (TIS) to measure the 2D projection of th
 \end{figure}
 %
 
-The optics in the RTBT region can be modified, but there are constraints. The $\beta$ functions should be kept below $\approx$ 35 m/rad in the wire-scanner region and below $\approx$ 100 m/rad closer to the target to avoid excess beam loss. At the target, it is best to keep the $\beta$ functions near their default values of $\beta_x \approx$ 60 m/rad and $\beta_y \approx$ 6 m/rad to satisfy peak density requirements on the target. In addition to these constraints, quadrupoles in the wire-scanner region share power supplies. There is a horizontal group \{QH18, QH20, QH22, QH24\} and a vertical group \{QV19, QV21, QV23, QV25\}. The last five magnets — QH26, QV27, QH28, QV29, and QH30 — are individually controlled.
+The optics in the RTBT can be modified, but there are constraints. The $\beta$ functions should be kept below $\approx$ 35 m/rad in the wire-scanner region and below $\approx$ 100 m/rad closer to the target to avoid excess beam loss. At the target, it is best to keep the $\beta$ functions near their default values of $\beta_x \approx$ 60 m/rad and $\beta_y \approx$ 6 m/rad to satisfy peak density requirements on the target. In addition to these constraints, quadrupoles in the wire-scanner region share power supplies. There is a horizontal group \{QH18, QH20, QH22, QH24\} and a vertical group \{QV19, QV21, QV23, QV25\}. The last five magnets — QH26, QV27, QH28, QV29, and QH30 — are individually controlled.
 
 
-\section{Phase space reconstruction from 1D projections}
+\section{Phase space reconstruction from 1D projections}\label{sec:Phase space reconstruction from 1D projections}
 
 \subsection{Method description}
 
@@ -59,7 +59,7 @@ The covariance matrix $\bm{\Sigma}$ can be reconstructed from 1D projections \ci
     \bm{\Sigma}_b = \mathbf{M} \bm{\Sigma}_a \mathbf{M}^T,
 \end{equation}
 %
-where $\mathbf{M}$ is the linear transfer matrix from $a$ to $b$. We repeat the measurement at least four times with different transfer matrices — either by changing the measurement location or by changing machine optics — and write
+where $\mathbf{M}$ is the linear transfer matrix from $a$ to $b$. We repeat the measurement at least four times with different transfer matrices — either by changing the measurement location or by changing the machine optics — and write
 %
 \begin{equation}
     \begin{bmatrix}
@@ -119,12 +119,14 @@ The measurement has a geometric interpretation, illustrated in  Fig.~\ref{fig:ws
     \label{fig:ws_emittance_measurement}
 \end{figure}
 %
-Each measured beam size defines two lines in the $x$-$x'$ plane at $b$. When the lines are transported back to $a$, their intersection bounds the phase space ellipse. In the general case, each measurement at $b$ defines a 2D surface in 4D phase space (an ellipse in the $x$-$y$ plane with unknown $x'$ and $y'$), and the intersection of these surfaces at $a$ bounds the phase space ellipsoid.
+Each measured beam size defines two lines in the $x$-$x'$ plane at $b$. When the lines are transported back to $a$, their intersection bounds the phase space ellipse. In the general case, each measurement at $b$ defines a 2D surface in 4D phase space, and the intersection of these surfaces at $a$ bounds the phase space ellipsoid.
 
 
 \subsection{Implementation in the SNS}
 
-The four SNS wire-scanners produce four equations, exactly determining the cross-plane moments, so no optics changes are needed in principle; however, additional measurements should reduce the error. In the 2D case, is typically recommended to space $n$ measurements by $\pi / n$ in phase advance \cite{book:Minty2003}. This may be due to the geometric interpretation of Fig.~\ref{fig:ws_emittance_measurement}: in normalized phase space, the rotation angle of the measurement lines is equivalent to the phase advance and the lines are evenly spaced around the phase space ellipse. But in the general case, the angle is given by \cite{Hock2011}
+To perform the wire scans, the beam is set to a pulse frequency of 1 Hz, and the beam loss monitors in the wire-scanner region are masked due to the higher-than-normal losses when the wires cross the beam core. Wire-scanner data acquisition is performed by the Profile Tools and Analysis (PTA) application. After the four wire-scanners complete their scan, a time-stamped file is produced containing the measured profiles.
+
+The four wire-scanners produce four equations, exactly determining the cross-plane moments, so no optics changes are needed in principle; however, additional measurements should reduce the error. In the 2D case, is typically recommended to space $n$ measurements by $\pi / n$ in phase advance \cite{book:Minty2003}. This may be due to the geometric interpretation of Fig.~\ref{fig:ws_emittance_measurement}: in normalized phase space, the rotation angle of the measurement lines is equivalent to the phase advance and the lines are evenly spaced around the phase space ellipse. But in the general case, the angle is given by \cite{Hock2011}
 %
 \begin{equation}
     \tan\theta = \frac{M_{12}}{M_{11}},
@@ -132,9 +134,7 @@ The four SNS wire-scanners produce four equations, exactly determining the cross
 %
 so the spacing will not be uniform. This issue should therefore be investigated numerically in each lattice. The four wire-scanners in the RTBT are already somewhat evenly spaced in phase advance, and it was determined that a 30$\degree$ window around each wire-scanner would provide sufficient coverage. 
 
-Another option, recognized late in this research project, is to compute the RMS moments from the images of the distribution on the target. These images can be collected rapidly, and the $x$-$y$ correlation is computed directly instead of indirectly using a diagonal wire. The use of target images will be explored in the next chapter; the rest of this section focuses only on the wire-scanner measurement.
-
-Due to the shared power supplies of the quadrupoles in the wire-scanner region, there is limited control of the phase advances between the wire-scanners. We instead vary the horizontal and vertical phase advances from QH18 (the first varied quadrupole) to WS24 (the last wire-scanner). This changes the phase advances at WS20, WS21, and WS23 by approximately the same amount. 
+Due to the shared power supplies of the quadrupoles in the wire-scanner region, there is limited control of the phase advances between the wire-scanners. We instead vary the phase advances from QH18 (the first varied quadrupole) to WS24 (the last wire-scanner), which changes the phase advances at WS20, WS21, and WS23 by approximately the same amount. 
 
 To set the phase advances at WS24 while constraining the beam size in the wire-scanner region, the two power supplies (eight quadrupoles) upstream of WS24 were varied using an optimizer that minimizes the following cost function:
 %
@@ -150,15 +150,17 @@ To set the phase advances at WS24 while constraining the beam size in the wire-s
     .
 \end{equation}
 %
-The quadrupole field strengths are contained in the vector $\mathbf{g}$. The calculated and desired phase advances at WS24 are $\bm{\mu} = (\mu_x, \mu_y)$, and $\tilde{\bm{\mu}} = (\tilde{\mu}_x, \tilde{\mu}_y)$, respectively. The maximum calculated and allowed $\beta$ functions in the wire-scanner region are $\bm{\beta} = (\beta_{x_{max}}, \beta_{y_{max}})$ and $\tilde{\bm{\beta}}_{max} = (\tilde{\beta}_{x_{max}}, \tilde{\beta}_{y_{max}})$, respectively. $\Theta$ is the Heaviside step function. Finally, $\epsilon$ is a constant. It is hoped that the beam is matched to the lattice optics so that the calculated phase advances are close to the true phase advances.
+The quadrupole field strengths are contained in the vector $\mathbf{g}$. The calculated and desired phase advances at WS24 are $\bm{\mu} = (\mu_x, \mu_y)$, and $\tilde{\bm{\mu}} = (\tilde{\mu}_x, \tilde{\mu}_y)$, respectively. The maximum calculated and allowed $\beta$ functions in the wire-scanner region are $\bm{\beta}_{max} = (\beta_{x_{max}}, \beta_{y_{max}})$ and $\tilde{\bm{\beta}}_{max} = (\tilde{\beta}_{x_{max}}, \tilde{\beta}_{y_{max}})$, respectively. $\Theta$ is the Heaviside step function. Finally, $\epsilon$ is a constant. It is hoped that the beam is matched to the lattice optics so that the calculated phase advances are close to the true phase advances.
 
-A GUI application was developed in the OpenXAL framework for use in the SNS control room. In the first pane of the application, the user can set the phase advances at WS24 and view the model optics and phase advances throughout the RTBT. In the second pane, the user can load wire-scanner output files and choose the reconstruction location. These files are output from a separate application and contain the wire-scanner profiles, RMS parameters, and Gaussian fit parameters. They also contain a number that defines the machine state — magnet strengths, etc. — at the time of the measurement. The application reads this number, synchronizes the model with the machine state, and computes the transfer matrices from the wire-scanners to the reconstruction location. The RMS moments and transfer matrices are then used to reconstruct the covariance matrix. The resulting beam parameters are printed and compared to the model lattice parameters. The 2D projections of the covariance ellipsoid are plotted along with the measurement lines, with the option to view in normalized coordinates. 
+After the model optics are computed, the live quadrupole settings must be changed. The SNS employs a machine protection system (MPS) that will cause the machine to trip if the RTBT quadrupole strengths wander outside a certain window, so this window is extended beforehand. Additionally, the MPS will activate if the fractional change in field strength is too large; to solve this problem, the field strength is changed in small steps. 
+
+A GUI application to perform the above tasks was developed in the OpenXAL framework for use in the SNS control room. In the first pane of the application, the user can set the phase advances at WS24 and view the model optics and phase advances throughout the RTBT. In the second pane, the user can load wire-scanner output files and choose the reconstruction location. These files contain the wire-scanner profiles, RMS parameters, and Gaussian fit parameters. They also contain a number that defines the machine state at the time of the measurement. The application reads this number, synchronizes the model with the machine state, and computes the transfer matrices from the wire-scanners to the reconstruction location. The RMS moments and transfer matrices are then used to reconstruct the covariance matrix. The resulting beam parameters are printed and compared to the model lattice parameters. The 2D projections of the covariance ellipsoid are plotted along with the measurement lines, with the option to view in normalized coordinates. 
 
 
 
 \subsection{Measurement of a production beam}
 
-The multi-optics method was tested on a fully accumulated production beam. The phase advances at WS24 were varied in a 30$\degree$ range over ten steps — the first half of the scan held the vertical phase fixed while varying the horizontal phase, and the second half of the scan held the horizontal phase fixed while varying the vertical phase. The results of the reconstruction are shown in Fig.~\ref{fig:prod_meas} for a location just before QH18.
+The multi-optics method was tested on a fully accumulated production beam. The phase advances at WS24 were varied in a 30$\degree$ range over ten steps: the first half of the scan held the vertical phase advance fixed while varying the horizontal phase advance, and the second half of the scan held the horizontal phase advance fixed while varying the vertical phase advance. The results of the reconstruction are shown in Fig.~\ref{fig:prod_meas} for a location just before QH18.
 %
 \begin{figure}[!p]
     \centering
@@ -187,7 +189,7 @@ The multi-optics method was tested on a fully accumulated production beam. The p
     \label{fig:prod_meas}
 \end{figure}
 %
-The best-fit ellipses in the $x$-$x'$ and $y$-$y'$ planes are normalized by the reconstructed Twiss parameters. The uncertainties in the beam parameters were calculated by propagating the standard deviations of the ten reconstructed moments obtained from the LLSQ estimator. The reconstructed Twiss parameters are close to the model parameters computed from the linear transfer matrices of the ring and RTBT, showing that the beam is matched. The intrinsic emittances are almost equal to the apparent emittances, showing that there is very little cross-plane correlation. This is expected for a production beam.
+The best-fit ellipses in the $x$-$x'$ and $y$-$y'$ planes are normalized by the reconstructed Twiss parameters. The uncertainties in the beam parameters were calculated by propagating the standard deviations of the ten reconstructed moments obtained from the LLSQ estimator. The reconstructed Twiss parameters are close to the model parameters computed from the linear transfer matrices of the ring and RTBT, showing that the beam is matched. The intrinsic emittances are almost equal to the apparent emittances, showing that there is very little cross-plane correlation in the beam. This is expected for a production beam.
 
 Decreasing the number of measurements used in the reconstruction had no substantial effect on the answer as long as at least two measurements (eight profiles) were used; however, the fit usually failed when only one measurement (four profiles) was used. Here, ``failed fit" means that the reconstructed covariance matrix is unphysical, producing imaginary intrinsic emittances. 
 
@@ -250,7 +252,7 @@ Fig.~\ref{fig:rtbt_condition_number} shows a similar calculation in the RTBT.
 The phase advances at WS24 are scanned around their default values. The default optics are ill-suited for the measurement. A new operating point was chosen at the blue dot in the figure. This corrected the issue of failed fits in the following experiments. 
 % [Unfortunately, the sensitivity of the successful fits to errors — i.e., the variance of the reconstructed emittances — was not examined in detail. We will return to this point in Chapter \ref{chap-5}].
 
-Finally, we mention that there is information to be gained from 1D projections of the distribution in addition to the RMS reconstruction. The distributions can be compared to the ideal ``half-circle" projections of a uniform density ellipse. The horizontal and vertical projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section. It may be possible to include cross-plane information in the reconstruction using the diagonal projections. There is a particular method that can, in principle, reconstruct the $x$-$x'$-$y$-$y'$ distribution from only 1D projections, although the method is untested. 
+Finally, we mention that there is information to be gained from 1D projections of the distribution in addition to the RMS reconstruction. The distributions can be compared to the ideal ``half-circle" projections of a uniform density ellipse. The projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section. It may be possible to include cross-plane information in the reconstruction using the diagonal projections. There is a particular method that can, in principle, reconstruct the $x$-$x'$-$y$-$y'$ distribution from only 1D projections, although the method is untested. 
 
 
 
@@ -264,13 +266,13 @@ Tomographic methods are well-established for the reconstruction of 2D phase spac
 
 \subsection{Tomography for beam diagnostics}
 
-Many algorithms exist to reconstruct 2D images from 1D projections, such as filtered back-projection (FBP), algebraic reconstruction (ART) \cite{Slaney1988}, and maximum entropy (MENT) \cite{Minerbo1979}. Projections of an object are normally obtained by illuminating the object at different angles. Although the measured 1D projections of a 2D phase space distribution are always along one direction (the $x$ of $y$ axis), we can take advantage of the known transfer matrix $\mathbf{M}$ between the measurement location $b$ and the reconstruction location $a$. The measured projection at $b$ is
+Many algorithms exist to reconstruct 2D images from 1D projections, such as filtered back-projection (FBP), algebraic reconstruction (ART) \cite{Slaney1988}, and maximum entropy (MENT) \cite{Minerbo1979}. Projections of an object are normally obtained by illuminating the object at different angles. Although the measured projections of a 2D phase space distribution ($x$-$x'$) are always along the $x$, we can take advantage of the known transfer matrix $\mathbf{M}$ between the measurement location $b$ and the reconstruction location $a$ to obtain the projections at different angles in $x$-$x'$. The measured projection at $b$ is
 %
 \begin{equation}
     p_b(x_b) = \int_{-\infty}^{\infty} f(x_b, x'_b) dx'_b.
 \end{equation}
 %
-The projection at $a$ will be along axis $\tilde{x}_a$, which is rotated at angle $\theta$ above the $x_a$ axis. The angle is computed from the transfer matrix: \cite{Hock2013a}: 
+The projection at $a$ will be along axis $\tilde{x}_a$, which is rotated at angle $\theta$ above the $x_a$ axis. The angle is computed from the transfer matrix \cite{Hock2013a}:
 %
 \begin{equation}\label{eq:proj_trans_1}
     \tan\theta = \frac{M_{12}}{M_{11}}.
@@ -290,7 +292,7 @@ The projection must then be scaled to conserve area. The projections at $a$ and 
 %
 Standard tomography algorithms can be applied to the scaled projections.
 
-It is also possible to reconstruct in normalized phase space \cite{Hock2011}. Recall the normalization matrix $\mathbf{V}$ from Eq.~\eqref{eq:CS_parameterization}. In normalized coordinates, the transfer matrix is a rotation matrix by an angle equal to the phase advance. It is straightforward to obtain the projections in the normalized phase space at $a$:
+It is also possible to reconstruct in normalized phase space \cite{Hock2011}. Recall the normalization matrix $\mathbf{V}$ from Eq.~\eqref{eq:CS_parameterization}. In normalized coordinates, the transfer matrix is a rotation matrix by an angle equal to the phase advance. It is straightforward to obtain the projections in the normalized phase space at $a$ by noting
 %
 \begin{equation}
 \begin{aligned}
@@ -300,12 +302,12 @@ It is also possible to reconstruct in normalized phase space \cite{Hock2011}. Re
 \end{aligned}
 \end{equation}
 %
-where $\mathbf{V}$ is a function of the Twiss parameters at $a$. The previous equations can be applied to the new matrix $\mathbf{M} \mathbf{V}$ to obtain the projections in the normalized phase space at $a$. After the image is reconstructed, the true distribution can be obtained by transforming the grid coordinates using $\mathbf{V}$ and interpolating at the transformed coordinates. Note that any Twiss parameters can be used to form $\mathbf{V}$; if the Twiss parameters are matched to the distribution, the rotation angle of the projection will be the phase advance from $a$ to $b$, and the reconstructed distribution will be circular in the normalized phase space.
+where $\mathbf{V}$ is a function of the Twiss parameters at $a$. Eq.~\eqref{eq:proj_trans_1}, Eq.~\eqref{eq:proj_trans_2}, and Eq.~\eqref{eq:proj_trans_3} can be applied to the matrix $\mathbf{M} \mathbf{V}$ to obtain the projections in the normalized phase space at $a$. After the image is reconstructed, the true distribution can be obtained by transforming the grid coordinates using $\mathbf{V}$ and interpolating at the transformed coordinates. Note that any Twiss parameters can be used to form $\mathbf{V}$; if the Twiss parameters are matched to the distribution, the rotation angle of the projection will be the phase advance from $a$ to $b$, and the reconstructed distribution will be circular in the normalized phase space. 
 
 
 \subsection{4D reconstruction as a series of 2D reconstructions}
 
-Recent work by Hock et al. reduces 4D reconstruction to a series of 2D reconstructions when the $x$-$y$ projections are available \cite{Hock2013a}. The method, which we refer to as Hock's method, is as follows. Assume that the horizontal and vertical angles (or phase advances) can be controlled independently. Let the angles in $x$-$x'$ be \{$\theta_{x_1}$, $\dots$, $\theta_{x_k}$, $\dots, \theta_{x_K}$\} and the angles in $y$-$y'$ be \{$\theta_{y_1}$, $\dots$, $\theta_{y_l}$, $\dots$, $\theta_{y_L}$\}. The projections are stored in an array $\mathbf{S}$, where $\mathbf{S}_{i,j,k,l}$ is the intensity at point ($x_i$, $y_j$) on the screen for angles $\theta_x = \theta_{x_k}$, $\theta_y = \theta_{y_l}$. We can immediately reconstruct a 3D projection of the distribution from this data. Consider a single row of the image — the intensity along the row gives a 1D projection onto the $x$ axis for a horizontal slice of the distribution. We have a set of these 1D projections at different $\theta_{x}$ which we can use to reconstruct the $x$-$x'$ distribution at this slice using any 1D $\rightarrow$ 2D reconstruction method. Repeating at each slice gives the array $\mathbf{D}$, where $\mathbf{D}_{j, l, r, s}$ is the density at $x = x_r$, $x' = x'_s$, $y = y_j$, for $\theta_{y} = \theta_{y_l}$. We then analyze the vertical plane. At each bin in the reconstructed $x$-$x'$ grid, we have a set of 1D projections of $y$-$y'$ at each $\theta_{y_l}$, thus, $y$-$y'$ can be reconstructed. This completes the reconstruction: we have an array $\mathbf{Z}$, where $\mathbf{Z}_{r, s, t, u}$ is the density at $x = x_r$, $x' = x_s$, $y = y_t$, $y' = y'_u$.
+Recent work by Hock et al. reduces 4D reconstruction to a series of 2D reconstructions when the $x$-$y$ projections are available \cite{Hock2013a}. The method, which we refer to as Hock's method, is as follows. Assume that the horizontal and vertical angles (or phase advances) can be independently controlled. Let the angles in $x$-$x'$ be \{$\theta_{x_1}$, $\dots$, $\theta_{x_k}$, $\dots, \theta_{x_K}$\} and the angles in $y$-$y'$ be \{$\theta_{y_1}$, $\dots$, $\theta_{y_l}$, $\dots$, $\theta_{y_L}$\}. The projections are stored in an array $\mathbf{S}$, where $\mathbf{S}_{i,j,k,l}$ is the intensity at point ($x_i$, $y_j$) on the screen for angles $\theta_x = \theta_{x_k}$, $\theta_y = \theta_{y_l}$. We can immediately reconstruct a 3D projection of the distribution from this data. Consider a single row of the image — the intensity along the row gives a 1D projection onto the $x$ axis for a horizontal slice of the distribution. We have a set of these 1D projections at different $\theta_{x}$ which we can use to reconstruct the $x$-$x'$ distribution at this slice using any 1D $\rightarrow$ 2D reconstruction method. Repeating at each slice gives the array $\mathbf{D}$, where $\mathbf{D}_{j, l, r, s}$ is the density at $x = x_r$, $x' = x'_s$, $y = y_j$, for $\theta_{y} = \theta_{y_l}$. We then analyze the vertical plane. At each bin in the reconstructed $x$-$x'$ grid, we have a set of 1D projections of $y$-$y'$ at each $\theta_{y_l}$, thus, $y$-$y'$ can be reconstructed. This completes the reconstruction: we have an array $\mathbf{Z}$, where $\mathbf{Z}_{r, s, t, u}$ is the density at $x = x_r$, $x' = x_s$, $y = y_t$, $y' = y'_u$.
 
 To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes_corner_compare} was used. In \cite{Hock2013a}, filtered back-projection (FBP) was used in the 2D reconstructions. The disadvantage of FBP is that it requires many projections; simultaneous algebraic reconstruction (SART) is a possible alternative when the number of projections is small. The accuracy of SART will depend on the number of projections and the range of projection angles. Fig.~\ref{fig:tomo_sim_art2D} demonstrates this by reconstructing the $y$-$y'$ distribution from 1D projections as these numbers are varied.
 %
@@ -336,14 +338,14 @@ Three SART iterations were used for each 2D reconstruction. The 2D projections o
     \label{fig:tomo_sim_rec_hock_proj_2D}
 \end{figure}
 %
-Notice that the projections of the reconstructed distribution, such as $x$-$y'$ are present in the simulated $x$-$y$ images in Fig.~\ref{fig:tomo_sim_target_scan}. The reason is straightforward: if the phase advance in the vertical plane is $\pi$/2, then $y \rightarrow y'$ and $f(x, y) \rightarrow f(x, y')$ \cite{Hock2013a}.
+Notice that the projections of the reconstructed distribution, such as $x$-$y'$, are present in the simulated $x$-$y$ images in Fig.~\ref{fig:tomo_sim_target_scan}. The reason is straightforward: if the phase advance in the vertical plane is $\pi$/2, then $y \rightarrow y'$ and $f(x, y) \rightarrow f(x, y')$ \cite{Hock2013a}. 
 
-This method is preferred because it leverages 2D reconstruction algorithms. Open-source implementations of these algorithms are widely available and the conditions needed for accurate reconstructions are well-understood, primarily due to the use of tomography in medical imaging. 
+This method is preferred because it leverages 2D reconstruction algorithms. Open-source implementations of these algorithms are widely available and the conditions needed for accurate reconstructions are well-understood, primarily due to the use of tomography in medical imaging.
 
 
 \subsection{Direct 4D reconstruction}
 
-If the phase advances cannot be independently controlled or if only a very small number of projections can be collected, 2D reconstruction algorithms must be generalized to 4D. Several algorithms generalize to any number of dimensions, but they may be difficult to implement, the conditions for an accurate reconstruction may be unclear, and the time and space complexity may make the method infeasible. We focus on two methods that have recently been experimentally demonstrated.
+If the phase advances cannot be independently controlled or if only a very small number of projections can be collected, 2D reconstruction algorithms must be generalized to 4D. Several algorithms generalize to any number of dimensions, but they may be difficult to implement, the conditions for an accurate reconstruction may be unclear, and the time and space complexity may make the method infeasible. Here, we focus on one method that has recently been experimentally demonstrated, then mention a few more that could be explored in future work.
 
 
 \subsubsection{ART}
@@ -356,7 +358,7 @@ Each measured projection on the screen produces the following set of equations:
 %
 $\bm{\rho}$ is a vector of the pixel intensities on the screen and $\bm{\psi}$ is a vector of the phase space coordinates on the reconstruction grid. To form $\mathbf{P}$, we place a particle at the center of each bin in the reconstruction grid and track the particles to the screen using the transfer matrix. $\mathbf{P}_{i, j} = 1$ if particle $j$ landed in bin $i$ on the screen; otherwise, $\mathbf{P}_{i, j} = 0$. The equations produced by subsequent measurements are stacked, and the resulting system of equations is solved using a sparse least squares solver. This method has been used to reconstruct the phase space distribution in the Compact Linear Accelerator for Research and Applications (CLARA), a low-energy test facility \cite{Wolski2020}.
 
-For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measurement grid, and $n$ measurements, $\bm{\rho}$ has $nN^2$ elements, $\bm{\psi}$ has $n N^4$ elements, and $\mathbf{P}$ has $n N^2 \times N^4$ elements. In practice, these significant storage requirements limit the resolution of the reconstruction grid to $N \approx 50$. In Fig.~\ref{fig:tomo_sim_rec_art_proj_2D}, the method was applied to the same simulated distribution, but $9 \times 9$ projections were used instead of $15 \times 15$.
+For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measurement grid, and $n$ measurements, $\bm{\rho}$ has $nN^2$ elements, $\bm{\psi}$ has $n N^4$ elements, and $\mathbf{P}$ has $n N^2 \times N^4$ elements. In practice, these significant storage requirements limit the resolution of the reconstruction grid to $N \approx 50$. In Fig.~\ref{fig:tomo_sim_rec_art_proj_2D}, the method was applied to the same simulated distribution, but $8 \times 8$ projections were used instead of $15 \times 15$.
 %
 \begin{figure}[!p]
     \centering
@@ -365,12 +367,12 @@ For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measu
     \label{fig:tomo_sim_rec_art_proj_2D}
 \end{figure}
 %
-Although the main features of the distribution are present in the reconstruction, there are streaking artifacts outside the beam core that are not present in Fig.~\ref{fig:tomo_sim_rec_hock_proj_2D}, although it is likely that the performance could improve if a larger number of projections were used. Unfortunately, the algorithm took hours to execute as opposed to minutes for the previous example, even with the reduced grid resolution.
+Although the main features of the distribution are present in the reconstruction, there are streaking artifacts outside the beam core that are not present in Fig.~\ref{fig:tomo_sim_rec_hock_proj_2D}, although is likely that the performance could improve if a larger number of projections were used. Unfortunately, the algorithm took hours to execute as opposed to minutes for the previous example, even with the reduced grid resolution.
 
 
 \subsubsection{Additional methods}
 
-There are additional methods to reconstruct the 4D phase space distribution. We mention two here, although they are not used in this work.
+Here are two additional methods to reconstruct the 4D phase space distribution that could be explored in future work.
 
 Among the distributions consistent with the measured projections, MENT selects the distribution with the maximum entropy. For example, without any measurements constraining the solution, MENT will produce a uniform distribution. It therefore has the ability to perform well with few projections, and has been used for 2D reconstruction in particle accelerators \cite{Hock2013a}. The downside is that the iterative numerical solution is difficult to implement. In principle, the method could be extended to reconstruct the 4D phase space distribution from $x$-$y$ projections.\footnote{In principle, 4D reconstruction could be performed with 1D projections from wire-scanners \cite{Sander1979}; however, it seems a priori unlikely for this to produce an accurate result — imagine reconstructing a 3D image from 1D projections.} An analytic MENT solution has been derived and used for 4D reconstruction of an SNS minipulse from $x$-$x'$ and $y$-$y'$ projections at a laser wire \cite{Wong-forthcoming}. 
 
@@ -382,7 +384,7 @@ Another method is to generate a particle bunch, track the bunch to the screen, w
 
 \subsubsection{Optics control}
 
-We desire independent control of the horizontal and vertical optics. The optics control developed for the wire-scanner measurement can be used here. The constraints are now that the $\beta$ functions remain below 35 m/rad in the wire-scanner region, below 100 m/rad before the target, and stay within 15\% of their default values at the target. Fig.~\ref{fig:target_phase_scan_1} shows that the horizontal and vertical phases can both be scanned in a 180$\degree$ range, and Fig.~\ref{fig:target_phase_scan_2} overlays the $\beta$ functions and phase advances throughout the RTBT for every step in the scan. The horizontal axis starts at the first varied quadrupole and ends at the target.
+We desire independent control of the horizontal and vertical optics. The optics control developed for the wire-scanner measurement can be used here. The constraints are now that the $\beta$ functions remain below 35 m/rad in the wire-scanner region, below 100 m/rad before the target, and stay within 15\% of their default values at the target. Fig.~\ref{fig:target_phase_scan_1} shows that both the horizontal and vertical phase advances can be scanned in a 180$\degree$ range without modifying the other. Fig.~\ref{fig:target_phase_scan_2} overlays the $\beta$ functions and phase advances throughout the RTBT for every step in the scan, showing that the beam size constraints are not violated. The horizontal axis starts at the first varied quadrupole and ends at the target.
 %
 \begin{figure}[!p]
     \centering
@@ -405,7 +407,7 @@ Computing each optics setting takes approximately sixteen seconds using an OpenX
 
 \subsubsection{Image acquisition and processing}
 
-Target image acquisition is handled entirely by the target imaging system software. Live target images are displayed in the SNS control room. It is straightforward to access the image from an OpenXAL script as an 80,000 element array. Thus, the script to perform the target scan repeatedly modifies the RTBT quadrupoles, triggers the beam, and saves the image array to a file.
+Target image acquisition is handled entirely by the target imaging system software. Live target images are displayed in the SNS control room. It is straightforward to access the image from an OpenXAL script as an 80,000 element array. The script to perform the target scan repeatedly modifies the RTBT quadrupoles, triggers the beam, and saves the image array to a file.
 
 The unprocessed target images are not ideal. First, to reduce pulse-to-pulse variation, the images can be averaged over a few pulses. Second, the beam passes through 2 meters of Helium at atmospheric pressure before the target; due to radiation damage, light from the gas appears as a streaking artifact on the lower-right of the image \cite{Blokland2010}. Although this has been corrected by delaying the shutter opening by a few microseconds, the issue has occasionally resurfaced when the beam energy is different than 1 GeV. If these images are collected, they can be identified later by placing a maximum value on the pixels far from the image center, particularly in the lower-right region. Third, there are visible grid lines from the fiber bundle. A Gaussian blur is therefore applied to the image as in Fig.~\ref{fig:target_image}. Finally, there are four dark spots on the image that serve as fiducial markers; they are visible when the beam is large. In this work, the dark spots are left in the image.
 %
@@ -422,4 +424,4 @@ The unprocessed target images are not ideal. First, to reduce pulse-to-pulse var
 
 \subsubsection{Other uses of 2D projections}
 
-There is information to be gained from 2D projections of the distribution in addition to the 4D reconstruction. The projects can be compared to an ideal uniform density ellipse. Additionally, one can observe the variation in the $x$-$y$ correlation coefficient as the difference between the horizontal and vertical phase advances is varied. This reveals any ``hidden" cross-plane correlations. In a Danilov distribution, the correlation coefficient can obtain any value in the range [-1, 1].
+There is information to be gained from 2D projections of the distribution in addition to the 4D reconstruction. The projections can be compared to a uniform density ellipse. Additionally, one can observe the variation in the $x$-$y$ correlation coefficient as the difference between the horizontal and vertical phase advances is varied. This reveals any ``hidden" cross-plane correlations, as in Fig.~\ref{fig:tomo_sim_target_scan}. In a Danilov distribution, the correlation coefficient can obtain any value in the range [-1, 1]. Finally, by computing the RMS moments of the images, the covariance matrix can be reconstructed using the least squares method described in Section \ref{sec:Phase space reconstruction from 1D projections}; the advantage would be that data collection is much faster than for the wire-scanners and that the $\langle xy \rangle$ moment is computed directly.
