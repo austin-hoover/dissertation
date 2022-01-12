@@ -1,6 +1,6 @@
 \chapter{Diagnostics} \label{chap-4}
 
-Determining the similarity between a painted distribution in the SNS and a Danilov distribution requires measurement of the 4D transverse phase space distribution. A direct measurement using a slit-scan \cite{Cathey2018} is not possible at high energy, so the distribution must be reconstructed from lower-dimensional projections. In this chapter, we first detail the available hardware and constraints in the SNS. We then describe methods to perform the reconstruction using 1D and 2D projections. These methods are simulated, then implemented in the SNS.
+Determining the similarity between a painted distribution in the SNS and a Danilov distribution requires measurement of the 4D transverse phase space distribution. A direct measurement using a slit-scan \cite{Cathey2018} is not possible at high energy, so the distribution must be reconstructed from lower-dimensional projections. In this chapter, we first describe the available hardware to measure such projections in the SNS. We then describe methods to perform the reconstruction using 1D and or 2D projections. These methods are simulated, then implemented in the SNS.
 
 
 \section{Available hardware and constraints}
@@ -262,7 +262,7 @@ Finally, we mention that there is information to be gained from 1D projections o
 Tomographic methods are well-established for the reconstruction of 2D phase space distributions from 1D projections in transverse phase space \cite{Hock2014} and longitudinal phase space \cite{Evans2014}. The concept has recently been extended to the reconstruction of the 4D transverse phase space, both in theory and in practice \cite{Hock2013b, Wang2019, Wolski2020}. This section begins with a brief discussion of tomography in two dimensions as applied to particle accelerators, then moves on to describe several 4D reconstruction algorithms. The algorithms are implemented and their accuracy and limitations are discussed. Finally, the use of 4D tomography on images from the SNS target imaging system is discussed.
 
 
-\subsection{Beam tomography}
+\subsection{Tomography for beam diagnostics}
 
 Many algorithms exist to reconstruct 2D images from 1D projections, such as filtered back-projection (FBP), algebraic reconstruction (ART) \cite{Slaney1988}, and maximum entropy (MENT) \cite{Minerbo1979}. Projections of an object are normally obtained by illuminating the object at different angles. Although the measured 1D projections of a 2D phase space distribution are always along one direction (the $x$ of $y$ axis), we can take advantage of the known transfer matrix $\mathbf{M}$ between the measurement location $b$ and the reconstruction location $a$. The measured projection at $b$ is
 %
@@ -303,7 +303,6 @@ It is also possible to reconstruct in normalized phase space \cite{Hock2011}. Re
 where $\mathbf{V}$ is a function of the Twiss parameters at $a$. The previous equations can be applied to the new matrix $\mathbf{M} \mathbf{V}$ to obtain the projections in the normalized phase space at $a$. After the image is reconstructed, the true distribution can be obtained by transforming the grid coordinates using $\mathbf{V}$ and interpolating at the transformed coordinates. Note that any Twiss parameters can be used to form $\mathbf{V}$; if the Twiss parameters are matched to the distribution, the rotation angle of the projection will be the phase advance from $a$ to $b$, and the reconstructed distribution will be circular in the normalized phase space.
 
 
-
 \subsection{4D reconstruction as a series of 2D reconstructions}
 
 Recent work by Hock et al. reduces 4D reconstruction to a series of 2D reconstructions when the $x$-$y$ projections are available \cite{Hock2013a}. The method, which we refer to as Hock's method, is as follows. Assume that the horizontal and vertical angles (or phase advances) can be controlled independently. Let the angles in $x$-$x'$ be \{$\theta_{x_1}$, $\dots$, $\theta_{x_k}$, $\dots, \theta_{x_K}$\} and the angles in $y$-$y'$ be \{$\theta_{y_1}$, $\dots$, $\theta_{y_l}$, $\dots$, $\theta_{y_L}$\}. The projections are stored in an array $\mathbf{S}$, where $\mathbf{S}_{i,j,k,l}$ is the intensity at point ($x_i$, $y_j$) on the screen for angles $\theta_x = \theta_{x_k}$, $\theta_y = \theta_{y_l}$. We can immediately reconstruct a 3D projection of the distribution from this data. Consider a single row of the image — the intensity along the row gives a 1D projection onto the $x$ axis for a horizontal slice of the distribution. We have a set of these 1D projections at different $\theta_{x}$ which we can use to reconstruct the $x$-$x'$ distribution at this slice using any 1D $\rightarrow$ 2D reconstruction method. Repeating at each slice gives the array $\mathbf{D}$, where $\mathbf{D}_{j, l, r, s}$ is the density at $x = x_r$, $x' = x'_s$, $y = y_j$, for $\theta_{y} = \theta_{y_l}$. We then analyze the vertical plane. At each bin in the reconstructed $x$-$x'$ grid, we have a set of 1D projections of $y$-$y'$ at each $\theta_{y_l}$, thus, $y$-$y'$ can be reconstructed. This completes the reconstruction: we have an array $\mathbf{Z}$, where $\mathbf{Z}_{r, s, t, u}$ is the density at $x = x_r$, $x' = x_s$, $y = y_t$, $y' = y'_u$.
@@ -328,15 +327,16 @@ It appears that if the projection angles are distributed over a significant rang
     \label{fig:tomo_sim_target_scan}
 \end{figure}
 %
-Three SART iterations were used for each 2D reconstruction. The 2D projections of the reconstructed distribution are compared to the original distribution in Fig.~\ref{fig:tomo_sim_rec_hock_proj_2D} in normalized phase space.
+Three SART iterations were used for each 2D reconstruction. The 2D projections of the reconstructed distribution are compared to those of the original distribution in Fig.~\ref{fig:tomo_sim_rec_hock_proj_2D} in normalized phase space, which shows good agreement.
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/chapter4/tomo_sim_rec_hock_proj_2D.png}
+    \includegraphics[width=0.8\textwidth]{Images/chapter4/tomo_sim_rec_hock_proj_2D_ver.png}
     \caption{Simulated reconstruction using Hock's method (normalized phase space).}
     \label{fig:tomo_sim_rec_hock_proj_2D}
 \end{figure}
 %
+Notice that the projections of the reconstructed distribution, such as $x$-$y'$ are present in the simulated $x$-$y$ images in Fig.~\ref{fig:tomo_sim_target_scan}. The reason is straightforward: if the phase advance in the vertical plane is $\pi$/2, then $y \rightarrow y'$ and $f(x, y) \rightarrow f(x, y')$ \cite{Hock2013a}.
 
 This method is preferred because it leverages 2D reconstruction algorithms. Open-source implementations of these algorithms are widely available and the conditions needed for accurate reconstructions are well-understood, primarily due to the use of tomography in medical imaging. 
 
@@ -360,7 +360,7 @@ For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measu
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/chapter4/tomo_sim_rec_art_proj2D.png}
+    \includegraphics[width=0.8\textwidth]{Images/chapter4/tomo_sim_rec_art_proj_2D_ver.png}
     \caption{Simulated reconstruction using algebraic reconstruction (normalized phase space).}
     \label{fig:tomo_sim_rec_art_proj_2D}
 \end{figure}

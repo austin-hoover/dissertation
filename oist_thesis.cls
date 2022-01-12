@@ -20,7 +20,7 @@
 %-------------------------------------------------------------------------------
 % \renewcommand{\familydefault}{phv}
 
-\LoadClass[11pt, oneside]{book} 
+\LoadClass[12pt, oneside]{book} 
 
 \RequirePackage[
     a4paper, 
@@ -32,11 +32,11 @@
     bottom=2.5cm
 ]{geometry}
 
-\RequirePackage[bf, font=onehalfspacing]{caption} % caption: FIG in bold, 1.5 line spacing in figure and table captions
+\RequirePackage[bf]{caption} % caption: FIG in bold, 1.5 line spacing in figure and table captions
 
 \newcommand{\thesisspacing}{
     % \singlespacing
-    \setstretch{1.5}
+    \setstretch{1.0}
 }
 
 \newcommand{\numberedchapter}{ % Preparation for numbered chapters

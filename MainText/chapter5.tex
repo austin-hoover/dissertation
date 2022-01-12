@@ -1,11 +1,11 @@
 \chapter{Experiments} \label{chap-5}
 
-This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapters \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in Chapter \ref{chap-4} were used to measure the painted distribution. Recall from Chapter \ref{chap-3} that solenoid magnetic fields should help the distribution remain close to a Danilov distribution during injection; solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until mid-2022, outside the time frame of this work. Thus, the beams created in the following experiments were not expected to be optimal. Nonetheless, it was hoped that the beams would be clearly distinguishable from a production beam produced by correlated painting. 
+This chapter presents the results of initial experimental studies of elliptical painting at the SNS. The simulations in chapters \ref{chap-2}-\ref{chap-3} were used to guide the experiments, and the diagnostics described in Chapter \ref{chap-4} were used to measure the painted distribution. Recall from Chapter \ref{chap-3} that solenoid magnetic fields should help to stabilize the distribution against nonlinearities during injection. Solenoid magnets were planned to be installed in the SNS ring in 2021, but their installation was delayed until late 2022, outside the time frame of this work. Therefore, in the following experiments, the elliptical painting method was carried out by setting equal tunes in the ring. Although the quality of the final beam was not expected to approach the simulation in Chapter \ref{chap-3}, it was hoped that it would be clearly distinguishable from a beam produced by traditional methods. After several of the experiments, a simulation with similar parameters will be displayed. 
 
 
 \section{Procedure}
 
-Accelerator physics experiments are performed in the SNS control room using the OpenXAL framework. OpenXAL provides a high-level interface to perform tasks such as changing magnet strengths, triggering the beam, etc. It can also perform single-particle or envelope tracking using an online model of the accelerator. OpenXAL scripts are written in Java or Jython and are executed from the command line. Many graphical user interface (GUI) OpenXAL applications have been developed over the history of the SNS and are available for use in the control room. 
+Accelerator physics experiments are performed in the SNS control room using the OpenXAL framewore, which provides a high-level interface to perform tasks such as changing magnet strengths, triggering the beam, etc. It can also perform single-particle or envelope tracking using an online model of the accelerator. OpenXAL scripts are written in Java or Jython and are executed from the command line. Many graphical user interface (GUI) OpenXAL applications have been developed over the history of the SNS and are available for use in the control room. 
 
 The following steps are taken during the experimental setup:
 %
@@ -40,7 +40,7 @@ The second measurement is the tomographic reconstruction from $x$-$y$ projection
 
 \section{Experiment 1}
 
-The SNS reserves approximately one day per month for accelerator physics experiments, and various experiments must compete for time within this twenty-four hour period. At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed. Although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested. And the SNS energy had not yet been decreased — a time-consuming and possibly error-prone task. The goal of Experiment 1 was therefore to push the injected coordinates $x$ and $y'$ to their limits at 1 GeV.
+The SNS reserves approximately two days per month for accelerator physics experiments, and various experiments must compete for time within this forty-eight hour period. At the time of our first experiment, setup of the injection region using the RIC application had not yet been completed. Although simulations indicated that the kickers were not strong enough to perform elliptical painting at 1 GeV kinetic energy, this had not been tested. And the SNS energy had not yet been decreased — a time-consuming and possibly error-prone task. The goal of Experiment 1 was therefore to push the injected coordinates $x$ and $y'$ to their limits at 1 GeV.
 
 We decided to measure the distribution not only at its final state, but also at the intermediate states. Using the fixed-optics method, ten measurements could be performed within one hour. 
 
@@ -48,7 +48,7 @@ We decided to measure the distribution not only at its final state, but also at 
 
 Before setting up for elliptical painting, a production beam was measured for comparison. Recall that a production beam is produced using correlated painting: the displacements at the foil are increased from an initial offset to their final value, and the slope at the foil is always zero. The number of injected turns was reduced from 1000 to 500, and the beam was measured every 50 turns. 
 
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and the reconstructed emittances and covariance ellipses at BPM17, just before QH18, are shown in Fig.~\ref{fig:exp1a_emittances}.
+The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}.
 %
 \begin{figure}[!p]
     \centering
@@ -79,11 +79,11 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}, and
     \label{fig:exp1a_emittances}
 \end{figure}
 %
-Each subplot in Fig.~\ref{fig:exp1a_wsmeas} shows the evolution of the projection onto a single wire; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, or $u$. That the closed orbit starts offset from the foil is evident from two initial peaks in the $x$ and $y$ projections. The distribution forms a donut in $x$-$x'$ and $y$-$y'$, the hollow center of which eventually partially fills in due to space charge and other nonlinear effects.
+Each subplot shows the evolution of the projection onto a single wire; each row corresponds to a different wire-scanner and each column corresponds to a different projection axis — $x$, $y$, or $u$. That the closed orbit starts offset from the foil is evident from two initial peaks in the $x$ and $y$ projections. The distribution forms a donut in $x$-$x'$ and $y$-$y'$, the hollow center of which eventually partially fills in due to space charge and other nonlinear effects.
 
-The main feature of Fig.~\ref{fig:exp1a_emittances} is that the measured cross-plane correlation is small, as expected. The error bars are calculated by repeating the reconstruction many times with noise added to the measured moments, then taking the mean and standard deviation over the trials. This can lead to asymmetric error bars. Previous measurements indicate that the moments estimated from the profiles have less than 2\% variation if the measurement is repeated, so we sample the noisy moments within $\pm$ 2\% of the measured moments.
+The reconstructed emittances and covariance ellipses at BPM17, just before QH18, are shown in Fig.~\ref{fig:exp1a_emittances}. Notice that the $x$-$x'$ and $y$-$y'$ ellipses maintain their shape and orientation over time while growing in area, which shows that the beam is matched to the ring optics in those planes. For our purposes, the main feature of Fig.~\ref{fig:exp1a_emittances} is that the measured cross-plane correlation is small, as expected. The error bars are calculated by repeating the reconstruction many times with noise added to the measured moments, then taking the mean and standard deviation over the trials. This can lead to asymmetric error bars. Previous measurements indicate that the moments estimated from the profiles have less than 2\% variation if the measurement is repeated, so we sample the noisy moments within $\pm$ 2\% of the measured moments.
 
-It is also possible to reconstruct the covariance matrix at different locations in the lattice. Fig.~\ref{fig:exp1a_rec_betas_throughout} shows the reconstructed $\beta$ functions throughout the RTBT.
+It is also possible to reconstruct the covariance matrix at different locations. Fig.~\ref{fig:exp1a_rec_betas_throughout} shows the reconstructed $\beta$ functions throughout the RTBT.
 %
 \begin{figure}[!p]
     \centering
@@ -92,11 +92,11 @@ It is also possible to reconstruct the covariance matrix at different locations 
     \label{fig:exp1a_rec_betas_throughout}
 \end{figure}
 %
-The model parameters are computed from the linear transfer matrix of the ring + RTBT. 
+The model parameters are computed from the linear transfer matrix of the ring + RTBT. This figure raises our confidence that the within-plane emittance measurements are accurate, and again shows that the beam is matched to the ring optics.
 
 
 
-\subsection{Experiment 1b: elliptical-ish painting}
+\subsection{Experiment 1b: attempted elliptical painting}
 
 Next, we attempted to carry out elliptical painting. First, the horizontal and vertical tunes were set to 6.18. The next step was to move the closed orbit to the foil. This was found to be possible in the vertical plane but impossible in the horizontal plane; the minimum distance from the foil was 10 mm. Additionally, the maximum possible vertical slope was 0.7 mrad. It was decided to continue with the painting method using initial coordinates ($x$, $x'$, $y$, $y'$) $\approx$ (10 mm, 0 mrad, 0 mm, 0 mrad) and final coordinates ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mm, 0.7 mrad). Using these settings, the initial beam would be a donut in $x$-$x'$ and a point in $y$-$y'$. In real space, it would be a flat horizontal line with higher density on the two ends of the line. In other words, injected particles would move along an ellipse in the $x$-$y$ plane with zero vertical size. As time progressed, the horizontal and vertical size of the ellipse would grow at different rates depending on the maximum painting $x$ and $y'$ coordinates. This is all assuming linear transport and non-interacting particles. Without a computer, it is unclear what would happen with the inclusion of space charge.
 
@@ -131,7 +131,7 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}, and
     \label{fig:exp1b_emittances}
 \end{figure}
 %
-Notice the growth of the vertical beam size in comparison with the horizontal size. The $x$-$x'$ distribution is a donut that fills in over time while also growing in radius, hence the relative lack of growth in the horizontal beam size. The vertical beam size, on the other hand, starts at a small value and increases throughout injection. Additionally, there is now a clear separation between the intrinsic emittances.
+Notice the growth of the vertical beam size in comparison with the horizontal size. The $x$-$x'$ distribution was likely a donut that fills in over time while also growing in radius, hence the relative lack of growth in the horizontal beam size. The vertical beam size, on the other hand, starts at a small value and increases throughout injection. Additionally, there is now a clear separation between the intrinsic emittances. We conclude that the measured distribution was significantly different than in the previous experiment and was closer to the desired distribution.
 
 We close with a PIC simulation of this case in Fig.~\ref{fig:exp1b_sim}. 
 %
@@ -150,12 +150,12 @@ We close with a PIC simulation of this case in Fig.~\ref{fig:exp1b_sim}.
     \label{fig:exp1b_sim}
 \end{figure}
 %
-Again, keep in mind that the $\beta$ functions at the injection point are not exactly the same as in the experiment, so the absolute values of the emittances are not expected to agree. 
+Keep in mind that the $\beta$ functions at the injection point are not exactly the same as in the experiment, so the absolute values of the emittances are not expected to agree. The purpose of these simulations is to shed light on the measured data; we look for qualitative agreement in the emittance evolution, which appears to be present.    
 
 
 \section{Experiment 2}
 
-In Experiment 2, the beam energy was lowered to 0.8 GeV for the first time. The closed orbit was able to reach the foil, and a maximum vertical slope of ${y'}_{max} \approx 1.1$ mrad was achieved. 
+In Experiment 2, the beam energy was lowered to 0.8 GeV for the first time. The closed orbit was able to reach the foil, and a maximum vertical slope of ${y'}_{max} \approx 1.1$ mrad was achieved. Although ${y'}_{max}$ is small, elliptical painting is possible with these settings. 
 
 In the setup procedure, an optional step was listed: 3. Modify the injection region in some way to assist the injection kickers. There are several tricks that can be played to increase ${y'}_{max}$. One option would be to move the foil farther into the beam pipe, but this is undesired because it would require modification of the trajectory of the surviving hydrogen ions. Another option is to use the vertical orbit corrector dipoles in the injection region to increase the maximum vertical slope. This is not straightforward in reality because the correctors are already used to flatten the orbit during neutron production. There are two correctors before and after the foil. Our strategy was to manually change the first two correctors, then use the second two correctors and every other corrector in the ring to flatten the orbit (using an existing Orbit Correction application). There are four options for the sign of the changes applied to the first two correctors: $\uparrow\uparrow$, $\uparrow\downarrow$, $\downarrow\uparrow$, $\downarrow\downarrow$. For each option, a small change was applied to the dipole currents and the injection kickers were asked to maximize the vertical slope at the foil. This did not work; modifying the correctors lead to significant closed-orbit waves throughout the ring that could not be flattened. The use of orbit correctors was left as a future optimization. 
 
@@ -288,7 +288,7 @@ Notice that $\varepsilon_{1,2}$ significantly deviate from $\varepsilon_{x,y}$ a
     \vspace*{3.0cm}
 \end{figure}
 % 
-The black lines represent the reconstructed values, and the grey regions represent the standard deviation across the random trials with noise added to the measured moments.
+The black lines represent the reconstructed values, and the grey regions represent the standard deviation across the random trials with noise added to the measured moments. In a beam with a reduced 4D emittance, these coefficients should exhibit a strong dependence on the external focusing; hence, Fig.~\ref{fig:exp3_compare_corr} is evidence that the painting method has produced a beam with reduced 4D emittance.
 
 The target scan was also performed in this experiment. The initial script calculated $15 \times 15$ phase advances, storing all the images in one array. This caused the program to crash on step 150 due to a memory error. At this point, there was not much time remaining in the control room. A second script was run that used $7 \times 7$ phase advances. Unfortunately, it was overlooked that the optics in the RTBT had already been modified for the wire-scanner measurements; eventually, the required magnet changes were too large and it was decided to stop the program. A total of 43/49 images were collected.
 
@@ -349,7 +349,7 @@ We note that the zero-current tunes in the simulation were equal at $\nu_x = \nu
     \label{fig:exp3_sim_nux6.195_nuy6.18}
 \end{figure}
 %
-The time at which the intrinsic emittances diverge from the apparent emittances has been pushed later in injection, more closely resembling the measurements in Fig.~\ref{fig:exp3_emittances}. 
+The time at which the intrinsic emittances diverge from the apparent emittances has been pushed later in injection, more closely resembling the measurements in Fig.~\ref{fig:exp3_emittances}. We thus accept the hypothesis that this simulation as an accurate representation of reality. If this is hypothesis is valid, it raises the probability of approaching the ``best-case scenario" in Chapter \ref{chap-3} in the future with further tuning of the ring and with the addition of solenoid magnetic fields.
 
 
 
