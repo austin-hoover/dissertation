@@ -111,7 +111,7 @@ Eq.~\eqref{eq:CS_parameterization} motivates the definition of normalized phase 
 
 \subsubsection{Linear (coupled) dynamics}
 
-In the presence of linear coupling, the equations of motion take the following form\footnote{I will occasionally switch between $\mathbf{x} = (x, x', y, y')^T$ and $\mathbf{x} = (x, y)^T$. The correct definition should be clear from context.}:
+In the presence of linear coupling, the equations of motion take the following form:\footnote{I will occasionally switch between $\mathbf{x} = (x, x', y, y')^T$ and $\mathbf{x} = (x, y)^T$. The correct definition should be clear from context.}
 %
 \begin{equation}\label{eq:single_particle_eom_coupled}
     \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = 0,
@@ -375,7 +375,7 @@ Hidden in Eq.~\eqref{eq:Vlasov} is the single-particle equation of motion, which
 \begin{equation}
     \mathbf{x}'' + \mathbf{K_0} \mathbf{x} + \mathbf{K_1} \mathbf{x}'
     =
-    \frac{q}{m\gamma^3\beta^2c^2} \frac{\partial{\Phi}}{\partial\mathbf{x}},
+    \frac{q}{m\gamma_s^3\beta_s^2c^2} \frac{\partial{\Phi}}{\partial\mathbf{x}},
 \end{equation}
 %
 with the space charge potential $\Phi$ determined from the Poisson equation:
@@ -584,7 +584,7 @@ Unfortunately, these methods do not apply to high-intensity proton rings where d
 
 Accelerators are often broken into stages. A common pattern is the injection of a beam from a linac into a ring followed by eventual extraction to a different section of the machine. Injection and extraction are accomplished using kicker magnets — dipole magnets with fast rise times.
 
-In direct multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped\footnote{Electrons are currently stripped using foils. Laser stripping is a potential alternative \cite{Cousineau2017}.} of its electrons upon entering the ring, leaving only protons. This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While normal multi-turn injection is usually performed over tens of turns\footnote{There is, however, renewed interest in direct multi-turn injection for future accelerators to avoid the issues associated with charge exchange injection, such as foil scattering and unstripped particles, and it seems possible to extend the number of injected turns into the hundreds using novel injection schemes \cite{Prior2016}.}, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}. 
+In direct multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped of its electrons upon entering the ring, leaving only protons.\footnote{Electrons are currently stripped using foils. Laser stripping is a potential alternative \cite{Cousineau2017}.} This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While normal multi-turn injection is usually performed over tens of turns, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}.\footnote{There is, however, renewed interest in direct multi-turn injection for future accelerators to avoid the issues associated with charge exchange injection, such as foil scattering and unstripped particles, and it seems possible to extend the number of injected turns into the hundreds using novel injection schemes \cite{Prior2016}.} 
 
 Phase space painting, or simply ``painting", is the time-dependent variation of the transverse distance and angle between the injected beam and the circulating beam; as such, it allows time-dependent control over the phase space distribution in the ring. Painting is a vital tool for space charge mitigation. The free parameters are the painting path — the path of the injection point in phase space — and the speed at which this path is traversed. After discussing the two most popular painting methods, we will introduce a new method called elliptical painting that theoretically produces a Danilov distribution.
 
@@ -600,11 +600,12 @@ Let $x$, $x'$, $y$, and $y'$ be the coordinates of the injected beam in the phas
 \begin{equation}
 \begin{aligned}
     {x}(t) &= {x}_{max}\sqrt{t}, \\
-    {y}(t) &= {y}_{max}\sqrt{t}.
+    {y}(t) &= {y}_{max}\sqrt{t}, \\
+    x'(t) &= y'(t) = 0.
 \end{aligned}
 \end{equation}
 %
-In the linear approximation and without space charge, correlated painting generates uniform density ellipses in the $x$-$x'$ and $y$-$y'$ planes and a rectangular distribution in the $x$-$y$ plane. This is illustrated on the left side of Fig.~\ref{fig:painting_graphic}.
+In the linear approximation and without space charge, correlated painting generates uniform density ellipses in the $x$-$x'$ and $y$-$y'$ planes and a rectangular distribution in the $x$-$y$ plane. This is illustrated on the left side of Fig.~\ref{fig:painting_graphic}. 
 %
 \begin{figure}[!p]
     \centering
@@ -613,14 +614,15 @@ In the linear approximation and without space charge, correlated painting genera
     \label{fig:painting_graphic}
 \end{figure}
 %
-But note that while the 1D projection of a uniform density ellipse is a parabola, the 1D projection of a uniform density rectangle is flat-topped. So the density in the $x$-$y$ plane is non-uniform, leading to nonlinear space charge forces.
+The lightest/darkest pink marker represents the initial/final injection point, and the foil location is indicated by the gold rectangle.\footnote{The foil is not drawn to scale.} The final distribution in the $x$-$y$ plane is shown in the background; note that the density is non-uniform, leading to nonlinear space charge forces. 
 
 A primary concern in the SNS is the size and peak density of the $x$-$y$ distribution on the spallation target \cite{Riemer2010}. A modified correlated painting scheme is employed to this end:
 %
 \begin{equation}
 \begin{aligned}
     {x}(t) &= x_0 + x_{max}\sqrt{t}, \\
-    {y}(t) &= y_0 + y_{max}\sqrt{t}. \\
+    {y}(t) &= y_0 + y_{max}\sqrt{t}, \\
+    x'(t) &= y'(t) = 0.
 \end{aligned}
 \end{equation}
 %
