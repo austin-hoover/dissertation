@@ -1,12 +1,12 @@
 \chapter{Introduction}\label{chap-1}
 
-High-intensity particle accelerators are important tools for modern scientific research and industrial applications. They serve as drivers for secondary beam production (neutrons, neutrinos, muons, etc.) and are potentially useful for nuclear waste processing. In particular, spallation neutron sources have become vital to neutron scattering research.
+High-intensity particle accelerators are important tools for modern scientific research and industrial applications. They serve as drivers for secondary beam production (neutrons, neutrinos, muons, etc.) and are potentially useful for nuclear waste processing \cite{Yee-Rendon2021}. In particular, spallation neutron sources have become vital to neutron scattering research.
 
-The maximum beam intensity in these machines is limited by nonlinear space charge forces — forces between the charged particles in the beam. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it creates a radioactive environment in which hands-on maintenance of the various accelerator hardware is unsafe. Thus, reducing uncontrolled losses is of primary concern. The present state of the art is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of roughly $10^{-6}$. Space charge will become even more important in the design of future ten-megawatt accelerators. 
+The maximum beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can activate material in the accelerator tunnel, making hands-on maintenance of the accelerator hardware unsafe. Thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of roughly $10^{-6}$. Space charge will become even more important in the design of future ten-megawatt accelerators. 
  
-In high-intensity circular accelerators (rings), space charge acts as a weak perturbation to the motion; however, its effects are noticeable if the beam is stored in the ring for a significant length of time. Rings are designed to produce stable motion, but the combination of the periodic electromagnetic fields of the accelerator \textit{and beam} may produce unstable motion. This is the fundamental limit on the beam intensity in rings. Additionally, if the beam's electric field has a strong nonlinear dependence on the particle coordinates, the number of stable configurations decreases. Thus, it is desirable to produce a beam in which the electric field has a linear dependence on the particle coordinates; for example, a uniform density ellipsoid. Several methods exist to this end, but they are fundamentally limited; new methods may be needed to reach higher intensities.
+In high-intensity, low-energy circular accelerators (rings), space charge acts as a weak perturbation to the motion; however, its effects are noticeable if the beam is stored in the ring for a significant length of time. Rings are designed to produce stable motion, but the combination of the periodic electromagnetic fields of the accelerator \textit{and beam} may produce unstable motion. This is the fundamental limit on the beam intensity in rings. Additionally, if the beam's electric field has a strong nonlinear dependence on the particle coordinates, the number of stable configurations decreases. Thus, it is desirable to produce a beam in which the electric field has a linear dependence on the particle coordinates; for example, a uniform density ellipsoid. Several methods exist to this end, but new methods may be needed to reach higher intensities.
  
-In the collisionless approximation, the evolution of a distribution of charged particles is given by the Vlasov equation. Solutions of the Vlasov equation are difficult to find in the general case of linear time-dependent external forces. The few known solutions are those that generate linear space charge forces under any linear transformation. These solutions are referred to as self-consistent phase space distributions. Self-consistent distributions have several theoretically interesting properties, and as mentioned in the previous paragraph, the linearity of the space charge force is attractive for high-intensity rings. This dissertation investigates whether one such distribution — the Danilov distribution — could be produced using a method called elliptical painting, particularly in the Spallation Neutron Source (SNS). An additional property of the Danilov distribution is its large angular momentum which makes it potentially useful for colliders and beam cooling applications.
+In the collisionless approximation, the evolution of a distribution of charged particles is given by the Vlasov equation. Solutions of the Vlasov equation are difficult to find in the general case of linear time-dependent external forces. The few known solutions are those that generate linear space charge forces under any linear transformation. These solutions are referred to as self-consistent phase space distributions. Self-consistent distributions have several theoretically interesting properties, and as mentioned in the previous paragraph, the linearity of the space charge force would be useful in high-intensity rings. This dissertation investigates whether one such distribution — the Danilov distribution — could be produced using a method called elliptical painting, particularly in the Spallation Neutron Source (SNS). An additional property of the Danilov distribution is its large angular momentum which makes it potentially useful for colliders and beam cooling applications \cite{Burov2013}.
 
 The structure of this introductory chapter is as follows. The relevant theory of high-intensity beam dynamics is reviewed in Section \ref{sec:High-intensity beam dynamics}. The definition and properties of self-consistent distributions are discussed in Section \ref{sec:Self-consistent phase space distributions}. A method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in Section \ref{sec:Producing a self-consistent distribution}. The structure and goals of this dissertation are laid out in Section \ref{sec:Goals of this dissertation}.
 
@@ -16,7 +16,7 @@ The structure of this introductory chapter is as follows. The relevant theory of
 
 \subsection{Single-particle motion}
 
-We begin by describing the motion of a single particle in a circular accelerator (ring). We assume the existence of a closed orbit and use curvilinear coordinates in which $s$ is the location along the closed orbit and $x$ and $y$ are the horizontal and vertical transverse displacements. We then study oscillations in the transverse plane with the assumption of constant longitudinal velocity $\beta c$, where $c$ is the speed of light.
+We begin by describing the motion of a single particle in a circular accelerator (ring). We assume the existence of a closed orbit and use coordinates in which $s$ is the location along the orbit and $x$ and $y$ are the horizontal and vertical transverse displacements. We then study oscillations in the transverse plane with the assumption of constant longitudinal velocity $\beta_s c$, where $c$ is the speed of light.
 
 Magnetic fields are preferred for transverse focusing when the kinetic energy is significant. The magnetic field $\mathbf{B} = (B_x, B_y)$ in a vacuum may be written as an infinite sum:
 %
@@ -24,37 +24,39 @@ Magnetic fields are preferred for transverse focusing when the kinetic energy is
     B_x - iB_y = \sum_{n = 1}^{\infty}{(b_n - i a_n) \left({\frac{x + i y}{r_0}}\right)^{n - 1}},
 \end{equation}
 %
-where $r_0$ is a constant, $i = \sqrt{-1}$, $\left\{ b_n \right\}$ are the multipole coefficients, and $\left\{ a_n \right\}$ are the skew multipole coefficients. The $b_n$ term in the expansion is produced by $2n$ symmetrically arranged magnetic poles; the skew terms are obtained by a $\pi / 2n$ rotation. Assuming the transverse velocities are much smaller than $\beta c$, the equations of motion for $x$ and $y$ are
+where $r_0$ is a constant, $i = \sqrt{-1}$, $\left\{ b_n \right\}$ are the multipole coefficients, and $\left\{ a_n \right\}$ are the skew multipole coefficients. The $b_n$ term in the expansion is produced by $2n$ symmetrically arranged magnetic poles; the skew terms are obtained by a $\pi / 2n$ rotation. Assuming the transverse velocities are much smaller than $\beta_s c$, the equations of motion for $x$ and $y$ are
 %
 \begin{equation}\label{eq:transverse_eom}
 \begin{aligned}
-    x'' &= -\frac{q}{m \beta c} B_y, \\
-    y'' &= -\frac{q}{m \beta c} B_x,
+    x'' &= -\frac{q}{m c \beta_s \gamma_s} B_y, \\
+    y'' &= +\frac{q}{m c \beta_s \gamma_s} B_x,
 \end{aligned}
 \end{equation}
 %
-where $q$ is the particle charge, $m$ is the particle mass, and the prime represents differentiation with respect to $s$.\footnote{Since the small-angle approximation is used, $x'$ is usually reported in radians.} (This assumes a straight coordinate system.)
+where $q$ is the particle charge, $m$ is the particle mass, $\gamma_s = (1 - \beta_s^2)^{-1/2}$, and the prime represents differentiation with respect to $s$.\footnote{Since the small-angle approximation is used, $x'$ is usually reported in radians.} (A curved coordinate system modifies the horizontal equation of motion, but we assume a straight coordinate system here for simplicity.)
 
 
 \subsubsection{Linear dynamics}
 
- Accelerators employ dipole fields ($b_1$) for bending and quadrupole fields ($b_2$) for focusing. Keeping only these terms, Eq.~\eqref{eq:transverse_eom} can be written
+ Accelerators employ dipole fields ($b_1$) for bending and quadrupole fields ($b_2$) for focusing. Keeping only these terms, Eq.~\eqref{eq:transverse_eom} becomes
 %
  \begin{equation}\label{eq:Hill}
      x'' + k(s)x = 0.
  \end{equation}
 %
-In a ring, $k(s)$ is periodic. Eq.~\eqref{eq:Hill} is of general interest \cite{Qin2007}. It describes a parametric oscillator — an oscillator whose physical properties change with time. Its solution is described by the Courant-Snyder theory \cite{Courant1958} as
+Eq.~\eqref{eq:Hill} is of general interest \cite{Qin2007}. It describes a parametric oscillator — an oscillator whose physical properties change with time. Its solution is described by the Courant-Snyder theory \cite{Courant1958} as
 %
 \begin{equation}\label{eq:Hill_solution}
     x(s) = \sqrt{2 J \beta(s)} \cos{\left({\mu(s) + \delta}\right)},
 \end{equation}
 %
-with $J$ constant, $\delta$ constant, $\beta(s + L) = \beta(s)$, and the phase advance given by
+with $J$ constant, $\delta$ constant, and the phase advance $\mu(s)$ given by
 %
 \begin{equation}
     \mu(s) = \int_{0}^{s}{\frac{ds'}{\beta(s')}}.
 \end{equation}
+%
+$\beta(s)$ is referred to as the ``beta function". In a ring of length $C$, $k(s) = k(s + C)$ and there is a unique periodic solution with $\beta(s) = \beta(s + C)$; otherwise, $\beta(s)$ depends on the initial conditions.
 
 It is helpful to view the motion in phase space ($x$-$x'$) at a fixed location in the ring on a turn-by-turn basis as in Fig.~\ref{fig:cs_ellipse}.
 %
@@ -254,8 +256,8 @@ where $|...|$ is the determinant. The 4D emittance is conserved under any linear
 %
 \begin{equation}
 \begin{aligned}
-    \varepsilon_x &= \left|{\bm\sigma}_{xx}\right|^{1/2}, \\
-    \varepsilon_y &= \left|{\bm\sigma}_{yy}\right|^{1/2}
+    \varepsilon_x = \left|{\bm\sigma}_{xx}\right|^{1/2}, \quad
+    \varepsilon_y = \left|{\bm\sigma}_{yy}\right|^{1/2}
 \end{aligned}
 \end{equation}
 %
@@ -330,10 +332,10 @@ It is challenging to generate initial distributions for simulations \cite{Lund20
 Particle motion is also influenced by the beam space charge — the charge density of the beam in free space. The beam electric field $\mathbf{E} = (E_x, E_y)$ modifies the single-particle equation of motion:
 %
 \begin{equation}\label{eq:eom_with_spacecharge}
-    \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = \frac{q}{m\gamma^3\beta^2c^2} \mathbf{E},
+    \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = \frac{q}{m\gamma_s^3\beta_s^2c^2} \mathbf{E},
 \end{equation}
-%
-where $\gamma = \left( 1 - \beta^2 \right)^{-1/2}$. The Lorentz factors in the denominator of the space charge term are due to the attractive magnetic force between co-moving charges in the lab frame which cancels the electric force as $\beta \rightarrow 1$. We will make the coasting beam approximation — infinite length, uniform density, and constant momentum in the longitudinal plane — to reduce the problem to two dimensions.\footnote{This is generally invalid for linacs but locally valid for a transverse slice of a long distribution in a ring. It is equivalent to replacing particles with infinitely long uniform density charged rods.}
+% 
+Due to the attractive magnetic force between co-moving charges in the lab frame, the space charge force approaches zero as $\beta_s \rightarrow 1$. We will make the coasting beam approximation — infinite length, uniform density, and constant momentum in the longitudinal plane — to reduce the problem to two dimensions.\footnote{This is generally invalid for linacs but locally valid for a transverse slice of a long distribution in a ring. It is equivalent to replacing particles with infinitely long uniform density charged rods.}
 
 Following Hofmann \cite{Hofmann2017Book}, we divide space charge effects into two categories: incoherent effects involving the motion of single particles, and coherent effects involving the self-consistent motion of the entire beam. Although the two effects may be difficult to isolate during the beam evolution \cite{Hofmann2021}, the distinction is clear in some cases. 
 
@@ -399,9 +401,9 @@ Any function constructed from single-particle invariants $\{C_i\}$ is a solution
     \frac{d}{ds} f(\{C_i\}) = \sum_{i}{\frac{df}{dC_i}\frac{dC_i}{ds}} = 0.
 \end{equation}
 %
-One example of a single-particle invariant when the focusing is linear and time-dependent is the Courant-Snyder invariant of Eq.~\eqref{eq:CS invariant}. The inclusion of space charge complicates the identification of invariants, and the only known solutions are those that produce linear space charge forces. We label such distributions as \textit{self-consistent}: a self-consistent distribution produces linear space charge forces, and the linearity of the space charge force is conserved under any linear transformation. 
+One example of a single-particle invariant when the focusing is linear and time-dependent is the Courant-Snyder invariant of Eq.~\eqref{eq:CS invariant}. The inclusion of space charge complicates the identification of invariants, and the only known solutions are those that produce linear space charge forces. We label such distributions as \textit{self-consistent}: a self-consistent distribution produces linear space charge forces, and the linearity of the space charge force is conserved under any linear transformation \cite{Danilov2003}. 
 
-Self-consistent distributions possess several notable properties. First, the integro-differential system of equations in Eq.~\eqref{eq:Vlasov} is reduced to a system of ordinary differential equations. Second, nonlinear space charge effects are minimized: the emittance is conserved, the maximum space charge tune shift is minimized, and the space charge tune spread is eliminated. Third, higher-order coherent instabilities may be present in self-consistent distributions due to their small tune spread. Fourth, self-consistent distributions give rise to a uniform charge density.
+Self-consistent distributions possess several notable properties. First, the integro-differential system of equations in Eq.~\eqref{eq:Vlasov} is reduced to a system of ordinary differential equations. Second, nonlinear space charge effects are minimized: the emittance is conserved, the maximum space charge tune shift is minimized, and the space charge tune spread is eliminated. Third, higher-order coherent instabilities may be present in self-consistent distributions due to their small tune spread. Fourth, known self-consistent distributions have a uniform charge density.
 
 
 
@@ -528,7 +530,7 @@ The properties listed in section~\ref{sec:Self-consistent phase space distributi
 It is an interesting challenge to bring a real distribution closer to a self-consistent analytical model which is generally taken to be unrealistic. 
 
 \item
-Beams with a uniform charge density are ideal for fixed-target applications such as spallation neutron production. SNS targets are complex entities that cost \$$1.5 \times 10^6$ to replace, and considerable research and development goes into reducing the peak density on the target. This issue will become even more important if future machines are built on the intensity horizon with similar targets.
+Beams with a uniform charge density are ideal for fixed-target applications such as spallation neutron production. SNS targets are complex, expensive entities and considerable research and development goes into reducing the peak density on the target. This issue will become even more important if future machines are built on the intensity horizon with similar targets.
 
 \item
 There has been recent interest in generating circular modes, where a circular mode is a beam with small 4D emittance. Such a beam can be transformed to a round state ($\varepsilon_x = \varepsilon_y$) or a flat state ($\varepsilon_x \ll \varepsilon_y$) using coupled linear optics that preserve $\varepsilon_{1,2}$. In \cite{Burov2002}, several potential applications of circular modes are listed. Consider first a round-flat transformation. The fractional increase in beam luminosity, a figure of merit in colliders, in this case is
@@ -537,7 +539,15 @@ There has been recent interest in generating circular modes, where a circular mo
     C = \sqrt{\frac{\varepsilon_x\varepsilon_y}{\varepsilon_1\varepsilon_2}},
 \end{equation}
 %
-which approaches $\infty$ as $\varepsilon_1\varepsilon_2 \rightarrow 0$. Flat beams may also increase the possible beam intensity in a ring by suppressing incoherent space charge resonances in one dimension, freeing large areas of tune space. The possible uses of flat beams in the Large Hadron Collider (LHC) are suggested by Burov in \cite{Burov2013}. Alternatively, round beams may be helpful for the suppression of beam-beam effects at collider interaction points \cite{Danilo1996}. Circular modes may also find use in relativistic electron cooling \cite{Burov2000}, low-energy hadron cooling \cite{Derbenev2000}, muon ionization cooling, and radiation generation \cite{Corlett2001}. The connection between the Danilov distribution and circular modes is straightforward: the Danilov distribution is a circular mode with uniform charge density. 
+which approaches $\infty$ as $\varepsilon_1\varepsilon_2 \rightarrow 0$. Flat beams may also increase the possible beam intensity in a ring by suppressing incoherent space charge resonances in one dimension, freeing large areas of tune space. The possible uses of flat beams in the Large Hadron Collider (LHC) are suggested by Burov in \cite{Burov2013}. Alternatively, round beams may be helpful for the suppression of beam-beam effects at collider interaction points \cite{Danilo1996}. Circular modes may also find use in relativistic electron cooling \cite{Burov2000}, low-energy hadron cooling \cite{Derbenev2000}, muon ionization cooling, and radiation generation \cite{Corlett2001}. The connection between the Danilov distribution and circular modes is straightforward: the Danilov distribution is a circular mode with uniform charge density. This connection is illustrated in Fig.~\ref{fig:circular_modes_diagram}.
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter1/diagram.png}
+    \caption{Connection between circular modes, the Danilov distribution, and the elliptical painting method.}
+    \label{fig:circular_modes_diagram}
+\end{figure}
+%
 
 \end{enumerate}
 
@@ -547,21 +557,22 @@ Luiten et al. proposed a method to create a \{3, 3\} distribution (a 3D uniform 
 %
 \begin{figure}[!p]
     \centering
-    \begin{subfigure}{0.75\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter1/Musumeci_fig2.png}
-        \label{fig:Musumeci_a}
-        \caption{}
-    \end{subfigure}
-    \vfill
-    \vspace*{1.5cm}
-    \vfill
-    \begin{subfigure}{0.75\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/chapter1/Musumeci_fig3.png}
-        \label{fig:Musumeci_b}
-        \caption{Lower image in (a), displayed with a different color map, and 1D projections of the image.}
-    \end{subfigure}
-    \caption{Measured electron beam images in the  $x$-$z$ plane from \cite{Musumeci2008}.}
+    % \begin{subfigure}{0.75\textwidth}
+    %     \includegraphics[width=\textwidth]{Images/chapter1/Musumeci_fig2.png}
+    %     \label{fig:Musumeci_a}
+    %     \caption{}
+    % \end{subfigure}
+    % \vfill
+    % \vspace*{1.5cm}
+    % \vfill
+    % \begin{subfigure}{0.75\textwidth}
+    %     \centering
+    %     \includegraphics[width=\textwidth]{Images/chapter1/Musumeci_fig3.png}
+    %     \label{fig:Musumeci_b}
+    %     \caption{Lower image in (a), displayed with a different color map, and 1D projections of the image.}
+    % \end{subfigure}
+    \includegraphics[width=0.85\textwidth]{Images/chapter1/Musumeci_fig2.png}
+    \caption{Measured electron beam in the $x$-$z$ plane from \cite{Musumeci2008}.}
     \label{fig:Musumeci}
 \end{figure}
 %
@@ -573,7 +584,7 @@ Unfortunately, these methods do not apply to high-intensity proton rings where d
 
 Accelerators are often broken into stages. A common pattern is the injection of a beam from a linac into a ring followed by eventual extraction to a different section of the machine. Injection and extraction are accomplished using kicker magnets — dipole magnets with fast rise times.
 
-In multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped of its electrons upon entering the ring, leaving only protons. This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While normal multi-turn injection is constrained to tens of turns, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}.
+In direct multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped\footnote{Electrons are currently stripped using foils. Laser stripping is a potential alternative \cite{Cousineau2017}.} of its electrons upon entering the ring, leaving only protons. This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While normal multi-turn injection is usually performed over tens of turns\footnote{There is, however, renewed interest in direct multi-turn injection for future accelerators to avoid the issues associated with charge exchange injection, such as foil scattering and unstripped particles, and it seems possible to extend the number of injected turns into the hundreds using novel injection schemes \cite{Prior2016}.}, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}. 
 
 Phase space painting, or simply ``painting", is the time-dependent variation of the transverse distance and angle between the injected beam and the circulating beam; as such, it allows time-dependent control over the phase space distribution in the ring. Painting is a vital tool for space charge mitigation. The free parameters are the painting path — the path of the injection point in phase space — and the speed at which this path is traversed. After discussing the two most popular painting methods, we will introduce a new method called elliptical painting that theoretically produces a Danilov distribution.
 
@@ -630,7 +641,7 @@ Anti-correlated painting is equivalent to correlated painting reversed in one of
 Initially, the $x$-$x'$ distribution is a point while the $y$-$y'$ distribution is a donut. The painting path in this method follows the line $J_x + J_y = constant$, which is the condition of particles in the KV distribution. Thus, in the linear approximation without space charge, the final distribution is a KV distribution. This is illustrated in Fig.~\ref{fig:painting_graphic}. However, the space charge force is nonlinear throughout injection and the KV structure will not be maintained \cite{Crosbie1996}. How to overcome this limitation is an open question. Nonetheless, anti-correlated painting has benefits over correlated painting in some cases \cite{Hotchi2020}.
 
 
-\subsection{Elliptical painting}
+\subsubsection{Elliptical painting}
 
 Refer back to Eq.~\eqref{eq:eigvec_coords} in which the single-particle motion is written as the sum of two modes. In the elliptical painting method, the injection point $\mathbf{x} = (x, x', y, y')$ is scaled along one of the eigenvectors:
 %
@@ -641,7 +652,7 @@ Refer back to Eq.~\eqref{eq:eigvec_coords} in which the single-particle motion i
 %
 with $l = 1,2$. The first injected pulse does not move since it is injected onto the closed orbit. The second pulse traces a small ellipse in every 2D projection of the phase space on a turn-by-turn basis. The third pulse traces a slightly larger ellipse enclosing the second, and so on. The square root time-dependence ensures that the beam is a uniform density ellipse in every 2D projection of the 4D phase space at every point during injection. Thus, in the linear approximation, a Danilov distribution is maintained at all times, even with space charge.\footnote{Of course, the method is limited even in the linear approximation due to the finite emittance of the beam from the linac.} This is illustrated on the right side of Fig.~\ref{fig:painting_graphic}.
 
-Elliptical painting can be carried out in any ring. If the ring is uncoupled, the two elliptical modes reduce to planar modes and injection into one of the modes results in a flat beam. Coupled optics change the shape of the matched beam at the injection point and produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. 
+Elliptical painting can be carried out in any ring. If the ring is uncoupled, the two elliptical modes reduce to planar modes and injection into one of the modes results in a flat beam. Coupled optics change the shape of the matched beam at the injection point and produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. This will be discussed more in the subsequent chapters.
 
 
 \subsection{Implementation of elliptical painting in the Spallation Neutron Source}

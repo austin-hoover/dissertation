@@ -47,6 +47,7 @@
 \usepackage{graphbox}
 \usepackage{parskip} % skip line instead of indent.
 \usepackage{glossaries}
+\usepackage{tabularx}
 
 %----------------------------------------------------------------------------------------
 %	ADD YOUR DEFINITIONS AND COMMANDS
@@ -83,6 +84,7 @@
 \newenvironment{toc}{
     \setlength{\parskip}{0pt}
 }
+
 
 %----------------------------------------------------------------------------------------
 %	PICK YOUR BIBLIOGRAPHY STYLE
@@ -127,14 +129,13 @@
 %-------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES
 %-------------------------------------------------------------------------------
-
 \unnumberedchapter{Table of Contents}
 \begin{toc}
     \singlespacing
-    \tableofcontents % Write out the Table of Contents
-\end{toc}
+    \tableofcontents 
 \unnumberedchapter{List of Figures}
-\listoffigures % Write out the List of Figures
+\listoffigures 
+\end{toc}
 % \unnumberedchapter{List of Tables}
 % \listoftables % Write out the List of Tables
 
