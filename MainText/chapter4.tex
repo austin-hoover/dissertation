@@ -15,14 +15,14 @@ The RTBT optics are shown in Fig.~\ref{fig:rtbt_optics} along with the locations
     \label{fig:rtbt_optics}
 \end{figure}
 %
-The wire-scanners measure 1D projections of the distribution by sweeping a wire across the beam path. Each wire-scanner — WS20, WS21, WS23, and WS24 — is equipped with a horizontal, vertical, and diagonal wire. The $\langle{xx}\rangle$, $\langle{yy}\rangle$, and $\langle{uu}\rangle$ moments can be estimated from these projections, where the $u$ axis corresponding to the diagonal wire is tilted at angle $\phi = \pi/4$ above the $x$ axis. From these moments, $\langle{xy}\rangle$ is calculated:
+The wire-scanners measure 1D projections of the transverse distribution by sweeping a wire across the beam path. Each wire-scanner — WS20, WS21, WS23, and WS24 — is equipped with a horizontal, vertical, and diagonal wire. The $\langle{xx}\rangle$, $\langle{yy}\rangle$, and $\langle{uu}\rangle$ moments can be estimated from these projections, where the $u$ axis corresponding to the diagonal wire is tilted at angle $\phi = \pi/4$ above the $x$ axis. From these moments, $\langle{xy}\rangle$ is calculated:
 %
 \begin{equation}
     \langle{xy}\rangle = \frac{\langle{uu}\rangle - \langle{xx}\rangle \cos^2\phi - \langle{yy}\rangle \sin^2\phi}{2\sin\phi\cos\phi}
     .
 \end{equation}
 %
-The four wire-scanners can be run in parallel and take approximately five minutes to move across the beam and return to their original positions. Their default step size is approximately 3 mm and their dynamic range is approximately 100. They are run at a beam pulse frequency of 1 Hz, with each data point corresponding to a separate beam pulse. 
+The four wire-scanners can be run in parallel and take approximately five minutes to move across the beam and return to their original positions. Their default step size is approximately 3 mm and their dynamic range is approximately 100. They are run at a beam pulse frequency of 1 Hz.\footnote{Each data point corresponds to a separate beam pulse, so the measurement relies on pulse-to-pulse stability.} 
 
 The SNS employs a target imaging system (TIS) to measure the 2D projection of the distribution on the target \cite{Blokland2010}. The SNS target is a stainless steel vessel containing liquid mercury. Its nose is prepared with a Cr:Al2O3 coating that releases light when impacted by the proton beam. Due to the high-radiation environment, the light is collected by a mirror, deflected, and focused onto an optical fiber bundle which guides the light to a camera some distance away. The TIS configuration is shown in Fig.~\ref{fig:tis}.
 %
@@ -90,7 +90,7 @@ where $\mathbf{M}$ is the linear transfer matrix from $a$ to $b$. We repeat the 
     .
 \end{equation}
 %
-The superscripts represent the measurement index. The coefficient matrix $\mathbf{A}$ for a single measurement is
+The superscripts represent the measurement index. The transpose of the coefficient matrix $\mathbf{A}$ for a single measurement is
 %
 \begin{equation}
     \mathbf{A}^T = 
@@ -150,11 +150,11 @@ To set the phase advances at WS24 while constraining the beam size in the wire-s
     .
 \end{equation}
 %
-The quadrupole field strengths are contained in the vector $\mathbf{g}$. The calculated and desired phase advances at WS24 are $\bm{\mu} = (\mu_x, \mu_y)$, and $\tilde{\bm{\mu}} = (\tilde{\mu}_x, \tilde{\mu}_y)$, respectively. The maximum calculated and allowed $\beta$ functions in the wire-scanner region are $\bm{\beta}_{max} = (\beta_{x_{max}}, \beta_{y_{max}})$ and $\tilde{\bm{\beta}}_{max} = (\tilde{\beta}_{x_{max}}, \tilde{\beta}_{y_{max}})$, respectively. $\Theta$ is the Heaviside step function. Finally, $\epsilon$ is a constant. It is hoped that the beam is matched to the lattice optics so that the calculated phase advances are close to the true phase advances.
+The quadrupole field strengths are contained in the vector $\mathbf{g}$. The calculated and desired phase advances at WS24 are $\bm{\mu} = (\mu_x, \mu_y)$, and $\tilde{\bm{\mu}} = (\tilde{\mu}_x, \tilde{\mu}_y)$, respectively. The maximum calculated and allowed $\beta$ functions in the wire-scanner region are $\bm{\beta}_{max} = (\beta_{x_{max}}, \beta_{y_{max}})$ and $\tilde{\bm{\beta}}_{max} = (\tilde{\beta}_{x_{max}}, \tilde{\beta}_{y_{max}})$, respectively. $\Theta$ is the Heaviside step function. Finally, $\epsilon$ is a constant. We assume that the the beam is approximately matched to the lattice optics so that the calculated phase advances are close to the true phase advances.
 
 After the model optics are computed, the live quadrupole settings must be changed. The SNS employs a machine protection system (MPS) that will cause the machine to trip if the RTBT quadrupole strengths wander outside a certain window, so this window is extended beforehand. Additionally, the MPS will activate if the fractional change in field strength is too large; to solve this problem, the field strength is changed in small steps. 
 
-A GUI application to perform the above tasks was developed in the OpenXAL framework for use in the SNS control room. In the first pane of the application, the user can set the phase advances at WS24 and view the model optics and phase advances throughout the RTBT. In the second pane, the user can load wire-scanner output files and choose the reconstruction location. These files contain the wire-scanner profiles, RMS parameters, and Gaussian fit parameters. They also contain a number that defines the machine state at the time of the measurement. The application reads this number, synchronizes the model with the machine state, and computes the transfer matrices from the wire-scanners to the reconstruction location. The RMS moments and transfer matrices are then used to reconstruct the covariance matrix. The resulting beam parameters are printed and compared to the model lattice parameters. The 2D projections of the covariance ellipsoid are plotted along with the measurement lines, with the option to view in normalized coordinates. 
+A GUI application to perform the above tasks was developed in the OpenXAL framework for use in the SNS control room. In the first pane of the application, the user can set the phase advances at WS24 and view the model optics and phase advances throughout the RTBT. In the second pane, the user can load wire-scanner output files and choose the reconstruction location. These files contain the wire-scanner profiles, RMS parameters, and Gaussian fit parameters. They also contain an integer that defines the machine state at the time of the measurement. The application reads this number, synchronizes the model with the machine state, and computes the transfer matrices from the wire-scanners to the reconstruction location. The RMS moments and transfer matrices are then used to reconstruct the covariance matrix. The resulting beam parameters are printed and compared to the model lattice parameters. The 2D projections of the covariance ellipsoid are plotted along with the measurement lines, with the option to view in normalized coordinates. 
 
 
 
@@ -222,7 +222,7 @@ A nonlinear solver can be used to ensure that the reconstructed covariance matri
 %
 As soon as any noise is included, the fail rate jumps to a large value; additionally, the intrinsic emittances reconstructed in the successful fits have a large, asymmetric spread around the correct values. On the other hand, the apparent emittances are localized around the correct values. (The transfer matrices are uncoupled, so the $x$-$x'$ and $y$-$y'$ reconstructions are performed independently. The problem is with the cross-plane moments.)
 
-Sensitivity of 4D emittance measurements using fixed-optics was observed in \cite{Woodley2000}, including the asymmetric distribution of errors in Fig.~\ref{fig:prod_meas}. The problem was studied more recently in \cite{Agapov2007} and \cite{Faus-Golfe2016}. The conclusion from these studies is that the linear system for the cross-plane moments is ill-conditioned. The sensitivity of a linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$ to errors in $\mathbf{b}$ is determined by the condition number of $\mathbf{A}$, which is the product of matrix norms $\Vert \mathbf{A} \Vert \Vert \mathbf{A}^{-1} \Vert$. As an example, consider four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices. Fig.~\ref{fig:fodo_condition_number} plots the condition number of the coefficient matrix as a function of the spacing between the wire-scanners.
+Sensitivity of 4D emittance measurements using fixed-optics was observed in \cite{Woodley2000}, including the asymmetric distribution of errors in Fig.~\ref{fig:prod_sensitivity}. The problem was studied more recently in \cite{Agapov2007} and \cite{Faus-Golfe2016}. The conclusion from these studies is that the linear system for the cross-plane moments is ill-conditioned. The sensitivity of a linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$ to errors in $\mathbf{b}$ is determined by the condition number of $\mathbf{A}$, which is the product of matrix norms $\Vert \mathbf{A} \Vert \Vert \mathbf{A}^{-1} \Vert$. As an example, consider four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices. Fig.~\ref{fig:fodo_condition_number} plots the condition number of the coefficient matrix as a function of the spacing between the wire-scanners.
 %
 \begin{figure}[!p]
     \centering
@@ -250,9 +250,8 @@ Fig.~\ref{fig:rtbt_condition_number} shows a similar calculation in the RTBT.
 \end{figure}
 %
 The phase advances at WS24 are scanned around their default values. The default optics are ill-suited for the measurement. A new operating point was chosen at the blue dot in the figure. This corrected the issue of failed fits in the following experiments. 
-% [Unfortunately, the sensitivity of the successful fits to errors — i.e., the variance of the reconstructed emittances — was not examined in detail. We will return to this point in Chapter \ref{chap-5}].
 
-Finally, we mention that there is information to be gained from 1D projections of the distribution in addition to the RMS reconstruction. The distributions can be compared to the ideal ``half-circle" projections of a uniform density ellipse. The projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section. It may be possible to include cross-plane information in the reconstruction using the diagonal projections. There is a particular method that can, in principle, reconstruct the $x$-$x'$-$y$-$y'$ distribution from only 1D projections, although the method is untested. 
+Finally, we mention that there is information to be gained from 1D projections of the distribution in addition to the RMS reconstruction. The distributions can be compared to the ideal ``half-circle" projections of a uniform density ellipse. The projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section. It may be possible to include cross-plane information in the reconstruction using the diagonal projections. 
 
 
 
@@ -264,9 +263,10 @@ Finally, we mention that there is information to be gained from 1D projections o
 Tomographic methods are well-established for the reconstruction of 2D phase space distributions from 1D projections in transverse phase space \cite{Hock2014} and longitudinal phase space \cite{Evans2014}. The concept has recently been extended to the reconstruction of the 4D transverse phase space, both in theory and in practice \cite{Hock2013b, Wang2019, Wolski2020}. This section begins with a brief discussion of tomography in two dimensions as applied to particle accelerators, then moves on to describe several 4D reconstruction algorithms. The algorithms are implemented and their accuracy and limitations are discussed. Finally, the use of 4D tomography on images from the SNS target imaging system is discussed.
 
 
+
 \subsection{Tomography for beam diagnostics}
 
-Many algorithms exist to reconstruct 2D images from 1D projections, such as filtered back-projection (FBP), algebraic reconstruction (ART) \cite{Slaney1988}, and maximum entropy (MENT) \cite{Minerbo1979}. Projections of an object are normally obtained by illuminating the object at different angles. Although the measured projections of a 2D phase space distribution ($x$-$x'$) are always along the $x$, we can take advantage of the known transfer matrix $\mathbf{M}$ between the measurement location $b$ and the reconstruction location $a$ to obtain the projections at different angles in $x$-$x'$. The measured projection at $b$ is
+Several algorithms exist to reconstruct 2D images from 1D projections, such as filtered back-projection (FBP), algebraic reconstruction (ART) \cite{Slaney1988}, and maximum entropy (MENT) \cite{Minerbo1979}. Projections of an object are normally obtained by illuminating the object at different angles. Although the measured projections of a 2D phase space distribution ($x$-$x'$) are always along the $x$, we can take advantage of the known transfer matrix $\mathbf{M}$ between the measurement location $b$ and the reconstruction location $a$ to obtain the projections at different angles in $x$-$x'$. The measured projection of the $x$-$x'$ distribution at $b$ is
 %
 \begin{equation}
     p_b(x_b) = \int_{-\infty}^{\infty} f(x_b, x'_b) dx'_b.
@@ -278,7 +278,7 @@ The projection at $a$ will be along axis $\tilde{x}_a$, which is rotated at angl
     \tan\theta = \frac{M_{12}}{M_{11}}.
 \end{equation}
 %
-The distance along the projection will be scaled:
+The distance along the projection axis will be scaled:
 %
 \begin{equation}\label{eq:proj_trans_2}
     r = \frac{x_b}{\tilde{x}_a} = \sqrt{M_{11}^2 + M_{12}^2}.
