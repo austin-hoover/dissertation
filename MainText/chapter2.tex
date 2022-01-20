@@ -1,6 +1,6 @@
  \chapter{Beam envelope equations} \label{chap-2}
 
-This chapter investigates the dynamics of the Danilov distribution using the envelope model. In addition to satisfying theoretical interest, the study of the envelope equations has the potential to elucidate previous simulation results and guide future experiments. A brief outline: First, the envelope equations for the Danilov distribution are presented. Second, a method to find the matched beam envelope is developed and demonstrated in several simple focusing systems. The properties of the solutions are examined. Third, the matched beam envelope in the linearized SNS ring is calculated and the practical importance of the calculation is discussed.\footnote{The majority of this chapter has been published in \cite{Hoover2021}.}
+This chapter investigates the dynamics of the Danilov distribution using the envelope model. In addition to satisfying theoretical interest, the study of the envelope equations has the potential to elucidate previous simulation results and guide future experiments. A brief outline: First, the envelope equations for the Danilov distribution are presented. Second, a method to find the matched beam envelope with space charge is developed. The method is demonstrated in several simple focusing systems, and the properties of the solutions are examined. Third, the matched beam envelope in the linearized SNS ring is calculated and the practical importance of the calculation is discussed, namely that knowledge of the matched solution with space charge is critical to understanding the conditions under which elliptical painting will produce a Danilov distribution.\footnote{The majority of this chapter has been published in \cite{Hoover2021}.}
 
 
 \section{The Danilov envelope equations}
@@ -40,13 +40,9 @@ where $\tilde{x}^2 = \langle{x^2}\rangle$ and $x$ and $y$ can be interchanged.
 
 \section{Matched envelope computation}
 
-A matched beam in a periodic lattice satisfies 
-%
-\begin{equation} \label{eq:matched_sigma}
-    \bm{\Sigma}(s) = \bm{\Sigma}(s + L)
-\end{equation}
-%
-for all $s$, where $L$ is the period length and $\bm{\Sigma}$ is the covariance matrix. The problem of computing the matched envelope is as follows:
+The distribution function $f$ of a matched beam in a lattice of period length $L$ satisfies $f(s) = f(s + L)$ for all $s$. In practice, matching usually refers only to the second-order moments contained in the beam covariance matrix: $\bm{\Sigma}(s) = \bm{\Sigma}(s + L)$. The two notions are equivalent for the Danilov distribution, for which all higher-order moments vanish.
+
+The problem of computing the matched beam is as follows:
 %
 \begin{equation}
 \begin{aligned}
@@ -57,14 +53,14 @@ for all $s$, where $L$ is the period length and $\bm{\Sigma}$ is the covariance 
 \end{aligned}
 \end{equation}
 %
-where $\mathbf{M} = \mathbf{M}(\bm{\Sigma})$ is a linear transfer matrix connecting the initial and final covariance matrix, and $\Vert\dots\Vert$ is the matrix norm. The constraint that the covariance matrix must be singular comes from the definition of the Danilov distribution. Additionally, we would like to hold the nonzero intrinsic emittance fixed so that a unique solution is found for a given lattice and beam perveance. An iterative approach is needed since space charge causes $\mathbf{M}$ to depend on $\bm{\Sigma}$ in a potentially complicated way which is unknown before tracking the beam. 
+where $\mathbf{M} = \mathbf{M}(\bm{\Sigma})$ is a linear transfer matrix connecting the initial and final covariance matrix, and $\Vert\dots\Vert$ is the matrix norm. The constraint that the covariance matrix is singular comes from the definition of the Danilov distribution. Additionally, we would like to hold the nonzero intrinsic emittance fixed so that a unique solution is found for a given lattice and beam perveance. An iterative approach is needed since space charge causes $\mathbf{M}$ to depend on $\bm{\Sigma}$ in a potentially complicated way which is unknown before tracking the beam. 
 
 
 \subsection{Motivation}
 
-The calculation of the matched beam envelope is of practical importance for space charge dominated beams; it is a common first step in lattice design \cite{Lund2006}. The beam current able to be transported through a periodic focusing channel with a given aperture is maximum when the beam is matched \cite{book:Reiser}. The matched beam is the minimum energy solution, and the free energy available in a mismatched beam may result in emittance growth and halo formation \cite{book:Reiser}. Calculation of the matched envelope is generally the first step in a stability analysis of the envelope equations. The task has been performed for the KV distribution in both uncoupled and coupled focusing systems \cite{Hofmann1983, Chernin1988, Ryne1995, Lund2006, Anderson2007, Goswami2016}. Furthermore, the elliptical painting method discussed in the previous chapter only works as intended if the circulating beam is matched; therefore, calculation of the matched beam in the SNS ring is of practical importance.
+The calculation of the matched beam envelope is of practical importance for space charge dominated beams. It is a common first step in lattice design \cite{Lund2006}. The beam current able to be transported through a periodic focusing channel with a given aperture is maximum when the beam is matched \cite{book:Reiser}. The free energy available in a mismatched beam may result in emittance growth and halo formation \cite{book:Reiser}. Calculation of the matched envelope is generally the first step in a stability analysis of the KV envelope equations \cite{Lund2006}. The task has been performed for the KV distribution in both uncoupled and coupled focusing systems \cite{Hofmann1983, Chernin1988, Ryne1995, Lund2006, Anderson2007, Goswami2016}, and it would be beneficial to extend this analysis to the Danilov distribution. Furthermore, the calculation of the matched envelope of the Danilov distribution is of critical importance to the experimental realization of such a distribution: the end-result of the elliptical painting method only approaches a Danilov distribution if the circulating beam is matched.
 
-The purpose of this section is to calculate and describe the properties of the matched envelope of the Danilov distribution in simple focusing systems as space charge is increased. A better understanding of the beam dynamics under the influence of coupled internal + external forces should fall out of this analysis, as well as the ability to calculate the matched envelope in more complicated focusing systems. 
+The purpose of this section is to calculate and describe the properties of the matched envelope of the Danilov distribution in simple focusing systems as space charge is increased. In addition to the ability to calculate the matched envelope in more complicated focusing systems such as the SNS accumulator ring, a better understanding of the beam dynamics under the influence of coupled internal and external forces should fall out of this analysis.
 
 Before presenting our solution, we highlight the space-charge-driven mismatch oscillations that are to be corrected. Fig.~\ref{fig:fodo_mismatch_tbt} shows the turn-by-turn evolution of a beam that is matched to a lattice without space charge and then tracked with space charge. 
 %
@@ -80,7 +76,7 @@ There are two frequencies in the mismatch oscillations: a larger frequency near 
 
 \subsection{Solution}
 
-The problem of computing the matched envelope can be approached in the following way. The effect of space charge is to modify the linear focusing strength at every position; we call this modified focusing system the \textit{effective lattice}. Generating a beam that is matched to the lattice with space charge is equivalent to generating a beam that is matched to the effective lattice without space charge. The latter task is straightforward using an existing parameterization of coupled motion. The correct effective lattice is unknown a priori, so a search must be performed over the lattice parameters. Fig.~\ref{fig:effective_lattice} illustrates the concept of the effective lattice.
+The problem of computing the matched envelope can be approached in the following way. The effect of the linear beam space charge is to modify the linear focusing strength at every position; we call this modified linear focusing system the \textit{effective lattice}. Generating a beam that is matched to a lattice with space charge is equivalent to generating a beam that is matched to an effective lattice without space charge. The latter task is straightforward using an existing parameterization of coupled motion. The correct effective lattice is unknown a priori, so a search must be performed over the lattice parameters. Fig.~\ref{fig:effective_lattice} illustrates the concept of the effective lattice.
 %
 \begin{figure}
     \centering
@@ -101,7 +97,7 @@ We begin by demonstrating how to compute the matched envelope without space char
     \right\}.
 \end{equation}
 %
-The turn-by-turn trajectory of a particle with a given $J_{1,2}$ forms a closed surface in phase space, and a group of particles distributed uniformly over this surface will appear to be invariant. A matched distribution can be thought of as a collection of these surfaces with different amplitudes.
+The turn-by-turn trajectory of a particle with a given $J_{1,2}$ forms a closed surface in phase space, and a group of particles distributed uniformly over this surface will appear to be invariant. A matched distribution is a collection of these surfaces with different amplitudes.
 
 We now switch to the collective description of the beam using its covariance matrix. The symplectic normalization matrix $\mathbf{V}$ (from Eq.~\eqref{eq:V_from_eigvecs}) can be used to express the matched beam covariance matrix as
 %
@@ -190,7 +186,7 @@ We denote the choice $\varepsilon_2 = 0$ as solution $1$ and $\varepsilon_1 = 0$
 
 \subsection{Method demonstration}
 
-The matching routine was applied to an equally spaced, periodic quadrupole (FODO) lattice. The horizontal focusing strength in this lattice is shown in Fig.~\ref{fig:fodo_lattices}a as a function of $s$. Several variants of the FODO lattice were also considered to include external coupling. In Fig.~\ref{fig:fodo_lattices}b, the focusing and defocusing quadrupoles are rotated by $3\degree$ in opposite directions in the transverse plane. In Fig.~\ref{fig:fodo_lattices}c solenoid magnets are inserted in the drift spaces between the quadrupoles. This section examines the matched solutions in each lattice as space charge is increased. Previous studies indicate that the KV envelope equations have a unique matched solution for each choice of lattice, beam perveance, and apparent emittances. Although there is no known proof of this conjecture, it seems to be true based on numerical evidence \cite{Lund2006}. Thus, for the Danilov distribution, it was expected that each choice of lattice and perveance will lead to two matched solutions depending on which intrinsic emittance is set to zero. No evidence to the contrary was found.
+The matching routine was applied to an equally spaced, periodic quadrupole (FODO) lattice. The horizontal focusing strength in this lattice is shown in Fig.~\ref{fig:fodo_lattices}a as a function of $s$. Several variants of the FODO lattice were also considered to include external coupling: in Fig.~\ref{fig:fodo_lattices}b, the focusing and defocusing quadrupoles are rotated by $3\degree$ in opposite directions in the transverse plane, and in Fig.~\ref{fig:fodo_lattices}c solenoid magnets are inserted in the drift spaces between the quadrupoles. This section examines the matched solutions in each lattice as space charge is increased. Previous studies indicate that the KV envelope equations have a unique matched solution for each choice of lattice, beam perveance, and apparent emittances. Although there is no known proof of this conjecture, it seems to be true based on numerical evidence \cite{Lund2006}. Thus, for the Danilov distribution, it was expected that each choice of lattice and perveance will lead to two matched solutions depending on which intrinsic emittance is set to zero. No evidence to the contrary was found.
 %
 \begin{figure}[!p]
     \centering
@@ -202,7 +198,9 @@ The matching routine was applied to an equally spaced, periodic quadrupole (FODO
 
 \subsubsection{Uncoupled lattice}
 
-We first present the results for an uncoupled FODO lattice. Fig.~\ref{fig:matched_vs_sc_fodo} shows the matched beam sizes, apparent emittances, and $\nu$ parameter within the lattice for a range of linearly increasing space charge strengths.
+We now apply the matching routine to an uncoupled FODO lattice. First, a note about the matched solution for without space charge. The eigenvectors of the transfer matrix are uncoupled, meaning that $\mathbf{v}_1$ has no component in the $y$-$y'$ plane and $\mathbf{v}_2$ has no component in the $x$-$x'$ plane. A matched beam is formed by generating particles uniformly in phase along either of these eigenvectors; therefore, the matched beam is flat ($\varepsilon_x = 0$ or $\varepsilon_y = 0$). An exception occurs when the transfer matrix has degenerate eigenvalues, i.e., when the horizontal and vertical tunes are equal. In this case, any linear combination of eigenvectors forms another eigenvector. Thus, without space charge, there are an infinite number of matched solutions in a lattice with equal tunes. The free parameters from Eq.~\eqref{eq:twiss_params_4D} are $u$ and $\nu$.
+
+We now include the self-force of the beam in the matching routine. Fig.~\ref{fig:matched_vs_sc_fodo} shows the matched beam sizes, apparent emittances, and $\nu$ parameter within the lattice for a range of linearly increasing space charge strengths.\footnote{For the zero space charge solution, we chose $u = 0.5$ and $\nu = \pi/2$.}
 %
 \begin{figure}[!p]
     \begin{subfigure}{1.0\textwidth}
@@ -223,9 +221,9 @@ We first present the results for an uncoupled FODO lattice. Fig.~\ref{fig:matche
     \label{fig:matched_vs_sc_fodo}
 \end{figure}
 %
-It also shows the phase space projections at the lattice entrance. The following properties of the matched solutions are worth noting. First, except for the oscillatory apparent emittances, the beam evolution within the lattice when space charge is nonzero is very similar to the case of zero space charge. Second, two solutions are found which differ in the sign of their angular momentum. This is seen in the opposite signs of the slopes defining the linear relationships between the position in one plane and the slope in the other; it is a consequence of the opposite directions of rotation of the two eigenvectors. The third property to note is how the solutions scale with increased space charge: the average width and height of the matched beam within the lattice grow approximately linearly, and the variation in the difference between the horizontal and vertical phase advances is suppressed — hence the decreased oscillation of the $\nu$ parameter. Finally, it is worth mentioning that the transfer matrix of the effective lattice created by the matched beam is the same for both solutions; in other words, the two eigenvectors of this matrix correspond to the two matched solutions.  
+It also shows the phase space projections at the lattice entrance. The following properties of the matched solutions are worth noting. First, except for the oscillatory apparent emittances, the beam evolution within the lattice when space charge is nonzero is very similar to the case of zero space charge. Second, two solutions are found which differ in the sign of their angular momentum. This is seen in the opposite signs of the slopes defining the linear relationships between the position in one plane and the slope in the other; it is a consequence of the opposite directions of rotation of the two eigenvectors. The third property to note is how the solutions scale with increased space charge: the average width and height of the matched beam within the lattice grow approximately linearly, and the variation in the difference between the horizontal and vertical phase advances is suppressed — hence the decreased oscillation of the $\nu$ parameter. 
 
-The same analysis can be performed when the horizontal and vertical tunes are split (recall that unequal phase advances cause the beam to tilt in the $x$-$y$ plane). We chose to increase the horizontal phase advance and decrease the vertical phase advance, both by $5\degree$. The results are displayed in Fig.~\ref{fig:matched_vs_sc_fodo_split}. 
+The same analysis can be performed when the horizontal and vertical tunes are split. We chose to increase the horizontal phase advance and decrease the vertical phase advance, both by $5\degree$. The results are displayed in Fig.~\ref{fig:matched_vs_sc_fodo_split}.\footnote{$\nu$ is undefined when the beam is flat, but we chose to draw a flat line at $\nu = \pi/2$.}
 %
 \begin{figure}[!p]
     \begin{subfigure}{1.0\textwidth}
@@ -246,10 +244,7 @@ The same analysis can be performed when the horizontal and vertical tunes are sp
     \label{fig:matched_vs_sc_fodo_split}
 \end{figure}
 %
-A notable feature of the zero space charge solutions is that they are flat. As noted in the discussion of elliptical painting in Section \ref{sec:Producing a self-consistent distribution}, this is because the eigenvectors of the transfer matrix are uncoupled, meaning that $\mathbf{v}_1$ has no component in the $y$-$y'$ plane and $\mathbf{v}_2$ has no component in the $x$-$x'$ plane. The intrinsic and apparent emittances of the matched beam therefore coincide. (Note that $\nu$ is undefined in this case, but we chose to draw a flat line at $\nu = 90\degree$.) 
-
-The beam dynamics with space charge are very similar to the previous case of equal tunes, and the two solutions are again related by opposite signs of their angular momentum. The most notable effect of space charge on the matched beam is to significantly split the apparent emittances. This is expected since space charge now needs to decrease the horizontal and vertical tunes by different amounts such that they are equal in the end. When space charge is weak, the emittances are maximally split; as space charge is increased, the emittances move closer together. We also note that the horizontal emittance in both solutions is always greater than the vertical emittance when space charge is turned on; This follows from the fact that the zero-current tune is larger in the horizontal plane than in the vertical plane, so space charge must provide more defocusing in the vertical plane.
-
+The beam dynamics with space charge are very similar to the previous case of equal tunes, and the two solutions are again related by opposite signs of their angular momentum. The most notable effect of space charge on the matched beam is to significantly split the apparent emittances. This is expected since space charge now needs to decrease the horizontal and vertical tunes by different amounts such that they are equal in the end. When space charge is weak, the apparent emittances are maximally split; as space charge is increased, the emittances move closer together. We also note that the horizontal emittance in both solutions is always greater than the vertical emittance when space charge is turned on, which follows from the fact that the zero-current tune is larger in the horizontal plane than in the vertical plane, so space charge must provide more defocusing in the vertical plane.
 
 
 
@@ -279,8 +274,7 @@ The same information as in Fig.~\ref{fig:matched_vs_sc_fodo} and Fig.~\ref{fig:m
 \end{figure}
 %
 The locations of the skew quadrupoles are evident from the small arcs in the emittance curves. Without space charge, the matched beam at the center of the quadrupoles projects to a diagonal line in real space ($\nu = 0\degree$ or $180\degree$) with zero angular momentum, and the two solutions differ in the sign of the tilt angle of this line. The inclusion of space charge pulls $\nu$ away from these extreme values, resulting in a nonzero beam area. The cross-plane correlations between the positions and slopes also become nonzero, again revealing the opposite directions of the angular momentum between the two solutions. 
-
-There is an asymmetry between the two solutions. The presence of space charge leads to two solutions with the same tilt angle in the $x$-$y$ plane, as opposed to opposite tilt angles without space charge. This abrupt change in the matched beam orientation in solution 1 causes the optimizer to struggle for low space charge, often terminating due to a lack of progress. Fig.~\ref{fig:optimizer_comparison_a} shows the final cost as a function of the beam perveance, and Fig.~\ref{fig:optimizer_comparison_b} shows the turn-by-turn oscillations of the $\nu$ parameter for a subset of these cases. 
+The relationship between the two solutions is now more complicated than in the previous cases. The presence of space charge leads to two solutions with the same tilt angle in the $x$-$y$ plane, as opposed to opposite tilt angles without space charge. This abrupt change in the matched beam orientation in solution 1 causes the optimizer to struggle for low space charge, often terminating due to a lack of progress. Fig.~\ref{fig:optimizer_comparison_a} shows the final cost as a function of the beam perveance, and Fig.~\ref{fig:optimizer_comparison_b} shows the turn-by-turn oscillations of the $\nu$ parameter for a subset of these cases. 
 %
 \begin{figure}[!p]
     \centering
@@ -329,7 +323,7 @@ The matched beam resembles that of the uncoupled FODO lattice in Fig.~\ref{fig:m
 
 \subsubsection{Effective transfer matrices}
 
-The effective transfer matrix generated by the lattice and matched beam can be calculated by tracking test particles subject to the internal fields of the matched beam.\footnote{It is important to note that in each case the matched beam is a function of one of the transfer matrix eigenvectors; the second eigenvector does not necessarily correspond to a matched solution in the same lattice. For example, the two solutions in the uncoupled FODO lattice share the same effective transfer matrix, but the two solutions in the skew quadrupole lattice do not share the same effective transfer matrix. In the latter case, the unused eigenvector is a matched solution in a lattice in which the sign of each skew term is reversed (a mirror reflection in one plane).} The eigenvalues of each effective transfer matrix are plotted in the complex plane as space charge is increased in Fig.~\ref{fig:effective_transfer_matrix_eigvals}.
+The effective linear transfer matrix generated by the lattice and matched beam can be calculated by tracking test particles subject to the internal fields of the matched beam.\footnote{The matched beam is a function of \textit{one} of the transfer matrix eigenvectors; the second eigenvector does not necessarily correspond to a matched solution in the same lattice. For example, the two solutions in the uncoupled FODO lattice share the same effective transfer matrix, but the two solutions in the skew quadrupole lattice do not share the same effective transfer matrix. In the latter case, the unused eigenvector is a matched solution in a lattice in which the sign of each skew term is reversed (a mirror reflection in one plane).} The eigenvalues of each effective transfer matrix are plotted in the complex plane as space charge is increased in Fig.~\ref{fig:effective_transfer_matrix_eigvals}.
 %
 \begin{figure}[!p]
     \centering
@@ -338,7 +332,7 @@ The effective transfer matrix generated by the lattice and matched beam can be c
     \label{fig:effective_transfer_matrix_eigvals}
 \end{figure}
 %
-We observe that the difference between the phase advances $\Delta = |\mu_2 - \mu_1|$, which is a measure of the coupling strength in the effective lattice, is never zero when space charge is nonzero. (In the top two rows, $\Delta$ is very small and the plotted eigenvalues lie nearly on top of one another.) We also observe that the matched beam space charge ``cancels out" some of the bare lattice coupling; for example, in the skew quadrupole lattice $\Delta$ is large in the left column (zero space charge) but nearly zero in the far right column. This is not true when coupling is included using solenoid magnets; $\Delta$ instead remains relatively constant.  
+We observe that the difference between the phase advances $\Delta = |\mu_2 - \mu_1|$, which is a measure of the coupling strength in the effective lattice, is never zero when space charge is nonzero. (In the top two rows, $\Delta$ is very small and the plotted eigenvalues lie nearly on top of one another.) We also observe that the matched beam space charge cancels out some of the bare lattice coupling; for example, in the skew quadrupole lattice $\Delta$ is large in the left column (zero space charge) but nearly zero in the far right column. This is not true when coupling is included using solenoid magnets; $\Delta$ instead remains relatively constant.  
 
 
 \section{Relevance to experiment}
@@ -352,7 +346,7 @@ Holmes et al performed PIC simulations of elliptical painting in the SNS, conclu
     \textbf{Finding 1}: The ideal painting path in the SNS is a line in the $x$-$y'$ plane.
 \end{quote}
 %
-The reasoning in \cite{Holmes2018} was that, due to the geometry of the injection region, variation of $x'$ leads to scrapping losses. We have found another reason why this painting path is ideal: in general, the matched solution with space charge at a symmetry point ($\alpha_x = \alpha_y = 0$) in an uncoupled lattice is upright ($\nu \approx \pi/2$). The injection point in the SNS ring has $\beta_x \approx \beta_y$ and $\alpha_x \approx \alpha_y = 0$, so this general principle should apply. And it does: Fig.~\ref{fig:matched_env_SNS} shows the matched envelope at the SNS injection point with realistic beam parameters: $\varepsilon_2 = 20$ mm mrad, energy = 0.8 GeV, bunch length $\approx$ 3/4 ring length, and intensity = $0.75 \times 10^{14}$.
+The reasoning in \cite{Holmes2018} was that, due to the geometry of the injection region, variation of $x'$ leads to scraping losses. We have found another reason why this painting path is ideal: in general, the matched solution with space charge at a symmetry point ($\alpha_x = \alpha_y = 0$) in an uncoupled lattice is upright ($\nu \approx \pi/2$). The injection point in the SNS ring has $\beta_x \approx \beta_y$ and $\alpha_x \approx \alpha_y = 0$, so this general principle should apply. And it does: Fig.~\ref{fig:matched_env_SNS} shows the matched envelope at the SNS injection point with realistic beam parameters: $\varepsilon_2 = 20$ mm mrad, energy = 0.8 GeV, bunch length $\approx$ 3/4 ring length, and intensity = $0.75 \times 10^{14}$.
 %
 \begin{figure}[!p]
     \centering

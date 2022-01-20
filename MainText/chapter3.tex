@@ -54,11 +54,6 @@ The PIC loop is shown in Fig.~\ref{fig:pic_loop}.
     \includegraphics[width=\textwidth]{Images/chapter3/pic_loop.png}
     \caption{\label{fig:pic_loop}The particle-in-cell loop.}
 \end{figure}
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=\textwidth]{Images/chapter3/poisson.png}
-    \caption{\label{fig:poisson}Solution of the Poisson equation on a doubled grid.}
-\end{figure}
 %
 First, the charge density $\rho_{i,j}$ is obtained on a grid. A common method is to treat each macroparticle as a rectangular, uniform density cloud of charge with dimensions equal to the grid spacing, assigning a fractional charge to each bin according to the fraction of the cloud overlapping with that bin \cite{Birdsall1975}. Second, the Poisson equation is solved on the grid. The method used in PyORBIT follows \cite{Hockney1981}, where the potential is written as the convolution ($*$) of a Green's function $G(\mathbf{x})$ with the charge density $\rho(\mathbf{x})$:
 %
@@ -74,7 +69,15 @@ We then exploit the convolution theorem \cite{Arfken1985} to write the Fourier t
     \mathcal{F}[G(\mathbf{x})] \cdot \mathcal{F}[\rho(\mathbf{x})].
 \end{equation}
 %
-For a grid with $N$ bins per dimension, the time-complexity of the convolution is $O(N^2)$. The Fourier transform reduces this to $O(N \log N)$. To create periodic boundary conditions, the grid is doubled in each dimension; in the new regions, the Green's function is mirror-reflected and the charge density is set to zero. The potential is then solved for on the doubled grid, after which only the original region is kept. An example is shown in Fig.~\ref{fig:poisson}. Third, using the same weighting method as the first step, the gradient of the potential is interpolated at the particle positions. Finally, the particle momenta are updated using an appropriate integration scheme.
+For a grid with $N$ bins per dimension, the time-complexity of the convolution is $O(N^2)$. The Fourier transform reduces this to $O(N \log N)$. To create periodic boundary conditions, the grid is doubled in each dimension; in the new regions, the Green's function is mirror-reflected and the charge density is set to zero. The potential is then solved for on the doubled grid, after which only the original region is kept. An example is shown in Fig.~\ref{fig:poisson}. 
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter3/poisson.png}
+    \caption{\label{fig:poisson}Solution of the Poisson equation on a doubled grid.}
+\end{figure}
+%
+Third, using the same weighting method as the first step, the gradient of the potential is interpolated at the particle positions. Finally, the particle momenta are updated using an appropriate integration scheme.
 
 In rings where the coasting beam approximation is valid, the longitudinal and transverse dimensions are treated separately. In PyORBIT, a longitudinal space charge node acts on the bunch once per turn. Two models are included for the transverse space charge calculation: the 2.5D model and the sliced model. In the 2.5D model, Poisson’s equation is solved once for a charge density obtained by projecting the entire bunch onto the $x$-$y$ plane; the transverse space charge forces are then weighted according to the longitudinal density. In the sliced model, the bunch is longitudinally sliced, and Poisson’s equation is solved for each slice.
 
