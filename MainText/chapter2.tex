@@ -1,6 +1,6 @@
  \chapter{Beam envelope equations} \label{chap-2}
 
-This chapter investigates the dynamics of the Danilov distribution using the envelope model. In addition to satisfying theoretical interest, the study of the envelope equations has the potential to elucidate previous simulation results and guide future experiments. A brief outline: First, the envelope equations for the Danilov distribution are presented. Second, a method to find the matched beam envelope with space charge is developed. The method is demonstrated in several simple focusing systems, and the properties of the solutions are examined. Third, the matched beam envelope in the linearized SNS ring is calculated and the practical importance of the calculation is discussed, namely that knowledge of the matched solution with space charge is critical to understanding the conditions under which elliptical painting will produce a Danilov distribution.\footnote{The majority of this chapter has been published in \cite{Hoover2021}.}
+In this chapter, the dynamics of the Danilov distribution are investigated using the envelope model. In addition to satisfying theoretical interest, the study of the envelope equations has the potential to elucidate previous simulation results and to guide future experiments. A brief outline: First, the envelope equations for the Danilov distribution are presented. Second, a method to find the matched beam envelope with space charge is developed. The method is demonstrated in several simple focusing systems and the properties of the solutions are examined. Third, the matched beam envelope in the linearized SNS ring is calculated and the practical importance of the calculation is discussed; namely, that knowledge of the matched solution with space charge is critical to understanding the conditions under which elliptical painting will produce a Danilov distribution.\footnote{The majority of this chapter has been published in \cite{Hoover2021}.}
 
 
 \section{The Danilov envelope equations}
@@ -76,7 +76,7 @@ There are two frequencies in the mismatch oscillations: a larger frequency near 
 
 \subsection{Solution}
 
-The problem of computing the matched envelope can be approached in the following way. The effect of the linear beam space charge is to modify the linear focusing strength at every position; we call this modified linear focusing system the \textit{effective lattice}. Generating a beam that is matched to a lattice with space charge is equivalent to generating a beam that is matched to an effective lattice without space charge. The latter task is straightforward using an existing parameterization of coupled motion. The correct effective lattice is unknown a priori, so a search must be performed over the lattice parameters. Fig.~\ref{fig:effective_lattice} illustrates the concept of the effective lattice.
+The problem of computing the matched envelope can be approached in the following way. The effect of the linear beam space charge is to modify the linear focusing strength at every position; we call this modified linear focusing system the \textit{effective lattice}. Generating a beam that is matched to a lattice with space charge is equivalent to generating a beam that is matched to an effective lattice without space charge. The latter task is straightforward using an existing parameterization of coupled motion. The correct effective lattice is unknown a priori, so a search must be performed over the parameters. Fig.~\ref{fig:effective_lattice} illustrates the concept of the effective lattice.
 %
 \begin{figure}
     \centering
@@ -129,19 +129,7 @@ where again $l = 1$ or $2$. Similarly, the alpha functions give the ratios betwe
     \alpha_{ly} = -\frac{\langle{yy'}\rangle}{\varepsilon_l}
 \end{equation}
 %
-Next, $u$ gives the ratio between the apparent emittance and the intrinsic emittance. When $l = 1$, $u = \varepsilon_y / \varepsilon_l$, or when $l = 2$, $u = \varepsilon_x / \varepsilon_2$.
-% %
-% \begin{equation} \label{eq:u}
-%      u = \frac{\varepsilon_y}{\varepsilon_1},
-% \end{equation}
-% %
-% or when $l = 2$:
-% %
-% \begin{equation}
-%      u = \frac{\varepsilon_x}{\varepsilon_2}.
-% \end{equation}
-% %
-Finally, $\nu_l$, is related to the $x$-$y$ correlation coefficient:
+Next, $u$ gives the ratio between the apparent emittance and the intrinsic emittance. When $l = 1$, $u = \varepsilon_y / \varepsilon_l$, or when $l = 2$, $u = \varepsilon_x / \varepsilon_2$. Finally, $\nu_l$, is related to the $x$-$y$ correlation coefficient:
 %
 \begin{equation}
     \cos\nu_l = \frac{\langle{xy}\rangle}{\sqrt{\langle{x^2}\rangle\langle{y^2}\rangle}}.

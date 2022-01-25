@@ -1,6 +1,6 @@
 \chapter{Diagnostics} \label{chap-4}
 
-Determining the similarity between a painted distribution in the SNS and a Danilov distribution requires measurement of the 4D transverse phase space distribution. A direct measurement using a slit-scan \cite{Cathey2018} is not possible at high energy, so the distribution must be reconstructed from lower-dimensional projections. In this chapter, we first describe the available hardware to measure such projections in the SNS. We then describe methods to perform the reconstruction using 1D and or 2D projections. These methods are simulated, then implemented in the SNS.
+Determining the similarity between a painted distribution in the SNS and a Danilov distribution requires measurement of the 4D transverse phase space distribution. A direct measurement using a slit-scan \cite{Cathey2018} is not possible at high energy, so the distribution must be reconstructed from lower-dimensional projections. In this chapter, we first describe the available hardware to measure such projections in the SNS. We then describe methods to perform the reconstruction using 1D and/or 2D projections. The implementation of these methods in the SNS is discussed.
 
 
 \section{Available hardware and constraints}
@@ -46,7 +46,7 @@ The SNS employs a target imaging system (TIS) to measure the 2D projection of th
 \end{figure}
 %
 
-The optics in the RTBT can be modified, but there are constraints. The $\beta$ functions should be kept below $\approx$ 35 m/rad in the wire-scanner region and below $\approx$ 100 m/rad closer to the target to avoid excess beam loss. At the target, it is best to keep the $\beta$ functions near their default values of $\beta_x \approx$ 60 m/rad and $\beta_y \approx$ 6 m/rad to satisfy peak density requirements on the target. In addition to these constraints, quadrupoles in the wire-scanner region share power supplies. There is a horizontal group \{QH18, QH20, QH22, QH24\} and a vertical group \{QV19, QV21, QV23, QV25\}. The last five magnets — QH26, QV27, QH28, QV29, and QH30 — are individually controlled.
+The optics in the RTBT can be modified, but there are constraints. The $\beta$ functions should be kept below $\approx$ 35 m/rad in the wire-scanner region and below $\approx$ 100 m/rad closer to the target to avoid excess beam loss. At the target, it is best to keep the $\beta$ functions near their default values of $\beta_x \approx$ 60 m/rad and $\beta_y \approx$ 6 m/rad to satisfy peak density and beam size requirements on the target. In addition to these constraints, quadrupoles in the wire-scanner region share power supplies. There is a horizontal group \{QH18, QH20, QH22, QH24\} and a vertical group \{QV19, QV21, QV23, QV25\}. The last five magnets — QH26, QV27, QH28, QV29, and QH30 — are individually controlled.
 
 
 \section{Phase space reconstruction from 1D projections}\label{sec:Phase space reconstruction from 1D projections}
