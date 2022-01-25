@@ -2,7 +2,7 @@
 
 High-intensity particle accelerators are important tools for modern scientific research and industrial applications. They serve as drivers for secondary beam production (neutrons, neutrinos, muons, etc.) and are potentially useful for nuclear waste processing \cite{Yee-Rendon2021}. In particular, spallation neutron sources have become vital to neutron scattering research.
 
-The maximum beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can activate material in the accelerator tunnel, making hands-on maintenance of the accelerator hardware unsafe. Thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of roughly $10^{-6}$. Space charge will become even more important in the design of future ten-megawatt accelerators. 
+The maximum beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can lead to radio-activation of the accelerator components, making hands-on maintenance unsafe \cite{Bungau2014}. Thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of roughly $10^{-6}$. Space charge will become even more important in the design of future ten-megawatt accelerators. 
  
 In high-intensity, low-energy circular accelerators (rings), space charge acts as a weak perturbation to the motion; however, its effects are noticeable if the beam is stored in the ring for a significant length of time. Rings are designed to produce stable motion, but the combination of the periodic electromagnetic fields of the accelerator \textit{and beam} may produce unstable motion. This is the fundamental limit on the beam intensity in rings. Additionally, if the beam's electric field has a strong nonlinear dependence on the particle coordinates, the number of stable configurations decreases. Thus, it is desirable to produce a beam in which the electric field has a linear dependence on the particle coordinates; for example, a uniform density ellipsoid. Several methods exist to this end, but new methods may be needed to reach higher intensities.
  
@@ -17,8 +17,8 @@ The structure of this introductory chapter is as follows. The relevant theory of
 \subsection{Single-particle motion}
 
 We begin by describing the motion of a single particle in a circular accelerator (ring). We assume the existence of a closed orbit and use coordinates in which $s$ is the location along the orbit and $x$ and $y$ are the horizontal and vertical transverse displacements. We then study oscillations in the transverse plane with the assumption of constant longitudinal velocity $\beta_s c$, where $c$ is the speed of light.
-
-Magnetic fields are preferred for transverse focusing when the kinetic energy is significant. The magnetic field $\mathbf{B} = (B_x, B_y)$ in a vacuum may be written as an infinite sum:
+ 
+Magnetic fields are preferred for transverse steering and focusing when the kinetic energy is significant. The magnetic field $\mathbf{B} = (B_x, B_y)$ in a vacuum may be written as an infinite sum:
 %
 \begin{equation}\label{eq:magnetic_field_expansion}
     B_x - iB_y = \sum_{n = 1}^{\infty}{(b_n - i a_n) \left({\frac{x + i y}{r_0}}\right)^{n - 1}},
@@ -44,7 +44,7 @@ where $q$ is the particle charge, $m$ is the particle mass, $\gamma_s = (1 - \be
      x'' + k(s)x = 0.
  \end{equation}
 %
-Eq.~\eqref{eq:Hill} is of general interest \cite{Qin2007}. It describes a parametric oscillator — an oscillator whose physical properties change with time. Its solution is described by the Courant-Snyder theory \cite{Courant1958} as
+Eq.~\eqref{eq:Hill} is of general interest \cite{Hill1886, Qin2007}. It describes a parametric oscillator — an oscillator whose physical properties change with time. Its solution is described by the Courant-Snyder theory \cite{Courant1958} as
 %
 \begin{equation}\label{eq:Hill_solution}
     x(s) = \sqrt{2 J \beta(s)} \cos{\left({\mu(s) + \delta}\right)},
