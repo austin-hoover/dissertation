@@ -1,6 +1,6 @@
 \chapter{Diagnostics} \label{chap-4}
 
-Determining the similarity between a painted distribution in the SNS and a Danilov distribution requires measurement of the 4D transverse phase space distribution. A direct measurement using a slit-scan \cite{Cathey2018} is not possible at high energy, so the distribution must be reconstructed from lower-dimensional projections. In this chapter, we first describe the available hardware to measure such projections in the SNS. We then describe methods to perform the reconstruction using 1D and/or 2D projections. The implementation of these methods in the SNS is discussed.
+Determining the similarity between a painted distribution in the SNS and a Danilov distribution requires measurement of the 4D transverse phase space distribution. A direct measurement using a slit-scan \cite{Cathey2018} is not possible at high energy, so the distribution must be reconstructed from lower-dimensional projections. In this chapter, we first describe the available hardware to measure such projections in the SNS. We then describe several methods to perform the reconstruction using 1D and/or 2D projections, as well as the implementation of these methods in the SNS.
 
 
 \section{Available hardware and constraints}
@@ -15,7 +15,7 @@ The RTBT optics are shown in Fig.~\ref{fig:rtbt_optics} along with the locations
     \label{fig:rtbt_optics}
 \end{figure}
 %
-The wire-scanners measure 1D projections of the transverse distribution by sweeping a wire across the beam path. Each wire-scanner — WS20, WS21, WS23, and WS24 — is equipped with a horizontal, vertical, and diagonal wire. The $\langle{xx}\rangle$, $\langle{yy}\rangle$, and $\langle{uu}\rangle$ moments can be estimated from these projections, where the $u$ axis corresponding to the diagonal wire is tilted at angle $\phi = \pi/4$ above the $x$ axis. From these moments, $\langle{xy}\rangle$ is calculated:
+Each wire-scanner measures a 1D projection of the transverse distribution by sweeping a wire across the beam path. Each wire-scanner — WS20, WS21, WS23, and WS24 — is equipped with a horizontal, vertical, and diagonal wire. The $\langle{xx}\rangle$, $\langle{yy}\rangle$, and $\langle{uu}\rangle$ moments can be estimated from these projections, where the $u$ axis corresponding to the diagonal wire is tilted at angle $\phi = \pi/4$ above the $x$ axis. From these moments, $\langle{xy}\rangle$ is calculated:
 %
 \begin{equation}
     \langle{xy}\rangle = \frac{\langle{uu}\rangle - \langle{xx}\rangle \cos^2\phi - \langle{yy}\rangle \sin^2\phi}{2\sin\phi\cos\phi}
@@ -49,7 +49,7 @@ The SNS employs a target imaging system (TIS) to measure the 2D projection of th
 The optics in the RTBT can be modified, but there are constraints. The $\beta$ functions should be kept below $\approx$ 35 m/rad in the wire-scanner region and below $\approx$ 100 m/rad closer to the target to avoid excess beam loss. At the target, it is best to keep the $\beta$ functions near their default values of $\beta_x \approx$ 60 m/rad and $\beta_y \approx$ 6 m/rad to satisfy peak density and beam size requirements on the target. In addition to these constraints, quadrupoles in the wire-scanner region share power supplies. There is a horizontal group \{QH18, QH20, QH22, QH24\} and a vertical group \{QV19, QV21, QV23, QV25\}. The last five magnets — QH26, QV27, QH28, QV29, and QH30 — are individually controlled.
 
 
-\section{Phase space reconstruction from 1D projections}\label{sec:Phase space reconstruction from 1D projections}
+\section{4D phase space reconstruction from 1D projections}\label{sec:Phase space reconstruction from 1D projections}
 
 \subsection{Method description}
 
@@ -258,9 +258,9 @@ Finally, we mention that there is information to be gained from 1D projections o
 
 
 
-\section{Phase space reconstruction from 2D projections}
+\section{4D phase space reconstruction from 2D projections}
 
-Tomographic methods are well-established for the reconstruction of 2D phase space distributions from 1D projections in transverse phase space \cite{Hock2014} and longitudinal phase space \cite{Evans2014}. The concept has recently been extended to the reconstruction of the 4D transverse phase space, both in theory and in practice \cite{Hock2013b, Wang2019, Wolski2020}. This section begins with a brief discussion of tomography in two dimensions as applied to particle accelerators, then moves on to describe several 4D reconstruction algorithms. The algorithms are implemented and their accuracy and limitations are discussed. Finally, the use of 4D tomography on images from the SNS target imaging system is discussed.
+Tomographic methods are well-established for the reconstruction of 2D phase space distributions from 1D projections in transverse phase space \cite{Hock2014} and longitudinal phase space \cite{Evans2014}. The concept has recently been extended to the reconstruction of the 4D transverse phase space, both in theory and in practice \cite{Hock2013b, Wang2019, Wolski2020}. This section begins with a brief discussion of tomography in two dimensions as applied to particle accelerators, then moves on to describe the accuracy and limitations of several 4D reconstruction algorithms. Finally, the use of tomography to reconstruct the 4D phase space distribution from beam images on the SNS target is discussed. 
 
 
 
@@ -374,7 +374,7 @@ Although the main features of the distribution are present in the reconstruction
 
 Here are two additional methods to reconstruct the 4D phase space distribution that could be explored in future work.
 
-Among the distributions consistent with the measured projections, MENT selects the distribution with the maximum entropy. For example, without any measurements constraining the solution, MENT will produce a uniform distribution. It therefore has the ability to perform well with few projections, and has been used for 2D reconstruction in particle accelerators \cite{Hock2013a}. The downside is that the iterative numerical solution is difficult to implement. In principle, the method could be extended to reconstruct the 4D phase space distribution from $x$-$y$ projections.\footnote{In principle, 4D reconstruction could be performed with 1D projections from wire-scanners \cite{Sander1979}; however, it seems a priori unlikely for this to produce an accurate result — imagine reconstructing a 3D image from 1D projections.} An analytic MENT solution has been derived and used for 4D reconstruction of an SNS minipulse from $x$-$x'$ and $y$-$y'$ projections at a laser wire \cite{Wong-forthcoming}. 
+Among the distributions consistent with the measured projections, MENT selects the distribution with the maximum entropy. For example, without any measurements constraining the solution, MENT will produce a uniform distribution. It therefore has the ability to perform well with few projections, and has been used for 2D reconstruction in particle accelerators \cite{Hock2013a}. The downside is that the iterative numerical solution is difficult to implement and may struggle to converge when the number of projections is large. For 4D reconstruction from $x$-$y$ projections, the MENT could be used to perform the 2D reconstructions in Hock's method, which may result in improved performance over SART. Alternatively, just as ART was generalized to four dimensions in the previous section, MENT could be generalized to four dimensions.\footnote{In principle, MENT can perform a 4D reconstruction using 1D projections \cite{Sander1979}; however, it seems a priori unlikely for this to produce an accurate result: imagine reconstructing a 3D image from 1D projections.} An analytic MENT solution has recently been derived and used for the 4D reconstruction of an SNS minipulse using $x$-$x'$ and $y$-$y'$ projections from a laser wire \cite{Wong-forthcoming}. 
 
 Another method is to generate a particle bunch, track the bunch to the screen, weight each particle by the measured signal at the bin where it fell on the screen, and generate new particles in the region of that particle according to its weight. The advantage of this method is that it does not assume linear transport, and that it can perform well with few projections. It was experimentally demonstrated by Wang et. al. in the Xi’an Proton Application Facility (XiPAF) using six projections \cite{Wang2019}. 
 
@@ -384,7 +384,7 @@ Another method is to generate a particle bunch, track the bunch to the screen, w
 
 \subsubsection{Optics control}
 
-We desire independent control of the horizontal and vertical optics. The optics control developed for the wire-scanner measurement can be used here. The constraints are now that the $\beta$ functions remain below 35 m/rad in the wire-scanner region, below 100 m/rad before the target, and stay within 15\% of their default values at the target. Fig.~\ref{fig:target_phase_scan_1} shows that both the horizontal and vertical phase advances can be scanned in a 180$\degree$ range without modifying the other. Fig.~\ref{fig:target_phase_scan_2} overlays the $\beta$ functions and phase advances throughout the RTBT for every step in the scan, showing that the beam size constraints are not violated. The horizontal axis starts at the first varied quadrupole and ends at the target.
+We desire independent control of the horizontal and vertical phase advances. The optics control developed for the wire-scanner measurement can be used here. The constraints are now that the $\beta$ functions remain below 35 m/rad in the wire-scanner region, below 100 m/rad before the target, and stay within 15\% of their default values at the target. Fig.~\ref{fig:target_phase_scan_1} shows that both the horizontal and vertical phase advances can be scanned in a 180$\degree$ range without modifying the other. Fig.~\ref{fig:target_phase_scan_2} overlays the $\beta$ functions and phase advances throughout the RTBT for every step in the scan, showing that the beam size constraints are not violated. The horizontal axis starts at the first varied quadrupole and ends at the target.
 %
 \begin{figure}[!p]
     \centering
@@ -402,7 +402,7 @@ We desire independent control of the horizontal and vertical optics. The optics 
     \label{fig:target_phase_scan_2}
 \end{figure}
 %
-Computing each optics setting takes approximately sixteen seconds using an OpenXAL solver. It also takes time to change the magnet strengths in the machine, trigger the beam, and collect the target image. The time available at an accelerator physics study is 8-10 hours at a maximum, so we place an upper limit on the number of images collected during the scan at $15 \times 15$, for which it takes around one hour to calculate the optics and one hour to collect the images. 
+Computing each optics setting takes approximately sixteen seconds using an OpenXAL solver. It also takes time to change the magnet strengths in the machine, trigger the beam, and collect a batch of target images. The time available in most accelerator physics studies is eight to ten hours at a maximum, so we place an upper limit on the number of images collected during the scan at $15 \times 15$, for which it takes around one hour to calculate the optics and one hour to collect the images. 
 
 
 \subsubsection{Image acquisition and processing}
