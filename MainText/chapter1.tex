@@ -358,7 +358,7 @@ If the electric field is nonlinear, the tune shift will depend on the particle a
 \end{figure}
 %
 
-Thus, the beam intensity in a ring is fundamentally limited by the incoherent space charge tune shift. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in this model.
+Thus, the beam intensity in a ring is limited by the incoherent space charge tune shift. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application. Research in this area is ongoing. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in this model.
 
 
 
@@ -382,7 +382,7 @@ Hidden in Eq.~\eqref{eq:Vlasov} is the single-particle equation of motion, which
     \frac{q}{m\gamma_s^3\beta_s^2c^2} \frac{\partial{\Phi}}{\partial\mathbf{x}},
 \end{equation}
 %
-with the space charge potential $\Phi$ determined from the Poisson equation:
+with the space charge potential $\Phi$ determined from the Poisson equation \cite{Jackson1975}:
 %
 \begin{equation} \label{eq:Poisson}
     \frac{\partial^2{\Phi}}{\partial{\mathbf{x}^2}} = -\frac{q}{\epsilon_0}
@@ -656,7 +656,7 @@ Refer back to Eq.~\eqref{eq:eigvec_coords} in which the single-particle motion i
     Re \left\{ \sqrt{2 J_l} \, \mathbf{v}_l \, e^{-i\psi_l} \right\} \sqrt{t},
 \end{equation}
 %
-with $l = 1,2$. The first injected pulse does not move since it is injected onto the closed orbit. The second pulse traces a small ellipse in every 2D projection of the phase space on a turn-by-turn basis. The third pulse traces a slightly larger ellipse enclosing the second, and so on. The square root time-dependence ensures that the beam is a uniform density ellipse in every 2D projection of the 4D phase space at every point during injection. Thus, in the linear approximation, a Danilov distribution is maintained at all times, even with space charge.\footnote{Of course, the method is limited even in the linear approximation due to the finite emittance of the beam from the linac.} This is illustrated on the right side of Fig.~\ref{fig:painting_graphic}.
+with $l = 1,2$. The first injected pulse does not move since it is injected onto the closed orbit. The second pulse traces a small ellipse in every 2D projection of the phase space on a turn-by-turn basis. The third pulse traces a slightly larger ellipse enclosing the second, and so on. The square root time-dependence ensures that the beam is a uniform density ellipse in every 2D projection of the 4D phase space at every point during injection. Thus, in the linear approximation, a Danilov distribution is maintained at all times, even with space charge.\footnote{The method is limited even in the linear approximation due to the finite emittance of the beam from the linac.} This is illustrated on the right side of Fig.~\ref{fig:painting_graphic}.
 
 Elliptical painting can be carried out in any ring. If the ring is uncoupled, the two elliptical modes reduce to planar modes and injection into one of the modes results in a flat beam. Coupled optics change the shape of the matched beam at the injection point and produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. This is discussed further in the subsequent chapters.
 
@@ -741,7 +741,7 @@ The coordinates are then transported to the injection point using the model tran
 
 The next issue is how to control phase space coordinates at the injection point. Each kicker magnet is calibrated by applying a voltage difference to the magnet and measuring the orbit response using the ring BPMs; the angular kick associated with the magnet is varied until the model orbit agrees with the measured orbit. It was found that slight quadrupole corrections are necessary for this to occur. The standard deviation of the measured phase space coordinates is small after this calibration. One can then ask the model for a change in coordinates, update the kickers accordingly, and measure the new coordinates, iterating if necessary. This is currently done manually, and kicker power supplies need to be visually checked to make sure they are not beyond physical limits. Once this setup is complete, the kicker voltages are saved to a file and fed to a different script which scales sets the kicker waveforms. These steps were implemented as part of the Ring Injection Control (RIC) application in the OpenXAL framework \cite{Milas2021}. 
 
-SNS injection kicker magnets have limited strengths and are unipolar, which limits the maximum relative angle between the HEBT trajectory and the ring orbit at the injection point. As discussed later, there are several tricks that can be played to increase the effective injection kicker strength, one of which is to decrease the beam energy; however, this is a significant task due to issues related to the SNS timing system. Initial attempts to lower the energy to 0.6 GeV were successful, but difficult and time-consuming. An energy of 0.8 GeV appears to be the minimum energy achievable within the time-frame of a single beam physics experiment.
+The SNS injection kicker magnets have limited strengths and are unipolar, which limits the maximum relative angle between the HEBT trajectory and the ring orbit at the injection point. This is potentially disadvantageous because it could restrict the final apparent beam emittances, which should be maximized to reduce the effect of space charge and better approximate a pencil-beam from the linac, i.e., a small ratio of the minipulse emittances to the final pulse emittances. For example, one painting scheme is to vary the relative horizontal distance and vertical angle between the beams while fixing the vertical distance and horizontal angle; in this case, the final vertical emittance depends only on the maximum vertical angle. Previous simulations indicate that this angle will be quite small at the nominal beam energy of 1.0 GeV. Several tricks to increase the effective strength of the injection kicker magnets are discussed in Chapter \ref{chap-5}.
 
 
 \section{Structure and goals of this dissertation}\label{sec:Goals of this dissertation}.

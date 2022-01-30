@@ -10,7 +10,7 @@ The phase space measurement must be performed in the ring-target beam transfer (
 The RTBT optics are shown in Fig.~\ref{fig:rtbt_optics} along with the locations of four wire-scanners near the target.
 %
 \begin{figure}[!p]
-    \includegraphics[width=\textwidth]{Images/chapter4/RTBT_optics4.png}
+    \includegraphics[width=\textwidth]{Images/chapter4/RTBT_optics.png}
     \caption{$\beta$ functions and phase advances in the RTBT wire-scanner region.}
     \label{fig:rtbt_optics}
 \end{figure}
@@ -126,13 +126,7 @@ Each measured beam size defines two lines in the $x$-$x'$ plane at $b$. When the
 
 To perform the wire scans, the beam is set to a pulse frequency of 1 Hz, and the beam loss monitors in the wire-scanner region are masked due to the higher-than-normal losses when the wires cross the beam core. Wire-scanner data acquisition is performed by the Profile Tools and Analysis (PTA) application. After the four wire-scanners complete their scan, a time-stamped file is produced containing the measured profiles.
 
-The four wire-scanners produce four equations, exactly determining the cross-plane moments, so no optics changes are needed in principle; however, additional measurements should reduce the error. In the 2D case, is typically recommended to space $n$ measurements by $\pi / n$ in phase advance \cite{book:Minty2003}. This may be due to the geometric interpretation of Fig.~\ref{fig:ws_emittance_measurement}: in normalized phase space, the rotation angle of the measurement lines is equivalent to the phase advance and the lines are evenly spaced around the phase space ellipse. But in the general case, the angle is given by \cite{Hock2011}
-%
-\begin{equation}
-    \tan\theta = \frac{M_{12}}{M_{11}},
-\end{equation}
-%
-so the spacing will not be uniform. This issue should therefore be investigated numerically in each lattice. The four wire-scanners in the RTBT are already somewhat evenly spaced in phase advance, and it was determined that a 30$\degree$ window around each wire-scanner would provide sufficient coverage. 
+The four wire-scanners produce four equations, exactly determining the cross-plane moments, so no optics changes are needed in principle; however, additional measurements should reduce the error. In the 2D case, is typically recommended to space $n$ measurements by $\pi / n$ in phase advance \cite{book:Minty2003}. This may be due to the geometric interpretation of Fig.~\ref{fig:ws_emittance_measurement}: in normalized phase space, the rotation angle of the measurement lines is equivalent to the phase advance and the lines are evenly spaced around the phase space ellipse. The four wire-scanners in the RTBT are already somewhat evenly spaced in phase advance, and it was determined that a 30$\degree$ window around each wire-scanner would provide sufficient coverage. 
 
 Due to the shared power supplies of the quadrupoles in the wire-scanner region, there is limited control of the phase advances between the wire-scanners. We instead vary the phase advances from QH18 (the first varied quadrupole) to WS24 (the last wire-scanner), which changes the phase advances at WS20, WS21, and WS23 by approximately the same amount. 
 
@@ -150,7 +144,7 @@ To set the phase advances at WS24 while constraining the beam size in the wire-s
     .
 \end{equation}
 %
-The quadrupole field strengths are contained in the vector $\mathbf{g}$. The calculated and desired phase advances at WS24 are $\bm{\mu} = (\mu_x, \mu_y)$, and $\tilde{\bm{\mu}} = (\tilde{\mu}_x, \tilde{\mu}_y)$, respectively. The maximum calculated and allowed $\beta$ functions in the wire-scanner region are $\bm{\beta}_{max} = (\beta_{x_{max}}, \beta_{y_{max}})$ and $\tilde{\bm{\beta}}_{max} = (\tilde{\beta}_{x_{max}}, \tilde{\beta}_{y_{max}})$, respectively. $\Theta$ is the Heaviside step function. Finally, $\epsilon$ is a constant. We assume that the the beam is approximately matched to the lattice optics so that the calculated phase advances are close to the true phase advances.
+The quadrupole field strengths are contained in the vector $\mathbf{g}$. The calculated and desired phase advances at WS24 are $\bm{\mu} = (\mu_x, \mu_y)$, and $\tilde{\bm{\mu}} = (\tilde{\mu}_x, \tilde{\mu}_y)$, respectively. The maximum calculated and allowed $\beta$ functions in the wire-scanner region are $\bm{\beta}_{max} = (\beta_{x_{max}}, \beta_{y_{max}})$ and $\tilde{\bm{\beta}}_{max} = (\tilde{\beta}_{x_{max}}, \tilde{\beta}_{y_{max}})$, respectively. $\Theta$ is the Heaviside step function. Finally, $\epsilon$ is a constant. We assume that the the beam is approximately matched to the lattice optics so that the calculated phase advances are close to the true phase advances.\footnote{As mentioned in Chapter \ref{chap-1}, phase space painting generally produces matched $x$-$x'$ and $y$-$y'$ distributions, especially after many accumulated turns. The opportunity for mismatch of the beam Twiss parameters with the lattice Twiss parameters comes at the ring extraction point — the entrance of the RTBT. Since the RTBT is not periodic, propagation of the Twiss parameters requires initial conditions. In all calculations of phase advances in the RTBT, we take the initial conditions to be those defined by the ring at the extraction point. Without space charge or nonlinear forces, there will be no mismatch. With space charge, the Twiss parameters in the ring will shift to new values: $\alpha$ generally remain the same while the $\beta$ increases. This change is small in production painting, but could be enhanced during our studies because of the lower beam energy and potentially smaller beam size. Nonetheless, the accuracy of the 2D emittance reconstruction error as a function of $\beta$ and $\alpha$ was studied in \cite{Prat2014}, who found that the method is accurate.}
 
 After the model optics are computed, the live quadrupole settings must be changed. The SNS employs a machine protection system (MPS) that will cause the machine to trip if the RTBT quadrupole strengths wander outside a certain window, so this window is extended beforehand. Additionally, the MPS will activate if the fractional change in field strength is too large; to solve this problem, the field strength is changed in small steps. 
 
@@ -195,67 +189,84 @@ Decreasing the number of measurements used in the reconstruction had no substant
 
 
 
-\subsection{Sensitivity to measurement errors}
+\subsection{Sensitivity to errors}
 
-A nonlinear solver can be used to ensure that the reconstructed covariance matrix is physical; however, the answer was found to depend strongly on the initial guess provided to the solver. To investigate the failure of the fixed-optics method, the reconstructed covariance matrix (using the full data set) was tracked to the wire-scanners using the known transfer matrices. Random Gaussian noise was added to the moments at these locations, and the noisy moments were used to perform the reconstruction. This was repeated for several trials. It was found that the reconstruction was extremely sensitive to changes in the beam moments, as shown in Fig.~\ref{fig:prod_sensitivity}.
+A nonlinear solver can be used to ensure that the reconstructed covariance matrix is physical; however, the answer was found to depend strongly on the initial guess provided to the solver. To investigate the failure of the fixed-optics method, a covariance matrix (matched to the lattice optics) was generated and tracked to the wire-scanners using the known transfer matrices, then the reconstruction was performed 1000 times with random noise added to the moments. Fig.~\ref{fig:prod_sensitivity} shows that the reconstruction is very sensitive to changes to the ``measured" moments.
 %
 \begin{figure}[!p]
-    \centering
-    \begin{subfigure}{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter4/prod_sensitivity1.png}
-    \end{subfigure}
-    \vfill
-    \vspace*{0.5cm}
-    \vfill
-    \begin{subfigure}{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter4/prod_sensitivity2.png}
-    \end{subfigure}
-    \vfill
-    \vspace*{0.5cm}
-    \vfill
-    \begin{subfigure}{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter4/prod_sensitivity3.png}
-    \end{subfigure}
-    \caption{Monte Carlo trials of a fixed-optics emittance measurement in the RTBT. Left: apparent emittances.}
+    \vspace*{5cm}
+    \includegraphics[width=\textwidth]{Images/chapter4/prod_sensitivity3.png}
+    \caption{Monte Carlo simulation of a fixed-optics emittance measurement in the RTBT. Left: apparent emittances; right: intrinsic emittances.}
     \label{fig:prod_sensitivity}
+    \vspace*{5cm}
 \end{figure}
 %
-As soon as any noise is included, the fail rate jumps to a large value; additionally, the intrinsic emittances reconstructed in the successful fits have a large, asymmetric spread around the correct values. On the other hand, the apparent emittances are localized around the correct values. (The transfer matrices are uncoupled, so the $x$-$x'$ and $y$-$y'$ reconstructions are performed independently. The problem is with the cross-plane moments.)
+The intrinsic emittances in the successful fits have a large, asymmetric spread around their true values and are strongly correlated, as opposed to the apparent emittances which are uncorrelated and clustered around their true values.
 
-Sensitivity of 4D emittance measurements using fixed-optics was observed in \cite{Woodley2000}, including the asymmetric distribution of errors in Fig.~\ref{fig:prod_sensitivity}. The problem was studied more recently in \cite{Agapov2007} and \cite{Faus-Golfe2016}. The conclusion from these studies is that the linear system for the cross-plane moments is ill-conditioned. The sensitivity of a linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$ to errors in $\mathbf{b}$ is determined by the condition number of $\mathbf{A}$, which is the product of matrix norms $\Vert \mathbf{A} \Vert \Vert \mathbf{A}^{-1} \Vert$. As an example, consider four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices. Fig.~\ref{fig:fodo_condition_number} plots the condition number of the coefficient matrix as a function of the spacing between the wire-scanners.
+Sensitivity of fixed-optics 4D emittance measurements was observed in \cite{Woodley2000} and studied more recently in \cite{Agapov2007, Faus-Golfe2016}. The conclusion from these studies is that the linear system used to reconstruct the cross-plane moments can easily become ill-conditioned. The sensitivity of a linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$ to errors in $\mathbf{b}$ is determined by the condition number $C = \Vert \mathbf{A} \Vert \Vert \mathbf{A}^{-1} \Vert$ (or the pseudo-inverse $\left(\mathbf{A}^T\mathbf{A}\right)^{-1} \mathbf{A}^T$ if $\mathbf{A}$ is not square) where $\Vert \dots \Vert$ is a matrix norm \cite{Golub1985}. As an example, consider four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices. Since the transfer matrices are uncoupled, there are three independent subsystems to solve: $x$-$x'$, $y$-$y'$, and the cross-plane moments. Let the coefficient matrices for these subsystems be $\mathbf{A}_{xx}$, $\mathbf{A}_{yy}$, and $\mathbf{A}_{xy}$, respectively, and the condition numbers be $C_{xx}$, $C_{yy}$, and $C_{xy}$. Recall that the within-plane moments are overdetermined while the cross-plane moments are exactly determined. Fig.~\ref{fig:fodo_condition_number} plots the inverse of these condition numbers as a function of the wire-scanner spacing.
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=0.7\textwidth]{Images/chapter4/fodo_condition_number.png}
-    \caption{Condition number $C$ of the coefficient matrix for four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices.}
+    \includegraphics[width=\textwidth]{Images/chapter4/fodo_condition_number.png}
+    \caption{Condition numbers of the coefficient matrices for four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices.}
     \label{fig:fodo_condition_number}
 \end{figure}
 %
-The condition number is large when the spacing is 90\degree, in which case the two measurements provide degenerate information in $x$-$x'$ or $y$-$y'$. The sum and difference lines correspond to the cross-plane moments. The chart will be more complicated for different optics or additional wire-scanners.
+$C_{xx}$ and $C_{yy}$ approach $\infty$ when the spacing is 90\degree in the their respective planes, in which case two pairs of measurements provide degenerate information, while $C_{xy}$ depends on the difference between the phase advances. The pattern will be more complicated for arbitrary optics and/or additional wire-scanners. The error and uncertainty in the emittance reconstruction, as well as the number of failed fits, mirrors these condition numbers.
 
-Fig.~\ref{fig:rtbt_condition_number} shows a similar calculation in the RTBT. 
+A similar calculation can be performed in the RTBT by varying the phase advances at WS24. We varied these phase advances ($\mu_x$, $\mu_y$) around their nominal values ($\mu_{x0}$, $\mu_{y0}$) in a $45\degree$ window; at each setting, the reconstruction was again simulated with 2\% random noise added to the ``measured" moments, repeating over 1000 trials. Failed trials were discarded. The fractional error in the mean reconstructed emittances are plotted in the top row of Fig.~\ref{fig:rtbt_montecarlo_emittances}, as well the fractional standard deviation in the bottom row. 
 %
 \begin{figure}[!p]
     \centering
-    \begin{subfigure}{0.75\textwidth}
-        \includegraphics[width=1.0\textwidth]{Images/chapter4/rtbt_condition_number.png}
-    \end{subfigure}
-    \vfill
-    \vspace*{0.8cm}
-    \begin{subfigure}{0.75\textwidth}
-        \includegraphics[width=1.0\textwidth]{Images/chapter4/rtbt_fail_rate.png}
-    \end{subfigure}
-    \caption{4D emittance reconstruction errors as a function of the phase advances at WS24. Top: condition number of the linear system. Bottom: simulated reconstruction fail rate with 3\% beam size error.}
-    \label{fig:rtbt_condition_number}
+    \includegraphics[width=0.9\textwidth]{Images/chapter4/rtbt_montecarlo_emittances.png}
+    \caption{Simulated 4D emittance reconstruction errors as a function of the phase advances at WS24.}
+    \label{fig:rtbt_montecarlo_emittances}
 \end{figure}
 %
-The phase advances at WS24 are scanned around their default values. The default optics are ill-suited for the measurement. A new operating point was chosen at the blue dot in the figure. This corrected the issue of failed fits in the following experiments. 
+A few of the settings produced no successful trials and appear as white cells in the figure. The apparent emittances are not displayed because they remained within 1\% of their true values at every optics setting. 
 
-Finally, we mention that there is information to be gained from 1D projections of the distribution in addition to the RMS reconstruction. The distributions can be compared to the ideal ``half-circle" projections of a uniform density ellipse. The projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section. It may be possible to include cross-plane information in the reconstruction using the diagonal projections. 
+We conclude that the default optics are ill-suited for the fixed-optics 4D emittance measurement. Moving the operating point near $\mu_x = \mu_{x0} + 45\degree$, $\mu_y = \mu_{y0} - 45\degree$ should reduce the intrinsic emittance errors to around 10\%, which we deem acceptable, and eliminate the issue of failed fits.\footnote{The region near $\mu_x = \mu_{x0} - 45\degree$, $\mu_y = \mu_{y0} + 45\degree$ appears to be more stable, but results in larger $\beta$ functions in the wire-scanner regions. We would like to avoid this if possible.} 
+
+It is also important to examine the effect of mismatched beam parameters on the reconstruction accuracy. Recall that the phase advance is the integral of the inverse of the $\beta$ function. In a periodic system, there is a unique periodic solution for the $\beta$ function, but this is not true in a transfer line such as the RTBT; thus, the phase advance in the RTBT depends on the Twiss parameters at the ring extraction point — the RTBT entrance. 
+
+All phase advance calculations thus far have assumed that the beam's Twiss parameters are the same as the ring Twiss parameters at extraction. This is generally a safe assumption: when a beam is painted in a ring, turn-by-turn mismatch oscillations are washed out as new particles are added to the beam and as the existing particles perform transverse oscillations. It is possible, however, for space charge to effectively modify the ring Twiss parameters, resulting in mismatch when entering the RTBT. This modification is small during production painting, as shown in Fig.~\ref{fig:prod_meas}. But it is expected from simulations that elliptical painting could produce more significant modifications to the Twiss parameters if the painted beam size is restricted. 
+
+To examine the effect of mismatch on the fixed-optics 4D emittance measurement, first moved the operating point to $\mu_x = \mu_{x0} + 45\degree$, $\mu_y = \mu_{y0} - 45\degree$, as just described, then varied the initial Twiss parameters at the node BPM17 in the RTBT and repeated the Monte Carlo trials. There are four parameters: $\alpha_x$, $\alpha_y$, $\beta_x$, and $\beta_y$. We based the range of each parameter on a measurement in which the reconstructed Twiss parameters were different than the nominal Twiss parameters. Details about the measurement are left for Chapter \ref{chap-5}, but we note that the space charge effect on the beam was likely maximized in this measurement due to a reduced beam size and beam energy; thus, the mismatch of the beam should also be maximized. The reconstructed and nominal Twiss parameters are shown in Table~\ref{tab:mismatch}.
+%
+\begin{table}[!p]
+    \centering
+    \caption{Reconstructed and model Twiss parameters at BPM 17 in the RTBT (see Experiment 2 in Chapter \ref{chap-5}.). ``Min" and ``Max" refer to the extreme values used to study the effect of mismatch oscillations on the 4D reconstruction accuracy.}
+    \begin{tabular}{lcccc}
+    \midrule
+    \textbf{Parameter} & \textbf{Measured} & \textbf{Model} & \textbf{Min} & \textbf{Max} \\
+    \midrule
+    $\beta_x$ & 6.26 & 5.48 & 4.67 & 6.32 \\
+    $\beta_y$ & 20.82 & 19.25 & 16.68 & 22.57 \\
+    $\alpha_x$ & -0.89 & -0.77 & -0.62 & -0.46 \\
+    $\alpha_y$ & 1.17 & 1.90 & 1.72 & 2.68 \\
+    \midrule    
+    \end{tabular}
+    \label{tab:mismatch}
+\end{table}
+%
+The last two columns in the table show the extreme values between which the Twiss parameters were varied during the Monte Carlo simulation. 
+
+Fig.~\ref{fig:mismatch} plots the fractional error and standard deviation in the reconstructed intrinsic emittances as a function of the sum of the mismatch parameters $M_x$ and $M_y$.\footnote{For ellipse 1 with Twiss parameters \{$\alpha_1$, $\beta_1$, $\gamma_1$\} and ellipse 2 with Twiss parameters \{$\alpha_2$, $\beta_2$, $\gamma_2$\}, the mismatch parameter $M$ is defined as $M = \frac{1}{2}(\beta_1\gamma_2 - 2\alpha_1\alpha_2 + \gamma_1\beta_2)$ \cite{book:Minty2003}. $M = 1$ if the ellipses are identical.} 
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics{Images/chapter4/mismatch.png}
+    \caption{Simulated fractional error and standard deviation of reconstructed intrinsic emittances as a function of the beam mismatch parameter.}
+    \label{fig:mismatch}
+\end{figure}
+%
+Since the mismatch parameter and the assumed uncertainty in the beam size measurements are both small, the fractional error and uncertainty in the reconstructed intrinsic emittances remains acceptable. If the measured values from Table~\ref{tab:mismatch} are adopted, the fractional error jumps from around 10\% to at least 15\%. We conclude that the fixed-optics method can be used for fast measurement of the 4D beam emittance. A multi-optics measurement should be used if time allows to reduce the uncertainty.
 
 
 
+\subsubsection{Other uses of 1D projections}
 
+To close this section, we mention that there is information to be gained from 1D projections of the distribution in addition to the root-mean-square reconstruction just described. First, the measured projections can be compared to the ideal ``half-circle" projections of a uniform density ellipse; for example, see Fig.~\ref{fig:Holmes_corner_compare}.\footnote{The best expected case is a uniform density core with small nonlinear tails, the 1D projection of which is clearly distinguishable from a Gaussian curve, but it may be difficult to distinguish intermediate cases with larger tails. The method we employ in the next chapter is to calculate the standard deviation of the measured profile, plot the projections of an ideal Gaussian and uniform density elliptical distribution which share the same standard deviation, and visually compare the three curves. More quantitative methods may be used in the future.} Second, the projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section; it may be possible to include cross-plane information in the reconstruction using diagonal projections. 
 
 
 \section{4D phase space reconstruction from 2D projections}
