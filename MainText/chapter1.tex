@@ -425,7 +425,7 @@ Self-consistent distributions possess several notable properties. First, the int
 
 \subsection{Known solutions}
 
-Danilov et al. enumerated a class of self-consistent distributions in $2d$-dimensional phase space \cite{Danilov2003}: 
+Danilov et al. enumerated a class of self-consistent distributions in $2n$-dimensional phase space \cite{Danilov2003}: 
 %
 \begin{equation}\label{eq:scdist_general_form}
     f\left({\mathbf{x}, \mathbf{x}'}\right) = 
@@ -434,7 +434,7 @@ Danilov et al. enumerated a class of self-consistent distributions in $2d$-dimen
     + \mathbf{e}'_i \cdot \mathbf{x}'}\right),
 \end{equation}
 %
-where $\mathbf{x}$, $\mathbf{x}'$ are the $d$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$, $\mathbf{e}'_i$ are vectors of constants. This is referred to as the $\{n,m\}$ case. It was proven that the electric field within any uniformly filled ellipsoid is linear, and that any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces a linear electric field will do so under any linear transformation of the phase space coordinates.
+where $\mathbf{x}$, $\mathbf{x}'$ are the $n$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$ and $\mathbf{e}'_i$ are vectors of constants. This is labeled as the $\{n,m\}$ case. It was proven that the electric field within any uniformly filled ellipsoid is linear, and that any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces a linear electric field will do so under any linear transformation of the phase space coordinates.
 
 In other words, one class of self-consistent distributions consists of those that generate linear space charge forces and are constructed from quantities that are invariant in the presence of linear focusing. We now focus on the \{2, 0\} and \{2, 2\} cases. \footnote{Qin and Davidson derived a self-consistent distribution in two spatial dimensions in \cite{Qin2013} using their recent parameterization of coupled motion, but made no reference to \cite{Danilov2003}. The connection between Danilov's work and Qin and Davidson's work should be explored in the future.}
 
@@ -533,9 +533,9 @@ Discussion of the Danilov envelope equations is reserved for Chapter \ref{chap-2
 \section{Producing a self-consistent distribution}\label{sec:Producing a self-consistent distribution}
 
 
-\subsection{Motivation}
+\subsection{Motivation and previous work}
 
-The following points motivate the physical realization of a self-consistent distribution.
+The following points motivate the physical realization of a Danilov distribution.
 
 \begin{enumerate}
 \item 
@@ -548,36 +548,14 @@ It is an interesting challenge to bring a real distribution closer to a self-con
 Beams with a uniform charge density are ideal for fixed-target applications such as spallation neutron production. SNS targets are complex and expensive \cite{Haines2014} and considerable research and development goes into reducing the peak density on the target. This issue will become even more important if future machines are built on the intensity horizon with similar targets.
 
 \item
-There has been recent interest in generating circular modes, where a circular mode is a beam with small 4D emittance. Such a beam can be transformed to a round state ($\varepsilon_x = \varepsilon_y$) or a flat state ($\varepsilon_x \ll \varepsilon_y$) using coupled linear optics that preserve $\varepsilon_{1,2}$. Several potential applications of circular modes are listed in \cite{Burov2002}. Consider first a round-flat transformation \cite{Kim2003}: the fractional increase in beam luminosity, a figure of merit in colliders, is
-%
-\begin{equation}
-    C = \sqrt{\frac{\varepsilon_x\varepsilon_y}{\varepsilon_1\varepsilon_2}},
-\end{equation}
-%
-which diverges as $\varepsilon_1\varepsilon_2 \rightarrow 0$. Flat beams may also find use in rings due to their suppression of the motion in one dimension, freeing large areas of tune space. The possible use of flat beams in the Large Hadron Collider (LHC) is explored by Burov in \cite{Burov2013}. Alternatively, round beams may be helpful for the suppression of beam-beam effects at collider interaction points \cite{Danilo1996}. Circular modes may also find use in relativistic electron cooling \cite{Burov2000}, low-energy hadron cooling \cite{Derbenev2000}, muon ionization cooling, and radiation generation \cite{Corlett2001}. The connection between the Danilov distribution and circular modes is straightforward: the Danilov distribution is a circular mode with a uniform charge density and an elliptical shape. This connection is illustrated in Fig.~\ref{fig:circular_modes_diagram}.
+There has been recent interest in angular-momentum-dominated (AMD) beams — beams with a small 4D emittance. Such a beam can be transformed to a round state ($\varepsilon_x \approx \varepsilon_y$) or a flat state ($\varepsilon_x \ll \varepsilon_y$) using coupled linear optics that preserve the intrinsic emittances $\cite{Kim2003}$. They may find use in colliders, relativistic electron cooling, low-energy hadron cooling, muon ionization cooling, and/or radiation generation \cite{Burov2002}. The Danilov distribution is an AMD beam with the special property of self-consistency.
+
+The application that is most relevant to this work is the use of an AMD beam in a collider, as suggested by Burov in \cite{Burov2013} for the Large Hadron Collider (LHC). The primary benefit in this context is the increase in luminosity when the beam is converted to a flat state.\footnote{Consider the head-on collision of two Gaussian beams, each with each with $\varepsilon_x = \varepsilon_y$, with equal $\beta$ functions at the interaction point, The luminosity in this case is inversely proportional to $\sqrt{\varepsilon_x \varepsilon_y}$ \cite{Herr2006}. Now suppose the cross-plane correlations in the beam are removed before the collision: the new luminosity is inversely proportional to $\sqrt{\varepsilon_1 \varepsilon_2}$. Thus, the fractional increase in luminosity is $\sqrt{{\varepsilon_x\varepsilon_y} / {\varepsilon_1\varepsilon_2}}$, which diverges as $\varepsilon_{4D} = \varepsilon_1\varepsilon_2 \rightarrow 0$.} Flat beams could also suppress beam-beam resonances and allow for luminosity leveling \cite{Burov2013}. A promising approach to generating such a distribution is to maintain a round state at lower energies, such as in the LHC booster rings, then transform to a flat state at higher energies. The challenge is to accumulate the initial round AMD beam, which is complicated by nonlinear focusing fields and space charge forces. One way to address this challenge is to maintain an approximate Danilov distribution to linearize the space charge force during accumulation.
 \end{enumerate}
-%
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=\textwidth]{Images/chapter1/diagram.png}
-    \caption{Connection between circular modes, the Danilov distribution, and the elliptical painting method.}
-    \label{fig:circular_modes_diagram}
-\end{figure}
-%
 
-\subsection{Previous experimental work}
+Luiten et al. proposed a method to create a self-consistent \{3, 3\} distribution (see Eq.~\eqref{eq:scdist_general_form}) of electrons \cite{Luiten2004}. They observed that since a uniform density oblate spheroid\footnote{$(x/A)^2 + (y/B)^2 + (z/C)^2 = 1$ with $A = B > C$} will collapse under its own gravity into a flat disk \cite{Lin1965}, a flat transverse disk of electrons will longitudinally expand into a uniform density ellipsoid. This ``pancake" distribution can be created using ultrashort pulsed-laser photoemission with an appropriate radial intensity profile. Musumeci et al. experimentally demonstrated this method in \cite{Musumeci2008}. 
 
-Luiten et al. proposed a method to create a \{3, 3\} distribution (a 3D uniform density ellipsoid) of electrons \cite{Luiten2004}. They observed that since a uniform density oblate spheroid\footnote{$(x/A)^2 + (y/B)^2 + (z/C)^2 = 1$ with $A = B > C$} will collapse under its own gravity into a flat disk \cite{Lin1965}, a flat transverse disk of electrons will longitudinally expand into a uniform density ellipsoid. This ``pancake" distribution can be created using ultrashort pulsed-laser photoemission with an appropriate radial intensity profile. Musumeci et al. experimentally demonstrated this method in \cite{Musumeci2008}. Their measurements are shown in Fig.~\ref{fig:Musumeci}.
-%
-\begin{figure}[!p]
-    \centering
-    \includegraphics[width=0.9\textwidth]{Images/chapter1/Musumeci_fig2.png}
-    \caption{Measured electron beam in the $x$-$z$ plane from \cite{Musumeci2008}.}
-    \label{fig:Musumeci}
-\end{figure}
-%
-
-Unfortunately, these methods do not apply to high-intensity proton rings where distributions are much longer, often resembling 2D coasting beams, and are built up over many turns. The rest of this section describes a method to generate a Danilov distribution in a high-intensity proton ring using the concept of phase space painting, as well as the implementation of the method in the SNS.
+Unfortunately, these methods do not apply to high-intensity proton rings where distributions are much longer, often resembling 2D coasting beams, and are built up over many turns. A method to produce an approximate Danilov distribution in a high-intensity proton ring was introduced in \cite{Danilov2003}. Before describing the method, we will need to introduce the concept of phase space painting. 
 
 
 \subsection{Phase space painting}
@@ -654,10 +632,12 @@ Refer back to Eq.~\eqref{eq:eigvec_coords} in which the single-particle motion i
 %
 with $l = 1,2$. The first injected pulse does not move since it is injected onto the closed orbit. The second pulse traces a small ellipse in every 2D projection of the phase space on a turn-by-turn basis. The third pulse traces a slightly larger ellipse enclosing the second, and so on. The square root time-dependence ensures that the beam is a uniform density ellipse in every 2D projection of the 4D phase space at every point during injection. Thus, in the linear approximation, a Danilov distribution is maintained at all times, even with space charge.\footnote{The method is limited even in the linear approximation due to the finite emittance of the beam from the linac.} This is illustrated on the right side of Fig.~\ref{fig:painting_graphic}.
 
-Elliptical painting can be carried out in any ring. If the ring is uncoupled, the two elliptical modes reduce to planar modes and injection into one of the modes results in a flat beam. Coupled optics change the shape of the matched beam at the injection point and may produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. This is discussed further in the subsequent chapters.
+Elliptical painting can be carried out in any ring, but the final distribution depends strongly on the eigenvectors (modes) of the ring transfer matrix. If the ring is uncoupled, the two modes correspond to horizontal and vertical motion — we refer to these modes as \textit{planar} \cite{Burov2002}. Injection into a planar mode results in a flat beam. If the ring is coupled, each mode corresponds to elliptical motion in the transverse plane — we refer to these modes as \textit{elliptical}. Finally, there is the special case of 
+
+Coupled optics change the shape of the matched beam at the injection point and may produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. This is discussed further in the subsequent chapters.
 
 
-\subsection{Implementation of elliptical painting in the Spallation Neutron Source}
+\subsection{Elliptical painting in the Spallation Neutron Source}
 
 Elliptical painting requires time-dependent control of the transverse ring orbit position and angle in both planes at the injection point. The SNS is highly-optimized for correlated painting, not elliptical painting, but elliptical painting is possible. A software application to perform the painting method has recently been developed by SNS physicists; before describing the application, a brief description of the SNS is warranted. 
 
@@ -698,7 +678,7 @@ Fig.~\ref{fig:SNS_injection_region} zooms in on the injection region.
 Four dipole magnets align the horizontal orbit with the beam from the linac at the foil. The injected beam trajectory is held fixed so that any remaining H$^0$ or H$^-$ particles can be reliably guided to a dump. Eight kicker magnets — four per plane — are available for time-dependent control of the position and angle of the orbit at the injection point. 
 
 
-\subsubsection{Ring Injection Control application}
+\subsubsection{Ring Injection Control}
 
 Each injection kicker magnet is given a waveform that scales the kicker voltage during injection. Once the initial and final voltages are known, they can be connected with a square root waveform to satisfy Eq.~\eqref{eq:elliptical_painting}. The final beam intensity is controlled by the painting time — the time between the initial and final voltages.
 
