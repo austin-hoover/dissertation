@@ -1,18 +1,11 @@
 \chapter{Space charge resonances and instabilites} \label{app-B}
 
-
-Following Hofmann \cite{Hofmann2017Book}, we divide space charge effects into two categories: incoherent effects involving the motion of single particles, and coherent effects involving the self-consistent motion of the entire beam. Although the two effects may be difficult to isolate during the beam evolution \cite{Hofmann2021}, the distinction is clear in some cases. 
+In Chapter \ref{chap-1}, it was mentioned that space charge can be divided into two categories: incoherent effects involving the motion of single particles, and coherent effects involving the self-consistent motion of the entire beam. Here, these effects are explored by carrying out several of the numerical experiments in \cite{Hofmann2017Book} using the PyORBIT code. 
 
 
 \section*{Incoherent space charge resonances}
 
-We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. The electric field may be written as a sum of products of $x$ and $y$:
-%
-\begin{equation}\label{eq:space_charge_multipoles}
-    E_x(x, y) = \sum_{i, j}{c_{i, j} x^i y^j}.
-\end{equation}
-%
-It is possible for these so-called ``psuedo-multipoles"" to drive single-particle resonances \cite{Holmes1999, Jeon1999, Li2014, Kojima2019, Asvesta2020}. For illustration, we reproduce a numerical study from \cite{Hofmann2017Book} using PyORBIT. Fig.~\ref{fig:incoherent_instability} shows a simulation of a truncated Gaussian distribution in a FODO lattice as the zero-current tune is decreased from 100\degree to 90\degree over 500 cells. The initial distribution has equal emittances in both planes and is matched to the lattice with a depressed tune of 92\degree.
+We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. In Chapter \ref{chap-1}, we stated that the primary concern in circular accelerators is that the shifted single-particle tunes cross low-order machine resonance lines. But it is also possible for the beam's electric field to drive single-particle resonances \cite{Holmes1999, Jeon1999, Li2014, Kojima2019, Asvesta2020}. For suppose the transverse electric field is expanded in powers of $x$ and $y$: these so-called ``psuedo-multipoles" can then be treated in a similar way to the magnetic multipoles in Appendix \ref{app-A}. For illustration, we reproduce a numerical study from \cite{Hofmann2017Book} using PyORBIT. Fig.~\ref{fig:incoherent_instability} shows a simulation of a truncated Gaussian distribution in a FODO lattice as the zero-current tune is decreased from 100\degree to 90\degree over 500 cells. The initial distribution has equal emittances in both planes and is matched to the lattice with a depressed tune of 92\degree.
 %
 \begin{figure}[!p]
     \centering
@@ -32,7 +25,7 @@ It is possible for these so-called ``psuedo-multipoles"" to drive single-particl
     \vspace*{2cm}
 \end{figure}
 %
-A fourth-order resonance is excited as the depressed tune approaches 90 degrees. The smooth emittance growth during most of the simulation shows that the core of the beam remains matched, justifying the use of ``incoherent" to describe the effect. Higher-order resonances can also occur for different combinations of beam intensity and focusing strength.
+A fourth-order resonance is excited as the depressed tune approaches 90 degrees. The smooth emittance growth during most of the simulation shows that the core of the beam remains matched, justifying the use of ``incoherent" describe the resonance. Higher-order resonances can also occur for different combinations of beam intensity and focusing strength.
 
 
 
@@ -50,7 +43,7 @@ In \cite{Hofmann1983}, Hofmann et al. analytically studied perturbations of a ro
 \end{figure}
 %
 
-The second-order instabilities involve linear forces only, so they should appear in the KV envelope equations. We use a FODO cell with a zero-current tune of $100\degree$ corresponding to the second-to-bottom line on the left-most plot in Fig.~\ref{fig:stopbands}. The initial distribution is first matched to the lattice, then tracked for 500 cells by integrating the KV envelope equations. Fig.~\ref{fig:envelope_instability} shows the horizontal and vertical envelopes as the depressed KV tune is decreased from $90\degree$ to $71\degree$, crossing the stopband. This is known as the envelope instability. It is assumed to be real, but its existence has not yet been experimentally confirmed.
+The second-order instabilities involve linear forces only, so they should appear in the KV envelope equations. We use a FODO cell with a zero-current tune of $100\degree$ corresponding to the second-to-bottom line on the left-most plot in Fig.~\ref{fig:stopbands}. The initial distribution is first matched to the lattice, then tracked for 500 cells by integrating the KV envelope equations. Fig.~\ref{fig:envelope_instability} shows the horizontal and vertical envelopes as the depressed KV tune is decreased from $90\degree$ to $71\degree$, crossing the stopband. This is known as the envelope instability. 
 %
 \begin{figure}[!p]
     \centering
@@ -82,3 +75,8 @@ Observation of the higher-order stopbands requires PIC simulation. We choose a z
 \end{figure}
 %
 The instabilities violently affect the KV distribution, but their effect is less pronounced in the other distributions. Thus, it is assumed that high-order coherent instabilities, while interesting, are not important in typical beams with large tune spreads.
+
+The Danilov distribution and/or other self-consistent distributions may exhibit similar coherent instabilities as the KV distribution. Lund, Kikuchi, and Davidson noted this in 2009 \cite{Lund2009}:
+\begin{quote}
+    \textit{Although the low-order properties of the KV distribution are appealing physically, the full four-dimensional structure corresponds to a singular, hyperellipsoidal shell in phase space. For strong space charge, this singular structure drives unphysical, higher-order instabilities which limit practical use of the KV distribution for initializing simulations. The KV distribution is the only exact Vlasov equilibrium known that is a function of linear-field Courant-Snyder invariants. Danilov et al. \cite{Danilov2003} investigate alternative classes of exact kinetic equilibrium distributions for linear forces. These distributions are highly singular, and based on elementary plasma physics considerations, can be expected to be unstable (similar to the KV distribution) in regimes of high space-charge intensity.}
+\end{quote}
