@@ -254,7 +254,7 @@ Since the mismatch parameter and the assumed uncertainty in the beam size measur
 
 \subsubsection{Other uses of 1D projections}
 
-To close this section, we mention that there is information to be gained from 1D projections of the distribution in addition to the root-mean-square reconstruction just described. First, the measured projections can be compared to the ideal ``half-circle" projections of a uniform density ellipse; for example, see Fig.~\ref{fig:Holmes_corner_compare}.\footnote{The best expected case is a uniform density core with small nonlinear tails, the 1D projection of which is clearly distinguishable from a Gaussian curve, but it may be difficult to distinguish intermediate cases with larger tails. The method we employ in the next chapter is to calculate the standard deviation of the measured profile, plot the projections of an ideal Gaussian and uniform density elliptical distribution which share the same standard deviation, and visually compare the three curves. More quantitative methods may be used in the future.} Second, the projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section; it may be possible to include cross-plane information in the reconstruction using diagonal projections. 
+To close this section, we mention that there is information to be gained from 1D projections of the distribution in addition to the root-mean-square reconstruction just described. First, the measured projections can be compared to the ideal ``half-circle" projections of a uniform density ellipse; for example, see Fig.~\ref{fig:Holmes_corner_compare}.\footnote{The best expected case is a uniform density core with small nonlinear tails, the 1D projection of which is clearly distinguishable from a Gaussian curve, but it may be difficult to distinguish intermediate cases with larger tails. The method we employ in the next chapter is to calculate the standard deviation of the measured profile, plot the projections of an ideal Gaussian and uniform density elliptical distribution with the same standard deviation, and visually compare the three curves. More quantitative methods may be used in the future.} Second, the projections can be used to reconstruct the $x$-$x'$ or $y$-$y'$ distribution using the tomographic methods described in the next section; it may be possible to include cross-plane information in the reconstruction using diagonal projections. 
 
 
 \section{4D phase space reconstruction from 2D projections}
@@ -265,13 +265,13 @@ Tomographic methods are well-established for the reconstruction of 2D phase spac
 
 \subsection{Tomography for beam diagnostics}
 
-Several algorithms exist to reconstruct 2D images from 1D projections, such as filtered back-projection (FBP), algebraic reconstruction (ART) \cite{Slaney1988}, and maximum entropy (MENT) \cite{Minerbo1979}. Projections of an object are normally obtained by illuminating the object at different angles. Although the measured projections of a 2D phase space distribution ($x$-$x'$) are always along the $x$, we can take advantage of the known transfer matrix $\mathbf{M}$ between the measurement location $b$ and the reconstruction location $a$ to obtain the projections at different angles in $x$-$x'$. The measured projection of the $x$-$x'$ distribution at $b$ is
+Several algorithms exist to reconstruct 2D images from 1D projections, such as filtered back-projection (FBP), algebraic reconstruction (ART) \cite{Slaney1988}, and maximum entropy (MENT) \cite{Minerbo1979}. Projections of an object are normally obtained by illuminating the object at different angles. Although the measured projections of a 2D phase space distribution ($x$-$x'$) are always along the $x$ axis, we can take advantage of the known transfer matrix $\mathbf{M}$ between the measurement location $b$ and the reconstruction location $a$ to obtain the projections at different angles in $x$-$x'$ at the reconstruction location. The measured projection of the $x$-$x'$ distribution at $b$ is
 %
 \begin{equation}
     p_b(x_b) = \int_{-\infty}^{\infty} f(x_b, x'_b) dx'_b.
 \end{equation}
 %
-The projection at $a$ will be along axis $\tilde{x}_a$, which is rotated at angle $\theta$ above the $x_a$ axis. The angle is computed from the transfer matrix \cite{Hock2013a}:
+When the distribution is transported back to $a$, the projection will be along axis $\tilde{x}_a$, which is rotated at angle $\theta$ above the $x_a$ axis. The projection angle is computed from the transfer matrix \cite{Hock2013a}:
 %
 \begin{equation}\label{eq:proj_trans_1}
     \tan\theta = \frac{M_{12}}{M_{11}}.
@@ -291,24 +291,25 @@ The projection must then be scaled to conserve area. The projections at $a$ and 
 %
 Standard tomography algorithms can be applied to the scaled projections.
 
-It is also possible to reconstruct in normalized phase space \cite{Hock2011}. Recall the normalization matrix $\mathbf{V}$ from Eq.~\eqref{eq:CS_parameterization}. In normalized coordinates, the transfer matrix is a rotation matrix by an angle equal to the phase advance. It is straightforward to obtain the projections in the normalized phase space at $a$ by noting
+It is also possible to reconstruct the distribution in normalized phase space \cite{Hock2011}. Recall the normalization matrix $\mathbf{V}$ from Eq.~\eqref{eq:CS_parameterization}. Note that
 %
 \begin{equation}
 \begin{aligned}
-    \mathbf{x} &\rightarrow \mathbf{M} \mathbf{x}
-    = \mathbf{M} \mathbf{V} (\mathbf{V}^{-1} \mathbf{x})
+    \mathbf{x}_b 
+    = \mathbf{M} \mathbf{x}_a
+    = \mathbf{M} \mathbf{V} (\mathbf{V}^{-1} \mathbf{x}_a)
     ,
 \end{aligned}
 \end{equation}
 %
-where $\mathbf{V}$ is a function of the Twiss parameters at $a$. Eq.~\eqref{eq:proj_trans_1}, Eq.~\eqref{eq:proj_trans_2}, and Eq.~\eqref{eq:proj_trans_3} can be applied to the matrix $\mathbf{M} \mathbf{V}$ to obtain the projections in the normalized phase space at $a$. After the image is reconstructed, the true distribution can be obtained by transforming the grid coordinates using $\mathbf{V}$ and interpolating at the transformed coordinates. Note that any Twiss parameters can be used to form $\mathbf{V}$; if the Twiss parameters are matched to the distribution, the rotation angle of the projection will be the phase advance from $a$ to $b$, and the reconstructed distribution will be circular in the normalized phase space. 
+where $\mathbf{V}$ depends on the Twiss parameters at $a$. Eq.~\eqref{eq:proj_trans_1}, Eq.~\eqref{eq:proj_trans_2}, and Eq.~\eqref{eq:proj_trans_3} can be applied to the matrix $\mathbf{M} \mathbf{V}$ to obtain the projections in the normalized phase space at $a$. After the image is reconstructed, the true distribution can be obtained by transforming the grid coordinates using $\mathbf{V}$ and interpolating at the transformed coordinates. Any Twiss parameters can be used to form $\mathbf{V}$; if the Twiss parameters are matched to the distribution, the rotation angle of the projection will be the phase advance from $a$ to $b$, and the reconstructed distribution will be circular in the normalized phase space. 
 
 
 \subsection{4D reconstruction as a series of 2D reconstructions}
 
 Recent work by Hock et al. reduces 4D reconstruction to a series of 2D reconstructions when the $x$-$y$ projections are available \cite{Hock2013a}. The method, which we refer to as Hock's method, is as follows. Assume that the rotation angles in $x$-$x'$ and $y$-$y'$ can be independently controlled. Let the angles in $x$-$x'$ be \{$\theta_{x_1}$, $\dots$, $\theta_{x_k}$, $\dots, \theta_{x_K}$\} and the angles in $y$-$y'$ be \{$\theta_{y_1}$, $\dots$, $\theta_{y_l}$, $\dots$, $\theta_{y_L}$\}. The projections are stored in an array $\mathbf{S}$, where $\mathbf{S}_{i,j,k,l}$ is the intensity at point ($x_i$, $y_j$) on the screen for angles $\theta_{x_k}$, $\theta_{y_l}$. Consider a single row of an image, fixing $y_j$, which gives a 1D projection of a slice of the distribution onto the $x$-axis at the screen. If we fix $\theta_{y}$ and vary $\theta_{x}$, we produce a set of 1D projections that can be used to reconstruct the $x$-$x'$ phase space distribution for this slice using any 1D $\rightarrow$ 2D reconstruction method. This is repeated for each $y_j$ and $\theta_{y_l}$. Now, for each $x$ and $x'$ in the reconstruction grid, we have set of projections of the $y$-$y'$ distribution onto the $y$-axis at the screen for different $\theta_{y}$; thus, for each $x$ and $x'$ in the reconstruction grid, we can reconstruct the $y$-$y'$ distribution. This completes the reconstruction.
 
-To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes_corner_compare} was used. In \cite{Hock2013a}, filtered back-projection (FBP) was used in the 2D reconstructions. The disadvantage of FBP is that it requires many projections; simultaneous algebraic reconstruction (SART) is a possible alternative when the number of projections is small. The accuracy of SART will depend on the number of projections and the range of projection angles. Fig.~\ref{fig:tomo_sim_art2D} demonstrates this by reconstructing the $y$-$y'$ distribution from 1D projections as these numbers are varied.
+To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes_corner_compare} was used. In \cite{Hock2013a}, filtered back-projection (FBP) was used for the 2D reconstructions. FBP requires many projections — something that is not always possible in the context of beam diagnostics. Simultaneous algebraic reconstruction (SART) is a possible alternative when the number of projections is small. The accuracy of SART will depend on the number of projections and the range of projection angles. Fig.~\ref{fig:tomo_sim_art2D} demonstrates this by reconstructing the $y$-$y'$ distribution from 1D projections as these numbers are varied.
 %
 \begin{figure}[!p]
     \centering
@@ -319,7 +320,7 @@ To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes_
     \vspace*{3.0cm}
 \end{figure}
 %
-It appears that if the projection angles are distributed over a significant range, the accuracy does not improve much beyond 10-15 projections. As discussed later, 15 projections is likely near the maximum possible in the SNS. In the following simulated 4D reconstruction, the phase advances in both planes were scanned over $180\degree$ in 12 steps; at each step, the distribution was transported to and then binned on a virtual screen. The reconstruction was performed in normalized phase, and it was assumed that the distribution was matched to the lattice parameters. Fig.~\ref{fig:tomo_sim_target_scan} shows the simulated images in normalized space with a screen resolution of $75 \times 75$.
+It appears that if the projection angles are distributed over a significant range, the accuracy does not improve much beyond 10-15 projections. As discussed later, 15 projections is likely near the maximum possible in the SNS for each 2D reconstruction if using Hock's method. In the following simulated 4D reconstruction, the phase advances in both planes were scanned over $180\degree$ in 12 steps; at each step, the distribution was transported to and then binned on a virtual screen. The reconstruction was performed in normalized phase, and it was assumed that the distribution was matched to the lattice parameters. Fig.~\ref{fig:tomo_sim_target_scan} shows the simulated images in normalized space with a screen resolution of $75 \times 75$.
 %
 \begin{figure}[!p]
     \centering
@@ -357,7 +358,7 @@ Each measured projection on the screen produces the following set of equations:
 %
 $\bm{\rho}$ is a vector of the pixel intensities on the screen and $\bm{\psi}$ is a vector of the phase space coordinates on the reconstruction grid. To form $\mathbf{P}$, we place a particle at the center of each bin in the reconstruction grid and track the particles to the screen using the transfer matrix. $\mathbf{P}_{i, j} = 1$ if particle $j$ landed in bin $i$ on the screen; otherwise, $\mathbf{P}_{i, j} = 0$. The equations produced by subsequent measurements are stacked, and the resulting system of equations is solved using a sparse least squares solver. This method has been used to reconstruct the phase space distribution in the Compact Linear Accelerator for Research and Applications (CLARA), a low-energy test facility \cite{Wolski2020}.
 
-For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measurement grid, and $n$ measurements, $\bm{\rho}$ has $nN^2$ elements, $\bm{\psi}$ has $n N^4$ elements, and $\mathbf{P}$ has $n N^2 \times N^4$ elements. In practice, these significant storage requirements limit the resolution of the reconstruction grid to $N \approx 50$. In Fig.~\ref{fig:tomo_sim_rec_art_proj_2D}, the method was applied to the same simulated distribution, but $8 \times 8$ projections were used instead of $15 \times 15$.
+For an $N \times N \times N \times N$ reconstruction grid, an $N \times N$ measurement grid, and $n$ measurements, $\bm{\rho}$ has $nN^2$ elements, $\bm{\psi}$ has $n N^4$ elements, and $\mathbf{P}$ has $n N^2 \times N^4$ elements. In practice, these significant storage requirements limit the resolution of the reconstruction grid to $N \approx 50$ \cite{Wolski2020}. In Fig.~\ref{fig:tomo_sim_rec_art_proj_2D}, the method was applied to the same simulated distribution, but $8 \times 8$ projections were used instead of $15 \times 15$.
 %
 \begin{figure}[!p]
     \centering
@@ -383,7 +384,7 @@ Another method is to generate a particle bunch, track the bunch to the screen, w
 
 \subsubsection{Optics control}
 
-We desire independent control of the horizontal and vertical phase advances. The optics control developed for the wire-scanner measurement can be used here. The constraints are now that the $\beta$ functions remain below 30 m/rad in the wire-scanner region, below 100 m/rad before the target, and stay within 15\% of their default values at the target. Fig.~\ref{fig:target_phase_scan_1} shows that both the horizontal and vertical phase advances can be scanned in a 180$\degree$ range without modifying the other. Fig.~\ref{fig:target_phase_scan_2} overlays the $\beta$ functions and phase advances throughout the RTBT for every step in the scan, showing that the beam size constraints are not violated. The horizontal axis starts at the first varied quadrupole and ends at the target.
+We desire independent control of the horizontal and vertical phase advances. The optics control developed for the wire-scanner measurement can be used here. The constraints are now that the $\beta$ functions remain below 30 m/rad in the wire-scanner region, below 100 m/rad before the target, and stay within 15\% of their nominal values at the target. Fig.~\ref{fig:target_phase_scan_1} shows that both the horizontal and vertical phase advances can be independently scanned in a 180$\degree$ range. Fig.~\ref{fig:target_phase_scan_2} overlays the $\beta$ functions and phase advances throughout the RTBT for every step in the scan, showing that the beam size constraints are not violated. The horizontal axis starts at the first varied quadrupole and ends at the target.
 %
 \begin{figure}[!p]
     \centering
@@ -423,4 +424,4 @@ The unprocessed target images are not ideal. First, to reduce pulse-to-pulse var
 
 \subsubsection{Other uses of 2D projections}
 
-There is information to be gained from 2D projections of the distribution in addition to the 4D reconstruction. The projections can be compared to a uniform density ellipse. Additionally, one can observe the variation in the $x$-$y$ correlation coefficient as the difference between the horizontal and vertical phase advances is varied. This reveals any ``hidden" cross-plane correlations, as in Fig.~\ref{fig:tomo_sim_target_scan}. In a Danilov distribution, the correlation coefficient can obtain any value in the range [-1, 1]. Finally, by computing the RMS moments of the images, the covariance matrix can be reconstructed using the least squares method described in Section \ref{sec:Phase space reconstruction from 1D projections}; the advantage would be that data collection is much faster than for the wire-scanners and that the $\langle xy \rangle$ moment is computed directly.
+There is information to be gained from 2D projections of the distribution in addition to the tomographic 4D reconstruction just described. The projections can be compared to a uniform density ellipse. Additionally, one can observe the variation in the $x$-$y$ correlation coefficient as the difference between the horizontal and vertical phase advances is varied. This reveals any ``hidden" cross-plane correlations, as in Fig.~\ref{fig:tomo_sim_target_scan}. Finally, by computing the RMS moments of the images, the covariance matrix can be reconstructed using the least squares method described in Section \ref{sec:Phase space reconstruction from 1D projections}; the advantage would be that data collection is much faster than for the wire-scanners and that the $\langle xy \rangle$ moment is computed directly.
