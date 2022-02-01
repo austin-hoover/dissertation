@@ -18,7 +18,7 @@ The structure of this introductory chapter is as follows. The relevant theory of
 
 \subsection{Single-particle motion}
 
-We begin by describing the motion of a single particle in a circular accelerator (ring). We assume the existence of a closed orbit and use coordinates in which $s$ is the location along the orbit and $x$ and $y$ are the horizontal and vertical transverse displacements. We then study oscillations in the transverse plane with the assumption of constant longitudinal velocity $\beta_s c$, where $c$ is the speed of light.
+We begin by describing the motion of a single particle in ring. We assume the existence of a closed orbit and use coordinates in which $s$ is the location along the orbit and $x$ and $y$ are the horizontal and vertical transverse displacements. We then study oscillations in the transverse plane with the assumption of constant longitudinal velocity $\beta_s c$, where $c$ is the speed of light.
  
 Magnetic fields are preferred for transverse steering and focusing when the kinetic energy is significant. The magnetic field $\mathbf{B} = (B_x, B_y)$ in a vacuum may be written as an infinite sum:
 %
@@ -35,7 +35,7 @@ where $r_0$ is a constant, $i = \sqrt{-1}$, $\left\{ b_n \right\}$ are the multi
 \end{aligned}
 \end{equation}
 %
-where $q$ is the particle charge, $m$ is the particle mass, $\gamma_s = (1 - \beta_s^2)^{-1/2}$, and the prime represents differentiation with respect to $s$.\footnote{Since the small-angle approximation is used, $x'$ is usually reported in radians.} (A curved coordinate system modifies the horizontal equation of motion, but we assume a straight coordinate system here for simplicity.)
+where $q$ is the particle charge, $m$ is the particle mass, $\gamma_s = (1 - \beta_s^2)^{-1/2}$, and the prime represents differentiation with respect to $s$.\footnote{Since the small-angle approximation is used, $x'$ is usually reported in radians.} A curved coordinate system modifies the horizontal equation of motion, but we have assumed a straight coordinate system here for simplicity.
 
 
 \subsubsection{Linear dynamics}
@@ -46,7 +46,7 @@ where $q$ is the particle charge, $m$ is the particle mass, $\gamma_s = (1 - \be
      x'' + k(s)x = 0.
  \end{equation}
 %
-Eq.~\eqref{eq:Hill} is of general interest \cite{Hill1886, Qin2007}. It describes a parametric oscillator — an oscillator whose physical properties change with time. Its solution is described by the Courant-Snyder theory \cite{Courant1958} as
+Eq.~\eqref{eq:Hill} is of general interest \cite{Hill1886, Qin2007}. It describes a one-dimensional (1D) parametric oscillator — an oscillator whose physical properties change with time. Its solution in the Courant-Snyder theory \cite{Courant1958} is
 %
 \begin{equation}\label{eq:Hill_solution}
     x(s) = \sqrt{2 J \beta(s)} \cos{\left({\mu(s) + \delta}\right)},
@@ -60,12 +60,24 @@ with $J$ constant, $\delta$ constant, and the phase advance $\mu(s)$ given by
 %
 $\beta(s)$ is referred to as the ``beta function". In a ring of length $C$, $k(s) = k(s + C)$ and there is a unique periodic solution with $\beta(s) = \beta(s + C)$; otherwise, $\beta(s)$ depends on the initial conditions.
 
-It is helpful to view the motion in phase space ($x$-$x'$) at a fixed location in the ring on a turn-by-turn basis as in Fig.~\ref{fig:cs_ellipse}.
+It is helpful to view the motion in phase space ($x$-$x'$) at a fixed location in the ring on a turn-by-turn basis as in Fig.~\ref{fig:cs_ellipse_a}. 
 %
-\begin{figure}
+\begin{figure}[!p]
     \centering
-    \includegraphics[width=0.6\textwidth]{Images/chapter1/cs_ellipse.png}
-    \caption{Courant-Snyder ellipse in horizontal phase space.}
+    \begin{subfigure}{0.6\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter1/cs_ellipse.png}
+        \caption{}
+        \label{fig:cs_ellipse_a}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.5cm}
+    \vfill
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter1/norm_coords.png}
+        \caption{}
+        \label{fig:_cs_ellipse_b}
+    \end{subfigure}
+    \caption{(a) Turn-by-turn motion of a single particle along the Courant-Snyder ellipse in horizontal phase space. (b) Alternative view of the motion using the factored transfer matrix.}
     \label{fig:cs_ellipse}
 \end{figure}
 %
@@ -100,26 +112,26 @@ Thus, motion between two locations in the ring is equivalent to an area-preservi
         \sqrt{\frac{1}{\beta(0)}} & 0 \\
         \frac{\alpha(0)}{\sqrt{\beta(0)}} & \sqrt{\beta(0)}
     \end{bmatrix} \\
-    &= \mathbf{V}(s) \, \mathbf{R}(s) \, \mathbf{V}(0)^{-1} 
+    &= \mathbf{V}(s) \, \mathbf{P}(s) \, \mathbf{V}(0)^{-1} 
 \end{aligned}
 \end{equation}
 %
-and $\mathbf{x} = (x, x')^T$. $\mathbf{V(0)}^{-1}$ transforms the phase space ellipse into a circle while preserving its area, $\mathbf{R(s)}$ rotates the coordinates around the circle according to the phase advance, and $\mathbf{V(s)}$ transforms the circle back into an ellipse \cite{Lee2011}. 
+and $\mathbf{x} = (x, x')^T$. As illustrated in Fig.~\ref{fig:cs_ellipse_b}, $\mathbf{V(0)}^{-1}$ transforms the phase space ellipse into a circle while preserving its area, $\mathbf{P(s)}$ rotates the coordinates around the circle according to the phase advance, and $\mathbf{V(s)}$ transforms the circle back into an ellipse \cite{Lee2011}.
 
-Eq.~\eqref{eq:CS_parameterization} motivates the definition of normalized phase space coordinates $\mathbf{x}_n(s) = \mathbf{V}(s)^{-1} \mathbf{x}(s)$ in which the particle performs simple harmonic oscillations; i.e., rotates in a circle of area $J$ at frequency $2\pi\nu$. 
+Eq.~\eqref{eq:CS_parameterization} motivates the definition of normalized phase space coordinates $\mathbf{x}_n(s) = \mathbf{V}(s)^{-1} \mathbf{x}(s)$ in which the particle performs simple harmonic oscillations, i.e., rotates in a circle of area $J$ at frequency $2\pi\nu$. 
 
 
 
 
 \subsubsection{Linear (coupled) dynamics}
 
-In the presence of linear coupling, the equations of motion take the following form:\footnote{I will occasionally switch between $\mathbf{x} = (x, x', y, y')^T$ and $\mathbf{x} = (x, y)^T$. The correct definition should be clear from context.}
+In the presence of linear coupling, the equations of motion take the following form:
 %
 \begin{equation}\label{eq:single_particle_eom_coupled}
     \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = 0,
 \end{equation}
 %
-where $\mathbf{x} = (x, y)^T$ and $\mathbf{K}_{0, 1}$ are $2 \times 2$ matrices. The particle now moves along an ellipsoid in 4D phase space ($x$-$x'$-$y$-$y'$), the volume of which is conserved. For example, Fig.~\ref{fig:skew_quad_single_particle_tbt} shows the turn-by-turn trajectory of a single particle in the presence of linear coupling from a rotated (skew) quadrupole.
+where $\mathbf{x} = (x, y)^T$ and $\mathbf{K}_{0, 1}$ are $2 \times 2$ matrices.\footnote{I will occasionally switch between $\mathbf{x} = (x, x', y, y')^T$ and $\mathbf{x} = (x, y)^T$. The correct definition should be clear from context.} The particle now moves along an ellipsoid in 4D phase space ($x$-$x'$-$y$-$y'$), the volume of which is conserved. For example, Fig.~\ref{fig:skew_quad_single_particle_tbt} shows the turn-by-turn trajectory of a single particle in the presence of linear coupling from a rotated (skew) quadrupole.
 %
 \begin{figure}[!p]
     \centering
@@ -197,7 +209,7 @@ The meaning of the new parameters is illustrated in Fig.~\ref{fig:twiss4D}.
     \label{fig:twiss4D}
 \end{figure}
 %
-The motion is the sum of two eigenvectors, each of which traces an ellipse when projected onto any 2D subspace. The frequency with which the ellipse is traced differs between the two modes; as a consequence, the horizontal and vertical amplitudes $J_x$ and $J_y$ are exchanged. The parameterization assigns a $\beta$ and $\alpha$ parameter to each ellipse. The parameters $\nu_1$ and $\nu_2$ are the phase differences between the horizontal ($x$-$x'$) and vertical ($y$-$y'$) parts of the eigenvectors, which determines the tilt angle of the ellipses traced in the cross-plane projections ($x$-$y$, $x$-$y'$, $y$-$x'$, $x'$-$y'$). Finally, $u$ determines the area of the ellipse traced by the eigenvectors in horizontal phase space relative to the ellipse in vertical phase space. 
+The motion is the sum of two eigenvectors, each of which traces an ellipse when projected onto any 2D subspace. The horizontal and vertical amplitudes $J_x$ and $J_y$ are exchanged because the eigenvectors rotate at different frequencies. The parameterization assigns a $\beta$ and $\alpha$ parameter to each ellipse. The parameters $\nu_1$ and $\nu_2$ are the phase differences between the horizontal ($x$-$x'$) and vertical ($y$-$y'$) parts of the eigenvectors, which determines the tilt angle of the ellipses traced in the cross-plane projections ($x$-$y$, $x$-$y'$, $y$-$x'$, $x'$-$y'$). Finally, $u$ determines the area of the ellipse traced by the eigenvectors in horizontal phase space relative to the ellipse in vertical phase space. 
 
 
 \subsubsection{Nonlinear resonances}
@@ -214,7 +226,7 @@ where $\nu_{x, y}$ are the single-particle tunes, $M_x$, $M_y$, and $N$ are inte
 
 \subsection{Collective beam description}
 
-A beam is a distribution of particles in phase space. In the limit of many particles, we define a distribution function $f(\mathbf{x})$ such that $f(\mathbf{x}) d\mathbf{x}$ gives the number of particles in an infinitesimal volume of phase space $d\mathbf{x}$. The measurable quantities are generally the projections of the distribution; e.g.
+A beam is a distribution of particles in phase space. In the limit of many particles, we define a distribution function $f(\mathbf{x})$ such that $f(\mathbf{x}) d\mathbf{x}$ is the number of particles in an infinitesimal volume of phase space $d\mathbf{x}$. The measurable quantities are generally the projections of the distribution; e.g.
 %
 \begin{equation}
     f(x) = 
@@ -258,7 +270,7 @@ The covariance matrix defines an ellipsoid in phase space: $\mathbf{x}^T \bm{\Si
     \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2}
 \end{equation}
 %
-where $|...|$ is the determinant. The 4D emittance is conserved under any linear transformation. The horizontal and vertical emittances $\varepsilon_{x,y}$ are individually conserved if the transformation is uncoupled:
+where $|...|$ is the determinant. The 4D emittance is conserved under any linear transformation of the phase space coordinates. The horizontal and vertical emittances $\varepsilon_x$ and $\varepsilon_y$ are individually conserved if the transformation is uncoupled:
 %
 \begin{equation}
 \begin{aligned}
@@ -267,9 +279,7 @@ where $|...|$ is the determinant. The 4D emittance is conserved under any linear
 \end{aligned}
 \end{equation}
 %
-These correspond to the areas in the $x$-$x'$ and $y$-$y'$ planes. 
-
-In the absence of cross-plane correlations ($\bm{\sigma}_{xy} = 0$), the 4D emittance is equal to the product of the horizontal and vertical emittances, which are referred to as the \textit{apparent} emittances from now on. Instead, the 4D emittance is the product of the \textit{intrinsic} emittances $\varepsilon_1$ and $\varepsilon_2$:
+These correspond to the areas in the $x$-$x'$ and $y$-$y'$ planes. In the absence of cross-plane correlations ($\bm{\sigma}_{xy} = 0$), the 4D emittance is equal to the product of the horizontal and vertical emittances, which are referred to as the \textit{apparent} emittances from now on. In the presence of cross-plane correlations, the 4D emittance is instead the product of the \textit{intrinsic} emittances $\varepsilon_1$ and $\varepsilon_2$:
 %
 \begin{equation} \label{eq:mode_emittances1}
     \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2} = \varepsilon_1\varepsilon_2 \le \varepsilon_x\varepsilon_y.
@@ -297,7 +307,7 @@ The answer can be written compactly \cite{Xiao2013}:
 %
 The intrinsic emittances are individually conserved in any linear focusing system. Their product is less than or equal to the product of the apparent emittances \cite{Buon1993}.
 
-It is challenging to generate initial distributions for simulations \cite{Lund2009}. A simple strategy is to assume elliptical symmetry and construct a distribution from the single-particle invariants $J_{x,y}$.\footnote{Alternatively, the generalized invariants $J_{1, 2}$ can be used.} We define the ellipsoid parameter $T = {J_x}/{\varepsilon_x} + {J_y}/{\varepsilon_y}$ and stack ellipsoids to create the distribution, writing $f = f(T)$. One option is a Gaussian distribution: $f_{gauss} \propto \exp(-T/2)$. Another is the Waterbag distribution, which is a uniformly filled ellipsoid: $f_{wb} \propto \Theta(1 - T)$, where $\Theta$ is the Heaviside step function. Another is the KV distribution, which is a uniformly populated ellipsoidal shell: $f_{kv} \propto \delta(1 - T)$. The 1D and 2D projections of these 4D distributions are shown in Fig.~\ref{fig:distributions_gaussian}, Fig.~\ref{fig:distributions_waterbag}, and Fig.~\ref{fig:distributions_kv}. The black ellipse shows the covariance matrix ellipsoid projected onto the planes, multiplied by a factor of four. Since the distributions share the same covariance matrix, they are said to be rms-equivalent.
+It is challenging to generate initial distributions for simulations \cite{Lund2009}. A simple strategy is to assume elliptical symmetry and construct a distribution from the single-particle invariants $J_{x,y}$.\footnote{Alternatively, the generalized invariants $J_{1, 2}$ can be used.} We define the ellipsoid parameter $T = {J_x}/{\varepsilon_x} + {J_y}/{\varepsilon_y}$ and stack ellipsoids to create the distribution, writing $f = f(T)$. One option is a Gaussian distribution: $f \propto \exp(-T/2)$. Another is the Waterbag distribution, which is a uniformly filled ellipsoid: $f \propto \Theta(1 - T)$, where $\Theta$ is the Heaviside step function. Another is the KV distribution, which is a uniformly populated ellipsoidal shell: $f \propto \delta(1 - T)$. The 1D and 2D projections of these 4D distributions are shown in Fig.~\ref{fig:distributions_gaussian}, Fig.~\ref{fig:distributions_waterbag}, and Fig.~\ref{fig:distributions_kv}. The black ellipse shows the covariance matrix ellipsoid projected onto the planes, multiplied by a factor of four. Since the distributions share the same covariance matrix, they are said to be rms-equivalent.
 %
 \begin{figure}[!p]
     \begin{subfigure}{0.49\textwidth}
@@ -335,10 +345,10 @@ It is challenging to generate initial distributions for simulations \cite{Lund20
 
 \subsection{Space charge}\label{sec:Space charge}
 
-Particle motion is also influenced by the beam space charge — the charge density of the beam in free space. The beam electric field $\mathbf{E} = (E_x, E_y)$ modifies the single-particle equation of motion:
+Particle motion is also influenced by space charge — the charge density of the beam in free space. The beam's electric field $\mathbf{E} = (E_x, E_y)^T$ modifies the single-particle equation of motion:
 %
 \begin{equation}\label{eq:eom_with_spacecharge}
-    \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = \frac{q}{m\gamma_s^3\beta_s^2c^2} \mathbf{E},
+    \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = \frac{q}{m\gamma_s^3\beta_s^2c^2} \mathbf{E}.
 \end{equation}
 % 
 Due to the attractive magnetic force between co-moving charges in the lab frame, the space charge force approaches zero as $\beta_s \rightarrow 1$. We will make the coasting beam approximation — infinite length, uniform density, and constant momentum in the longitudinal plane — to reduce the problem to two dimensions.\footnote{This is generally invalid for linacs but locally valid for a transverse slice of a long distribution in a ring. It is equivalent to replacing particles with infinitely long uniform density charged rods.}
@@ -348,9 +358,9 @@ Following Hofmann \cite{Hofmann2017Book}, we divide space charge effects into tw
 
 \subsubsection{Incoherent effects}
 
-We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak. If the beam's electric field is linear in the transverse coordinates, it will simply modify the external linear focusing; therefore, the single-particle tune is reduced in both planes. A primary concern in rings is that the depressed tunes are located near one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here.
+We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak. If the beam's electric field is linear in the transverse coordinates, it will simply modify the external linear focusing, reducing the single-particle tune in both planes. A primary concern in rings is that the depressed tunes are located near one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here.
 
-If the electric field is nonlinear, the tune shift will depend on the particle amplitude, leading to a spread of tunes. An intuitive explanation is that large-amplitude particles experience a weaker average electric field throughout one turn in the ring \cite{Franchetti2017}. A recent study of the space charge tune spread in rings is found in \cite{Hotchi2020}. Fig.~\ref{fig:jparc_montague}, taken from the paper, shows the simulated tune spread in the Japan Proton Accelerator Research Center (J-PARC).
+If the electric field is nonlinear, the tune shift will depend on the particle amplitude, leading to a spread of tunes. An intuitive explanation is that large-amplitude particles experience a weaker average electric field throughout one turn in the ring \cite{Franchetti2017}. A recent study of the space charge tune spread in rings is found in \cite{Hotchi2020}; Fig.~\ref{fig:jparc_montague}, taken from the paper, shows the simulated tune spread in the Japan Proton Accelerator Research Center (J-PARC).
 %
 \begin{figure}[!p]
     \centering
@@ -407,7 +417,7 @@ Any function constructed from single-particle invariants $\{C_i\}$ is a solution
     \frac{d}{ds} f(\{C_i\}) = \sum_{i}{\frac{df}{dC_i}\frac{dC_i}{ds}} = 0.
 \end{equation}
 %
-One example of a single-particle invariant when the focusing is linear and time-dependent is the Courant-Snyder invariant of Eq.~\eqref{eq:CS invariant}. The inclusion of space charge complicates the identification of invariants, and the only known solutions are those that produce linear space charge forces. We label such distributions as \textit{self-consistent}: a self-consistent distribution produces linear space charge forces, and the linearity of the space charge force is conserved under any linear transformation \cite{Danilov2003}. 
+One example of a single-particle invariant when the focusing is linear and time-dependent is the Courant-Snyder invariant of Eq.~\eqref{eq:CS invariant}. The inclusion of space charge complicates the identification of invariants, and the only known solutions are those that produce linear space charge forces. We label such distributions as \textit{self-consistent}: a self-consistent distribution produces linear space charge forces, and the linearity of the space charge force is conserved under any linear transformation of the phase space coordinates \cite{Danilov2003}. 
 
 Self-consistent distributions possess several notable properties. First, the integro-differential system of equations in Eq.~\eqref{eq:Vlasov} is reduced to a system of ordinary differential equations. Second, nonlinear space charge effects are minimized: the emittance is conserved, the maximum space charge tune shift is minimized, and the space charge tune spread is eliminated. Third, higher-order coherent instabilities may be present in self-consistent distributions due to their small tune spread. Fourth, known self-consistent distributions have a uniform charge density.
 
@@ -424,9 +434,9 @@ Danilov et al. enumerated a class of self-consistent distributions in $2d$-dimen
     + \mathbf{e}'_i \cdot \mathbf{x}'}\right),
 \end{equation}
 %
-where $\mathbf{x}$, $\mathbf{x}'$ are the $d$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$, $\mathbf{e}'_i$ are vectors of constants. This is referred to as the $\{n,m\}$ case. It was proven that the electric field within any uniformly filled ellipsoid is linear, and that any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces a linear electric field will do so under any linear transformation.
+where $\mathbf{x}$, $\mathbf{x}'$ are the $d$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$, $\mathbf{e}'_i$ are vectors of constants. This is referred to as the $\{n,m\}$ case. It was proven that the electric field within any uniformly filled ellipsoid is linear, and that any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces a linear electric field will do so under any linear transformation of the phase space coordinates.
 
-In other words, one class of self-consistent distributions consists of those that generate linear space charge forces and are constructed from quantities that are invariant in the presence of linear focusing. We now focus on the \{2, 0\} and \{2, 2\} cases. (Qin and Davidson derived a self-consistent distribution for $n = 2$ in \cite{Qin2013} using their recent parameterization of coupled motion, but made no reference to \cite{Danilov2003}. The connection between Danilov's work and Qin and Davidson's work should be explored in the future.)
+In other words, one class of self-consistent distributions consists of those that generate linear space charge forces and are constructed from quantities that are invariant in the presence of linear focusing. We now focus on the \{2, 0\} and \{2, 2\} cases. \footnote{Qin and Davidson derived a self-consistent distribution in two spatial dimensions in \cite{Qin2013} using their recent parameterization of coupled motion, but made no reference to \cite{Danilov2003}. The connection between Danilov's work and Qin and Davidson's work should be explored in the future.}
 
 
 \subsubsection{The KV distribution}
@@ -464,9 +474,8 @@ The RMS widths of the beam $\tilde{x} = \sqrt{\langle{{x^2}}\rangle}$ and $\tild
     Q = \frac{2\lambda r_0}{\beta^2\gamma^3},
 \end{equation}
 %
-where $r_0 = e^2 / 4\pi\epsilon_0mc^2$ is the classical proton radius. Eqs.~\eqref{eq:KV_envelope} provide many insights into dynamical beam behavior and serve as a benchmark for computer simulations.  
+where $r_0 = e^2 / 4\pi\epsilon_0mc^2$ is the classical proton radius. Eqs.~\eqref{eq:KV_envelope} provide many insights into dynamical beam behavior and serve as a benchmark for computer simulations. A remarkable fact is that Eqs.~\eqref{eq:KV_envelope} are exact for distributions with elliptical symmetry even if the space charge force is nonlinear \cite{Sacherer1968}, although they are not closed since the root-mean-square emittances become time-dependent; thus, the KV envelope equations provide a good approximation to the evolution of more realistic distributions in the limit of elliptical symmetry and small emittance growth \cite{Lund2004}.
 
-A remarkable fact is that Eqs.~\eqref{eq:KV_envelope} are exact for distributions with elliptical symmetry even if the space charge force is nonlinear \cite{Sacherer1968}. They are not closed, however, since the emittances would then depend on time. Thus, the KV envelope equations provide a good approximation to the evolution of more realistic distributions in the limit of elliptical symmetry and small emittance growth \cite{Lund2004}.
 
 
 \subsubsection{The Danilov distribution}
@@ -505,7 +514,7 @@ and $\mathbf{D}$ a $2 \times 2$ matrix. Similar to the KV distribution, any 2D p
 \end{aligned}
 \end{equation}
 %
-The field is linear in $x$ and $y$, as required. And it is worth repeating: the linearity of the electric field is maintained under any linear transformation. The key difference from the KV distribution is that space charge linearly couples the horizontal and vertical motion of individual particles. The Courant-Snyder invariants $J_{x,y}$ are therefore replaced by the more general invariants $J_{1, 2}$, which are conserved even with the inclusion of space charge. 
+The field is linear in $x$ and $y$, as required. And it is worth repeating: the linearity of the electric field is maintained under any linear transformation of the phase space coordinates. The key difference from the KV distribution is that space charge linearly couples the horizontal and vertical motion of individual particles. The Courant-Snyder invariants $J_{x,y}$ are therefore replaced by the more general invariants $J_{1, 2}$, which are conserved even with the inclusion of space charge. 
 
 The delta functions in the Danilov distribution function cause the four-dimensional emittance, and therefore one of the intrinsic emittances, to be zero. The following relationship has been found to hold:
 %
@@ -530,7 +539,7 @@ The following points motivate the physical realization of a self-consistent dist
 
 \begin{enumerate}
 \item 
-The properties listed in section~\ref{sec:Self-consistent phase space distributions} — conservation of emittance, reduced space charge tune shift, and reduced space charge tune spread — have the potential to increase the maximum intensity in a ring.
+The properties listed in section~\ref{sec:Self-consistent phase space distributions} — conservation of emittance, reduced space charge tune shift, and reduced space charge tune spread — have the potential to increase the maximum beam intensity in a ring.
 
 \item
 It is an interesting challenge to bring a real distribution closer to a self-consistent analytical model which is generally taken to be unrealistic. 
@@ -539,13 +548,14 @@ It is an interesting challenge to bring a real distribution closer to a self-con
 Beams with a uniform charge density are ideal for fixed-target applications such as spallation neutron production. SNS targets are complex and expensive \cite{Haines2014} and considerable research and development goes into reducing the peak density on the target. This issue will become even more important if future machines are built on the intensity horizon with similar targets.
 
 \item
-There has been recent interest in generating circular modes, where a circular mode is a beam with small 4D emittance. Such a beam can be transformed to a round state ($\varepsilon_x = \varepsilon_y$) or a flat state ($\varepsilon_x \ll \varepsilon_y$) using coupled linear optics that preserve $\varepsilon_{1,2}$. In \cite{Burov2002}, several potential applications of circular modes are listed. Consider first a round-flat transformation. The fractional increase in beam luminosity, a figure of merit in colliders, in this case is
+There has been recent interest in generating circular modes, where a circular mode is a beam with small 4D emittance. Such a beam can be transformed to a round state ($\varepsilon_x = \varepsilon_y$) or a flat state ($\varepsilon_x \ll \varepsilon_y$) using coupled linear optics that preserve $\varepsilon_{1,2}$. Several potential applications of circular modes are listed in \cite{Burov2002}. Consider first a round-flat transformation \cite{Kim2003}: the fractional increase in beam luminosity, a figure of merit in colliders, is
 %
 \begin{equation}
     C = \sqrt{\frac{\varepsilon_x\varepsilon_y}{\varepsilon_1\varepsilon_2}},
 \end{equation}
 %
-which approaches $\infty$ as $\varepsilon_1\varepsilon_2 \rightarrow 0$. Flat beams may also increase the possible beam intensity in a ring by suppressing incoherent space charge resonances in one dimension, freeing large areas of tune space. The possible uses of flat beams in the Large Hadron Collider (LHC) are suggested by Burov in \cite{Burov2013}. Alternatively, round beams may be helpful for the suppression of beam-beam effects at collider interaction points \cite{Danilo1996}. Circular modes may also find use in relativistic electron cooling \cite{Burov2000}, low-energy hadron cooling \cite{Derbenev2000}, muon ionization cooling, and radiation generation \cite{Corlett2001}. The connection between the Danilov distribution and circular modes is straightforward: the Danilov distribution is a circular mode with uniform charge density. This connection is illustrated in Fig.~\ref{fig:circular_modes_diagram}.
+which diverges as $\varepsilon_1\varepsilon_2 \rightarrow 0$. Flat beams may also find use in rings due to their suppression of the motion in one dimension, freeing large areas of tune space. The possible use of flat beams in the Large Hadron Collider (LHC) is explored by Burov in \cite{Burov2013}. Alternatively, round beams may be helpful for the suppression of beam-beam effects at collider interaction points \cite{Danilo1996}. Circular modes may also find use in relativistic electron cooling \cite{Burov2000}, low-energy hadron cooling \cite{Derbenev2000}, muon ionization cooling, and radiation generation \cite{Corlett2001}. The connection between the Danilov distribution and circular modes is straightforward: the Danilov distribution is a circular mode with a uniform charge density and an elliptical shape. This connection is illustrated in Fig.~\ref{fig:circular_modes_diagram}.
+\end{enumerate}
 %
 \begin{figure}[!p]
     \centering
@@ -555,29 +565,13 @@ which approaches $\infty$ as $\varepsilon_1\varepsilon_2 \rightarrow 0$. Flat be
 \end{figure}
 %
 
-\end{enumerate}
-
 \subsection{Previous experimental work}
 
 Luiten et al. proposed a method to create a \{3, 3\} distribution (a 3D uniform density ellipsoid) of electrons \cite{Luiten2004}. They observed that since a uniform density oblate spheroid\footnote{$(x/A)^2 + (y/B)^2 + (z/C)^2 = 1$ with $A = B > C$} will collapse under its own gravity into a flat disk \cite{Lin1965}, a flat transverse disk of electrons will longitudinally expand into a uniform density ellipsoid. This ``pancake" distribution can be created using ultrashort pulsed-laser photoemission with an appropriate radial intensity profile. Musumeci et al. experimentally demonstrated this method in \cite{Musumeci2008}. Their measurements are shown in Fig.~\ref{fig:Musumeci}.
 %
 \begin{figure}[!p]
     \centering
-    % \begin{subfigure}{0.75\textwidth}
-    %     \includegraphics[width=\textwidth]{Images/chapter1/Musumeci_fig2.png}
-    %     \label{fig:Musumeci_a}
-    %     \caption{}
-    % \end{subfigure}
-    % \vfill
-    % \vspace*{1.5cm}
-    % \vfill
-    % \begin{subfigure}{0.75\textwidth}
-    %     \centering
-    %     \includegraphics[width=\textwidth]{Images/chapter1/Musumeci_fig3.png}
-    %     \label{fig:Musumeci_b}
-    %     \caption{Lower image in (a), displayed with a different color map, and 1D projections of the image.}
-    % \end{subfigure}
-    \includegraphics[width=0.85\textwidth]{Images/chapter1/Musumeci_fig2.png}
+    \includegraphics[width=0.9\textwidth]{Images/chapter1/Musumeci_fig2.png}
     \caption{Measured electron beam in the $x$-$z$ plane from \cite{Musumeci2008}.}
     \label{fig:Musumeci}
 \end{figure}
@@ -590,7 +584,7 @@ Unfortunately, these methods do not apply to high-intensity proton rings where d
 
 Accelerators are often broken into stages. A common pattern is the injection of a beam from a linac into a ring followed by eventual extraction to a different section of the machine. Injection and extraction are accomplished using kicker magnets — dipole magnets with fast rise times.
 
-In direct multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped of its electrons upon entering the ring, leaving only protons.\footnote{Electrons are currently stripped using foils. Laser stripping is a potential alternative \cite{Cousineau2017}.} This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While normal multi-turn injection is usually performed over tens of turns, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}.\footnote{There is, however, renewed interest in direct multi-turn injection for future accelerators to avoid the issues associated with charge exchange injection, such as foil scattering and unstripped particles, and it seems possible to extend the number of injected turns into the hundreds using novel injection schemes \cite{Prior2016}.} 
+In direct multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped of its electrons upon entering the ring, leaving only protons.\footnote{Electrons are currently stripped using foils. Laser stripping is a potential alternative \cite{Cousineau2017}.} This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While normal multi-turn injection is usually performed over tens of turns, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}.\footnote{There is, however, renewed interest in direct multi-turn injection for future accelerators to avoid the issues associated with charge exchange injection, such as foil scattering and unstripped particles, and it seems possible to extend the number of injected turns into the hundreds using novel techniques \cite{Prior2016}.} 
 
 Phase space painting, or simply ``painting", is the time-dependent variation of the transverse distance and angle between the injected beam and the circulating beam; as such, it allows time-dependent control over the phase space distribution in the ring. Painting is a vital tool for space charge mitigation. The free parameters are the painting path — the path of the injection point in phase space — and the speed at which this path is traversed. After discussing the two most popular painting methods, we will introduce a new method called elliptical painting that theoretically produces a Danilov distribution.
 
@@ -660,12 +654,12 @@ Refer back to Eq.~\eqref{eq:eigvec_coords} in which the single-particle motion i
 %
 with $l = 1,2$. The first injected pulse does not move since it is injected onto the closed orbit. The second pulse traces a small ellipse in every 2D projection of the phase space on a turn-by-turn basis. The third pulse traces a slightly larger ellipse enclosing the second, and so on. The square root time-dependence ensures that the beam is a uniform density ellipse in every 2D projection of the 4D phase space at every point during injection. Thus, in the linear approximation, a Danilov distribution is maintained at all times, even with space charge.\footnote{The method is limited even in the linear approximation due to the finite emittance of the beam from the linac.} This is illustrated on the right side of Fig.~\ref{fig:painting_graphic}.
 
-Elliptical painting can be carried out in any ring. If the ring is uncoupled, the two elliptical modes reduce to planar modes and injection into one of the modes results in a flat beam. Coupled optics change the shape of the matched beam at the injection point and produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. This is discussed further in the subsequent chapters.
+Elliptical painting can be carried out in any ring. If the ring is uncoupled, the two elliptical modes reduce to planar modes and injection into one of the modes results in a flat beam. Coupled optics change the shape of the matched beam at the injection point and may produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. This is discussed further in the subsequent chapters.
 
 
 \subsection{Implementation of elliptical painting in the Spallation Neutron Source}
 
-Elliptical painting requires time-dependent control of the transverse ring orbit position and slope in both planes at the injection point. The SNS is highly-optimized for correlated painting, not elliptical painting, but elliptical painting is possible in principle. A software application to perform the painting method has recently been developed by SNS physicists; before describing the application, a brief description of the SNS is warranted. 
+Elliptical painting requires time-dependent control of the transverse ring orbit position and slope in both planes at the injection point. The SNS is highly-optimized for correlated painting, not elliptical painting, but elliptical painting is possible. A software application to perform the painting method has recently been developed by SNS physicists; before describing the application, a brief description of the SNS is warranted. 
 
 \subsubsection{Description of the Spallation Neutron Source}
 
@@ -706,7 +700,7 @@ Four dipole magnets align the horizontal orbit with the beam from the linac at t
 
 \subsubsection{Ring Injection Control application}
 
-Each injection kicker magnet is given a waveform that scales the kicker voltage during injection. Once the initial and final voltages are known, they can be connected with a square root waveform to satisfy Eq.~\eqref{eq:elliptical_painting}. The final beam intensity is controlled by the painting time — time between the initial and final voltages.
+Each injection kicker magnet is given a waveform that scales the kicker voltage during injection. Once the initial and final voltages are known, they can be connected with a square root waveform to satisfy Eq.~\eqref{eq:elliptical_painting}. The final beam intensity is controlled by the painting time — the time between the initial and final voltages.
 
 To control the position and angle of the orbit at the injection point, it is first necessary to measure the position and angle of the orbit at the injection point. This can be done indirectly as follows. A single minipulse is injected and stored in the ring, and its turn-by-turn mean transverse position is measured using a beam-position-monitor (BPM). This is repeated for several minipulses and the average is taken. In the linear approximation, the mean position performs the pseudo-harmonic oscillations of Eq.~\eqref{eq:Hill_solution}; however, energy spread in the minipulse eventually sends the mean position to zero. For a Gaussian energy spread, a damped sine wave is an accurate model of this process \cite{Pelaia2016}:
 %
@@ -741,13 +735,13 @@ The coordinates are then transported to the injection point using the model tran
 \end{figure}
 %
 
-The next issue is how to control phase space coordinates at the injection point. Each kicker magnet is calibrated by applying a voltage difference to the magnet and measuring the orbit response using the ring BPMs; the angular kick associated with the magnet is varied until the model orbit agrees with the measured orbit. It was found that slight quadrupole corrections are necessary for this to occur. The standard deviation of the measured phase space coordinates is small after this calibration. One can then ask the model for a change in coordinates, update the kickers accordingly, and measure the new coordinates, iterating if necessary. This is currently done manually, and kicker power supplies need to be visually checked to make sure they are not beyond physical limits. Once this setup is complete, the kicker voltages are saved to a file and fed to a different script which scales sets the kicker waveforms. These steps were implemented as part of the Ring Injection Control (RIC) application in the OpenXAL framework \cite{Milas2021}. 
+The next issue is how to control phase space coordinates at the injection point. Each kicker magnet is calibrated by applying a voltage difference to the magnet, measuring the orbit response using the ring BPMs, and varying the angular kick associated with the magnet until the model orbit agrees with the measured orbit. It was found that slight quadrupole corrections are necessary for this to occur. The standard deviation of the measured phase space coordinates is small after this calibration. One can then ask the model for a change in coordinates, update the kickers accordingly, and measure the new coordinates, iterating if necessary. This is currently done manually, and kicker power supplies need to be visually checked to make sure they are not beyond physical limits. Once this setup is complete, the kicker voltages are saved to a file and fed to a different script which scales sets the kicker waveforms. These steps were implemented as part of the Ring Injection Control (RIC) application in the OpenXAL framework \cite{Milas2021}. 
 
 The SNS injection kicker magnets have limited strengths and are unipolar, which limits the maximum relative angle between the HEBT trajectory and the ring orbit at the injection point. This is potentially disadvantageous because it could restrict the final apparent beam emittances, which should be maximized to reduce the effect of space charge and better approximate a pencil-beam from the linac, i.e., a small ratio of the minipulse emittances to the final pulse emittances. For example, one painting scheme is to vary the relative horizontal distance and vertical angle between the beams while fixing the vertical distance and horizontal angle; in this case, the final vertical emittance depends only on the maximum vertical angle. Previous simulations indicate that this angle will be quite small at the nominal beam energy of 1.0 GeV. Several tricks to increase the effective strength of the injection kicker magnets are discussed in Chapter \ref{chap-5}.
 
 
 \section{Structure and goals of this dissertation}\label{sec:Goals of this dissertation}.
 
-The primary goal of this dissertation is to contribute to efforts to produce a Danilov distribution in the SNS ring. A secondary goal is to improve the current understanding of the dynamics of the Danilov distribution with space charge.
+The primary goal of this dissertation is to contribute to efforts to produce an approximate Danilov distribution in the SNS ring. The secondary goal is to improve the current understanding of the dynamics of the Danilov distribution with space charge.
 
-In Chapter \ref{chap-2}, the envelope equations describing the linear transport of the Danilov distribution are used to calculate the matched beam envelope with the inclusion of space charge forces. Such a calculation is critical to producing a Danilov distribution in a ring using the elliptical painting method. In Chapter \ref{chap-3}, the computational model used for realistic simulations of beam dynamics in the SNS ring is described. Previously published simulation results will be re-examined. The significance of updated experimental constraints will be discussed. In Chapter \ref{chap-4}, several methods will be proposed to measure the similarity between a painted distribution in the SNS ring and a Danilov distribution. The implementation of these methods in the SNS will be discussed. In Chapter \ref{chap-5}, the results of initial experimental studies of elliptical painting in the SNS will be presented. Simulations will be provided to aid in interpreting the results. In Chapter \ref{chap-6}, implications and extensions of this work will be discussed.
+In Chapter \ref{chap-2}, the envelope equations describing the linear transport of the Danilov distribution are used to calculate the matched beam envelope with the inclusion of space charge forces. Such a calculation is critical to producing a Danilov distribution in a ring using the elliptical painting method. In Chapter \ref{chap-3}, the computational model used for realistic simulations of beam dynamics in the SNS ring is described. Previously published simulation results are re-examined and the significance of updated experimental constraints is discussed. In Chapter \ref{chap-4}, several methods are proposed to measure the similarity between a painted distribution in the SNS ring and a Danilov distribution. The implementation of these methods in the SNS is discussed. In Chapter \ref{chap-5}, the results of initial experimental studies of elliptical painting in the SNS are presented. Simulations will be provided to aid in interpreting the results. In Chapter \ref{chap-6}, implications and extensions of this work are discussed.
