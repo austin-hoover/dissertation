@@ -2,7 +2,7 @@
 
 High-intensity particle accelerators are important tools for modern scientific research and industrial applications. They serve as drivers for secondary beam production (neutrons, neutrinos, muons, etc.) \cite{Geer2009} and are potentially useful for nuclear waste processing \cite{Yee-Rendon2021}. In particular, spallation neutron sources have become vital to neutron scattering research \cite{Garoby2017}.
 
-The maximum beam beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam \cite{Hofmann2017Book}. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can lead to radio-activation of the accelerator components, making hands-on maintenance unsafe \cite{Bungau2014}; thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of $\approx 10^{-6}$ \cite{Henderson2014}. Space charge will become even more important in the design of future ten-megawatt accelerators. 
+The maximum beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam \cite{Hofmann2017Book}. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can lead to radio-activation of the accelerator components, making hands-on maintenance unsafe \cite{Bungau2014}; thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of $\approx 10^{-6}$ \cite{Henderson2014}. Space charge will become even more important in the design of future ten-megawatt accelerators. 
  
 One method to produce a high-intensity hadron beam is to repeatedly inject particles from a linear accelerator (linac) into a circular accelerator (ring), accumulating charge in the ring over many turns. Rings are designed to produce stable motion, but the combination of the periodic electromagnetic fields of the accelerator \textit{and beam} may produce unstable motion. Additionally, if the beam's electric field has a strong nonlinear dependence on the particle coordinates, the number of stable machine configurations decreases. This places an upper limit on the beam intensity. Thus, it is desirable to produce a beam in which the electric field has a linear dependence on the particle coordinates; for example, a uniform density ellipsoid.
 
@@ -358,7 +358,7 @@ Following Hofmann \cite{Hofmann2017Book}, we divide space charge effects into tw
 
 \subsubsection{Incoherent effects}
 
-We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak. If the beam's electric field is linear in the transverse coordinates, it will simply modify the external linear focusing, reducing the single-particle tune in both planes. A primary concern in rings is that the depressed tunes are located near one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here.
+We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak. If the beam's electric field has a linear dependence on the transverse coordinates, it will simply modify the external linear focusing, reducing the single-particle tunes. A primary concern in rings is that the depressed tunes cross one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here. 
 
 If the electric field is nonlinear, the tune shift will depend on the particle amplitude, leading to a spread of tunes. An intuitive explanation is that large-amplitude particles experience a weaker average electric field throughout one turn in the ring \cite{Franchetti2017}. A recent study of the space charge tune spread in rings is found in \cite{Hotchi2020}; Fig.~\ref{fig:jparc_montague}, taken from the paper, shows the simulated tune spread in the Japan Proton Accelerator Research Center (J-PARC).
 %
@@ -370,7 +370,7 @@ If the electric field is nonlinear, the tune shift will depend on the particle a
 \end{figure}
 %
 
-Thus, the beam intensity in a ring is limited by the incoherent space charge tune shift. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application. Research in this area is ongoing. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in this model.
+Thus, the beam intensity in a ring is limited by the incoherent space charge tune shift/spread. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application. Research in this area is ongoing. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in this model.
 
 
 
@@ -555,7 +555,7 @@ The application that is most relevant to this work is the use of an AMD beam in 
 
 Luiten et al. proposed a method to create a self-consistent \{3, 3\} distribution (see Eq.~\eqref{eq:scdist_general_form}) of electrons \cite{Luiten2004}. They observed that since a uniform density oblate spheroid\footnote{$(x/A)^2 + (y/B)^2 + (z/C)^2 = 1$ with $A = B > C$} will collapse under its own gravity into a flat disk \cite{Lin1965}, a flat transverse disk of electrons will longitudinally expand into a uniform density ellipsoid. This ``pancake" distribution can be created using ultrashort pulsed-laser photoemission with an appropriate radial intensity profile. Musumeci et al. experimentally demonstrated this method in \cite{Musumeci2008}. 
 
-Unfortunately, these methods do not apply to high-intensity proton rings where distributions are much longer, often resembling 2D coasting beams, and are built up over many turns. A method to produce an approximate Danilov distribution in a high-intensity proton ring was introduced in \cite{Danilov2003}. Before describing the method, we will need to introduce the concept of phase space painting. 
+Unfortunately, these methods do not apply to high-intensity proton rings where distributions are much longer, often resembling 2D coasting beams, and are built up over many turns. A method to produce an approximate Danilov distribution in a high-intensity proton ring was identified in \cite{Danilov2003}. Before describing this method, we need to introduce the concept of phase space painting. 
 
 
 \subsection{Phase space painting}
@@ -564,26 +564,22 @@ Accelerators are often broken into stages. A common pattern is the injection of 
 
 In direct multi-turn injection, multiple beam pulses are injected into the same stable region of longitudinal phase space in the ring. This process is limited by Liouville's theorem in the sense that the phase space density in the ring cannot be increased. In charge-exchange injection, an ion beam from the linac is stripped of its electrons upon entering the ring, leaving only protons.\footnote{Electrons are currently stripped using foils. Laser stripping is a potential alternative \cite{Cousineau2017}.} This produces a higher phase space density because charge-exchange is a non-Liouvillian process. While normal multi-turn injection is usually performed over tens of turns, charge-exchange injection is performed over hundreds of turns \cite{Bracco2017}.\footnote{There is, however, renewed interest in direct multi-turn injection for future accelerators to avoid the issues associated with charge exchange injection, such as foil scattering and unstripped particles, and it seems possible to extend the number of injected turns into the hundreds using novel techniques \cite{Prior2016}.} 
 
-Phase space painting, or simply ``painting", is the time-dependent variation of the transverse distance and angle between the injected beam and the circulating beam; as such, it allows time-dependent control over the phase space distribution in the ring. Painting is a vital tool for space charge mitigation. The free parameters are the painting path — the path of the injection point in phase space — and the speed at which this path is traversed. After discussing the two most popular painting methods, we will introduce a new method called elliptical painting that theoretically produces a Danilov distribution.
+Phase space painting, or simply ``painting", is the time-dependent variation of the transverse distance and angle between the injected beam and the circulating beam; as such, it allows time-dependent control over the phase space distribution in the ring. Painting is a vital tool for space charge mitigation. The free parameters are the painting path — the path of the injection point in phase space — and the speed at which this path is traversed. 
 
-
-\subsection{Square root painting methods}
-
-Although particles move along elliptical trajectories in $x$-$x'$ and $y$-$y'$ phase space in the linear approximation, they explore a rectangular region in the $x$-$y$ plane due to differences in the horizontal and vertical tunes. Square root painting methods make the best of this situation by theoretically generating uniform density ellipses in $x$-$x'$ and $y$-$y'$ phase space. 
 
 \subsubsection{Correlated painting}
 
-Let $x$, $x'$, $y$, and $y'$ be the coordinates of the injected beam in the phase space of the circulating beam, and $t$ be a time variable normalized to the range [0, 1]. In its simplest form, correlated painting proceeds as
+Correlated painting proceeds as
 %
 \begin{equation}
 \begin{aligned}
     {x}(t) &= {x}_{max}\sqrt{t}, \\
     {y}(t) &= {y}_{max}\sqrt{t}, \\
-    x'(t) &= y'(t) = 0.
+    x'(t) &= y'(t) = 0,
 \end{aligned}
 \end{equation}
 %
-In the linear approximation and without space charge, correlated painting generates uniform density ellipses in the $x$-$x'$ and $y$-$y'$ planes and a rectangular distribution in the $x$-$y$ plane. This is illustrated on the left side of Fig.~\ref{fig:painting_graphic}. 
+where $x$, $x'$, $y$, and $y'$ are the coordinates of the injected beam in the phase space of the circulating beam and $t$ is a time variable normalized to the range [0, 1]. In the linear approximation and without space charge, correlated painting generates uniform density ellipses in the $x$-$x'$ and $y$-$y'$ planes and a rectangular distribution in the $x$-$y$ plane. This is illustrated on the left side of Fig.~\ref{fig:painting_graphic}. 
 %
 \begin{figure}[!p]
     \centering
@@ -592,9 +588,7 @@ In the linear approximation and without space charge, correlated painting genera
     \label{fig:painting_graphic}
 \end{figure}
 %
-The lightest/darkest pink marker represents the initial/final injection point, and the foil location is indicated by the gold rectangle.\footnote{The foil is not drawn to scale.} Note that this method produces a non-uniform density in the $x$-$y$ plane.
-
-A primary concern in the SNS is the size and peak density of the $x$-$y$ distribution on the spallation target \cite{Riemer2010}. A modified correlated painting scheme is employed to this end:
+The lightest/darkest pink marker represents the initial/final injection point and the foil location is indicated by the gold rectangle.\footnote{The foil is not drawn to scale.} Note that this method produces a non-uniform density in the $x$-$y$ plane. At the SNS, where the size and peak density of the $x$-$y$ distribution on the spallation target is a concern \cite{Riemer2010}, a modified correlated painting scheme is employed:
 %
 \begin{equation}
 \begin{aligned}
@@ -604,7 +598,7 @@ A primary concern in the SNS is the size and peak density of the $x$-$y$ distrib
 \end{aligned}
 \end{equation}
 %
-Initially, a donut is created in phase space. Space charge and other nonlinear forces eventually cause the distribution to fill in its hollow center, reducing the peak density.
+The initial distribution is a donut in the $x$-$x'$ and $y$-$y'$ planes. Space charge and other nonlinear forces eventually cause the distribution to fill in its hollow center, reducing the peak density.
 
 
 \subsubsection{Anti-correlated painting}
@@ -618,28 +612,29 @@ Anti-correlated painting is equivalent to correlated painting reversed in one of
 \end{aligned}
 \end{equation}
 %
-Initially, the $x$-$x'$ distribution is a point while the $y$-$y'$ distribution is a donut. The painting path in this method follows the line $J_x + J_y = constant$, which is the condition of particles in the KV distribution. Thus, in the linear approximation without space charge, the final distribution is a KV distribution. This is illustrated in Fig.~\ref{fig:painting_graphic}. However, the space charge force is nonlinear throughout injection and the KV structure will not be maintained \cite{Crosbie1996}. How to overcome this limitation is an open question. Nonetheless, anti-correlated painting has benefits over correlated painting in some cases \cite{Hotchi2020}.
+The initial distribution is a point in the $x$-$x'$ plane and a donut in the $y$-$y'$ plane. The painting path in this method follows the line $J_x + J_y = constant$, which is the condition of particles in the KV distribution; thus, in the linear approximation without space charge, the final distribution is a KV distribution. This is illustrated in Fig.~\ref{fig:painting_graphic}. However, the space charge forces are nonlinear throughout injection and the KV structure will not be maintained \cite{Crosbie1996}. How to overcome this limitation is an open question. Nonetheless, anti-correlated painting can have benefits over correlated painting \cite{Hotchi2020}.
 
 
 \subsubsection{Elliptical painting}
 
-Refer back to Eq.~\eqref{eq:eigvec_coords} in which the single-particle motion is written as the sum of two modes. In the elliptical painting method, the injection point $\mathbf{x} = (x, x', y, y')$ is scaled along one of the eigenvectors:
+We now present a method called elliptical painting that produces a Danilov distribution in the linear approximation, \textit{even with space charge}. Refer back to Eq.~\eqref{eq:eigvec_coords} in which the single-particle motion is written as the sum of two modes. We then scale the injection point $\mathbf{x} = (x, x', y, y')$ along one of the eigenvectors:
 %
 \begin{equation}\label{eq:elliptical_painting}
     \mathbf{x}(t) =  
     Re \left\{ \sqrt{2 J_l} \, \mathbf{v}_l \, e^{-i\psi_l} \right\} \sqrt{t},
 \end{equation}
 %
-with $l = 1,2$. The first injected pulse does not move since it is injected onto the closed orbit. The second pulse traces a small ellipse in every 2D projection of the phase space on a turn-by-turn basis. The third pulse traces a slightly larger ellipse enclosing the second, and so on. The square root time-dependence ensures that the beam is a uniform density ellipse in every 2D projection of the 4D phase space at every point during injection. Thus, in the linear approximation, a Danilov distribution is maintained at all times, even with space charge.\footnote{The method is limited even in the linear approximation due to the finite emittance of the beam from the linac.} This is illustrated on the right side of Fig.~\ref{fig:painting_graphic}.
+with $l = 1,2$. The first injected pulse does not move since it is injected onto the closed orbit. The second pulse traces a small ellipse in every 2D projection of the phase space on a turn-by-turn basis. The third pulse traces a slightly larger ellipse enclosing the second, and so on. The square root time-dependence ensures that the beam is always a uniform density ellipse in every 2D projection of the 4D phase space. Thus, in the linear approximation, a Danilov distribution is maintained at all times, even with space charge.\footnote{The method is limited even in the linear approximation due to the finite emittance of the beam from the linac.} This is illustrated on the right side of Fig.~\ref{fig:painting_graphic}.
 
-Elliptical painting can be carried out in any ring, but the final distribution depends strongly on the eigenvectors (modes) of the ring transfer matrix. If the ring is uncoupled, the two modes correspond to horizontal and vertical motion — we refer to these modes as \textit{planar} \cite{Burov2002}. Injection into a planar mode results in a flat beam. If the ring is coupled, each mode corresponds to elliptical motion in the transverse plane — we refer to these modes as \textit{elliptical}. Finally, there is the special case of 
+Elliptical painting can be carried out in any ring, but the final distribution depends strongly on the eigenvectors (modes) of the ring transfer matrix. If the ring is uncoupled, the two modes correspond to horizontal and vertical motion — we refer to these modes as \textit{planar} \cite{Burov2002}. Injection into a planar mode results in a flat beam. If the ring is coupled, each mode corresponds to elliptical motion in the transverse plane — we refer to these modes as \textit{elliptical}. Finally, there is the special case of circular motion in the transverse plane — we refer to these modes as \textit{circular}.
 
-Coupled optics change the shape of the matched beam at the injection point and may produce a non-flat beam. Alternatively, the horizontal and vertical tunes can be equated, in which case the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector. This is discussed further in the subsequent chapters.
+One way to generate elliptical modes in a ring is to use coupled focusing elements such as skew quadrupoles and solenoids. To create circular modes, locally rotational-invariant optics can be used \cite{Burov2002}. The second way to generate elliptical modes in a ring is to equate the horizontal and vertical tunes, keeping all focusing elements uncoupled. In this case, the transfer matrix has degenerate eigenvalues and any linear combination of eigenvectors is itself an eigenvector; i.e., the turn-by-turn coordinates of a single particle will trace an ellipse no matter its initial coordinates. 
 
 
 \subsection{Elliptical painting in the Spallation Neutron Source}
 
-Elliptical painting requires time-dependent control of the transverse ring orbit position and angle in both planes at the injection point. The SNS is highly-optimized for correlated painting, not elliptical painting, but elliptical painting is possible. A software application to perform the painting method has recently been developed by SNS physicists; before describing the application, a brief description of the SNS is warranted. 
+The elliptical painting method is possible in the SNS. The requirements are (i) the generation of elliptical modes in the ring, and (ii) time-dependent control of the position and angle of the injected beam relative to the circulating beam. Before discussing how to implement (i) and (ii), a brief description of the SNS is warranted.
+
 
 \subsubsection{Description of the Spallation Neutron Source}
 
@@ -675,12 +670,17 @@ Fig.~\ref{fig:SNS_injection_region} zooms in on the injection region.
     \label{fig:SNS_injection_region}
 \end{figure}
 %
-Four dipole magnets align the horizontal orbit with the beam from the linac at the foil. The injected beam trajectory is held fixed so that any remaining H$^0$ or H$^-$ particles can be reliably guided to a dump. Eight kicker magnets — four per plane — are available for time-dependent control of the position and angle of the orbit at the injection point. 
+Four Chicane dipole magnets align the horizontal orbit with the beam from the linac at the foil. Painting is performed by eight kicker magnets — four per plane — which modify the transverse position and angle of the circulating beam. The injected beam trajectory is held fixed so that remaining H$^0$ or H$^-$ particles can be reliably guided to a dump.
+
+
+\subsubsection{Generation of elliptical modes in the ring}
+
+Although the transfer matrix of the SNS ring is uncoupled, elliptical modes can be created by setting equal horizontal and vertical tunes. Tune measurement and control is standard practice in most accelerators \cite{book:Minty2003} and is not described here. For reasons described in later chapters, it is advantageous to add solenoid magnetic fields to the ring. Solenoids are planned to be installed in the SNS ring in late 2022.
 
 
 \subsubsection{Ring Injection Control}
 
-Each injection kicker magnet is given a waveform that scales the kicker voltage during injection. Once the initial and final voltages are known, they can be connected with a square root waveform to satisfy Eq.~\eqref{eq:elliptical_painting}. The final beam intensity is controlled by the painting time — the time between the initial and final voltages.
+Once elliptical modes are created in the ring, particles must be injected into one of these modes. Recall the free parameters: the painting path and the time-dependence with which this path is traversed. Eq.~\ref{eq:elliptical_painting} requires fixed ratios between the injected coordinates ($x$, $x'$, $y$, $y'$) — the coordinates of the injected beam in the frame of the circulating beam at the injection point — and square root scaling of each coordinate. In the SNS, these coordinates are determined by the eight injection kicker magnet voltages. Once the correct initial and final voltages are determined, each kicker is given a waveform that scales its voltage during injection. The square root scaling of each coordinate is ensured by using a square root waveform. Thus, what remains is to determine the initial and final kicker voltages. 
 
 To control the position and angle of the orbit at the injection point, it is first necessary to measure the position and angle of the orbit at the injection point. This can be done indirectly as follows. A single minipulse is injected and stored in the ring, and its turn-by-turn mean transverse position is measured using a beam-position-monitor (BPM). This is repeated for several minipulses and the average is taken. In the linear approximation, the mean position performs the pseudo-harmonic oscillations of Eq.~\eqref{eq:Hill_solution}; however, energy spread in the minipulse eventually sends the mean position to zero. For a Gaussian energy spread, a damped sine wave is an accurate model of this process \cite{Pelaia2016}:
 %
@@ -715,7 +715,7 @@ The coordinates are then transported to the injection point using the model tran
 \end{figure}
 %
 
-The next issue is how to control phase space coordinates at the injection point. Each kicker magnet is calibrated by applying a voltage difference to the magnet, measuring the orbit response using the ring BPMs, and varying the angular kick associated with the magnet until the model orbit agrees with the measured orbit. It was found that slight quadrupole corrections are necessary for this to occur. The standard deviation of the measured phase space coordinates is small after this calibration. One can then ask the model for a change in coordinates, update the kickers accordingly, and measure the new coordinates, iterating if necessary. This is currently done manually, and kicker power supplies need to be visually checked to make sure they are not beyond physical limits. Once this setup is complete, the kicker voltages are saved to a file and fed to a different script which scales sets the kicker waveforms. These steps were implemented as part of the Ring Injection Control (RIC) application in the OpenXAL framework \cite{Milas2021}. 
+The next issue is how to control the phase space coordinates at the injection point. Each kicker magnet is calibrated by applying a voltage difference to the magnet, measuring the orbit response using the ring BPMs, and varying the angular kick associated with the magnet until the model orbit agrees with the measured orbit. It was found that slight quadrupole corrections are necessary for this to occur. The standard deviation of the measured phase space coordinates is usually small after this calibration. One can then ask the model for a change in coordinates, update the kickers accordingly, and measure the new coordinates, iterating if necessary. This is currently done manually, and kicker power supplies need to be visually checked to make sure they are not beyond physical limits. Once this setup is complete, the kicker voltages are saved to a file and fed to a different script which scales sets the kicker waveforms. These steps were implemented as part of the Ring Injection Control (RIC) application in the OpenXAL framework \cite{Milas2021} prior to this work.
 
 The SNS injection kicker magnets have limited strengths and are unipolar, which limits the maximum relative angle between the HEBT trajectory and the ring orbit at the injection point. This is potentially disadvantageous because it could restrict the final apparent beam emittances, which should be maximized to reduce the effect of space charge and better approximate a pencil-beam from the linac, i.e., a small ratio of the minipulse emittances to the final pulse emittances. For example, one painting scheme is to vary the relative horizontal distance and vertical angle between the beams while fixing the vertical distance and horizontal angle; in this case, the final vertical emittance depends only on the maximum vertical angle. Previous simulations indicate that this angle will be quite small at the nominal beam energy of 1.0 GeV. Several tricks to increase the effective strength of the injection kicker magnets are discussed in Chapter \ref{chap-5}.
 

@@ -23,9 +23,9 @@
 \LoadClass[12pt, oneside]{book} 
 
 \RequirePackage[
-    a4paper, 
-    includehead, 
-    headheight=0.6cm, 
+    letterpaper, 
+    % includehead, 
+    % headheight=0.6cm, 
     inner=2.5cm,
     outer=2.5cm, 
     top=2.5 cm,

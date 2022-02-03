@@ -1,8 +1,8 @@
 \chapter{Experiments} \label{chap-5}
 
-This chapter presents the results of initial experimental studies of the production of an approximate Danilov distribution in the SNS ring by means of the elliptical painting method. The computational studies in Chapter \ref{chap-2} and Chapter \ref{chap-3} were used to guide the experiments, and the diagnostics described in Chapter \ref{chap-4} were used to measure the painted distribution.
+This chapter presents the results of initial experiments to create an approximate Danilov distribution in the SNS. The computational studies in Chapter \ref{chap-2} and Chapter \ref{chap-3} were used to guide the experiments, and the diagnostics described in Chapter \ref{chap-4} were used to measure the painted distribution.
 
-Recall the definition of elliptical painting: the injected beam coordinates are scaled along an eigenvector of the one-turn transfer matrix. Each eigenvector, $\mathbf{v}_1$ or $\mathbf{v}_2$, traces an ellipse in the $x$-$y$ plane on a turn-by-turn basis, so elliptical painting can be performed in any ring. Yet a number of factors determine whether the painted distribution resembles a Danilov distribution. Consider the following three scenarios:
+Recall the definition of elliptical painting: the injected beam coordinates are scaled along an eigenvector of the one-turn transfer matrix. Each eigenvector, $\mathbf{v}_1$ or $\mathbf{v}_2$, traces an ellipse in the $x$-$y$ plane on a turn-by-turn basis, so elliptical painting can be performed in any ring. Yet a number of factors determine whether the painted distribution resembles a Danilov distribution. Consider three scenarios:
 
 \begin{table}[h!]
     \centering
@@ -67,9 +67,7 @@ At the time of our first experiment, setup of the injection region using the RIC
 
 \subsection{Experiment 1a: correlated painting}
 
-We first performed correlated painting for later comparison. Recall that in correlated painting, the displacements at the foil are increased from an initial offset to their final value, and the injection angle. The number of injected turns was reduced from 1000 to 500, halving the beam intensity, and the beam was measured every 50 turns. 
-
-The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}.
+We first performed correlated painting for later comparison. The number of injected turns was reduced from 1000 to 500, halving the beam intensity, and the beam was measured every 50 turns. The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}.
 %
 \begin{figure}[!p]
     \centering
@@ -100,9 +98,9 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1a_wsmeas}.
     \label{fig:exp1a_emittances}
 \end{figure}
 %
-Each subplot shows the evolution of the projection onto a single wire; each row corresponds to a different wire-scanner and each column to a different projection axis — $x$, $y$, or $u$. The initial offset of the closed orbit is evident from the two peaks in the $x$ and $y$ projections. The hollow center of the distribution fills in over time due to nonlinear effects.
+Each subplot shows the evolution of the projection onto a single wire; each row corresponds to a different wire-scanner and each column to a different projection axis — $x$, $y$, or $u$. Recall that in correlated painting, the injection angles are zero and the injection positions are increased from an initial offset. The initial offset is evident from the two peaks in the measured $x$ and $y$ profiles. The hollow center of the distribution fills in over time due to nonlinear effects.
 
-The reconstructed emittances and covariance ellipses at BPM17, just before QH18, are shown in Fig.~\ref{fig:exp1a_emittances}. The error bars were computed by repeating the reconstruction multiple times with 2\% random noise added to the measured moments, then taking the mean and standard deviation over the trials.\footnote{This can lead to asymmetric error bars.} For our purposes, the most important feature of Fig.~\ref{fig:exp1a_emittances} is that the measured cross-plane correlation is small throughout injection, demonstrating that there is very little coupling from the external fields of the ring, or from the electric field of the beam, in the standard SNS painting scheme.
+The reconstructed emittances and covariance ellipses at BPM17, just before QH18, are shown in Fig.~\ref{fig:exp1a_emittances}. The error bars were computed by repeating the reconstruction multiple times with 3\% random noise added to the measured moments, then taking the mean and standard deviation over the trials.\footnote{This can lead to asymmetric error bars.} For our purposes, the most important feature of Fig.~\ref{fig:exp1a_emittances} is that the measured cross-plane correlation is small throughout injection, demonstrating that there is very little coupling from the external fields of the ring, or from the electric field of the beam, in the standard SNS painting scheme.
 
 
 \subsection{Experiment 1b: attempted elliptical painting}
@@ -140,7 +138,7 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp1b_wsmeas}.
 %
 The horizontal projection at 50 turns is hollow — evidence of the initial offset of the closed orbit — but quickly filaments. The most important feature of Fig.~\ref{fig:exp1b_wsmeas} is the vertical beam size, which starts at a small value and increases throughout injection. This is an indication that the injection kicker waveforms are correct.
 
-We now focus on the reconstructed emittances and covariance ellipses at BPM17, shown in Fig.~\ref{fig:exp1a_emittances}.
+We now focus on the reconstructed emittances and covariance ellipses shown in Fig.~\ref{fig:exp1a_emittances}.
 %
 \begin{figure}[!p]
     \centering
@@ -184,7 +182,7 @@ In Experiment 2, the beam energy was lowered to 0.8 GeV. At this energy, the clo
 %
 \begin{equation}\label{eq:painted_emittance_ratio}
     \frac{\varepsilon_y}{\varepsilon_x} \approx 
-    \beta_x \beta_y \left(\frac{{y_max'}}{x_{max}}\right)^2 
+    \beta_x \beta_y \left(\frac{{y_{max}}'}{x_{max}}\right)^2 
     .
 \end{equation}
 %
@@ -207,7 +205,7 @@ The measured wire-scanner profiles are shown in Fig.~\ref{fig:exp2_wsmeas}.
     \label{fig:exp2_wsmeas}
 \end{figure}
 %
-One important feature Fig.~\ref{fig:exp2_wsmeas} is that the beam must have some rotational symmetry in the $x$-$y$ plane since the growth in horizontal, vertical, and diagonal beam sizes is similar. Another important feature is that the beam sizes start at a small value and increase at approximately the square root of time; light grey curves have been added to illustrate this, showing the ideal square root time dependence given the final beam size. A third important feature is that the profiles appear to be more consistent with a Gaussian distribution than a uniform density distribution. This will be discussed more at the end of the chapter.
+One important feature of Fig.~\ref{fig:exp2_wsmeas} is that the beam must have some rotational symmetry in the $x$-$y$ plane since the growth in beam size is similar on all wires. Another important feature is that the beam sizes start at a small value and increase at approximately the square root of time; light grey curves have been added to illustrate this, showing the ideal square root time dependence given the final beam size. A third important feature is that the profiles appear to be more consistent with a Gaussian distribution than a uniform density distribution. This will be discussed more at the end of the chapter.
 
 The reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:exp2_emittances}.
 %
@@ -224,7 +222,7 @@ The reconstructed emittances and covariance ellipses are shown in Fig.~\ref{fig:
     \label{fig:exp2_emittances}
 \end{figure}
 %
-The reconstructed apparent emittances grow linearly from a small value, as intended. The measured ratio $\varepsilon_y / \varepsilon_x$ is equal to 0.5 throughout injection, twice as large as expected from Eq.~\ref{eq:painted_emittance_ratio}. One explanation could be that the model $\beta$ functions at the injection point were smaller than the actual $\beta$ functions; for example, if $\beta_x = \beta_y = 13.5$, then $\varepsilon_y \varepsilon_y \approx 0.5$. But such a large discrepancy is unlikely. Another explanation is that the actual RMS beam size is different than the predicted RMS beam size, which assumes the final distribution is a uniform density ellipse ($\langle{y'^2}\rangle = 2 y_{max}'$). A third explanation is that these measurements at least partially support the hypothesis that the beam experienced fast space-charge-driven emittance exchange early in injection. 
+The reconstructed apparent emittances grow linearly from a small value, as intended. The measured ratio $\varepsilon_y / \varepsilon_x$ is equal to 0.5 throughout injection, twice as large as expected from Eq.~\ref{eq:painted_emittance_ratio}. One explanation could be that the model $\beta$ functions at the injection point were smaller than the actual $\beta$ functions; for example, if $\beta_x = \beta_y = 13.5$, then $\varepsilon_y \varepsilon_y \approx 0.5$. But such a large discrepancy is unlikely. Another explanation is that the actual RMS beam size is different than the predicted RMS beam size, which assumes the final distribution is a uniform density ellipse ($\sqrt{\langle{y'^2}\rangle} = 2 y_{max}'$). A third explanation is that these measurements at least partially support the hypothesis that the beam experienced fast space-charge-driven emittance exchange early in injection. 
 
 The reconstructed intrinsic emittances begin to diverge at the end of injection, but the measured cross-plane correlation is small. Additionally, the error bars are larger than in the previous experiment; this is most likely due to larger mismatch of the beam Twiss parameters at the RTBT entrance, which is expected given the increase in beam perveance at 0.8 GeV. Given the small measured cross-plane correlation and larger error bars, we cannot claim that the 4D emittance is significantly reduced. 
 
