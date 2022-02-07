@@ -23,13 +23,11 @@
 \LoadClass[12pt, oneside]{book} 
 
 \RequirePackage[
-    letterpaper, 
-    % includehead, 
-    % headheight=0.6cm, 
-    inner=2.5cm,
-    outer=2.5cm, 
-    top=2.5 cm,
-    bottom=2.5cm
+    a4paper,
+    inner=1.0in,
+    outer=1.0in, 
+    top=1.0in,
+    bottom=1.0in
 ]{geometry}
 
 \RequirePackage[bf]{caption} % caption: FIG in bold, 1.5 line spacing in figure and table captions
