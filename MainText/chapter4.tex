@@ -217,7 +217,7 @@ We performed a similar calculation in the RTBT by varying the phase advances at 
     \label{fig:rtbt_montecarlo_emittances}
 \end{figure}
 %
-Settings that produced no successful trials appear as white cells. The apparent emittances are not displayed because they remained within 1\% of their true values at every optics setting. We conclude that the default optics are ill-suited for the fixed-optics 4D emittance measurement. Modifying the optics so that $\mu_x = \mu_{x0} + 45\degree$, $\mu_y = \mu_{y0} - 45\degree$ reduces the fractional errors to $\approx 7\%$ and the fractional standard deviation to $\approx 5\%$. The fraction of failed fits, which is very large along the diagonal in the figure, is reduced to zero.\footnote{The region near $\mu_x = \mu_{x0} - 45\degree$, $\mu_y = \mu_{y0} + 45\degree$ appears to be more stable, but results in larger $\beta$ functions in the wire-scanner regions. We would like to avoid this if possible. Although larger modifications may be able to further reduce the sensitivity, we stopped here to minimize the changes to the RTBT trajectory.}
+Settings that produced no successful trials appear as white cells. The apparent emittances are not displayed because they remained within 1\% of their true values at every optics setting. We conclude that the default optics are ill-suited for the fixed-optics 4D emittance measurement. Modifying the optics so that $\mu_x = \mu_{x0} + 45\degree$, $\mu_y = \mu_{y0} - 45\degree$ reduces the fractional errors to $\approx 7\%$ and the fractional standard deviation to $\approx 5\%$. The fraction of failed fits, which is very large along the diagonal in the figure, is reduced to zero.\footnote{Although larger modifications may be able to further reduce the sensitivity, we stopped here to minimize the changes to the RTBT trajectory.}
 
 It is also important to examine the effect of mismatched beam parameters on the accuracy of the reconstruction. Recall that the phase advance is the integral of the inverse of the $\beta$ function. In a periodic system, there is a unique periodic solution for the $\beta$ function, but this is not true in a transfer line such as the RTBT; thus, the phase advance in the RTBT depends on the Twiss parameters at the ring extraction point — the RTBT entrance. 
 
@@ -247,14 +247,25 @@ Fig.~\ref{fig:mismatch} plots the fractional error and standard deviation of the
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics{Images/chapter4/mismatch.png}
-    \caption{Simulated fractional error and standard deviation of reconstructed intrinsic emittances as a function of the beam mismatch parameter.}
-    \label{fig:mismatch}
+    \begin{subfigure}{0.85\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter4/mismatch.pdf}
+        \caption{}
+        \label{fig:mismatch}
+    \end{subfigure}
+    \vfill
+    \vspace*{0.5cm}
+    \vfill
+    \begin{subfigure}{0.85\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter4/mismatch_correlatedbeam.pdf}
+        \caption{}
+        \label{fig:mismatch_correlatedbeam}
+    \end{subfigure}
+    \caption{Simulated fractional error and standard deviation of reconstructed intrinsic emittances as a function of the beam mismatch parameter. (a) $\varepsilon_1 / \varepsilon_2 = 1$; (b) $\varepsilon_1 / \varepsilon_2 = 3$.}
 \end{figure}
 %
-The standard deviation remains acceptable, but the error of the mean emittances grows from $\approx 7\%$ to $\approx 12\%$ in some cases. With this level of bias in the measurement, it may be difficult to resolve a distribution with weak cross-plane correlations; however, the measurement should still resolve a distribution with strong cross-plane correlations. 
+The standard deviation remains acceptable, but the error of the mean emittances grows from $\approx 7\%$ to $\approx 12\%$ in some cases. With this level of bias in the measurement, it may be difficult to resolve a distribution with weak cross-plane correlations; however, the measurement should still resolve a distribution with strong cross-plane correlations. This is demonstrated in Fig.~\ref{fig:mismatch_correlatedbeam}, which repeats the calculations for an input beam with $\varepsilon_1 / \varepsilon_2 = 3$. The bias in the reconstruction is now largely absent — the mean reconstructed intrinsic emittances in the Monte Carlo trails are close to their correct values. 
 
-We conclude that with changes to the RTBT optics, the fixed-optics method should be sufficient for fast 4D emittance measurements. Although beam mismatch is a concern, it is only expected to occur at lower beam energies and non-standard painting methods, and should not result in unacceptable uncertainty/bias in the reconstruction. As detailed in Chapter 5, such measurements will be needed to evaluate various machine settings within a single study period, especially in initial experiments, as well as to measure the emittance growth during accumulation for qualitative comparison with simulation. The multi-optics method should be used once a promising machine state is found (or if time allows) to compare with the fixed-optics method and reduce the uncertainty/bias in the reconstruction.
+We conclude that with changes to the RTBT optics, the fixed-optics method should be sufficient for fast 4D emittance measurements. As detailed in Chapter 5, such measurements will be needed to evaluate various machine settings within a single study period, especially in initial experiments, as well as to measure the emittance growth during accumulation for qualitative comparison with simulation. The multi-optics method should be used once a promising machine state is found (or if time allows) to compare with the fixed-optics method and reduce the uncertainty/bias in the reconstruction.
 
 
 \subsubsection{Other uses of 1D projections}
