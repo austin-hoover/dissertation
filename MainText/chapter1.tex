@@ -1,6 +1,6 @@
 \chapter{Introduction}\label{chap-1}
 
-High-intensity particle accelerators are important to many areas of scientific research; for example, they serve as drivers for secondary beam production (neutrons, neutrinos, muons, etc.) \cite{Geer2009} and could be used for nuclear waste processing \cite{Yee-Rendon2021}. In particular, spallation neutron sources have become vital to material science \cite{Garoby2017}.
+High-intensity particle accelerators are important to many areas of scientific research; for example, they serve as drivers for bright secondary beam production (neutrons, neutrinos, muons, etc.) \cite{Geer2009} and could be used for nuclear waste processing \cite{Yee-Rendon2021}. In particular, spallation neutron sources have become vital to material science \cite{Garoby2017}.
 
 The maximum beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam \cite{Hofmann2017Book}. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can lead to radio-activation of the accelerator components, making hands-on maintenance unsafe \cite{Bungau2014}; thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of $\approx 10^{-6}$ \cite{Henderson2014}. Space charge will become even more important in the design of future ten-megawatt accelerators \cite{Wei2014}. 
  
@@ -8,9 +8,9 @@ One method to produce a high-intensity hadron beam is to repeatedly inject parti
 
 Uniform density beams producing linear space charge forces are frequently used in analytical and computational studies of high-intensity beam dynamics \cite{Lund2004}. These studies are possible because of the existence of special distributions of particles in position-momentum space (phase space) that maintain linear space charge forces as they are transported through arbitrary linear focusing fields. We refer to these distributions as \textit{self-consistent}.
 
-It is, however, difficult to produce such a distribution: real beam transport involves nonlinear external fields, for which no known self-consistent distributions exist, and control of the phase space distribution at early stages of acceleration is limited. Nonetheless, several recently derived self-consistent distributions are possible to produce in a circular accelerator in the linear approximation \cite{Danilov2003}. Furthermore, simulations predict that one of these distributions — the Danilov distribution — could be approximately produced in an existing machine — the Spallation Neutron Source (SNS) — even with the inclusion of realistic nonlinear effects \cite{Holmes2018}. This dissertation contributes to efforts to test these predictions.
+It is, however, difficult to produce such a distribution: real beam transport involves nonlinear external fields, for which no known self-consistent distributions exist, and control of the phase space distribution at early stages of acceleration is limited. Nonetheless, several recently derived self-consistent distributions are possible to produce in a circular accelerator in the linear approximation \cite{Danilov2003}. Furthermore, simulations predict that one of these distributions — the Danilov distribution — could be approximately produced in a real machine \cite{Holmes2018}. This dissertation contributes to efforts to test this prediction in the Spallation Neutron Source (SNS).
 
-The structure of this introductory chapter is as follows. The relevant theory of high-intensity beam dynamics is reviewed in Section \ref{sec:High-intensity beam dynamics}. The definition and properties of self-consistent distributions are discussed in Section \ref{sec:Self-consistent phase space distributions}. A method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in Section \ref{sec:Producing a self-consistent distribution}. The structure and goals of this dissertation are laid out in Section \ref{sec:Goals of this dissertation}.
+The structure of this introductory chapter is as follows. The relevant theory of beam dynamics is reviewed in Section \ref{sec:High-intensity beam dynamics}. The definition and properties of self-consistent distributions are discussed in Section \ref{sec:Self-consistent phase space distributions}. A method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in Section \ref{sec:Producing a self-consistent distribution}. The structure and goals of this dissertation are laid out in Section \ref{sec:Goals of this dissertation}.
 
 
 
@@ -116,9 +116,7 @@ Thus, motion between two locations in the ring is equivalent to an area-preservi
 \end{aligned}
 \end{equation}
 %
-and $\mathbf{x} = (x, x')^T$. As illustrated in Fig.~\ref{fig:cs_ellipse_b}, $\mathbf{V(0)}^{-1}$ transforms the phase space ellipse into a circle while preserving its area, $\mathbf{P(s)}$ rotates the coordinates around the circle according to the phase advance, and $\mathbf{V(s)}$ transforms the circle back into an ellipse \cite{Lee2011}.
-
-Eq.~\eqref{eq:CS_parameterization} motivates the definition of normalized phase space coordinates $\mathbf{x}_n(s) = \mathbf{V}(s)^{-1} \mathbf{x}(s)$ in which the particle performs simple harmonic oscillations, i.e., rotates in a circle of area $J$ at frequency $2\pi\nu$. 
+and $\mathbf{x} = (x, x')^T$. As illustrated in Fig.~\ref{fig:cs_ellipse_b}, $\mathbf{V(0)}^{-1}$ transforms the phase space ellipse into a circle while preserving its area, $\mathbf{P(s)}$ rotates the coordinates around the circle according to the phase advance, and $\mathbf{V(s)}$ transforms the circle back into an ellipse \cite{Lee2011}. Eq.~\eqref{eq:CS_parameterization} motivates the definition of normalized phase space coordinates $\mathbf{x}_n(s) = \mathbf{V}(s)^{-1} \mathbf{x}(s)$ in which the particle performs simple harmonic oscillations, i.e., rotates in a circle of area $J$ at frequency $2\pi\nu$. 
 
 
 
@@ -264,7 +262,7 @@ If a linear transformation $\mathbf{x} \rightarrow \mathbf{M}\mathbf{x}$ is appl
     \mathbf{M} \, \bm{\Sigma} \, \mathbf{M}^T.
 \end{equation}
 %
-The covariance matrix defines an ellipsoid in phase space: $\mathbf{x}^T \bm{\Sigma}^{-1} \mathbf{x} = 1$. The 4D emittance $\varepsilon_{4D}$ is proportional to the volume of this ellipsoid:
+The 4D emittance $\varepsilon_{4D}$ is proportional to the volume of the ellipsoid defined by the covariance matrix:
 %
 \begin{equation} 
     \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2}
@@ -391,7 +389,7 @@ Hidden in Eq.~\eqref{eq:Vlasov} is the single-particle equation of motion, which
 \begin{equation}
     \mathbf{x}'' + \mathbf{K_0} \mathbf{x} + \mathbf{K_1} \mathbf{x}'
     =
-    \frac{q}{m\gamma_s^3\beta_s^2c^2} \frac{\partial{\Phi}}{\partial\mathbf{x}},
+    -\frac{q}{m\gamma_s^3\beta_s^2c^2} \frac{\partial{\Phi}}{\partial\mathbf{x}},
 \end{equation}
 %
 with the space charge potential $\Phi$ determined from the Poisson equation \cite{Jackson1975}:
@@ -741,4 +739,4 @@ The SNS injection kicker magnets have limited strengths and are unipolar, which 
 
 The primary goal of this dissertation is to contribute to efforts to produce an approximate Danilov distribution in the SNS ring. The secondary goal is to improve the current understanding of the dynamics of the Danilov distribution with space charge. 
 
-In Chapter \ref{chap-2}, the envelope equations describing the linear transport of the Danilov distribution are used to calculate the matched beam envelope with the inclusion of space charge forces. Such a calculation is critical to producing a Danilov distribution in a ring using the elliptical painting method. In Chapter \ref{chap-3}, the computational model used for realistic simulations of beam dynamics in the SNS ring is described. Previously published simulation results are re-examined and the significance of updated experimental constraints is discussed. In Chapter \ref{chap-4}, several existing methods to measure the similarity between a painted distribution and a Danilov distribution are proposed and implemented in the SNS. In Chapter \ref{chap-5}, the results of initial experimental studies of elliptical painting in the SNS are presented. Simulations will be provided to aid in interpreting the results. In Chapter \ref{chap-6}, implications and extensions of this work are discussed.
+In Chapter \ref{chap-2}, the envelope equations describing the linear transport of the Danilov distribution are used to calculate the matched beam envelope with the inclusion of space charge forces. Such a calculation is critical to producing a Danilov distribution in a ring using the elliptical painting method. In Chapter \ref{chap-3}, the computational model used for realistic simulations of beam dynamics in the SNS ring is described. Previously published simulation results are re-examined and the significance of updated experimental constraints is discussed. In Chapter \ref{chap-4}, several methods to measure the similarity between a painted distribution and a Danilov distribution are identified, implemented using existing diagnostics in the SNS, and optimized. In Chapter \ref{chap-5}, the results of three initial experimental studies of elliptical painting in the SNS are presented. Simulations are provided for comparison. In Chapter \ref{chap-6}, implications and extensions of this work are discussed.

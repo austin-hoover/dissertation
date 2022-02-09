@@ -67,11 +67,16 @@ For a grid with $N$ total points, the time-complexity of the convolution is $O(N
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=\textwidth]{Images/chapter3/poisson.png}
-    \caption{\label{fig:poisson}Solution of the Poisson equation on a doubled grid.}
+    \includegraphics[width=0.9\textwidth]{Images/chapter3/poisson.pdf}
+    \vfill
+    \vspace*{0.5cm}
+    \vfill
+    \includegraphics[width=0.9\textwidth]{Images/chapter3/Efield.pdf}
+    \caption{Solution of the Poisson equation. Top: charge density and electric potential on the doubled grid; bottom: electric field on the original grid.}
+    \label{fig:poisson}
 \end{figure}
 %
-Third, using the same weighting method as the first step, the gradient of the potential is interpolated at the particle positions. Finally, the particle momenta are updated using an appropriate integration scheme.
+Third, the gradient of the potential is calculated, then interpolated at the particle positions using the same weighting method as in the first step. Finally, the particle momenta are updated using an appropriate integration scheme.
 
 In rings where the coasting beam approximation is valid, the longitudinal and transverse dimensions can be treated separately. In PyORBIT, a longitudinal space charge node, which solves the Poisson equation for the 1D projection of the distribution onto the $z$ axis, acts on the bunch once per turn. Transverse space charge nodes are distributed throughout the ring. The model used in this work is known as the sliced model: the bunch is sliced into longitudinal segments, and the Poisson equation is individually solved for each segment's projection onto the $x$-$y$ plane.
 
@@ -86,7 +91,7 @@ In the discussion of space charge thus far, the beam was assumed to be in free s
 
 PyORBIT employs a two-language scheme: the core algorithms are written in C++ but are accessed at the Python level. All PyORBIT scripts are written in Python. The scripts used in this work are modified versions of previously benchmarked injection scripts.
 
-For space charge calculations, a 128 $\times$ 128 $\times$ 64 grid is used with the sliced model. No more than 1 meter is allowed between solver nodes. The final number of particles is generally $5 \times 10^{5}$. With these settings, a 1000-turn injection simulation takes several days to run on a 2014 MacBook Pro with a 2.5 GHz Intel Core i7 processor, 16 GB of memory, and the macOS Mojave operating system.\footnote{These simulation parameters are not hard-wired into PyORBIT.}
+For space charge calculations, a 128 $\times$ 128 $\times$ 64 grid is used with the sliced model. No more than 1 meter is allowed between solver nodes. The final number of particles is $5 \times 10^{5}$.\footnote{These settings are not hard-wired into PyORBIT.} With these settings, a 1000-turn injection simulation takes several days to run on a 2014 MacBook Pro with a 2.5 GHz Intel Core i7 processor, 16 GB of memory, and the macOS Mojave operating system.
 
 In all simulations, the turn-by-turn covariance matrix of the distribution at the injection point is saved to a file. If space permits, the turn-by-turn 6D phase space coordinates at the injection point are saved to a single file as an array of size $n T (T + 1) / 2 \times 6$, where $n$ is the number of macroparticles injected per turn and $T$ is the total number of turns. (The array is reshaped during analysis to obtain a $T$-element list of coordinate arrays.) Additionally, the distribution is periodically saved at the ring extraction point so that it can be transported to the target in a separate simulation.
 

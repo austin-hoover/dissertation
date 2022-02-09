@@ -1,6 +1,6 @@
 \chapter{Beam envelope equations} \label{chap-2}
 
-In this chapter, the dynamics of the Danilov distribution are investigated using the envelope model. First, the envelope equations for the Danilov distribution are presented. Second, a method to find the matched beam envelope with space charge is developed. The method is demonstrated in several simple focusing systems and the properties of the solutions are examined. Third, the matched beam envelope in a linearized version of the SNS ring is calculated and the practical importance of the calculation is discussed; namely, that the elliptical painting method will fail to produce a Danilov distribution unless the electric field of the matched beam is taken into account.\footnote{The majority of this chapter has been published in \cite{Hoover2021}.}
+In this chapter, the dynamics of the Danilov distribution are investigated using the envelope model. First, the envelope equations for the Danilov distribution are presented. Second, a method to find the matched beam envelope with space charge is developed. The method is demonstrated in several simple focusing systems and the properties of the solutions are examined. Third, the matched beam envelope in a linearized version of the SNS ring is calculated and the practical importance of the calculation is discussed.\footnote{The majority of this chapter has been published in \cite{Hoover2021}.}
 
 
 \section{The Danilov envelope equations}
@@ -178,7 +178,7 @@ The matching routine was applied to an equally spaced, periodic quadrupole (FODO
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/chapter2/fodo_lattices.png}
+    \includegraphics[width=0.9\textwidth]{Images/chapter2/fodo_lattices.png}
     \caption{Horizontal focusing strength as a function of $s$ in a FODO lattice with period length $L$. Quadrupoles have length $L/4$ and are equally spaced. (a) Upright quadrupoles with $80\degree$ phase advance in both planes. (b) The quadrupoles are rotated by $\phi = 3\degree$ in the transverse plane ($QF$ and $QD$ are rotated in opposite directions). (c) Solenoid magnets are inserted between the quadrupoles in (a).}
     \label{fig:fodo_lattices}
 \end{figure}
@@ -192,7 +192,7 @@ We now include the self-force of the beam in the matching routine. Fig.~\ref{fig
 %
 \begin{figure}[!p]
     \begin{subfigure}{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_mode1.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_mode1.pdf}
         \caption{Solution 1}
         \label{fig:matched_vs_sc_fodo_a}
     \end{subfigure}
@@ -201,7 +201,7 @@ We now include the self-force of the beam in the matching routine. Fig.~\ref{fig
     \vfill
     \begin{subfigure}{1.0\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_mode2.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_mode2.pdf}
         \caption{Solution 2}
         \label{fig:matched_vs_sc_fodo_b}
     \end{subfigure}
@@ -215,7 +215,7 @@ The same analysis can be performed when the horizontal and vertical tunes are sp
 %
 \begin{figure}[!p]
     \begin{subfigure}{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_split_mode1.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_split_mode1.pdf}
         \caption{Solution 1}
         \label{fig:matched_vs_sc_fodo_split_a}
     \end{subfigure}
@@ -224,7 +224,7 @@ The same analysis can be performed when the horizontal and vertical tunes are sp
     \vfill
     \begin{subfigure}{1.0\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_split_mode2.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_split_mode2.pdf}
         \caption{Solution 2}
         \label{fig:matched_vs_sc_fodo_split_b}
     \end{subfigure}
@@ -241,7 +241,7 @@ The same information as in Fig.~\ref{fig:matched_vs_sc_fodo} and Fig.~\ref{fig:m
 %
 \begin{figure}[!p]
     \begin{subfigure}{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_skew_mode1.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_skew_mode1.pdf}
         \caption{Solution 1}
         \label{fig:matched_vs_sc_fodo_skew_a}
     \end{subfigure}
@@ -250,7 +250,7 @@ The same information as in Fig.~\ref{fig:matched_vs_sc_fodo} and Fig.~\ref{fig:m
     \vfill
     \begin{subfigure}{1.0\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_skew_mode2.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_skew_mode2.pdf}
         \caption{Solution 2}
         \label{fig:matched_vs_sc_fodo_skew_b}
     \end{subfigure}
@@ -287,7 +287,7 @@ As a final demonstration of the method, coupling was included by the insertion o
 %
 \begin{figure}[!p]
     \begin{subfigure}{1.0\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_sol_mode1.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_sol_mode1.pdf}
         \caption{Solution 1}
         \label{fig:matched_vs_sc_fodo_sol_a}
     \end{subfigure}
@@ -296,7 +296,7 @@ As a final demonstration of the method, coupling was included by the insertion o
     \vfill
     \begin{subfigure}{1.0\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_sol_mode2.png}
+        \includegraphics[width=\textwidth]{Images/chapter2/matched_vs_sc_fodo_sol_mode2.pdf}
         \caption{Solution 2}
         \label{fig:matched_vs_sc_fodo_sol_b}
     \end{subfigure}
@@ -313,7 +313,7 @@ The effective linear transfer matrix generated by the lattice and matched beam c
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=\textwidth]{Images/chapter2/eigvals.png}
+    \includegraphics[width=\textwidth]{Images/chapter2/eigvals.pdf}
     \caption{Eigenvalues of the transfer matrix of the effective lattice generated by the matched beam, plotted in the complex plane.}
     \label{fig:effective_transfer_matrix_eigvals}
 \end{figure}
@@ -323,16 +323,9 @@ We observe that the difference between the phase advances $\Delta = |\mu_2 - \mu
 
 \section{Relevance to experiment}
 
-These studies pave the way for future research on the stability of the Danilov distribution using perturbations around the matched envelope \cite{Goswami2016}, as well as halo formation using the particle-core model \cite{Wangler1998, Gluckstern1994, Gluckstern1998}. Our findings are also relevant to the elliptical painting method, which aims to produce a Danilov distribution in a ring. The elliptical painting method is optimized when the painting proceeds along an eigenvector of the \textit{effective} transfer matrix generated by the matched beam.\footnote{When a beam is painted into a ring, the $x$-$x'$ and $y$-$y'$ projections are more-or-less matched by the end of injection. This is because new particles are continually added to the distribution as the circulating particles perform transverse oscillations, filling in the available phase space and washing out mismatch oscillations.}
-%
+These studies pave the way for future research on the stability of the Danilov distribution using perturbations around the matched envelope \cite{Goswami2016}, as well as halo formation using the particle-core model \cite{Wangler1998, Gluckstern1994, Gluckstern1998}. Our findings are also relevant to future experiments which will aim to produce an approximate Danilov distribution in the SNS ring using the elliptical painting method. Recall the definition of elliptical painting: the injection point is scaled along an eigenvector of the transfer matrix. It is critical to account for the beam's electric field when computing these eigenvectors; the painting must proceed along an eigenvector of the \textit{effective} transfer matrix generated by the matched beam.
 
-Holmes et al performed PIC simulations of elliptical painting in the SNS, concluding that the method is feasible \cite{Holmes2018}. These simulations are described in more detail in Chapter \ref{chap-3}; for now, we comment on two findings:
-%
-\begin{quote}
-    \textbf{Finding 1}: The ideal painting path in the SNS is a line in the $x$-$y'$ plane.
-\end{quote}
-%
-The reasoning in \cite{Holmes2018} was that, due to the geometry of the injection region, variation of $x'$ leads to scraping losses. We have found another reason why this painting path is ideal: in general, the matched solution with space charge at a symmetry point ($\alpha_x = \alpha_y = 0$) in an uncoupled lattice is upright ($\nu \approx \pi/2$). The injection point in the SNS ring has $\beta_x \approx \beta_y$ and $\alpha_x \approx \alpha_y = 0$, so this general principle should apply. And it does: the top row of Fig.~\ref{fig:matched_env_SNS} shows the matched envelope at the SNS injection point with realistic parameters: $\varepsilon_1 = 0$ mm~mrad, $\varepsilon_2 = 20$ mm~mrad, energy = 0.8 GeV, bunch length $\approx$ 3/4 ring length, intensity = $0.75 \times 10^{14}$, and  equal tunes of 6.18.
+The matching procedure was therefore applied to the SNS ring lattice. Using the simple focusing channels in the previous section, we found that the matched beam at a symmetry point ($\alpha_x = \alpha_y = 0$) in an uncoupled lattice tends to be upright ($\nu \approx \pi/2$); since the injection point in the SNS ring is close to a symmetry point, we expect this tendency to hold. The top row of Fig.~\ref{fig:matched_env_SNS} shows the matched envelope at the SNS injection point with realistic parameters: $\varepsilon_1 = 0$ mm~mrad, $\varepsilon_2 = 20$ mm~mrad, energy = 0.8 GeV, bunch length $\approx$ 3/4 ring length, intensity = $0.75 \times 10^{14}$, and equal tunes of 6.18.
 %
 \begin{figure}[!p]
     \centering
@@ -351,30 +344,19 @@ The reasoning in \cite{Holmes2018} was that, due to the geometry of the injectio
     \label{fig:matched_env_SNS}
 \end{figure}
 %
-The matched cross-plane parameters are $u \equiv \varepsilon_x / \varepsilon_2 \approx 0.5$ and $\nu \approx \pi / 2$. The FFT of the turn-by-turn horizontal and vertical oscillations of a particle on the edge of the beam over 200 turns is included on the right side of the figure, which shows that the tunes are equal. 
+The matched cross-plane parameters are $u \equiv \varepsilon_x / \varepsilon_2 \approx 0.5$ and $\nu \approx \pi / 2$. The FFT of the turn-by-turn oscillations of a particle on the edge of the beam over 200 turns is included on the right side of the figure, which shows that the tunes are equal. A mismatched initial beam is shown in the bottom row of Fig.~\ref{fig:matched_env_SNS}. The initial beam envelope, represented by the pink ellipses, has $\nu = \pi / 4$ and $u = 0.7$, with all other beam parameters unchanged. The beam ellipses over the next ten turns in the ring are overlayed on the same plot. The second peak in the Fourier spectrum represents a fast space-charge-driven emittance exchange, manifesting in the turn-by-turn rotation of the beam in the $x$-$y$ plane. 
 
-The variation of the cross-plane beam parameters has the potential to generate large mismatch oscillations due to the linear coupling from the beam's electric field. This is illustrated in the bottom row of Fig.~\ref{fig:matched_env_SNS}. The initial beam envelope, represented by the pink ellipses, has $\nu = \pi / 4$ and $u = 0.7$, with all other beam parameters unchanged. The beam ellipses over the next ten turns in the ring are overlayed on the same plot. The second peak in the Fourier spectrum represents a fast space-charge-driven emittance exchange, manifesting in the turn-by-turn rotation of the beam in the $x$-$y$ plane. 
+If we attempted to paint the beam represented by the pink ellipses, the final distribution would resemble the superposition of the beams represented by the grey ellipses. As revealed by the blurred $x$-$y'$ and $y$-$x'$ correlations, the superposition of these beams is not a self-consistent distribution. Additionally, notice that the superposition has approximately equal apparent emittances; we therefore expect that even if the chosen painting parameters \textit{should} produce a larger beam size in one plane, the final beam will be approximately round ($\varepsilon_x \approx \varepsilon_y$). Finally, a uniform density ellipse would not be maintained in this scenario because particles would not always be injected onto the beam edge. We conclude that the painting path should be a line in the $x$-$y'$ (or $y$-$x'$) plane and that $x_{max}$ and $y_{max}'$ (or $y_{max}$ and $x_{max}'$) should be chosen such that the apparent emittances are equal.
 
-If we attempted to paint the beam represented by the pink ellipses, which is easily accomplished without space charge, the final distribution would look something like the superposition of the beams represented by the grey ellipses. As seen by the blurred $x$-$y'$ and $y$-$x'$ correlations, the superposition of these beams is not a self-consistent distribution. Additionally, notice that the superposition has approximately equal apparent emittances; we therefore expect that even if the chosen painting parameters \textit{should} produce a larger beam size in one plane, the final beam will be approximately round ($\varepsilon_x \approx \varepsilon_y$). Finally, a uniform density ellipse would not be maintained in this scenario since particles would not always be injected onto the beam edge. 
+These calculations complement the work of Holmes et al. \cite{Holmes2018}, who used realistic injection simulations to determine the feasibility of elliptical painting in the SNS.\footnote{These simulations are described in more detail in Chapter \ref{chap-3}.} One of their findings was that the ideal painting path in the SNS is a line in the $x$-$y'$ plane. This conclusion was reached empirically: simulations were repeated as the difference between the horizontal/vertical phases of the injected particles was varied, effectively changing the intended $\nu$ parameter of the painted beam, and the fraction of lost particles was recorded in each case. The major driver of losses is the geometry of the injection region, which restricts $x_{max}'$. 
 
-Let us summarize these findings. Recall the definition of elliptical painting: the injection point is scaled along an eigenvector of the transfer matrix. We have found that it is critical to account for the electric field of the matched beam when computing these eigenvectors. At the SNS injection point, the matched beam has equal apparent emittances and a $\pi / 2$ difference between the horizontal and vertical particle phases. This corresponds to painting along the $x$-$y'$ plane, which is preferred over $y$-$x'$ due to machine specifics. The sign of the angular momentum of the beam is not important unless coupled elements are included in the ring. 
+Another finding from \cite{Holmes2018} was that when a solenoid is added to an uncoupled lattice with tune split $\nu_x$ - $\nu_y$, the final beam quality is, to a degree, insensitive to the tune split. It was suggested that the beam adjusts its shape such that the depressed horizontal and vertical tunes are equal. Using the envelope model and a simple lattice, we have confirmed that such a process can occur by varying the ratio of apparent emittances. This may be a contributing factor to the simulated beam behavior. Another important factor to consider is that the transfer matrix of the ring with the solenoid produces two eigenvectors, each of which rotates in a circle in the $x$-$y$ plane at the injection point. This does not depend on the tune split in the original lattice and remains true when linear space charge forces are included in the transfer matrix.
 
-
-%
-\begin{quote}
-    \textbf{Finding 2}: When a solenoid is added to an uncoupled lattice with tune split $\nu_x$ - $\nu_y$, the final beam quality is, to a degree, insensitive to the tune split. 
-\end{quote}
-%
-The reasoning in \cite{Holmes2018} was that the beam adjusts its shape such that the depressed horizontal and vertical tunes are equal. Using the envelope model and a simple lattice, we have confirmed that such a process can occur. It is possible to find a matched beam even for a significant tune split in an uncoupled lattice: the horizontal and vertical emittances adjust to produce an asymmetric tune depression between the horizontal and vertical planes. This may be a contributing factor to Finding 2. But there seems to be a more simple reason why the beam is insensitive to the tune split: the transfer matrix of the ring with the solenoid produces two eigenvectors, each of which rotates in a circle in the $x$-$y$ plane at the injection point. This is also true when the linear space charge of the Danilov distribution is included in the transfer matrix. This fact does not depend on the tune split in the original lattice, so Finding 2 is no surprise.
-
-Finally, a yet-unconsidered modification to the SNS is to turn on the skew quadrupole correctors in the ring. It would be ideal to avoid the large transverse momentum kicks required to paint a rotating beam, which introduce technical challenges as well as opportunities for beam loss, and instead, vary only the relative positions of the injected and circulating beams. It is thus worth exploring whether skew quadrupoles can be used to change the shape of the matched beam so that the required angular kick is minimized.
-
+The above analysis demonstrates that envelope tracking is a valuable tool for the purposes of this work. Its main function is to provide fast insights into beam behavior and place rough constraints on the experimental parameters. We note that there remain unexplored modifications to the ring that may improve the painting method, and that some of these modifications could be tested using envelope tracking; for example, perhaps skew quadrupole correctors could be used to change the shape of the matched beam such that the required angular kicks, which introduce technical challenges as well as opportunities for beam loss, are minimized. 
 
 
 \section{Summary}
 
-The evolution of the Danilov distribution is given by its envelope equations. An iterative procedure to calculate the matched envelope was developed by observing that the matched beam is a function of a single eigenvector of an unknown coupled transfer matrix. 
+The evolution of the Danilov distribution is given by its envelope equations. An iterative procedure to calculate the matched envelope was developed by observing that the matched beam is a function of a single eigenvector of an unknown coupled transfer matrix. The method was demonstrated in a simple FODO lattice, which was then modified to study the effects of unequal tunes and linear coupling. Two matched solutions were obtained for each lattice and space charge strength. The primary difference between these solutions was the sign of their angular momentum. A common finding among nearly all the cases was that the shape of the matched beam in phase space remained approximately the same as space charge was increased; the main effect of space charge was to increase the average beam area within the lattice, as well as to introduce an exchange of the apparent emittances.
 
-The method was demonstrated in a simple FODO lattice, which was then modified to study the effects of unequal tunes and linear coupling. Two matched solutions, one for each choice of intrinsic emittance, were obtained for each lattice and space charge strength. The primary difference between these solutions was the sign of their angular momentum. A common finding among nearly all the cases was that the shape of the matched beam in phase space remained approximately the same as space charge was increased; the main effect of space charge was to increase the average beam area within the lattice, as well as to introduce an exchange of the horizontal and vertical emittances.
-
-The matching routine was then applied to the SNS ring. We found that the variation of the cross-plane beam parameters can generate large cross-plane mismatch oscillations, making the elliptical painting method impossible. It is therefore critical to account for the linear electric field of the matched beam when determining the painting path. We found that the matched beam at the SNS injection point is round ($\varepsilon_x \approx = \varepsilon_y$) with a $\pi / 2$ difference between the horizontal and vertical particle phases. To paint such a beam is to move the injection point along a line in the $x$-$y'$ plane. These findings are consistent with \cite{Holmes2018}, where the $x$-$y'$ painting path was recommended for independent reasons.
+The matching routine was then applied to the SNS ring. We found that the variation of the cross-plane beam parameters can generate large cross-plane mismatch oscillations, making the elliptical painting method impossible. It is therefore critical to account for the electric field of the matched beam when determining the painting path. We found that the matched beam at the SNS injection point is round ($\varepsilon_x \approx = \varepsilon_y$) with a $\pi / 2$ difference between the horizontal and vertical particle phases, constraining the painting path to a line in the $x$-$y'$ plane. These findings complemented the work in \cite{Holmes2018}, where the $x$-$y'$ painting path was recommended for independent reasons.
