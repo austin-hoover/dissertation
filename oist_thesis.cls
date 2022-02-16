@@ -24,8 +24,8 @@
 
 \RequirePackage[
     a4paper,
-    inner=1.0in,
-    outer=1.0in, 
+    inner=1.15in,
+    outer=1.15in, 
     top=1.0in,
     bottom=1.0in
 ]{geometry}
