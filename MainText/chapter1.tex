@@ -2,7 +2,7 @@
 
 High-intensity particle accelerators are important to many areas of scientific research; for example, they serve as drivers for bright secondary beam production (neutrons, neutrinos, muons, etc.) \cite{Geer2009} and could be used for nuclear waste processing \cite{Yee-Rendon2021}. In particular, spallation neutron sources have become vital to material science \cite{Garoby2017}.
 
-The maximum beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam \cite{Hofmann2017Book}. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can lead to radio-activation of the accelerator components, making hands-on maintenance unsafe \cite{Bungau2014}; thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of $\approx 10^{-6}$ \cite{Henderson2014}. Space charge will become even more important in the design of future ten-megawatt accelerators \cite{Wei2014}. 
+The maximum beam intensity in these machines is often limited by nonlinear space charge forces — forces between the charged particles in the beam \cite{Hofmann2017Book}. Such forces lead to beam loss that is difficult to predict and minimize. If the uncontrolled beam loss is significant, it can lead to radio-activation of the accelerator components, making hands-on maintenance unsafe \cite{Bungau2014}; thus, reducing uncontrolled losses is of primary concern. The present standard design criterion is to keep losses below one watt per meter; for beam pulses in current spallation neutron sources, which contain more than $10^{14}$ particles per pulse at a beam power above 1 megawatt, this corresponds to a fractional loss of $\approx 10^{-6}$ \cite{Henderson2014}. The prediction and mitigation of space charge effects will become even more important in the design of future ten-megawatt accelerators \cite{Wei2014}. 
  
 One method to produce a high-intensity hadron beam is to repeatedly inject particles from a linear accelerator (linac) into a circular accelerator (ring), accumulating charge in the ring over many turns. Rings are designed to produce stable motion, but the combination of the periodic electromagnetic fields of the accelerator \textit{and beam} may produce unstable motion. Additionally, if the beam's electric field has a strong nonlinear dependence on the particle coordinates, the number of stable machine configurations decreases. This places an upper limit on the beam intensity. Thus, it is desirable to produce a beam in which the electric field has a linear dependence on the particle coordinates; for example, a uniform density ellipsoid.
 
@@ -339,7 +339,8 @@ If the electric field is nonlinear, the tune shift will depend on the particle a
     \label{fig:jparc_montague}
 \end{figure}
 %
-Thus, the beam intensity in a circular accelerator is limited by the incoherent space charge tune shift/spread. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application.\footnote{This condition is likely too conservative, and research in the area of intensity limits in circular accelerators is ongoing \cite{Cousineau2003, Hofmann2017Book, Kojima2019, Kojima2022}. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in the frozen-beam model.}
+
+Thus, the beam intensity in a circular accelerator is limited by the incoherent space charge tune shift/spread. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application.\footnote{This condition is likely too conservative, and research in the area of intensity limits in circular accelerators is ongoing \cite{Cousineau2003, Hofmann2017Book, Kojima2019, Kojima2022}. As described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in the frozen-beam model, or for the entire beam to resonantly oscillate when space charge is strong.}
 
 
 
@@ -524,7 +525,7 @@ The application that is most relevant to this work is the use of an AMD beam in 
 
 Luiten et al. proposed a method to create a self-consistent \{3, 3\} distribution (see Eq.~\eqref{eq:scdist_general_form}) of electrons \cite{Luiten2004}. They observed that since a uniform density oblate spheroid\footnote{$(x/A)^2 + (y/B)^2 + (z/C)^2 = 1$ with $A = B > C$} will collapse under its own gravity into a flat disk \cite{Lin1965}, a flat transverse disk of electrons will longitudinally expand into a uniform density ellipsoid. This ``pancake" distribution can be created using ultrashort pulsed-laser photoemission with an appropriate radial intensity profile. Musumeci et al. experimentally demonstrated this method in \cite{Musumeci2008}. 
 
-Unfortunately, these methods do not apply to high-intensity proton rings where distributions are much longer, often resembling 2D coasting beams, and are built up over many turns. A method to produce an approximate Danilov distribution in a high-intensity proton ring was identified in \cite{Danilov2003}. Before describing this method, we need to introduce the concept of phase space painting. 
+Unfortunately, these methods do not apply to high-intensity proton rings where distributions are much longer, often resembling 2D coasting beams, and are built up over many turns. A method to produce an approximate Danilov distribution in a high-intensity proton ring was identified in \cite{Danilov2003}. Before describing this method, we must introduce the concept of phase space painting. 
 
 
 \subsection{Phase space painting}
@@ -628,8 +629,8 @@ The SNS is a neutron scattering facility. Sixty times per second, a microsecond-
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[angle=-90, width=0.5\textwidth]{Images/chapter1/SNS.png}
-    \caption{The Spallation Neutron Source accelerator.}
+    \includegraphics[angle=-90, width=0.6\textwidth]{Images/chapter1/SNS.png}
+    \caption{The Spallation Neutron Source (SNS).}
     \label{fig:SNS}
 \end{figure}
 %
@@ -638,25 +639,14 @@ Fig.~\ref{fig:SNS_injection_region} zooms in on the injection region.
 %
 \begin{figure}[!p]
     \centering
-    \begin{subfigure}{\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter1/SNS_injection_region1.png}
-        \label{fig:SNS_injection_region_a}
-        \caption{}
-    \end{subfigure}
-    \vfill
-    \vspace*{0.5cm}
-    \vfill
-    \begin{subfigure}{\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/chapter1/inj_region_elements.pdf}
-        \caption{}
-        \label{fig:SNS_injection_region_b}
-    \end{subfigure}
-    \caption{The SNS injection region. (a) Overhead view of H$^-$ beam trajectory. (b) Example trajectories of the closed orbit in the injection region. The bottom plot shows the focusing elements (excluding the Chicane dipoles): injection foil (gold), quadrupoles (black), horizontal kickers (blue), vertical kickers (orange), and vertical orbit corrector dipoles (green).}
+    \vspace*{5cm}
+    \includegraphics[width=\textwidth]{Images/chapter1/SNS_injection_region1.png}
+    \caption{The SNS injection region.}
     \label{fig:SNS_injection_region}
+    \vspace*{5cm}
 \end{figure}
 %
-Four Chicane dipole magnets provide a time-independent bump to align the horizontal orbit with the H$^-$ trajectory at the foil. Painting is performed by eight kicker magnets — four per plane — which modify the transverse position and angle of the circulating beam. The injected beam trajectory is held fixed so that remaining H$^0$ or H$^-$ particles can be reliably guided to a dump.
+Four Chicane dipole magnets provide a time-independent bump to align the horizontal orbit with the H$^-$ trajectory at the foil. Painting is performed by eight time-dependent kicker magnets — four per plane — which modify the transverse position and angle of the circulating beam. The injected beam trajectory is held fixed so that remaining H$^0$ or H$^-$ particles can be reliably guided to a dump.
 
 
 \subsubsection{Generation of elliptical modes in the ring}
@@ -707,7 +697,15 @@ The coordinates are then transported to the injection point using the model tran
 
 The next issue is how to control the phase space coordinates at the injection point. Each kicker magnet is calibrated by applying a voltage difference to the magnet, measuring the orbit response using the ring BPMs, and varying the angular kick associated with the magnet until the model orbit agrees with the measured orbit. It was found that slight quadrupole corrections are necessary for this to occur. The standard deviation of the measured phase space coordinates is usually small after this calibration. One can then ask the model for a change in coordinates, update the kickers accordingly, and measure the new coordinates, iterating if necessary. This is currently done manually, and kicker power supplies need to be visually checked to make sure they are not beyond physical limits. Once this setup is complete, the kicker voltages are saved to a file and fed to a different script which scales sets the kicker waveforms. These steps were implemented as part of the Ring Injection Control (RIC) application in the OpenXAL framework \cite{Milas2021} prior to this work.
 
-The SNS injection kicker magnets have limited strengths and are unipolar, which limits the maximum injection angle. This is potentially disadvantageous because it could restrict the final apparent beam emittances, which should be maximized to reduce the effect of space charge and better approximate a pencil-beam from the linac, i.e., a small ratio of the minipulse emittances to the final pulse emittances. For example, one painting scheme is to vary the relative horizontal distance and vertical angle between the beams while fixing the vertical distance and horizontal angle; in this case, the final vertical emittance depends only on the maximum vertical angle. Previous simulations indicate that this angle will be quite small at the nominal beam energy of 1.0 GeV. Several tricks to increase the effective strength of the injection kicker magnets are discussed in Chapter \ref{chap-5}.
+The SNS injection kicker magnets have limited strengths and are unipolar, which limits the maximum injection angle. This is potentially disadvantageous because it could restrict the final apparent beam emittances, which should be maximized to reduce the effect of space charge and better approximate a pencil-beam from the linac, i.e., a small ratio of the minipulse emittances to the final pulse emittances. For example, one painting scheme is to vary the relative horizontal distance and vertical angle between the beams while fixing the vertical distance and horizontal angle; in this case, the final vertical emittance depends only on the maximum vertical angle. Previous simulations indicate that this angle will be quite small at the nominal beam energy of 1.0 GeV. Several tricks to increase the effective strength of the injection kicker magnets are discussed in Chapter \ref{chap-5}. An example trajectory using this painting scheme is shown in Fig.~\ref{fig:injection_region_trajectory}.
+%
+\begin{figure}[!p]
+    \centering
+    \includegraphics[width=\textwidth]{Images/chapter1/inj_region_elements.pdf}
+    \caption{Example initial/final trajectories of the closed orbit in the SNS injection region for the elliptical painting method. The initial injected coordinates are ($x$, $x'$, $y$, $y'$) $=$ (0 mm, 0 mrad, 0 mm, 0 mrad) and the final injected coordinates are ($x$, $x'$, $y$, $y'$) $=$ (31 mm, 0 mrad, 0 mm, 1.5 mrad). The bottom plot shows the elements along the beamline (excluding the Chicane dipoles): stripper foil (gold), quadrupoles (black), horizontal kickers (blue), vertical kickers (orange), and vertical orbit corrector dipoles (green). The vertical orbit corrector dipoles provide a closed bump to assist the kickers.}
+    \label{fig:injection_region_trajectory}
+\end{figure}
+%
 
 
 \section{Structure and goals of this dissertation}\label{sec:Goals of this dissertation}.

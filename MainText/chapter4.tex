@@ -176,7 +176,7 @@ The best-fit ellipses in the $x$-$x'$ and $y$-$y'$ planes are normalized by the 
 
 A comprehensive study of errors in the multi-optics 4D emittance measurement was completed at the SwissFEL Injector Test Facility (SITF) by Prat and Aiba in \cite{Prat2014}. They considered errors in the measured moments, quadrupole field and alignment errors, beam energy errors, beam mismatch at the reconstruction point, and dispersion/chromaticity \cite{Mostacci2012}, concluding that the multi-optics measurement remained accurate, reporting $< 5\%$ uncertainty in the intrinsic emittances. We initially performed similar studies in PyORBIT using envelope tracking to estimate the reconstruction errors in the RTBT, also concluding that the method should remain accurate \cite{Hoover2021-IPAC}. Space charge forces, which can render the method invalid for high-perveance beams \cite{Anderson2002}, can be neglected: the space charge tune shift in the ring is around 3\%, and the distance between the reconstruction and measurement locations is much smaller than the length of the ring. 
 
-In summary, the multi-optics emittance measurement is feasible in the SNS. The only downside is the long measurement time, for the following reasons. First, we are not only interested in the beam emittances at a single time but are also interested in the growth and evolution of the emittances throughout accumulation. For example, it could be possible for $\varepsilon_2$ to remain small (as desired) in the first half of accumulation before growing to a much larger value in the second half of accumulation. Measurement of this emittance evolution would convey valuable information about the beam dynamics and allow for qualitative comparison with computer simulation. Second, it would be beneficial to quickly evaluate various machine states, the best of which will be unknown during initial experiments. Finally, a practical point: the time reserved for accelerator physics (AP) experiments at the SNS is limited, and the setup for initial experiments will be much longer than typical AP experiments for reasons not discussed in this paper. Thus, the fixed-optics method is preferred, in which only four profiles are used in the reconstruction. A modest reduction in accuracy for the increase in speed is warranted since weak cross-plane correlations ($\varepsilon_1 \varepsilon_2 \approx \varepsilon_x \varepsilon_y$) are uninteresting for our purposes and do not need to be resolved. 
+In summary, the multi-optics emittance measurement is feasible in the SNS. The only downside is the long measurement time, for the following reasons. First, we are not only interested in the beam emittances at a single time but are also interested in the growth and evolution of the emittances throughout accumulation. For example, it could be possible for $\varepsilon_2$ to remain small (as desired) in the first half of accumulation before growing to a much larger value in the second half of accumulation. Measurement of this emittance evolution would convey valuable information about the beam dynamics and allow for qualitative comparison with computer simulation. Second, it would be beneficial to quickly evaluate various machine states, the best of which will be unknown during initial experiments. Finally, a practical point: the time reserved for accelerator physics (AP) experiments at the SNS is limited, and the setup for initial experiments will be much longer than typical AP experiments for reasons discussed in Chapter \ref{chap-5}. Thus, the fixed-optics method — in which only four profiles are used in the reconstruction — is preferred.\footnote{An additional benefit of the fixed-optics method is that there is no potential for steering errors in the RTBT, which could enhance beam loss.} A modest reduction in accuracy for the increase in speed is warranted since weak cross-plane correlations ($\varepsilon_1 \varepsilon_2 \approx \varepsilon_x \varepsilon_y$) are uninteresting for our purposes and do not need to be resolved.
 
 Using only one set of optics from the previous scan resulted in a covariance matrix that was not positive-definite, producing imaginary intrinsic emittances. We label this a failed fit. A nonlinear solver \cite{Raimondi1993} or Cholesky decomposition \cite{Agapov2007} can be used to ensure a valid covariance matrix, but we found that the answer depended strongly on the initial guess provided to the solver and on which measurement in the scan was used in the reconstruction.
 
@@ -190,7 +190,7 @@ To investigate the failure of the fixed-optics method, a covariance matrix was g
     \vspace*{5cm}
 \end{figure}
 %
-Unlike the apparent emittances, the intrinsic emittances are strongly correlated and are not centered on the correct values. We refer to the difference between the mean emittances and the true emittances as the \textit{bias}. The reason for the bias is that $\varepsilon_1\varepsilon_2 \le \varepsilon_x\varepsilon_y$.
+Unlike the apparent emittances, the intrinsic emittances are strongly correlated and are not centered on the correct values. We refer to the difference between the mean emittances and the true emittances as the \textit{bias}.\footnote{The bias and strong correlation between the intrinsic emittances stems from the fact that $\varepsilon_1\varepsilon_2 \le \varepsilon_x\varepsilon_y$. In the case at hand, the reconstructed $\varepsilon_x$ and $\varepsilon_y$ are essentially constant in each trial.}
 
 Sensitivity of fixed-optics 4D emittance measurements was observed by Woodley and Emma \cite{Woodley2000} and studied more recently by Agapov, Blair, and Woodley \cite{Agapov2007} as well as Faus-Golfe et al. \cite{Faus-Golfe2016}, all in the context of design studies for a future International Linear Collider (ILC). The motivation for these studies is that a flat beam ($\varepsilon_y \ll \varepsilon_x$) would be ideal for the ILC, and that $\varepsilon_y$ can be minimized by measuring and removing any cross-plane correlation in the beam. Woodley and Emma proposed to abandon the fixed-optics method due to the bias in the reconstructed intrinsic emittances introduced by large errors in the measured moments, suggesting to instead measure the 2D emittance and iteratively minimize $\varepsilon_y$. 
 
@@ -200,7 +200,7 @@ Agapov, Blair, and Woodley revisited this problem and showed that the linear sys
     \centering
     \vspace*{2cm}
     \includegraphics[width=\textwidth]{Images/chapter4/fodo_condition_number.pdf}
-    \caption{Condition numbers of the coefficient matrices for four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices.}
+    \caption{Condition numbers of the coefficient matrices produced by four wire-scanners that are evenly spaced in phase advance and connected by rotation matrices.}
     \label{fig:fodo_condition_number}
     \vspace*{2cm}
 \end{figure}
@@ -316,8 +316,8 @@ To test the method, the 600,000-particle distribution from Fig.~\ref{fig:Holmes}
 \begin{figure}[!p]
     \centering
     \vspace*{3.0cm}
-    \includegraphics[width=0.6\textwidth]{Images/chapter4/tomo_sim_art2d.png}
-    \caption{Test of SART accuracy as a function of number of projections and range of projection angles.}
+    \includegraphics[width=0.7\textwidth]{Images/chapter4/tomo_sim_art2d.png}
+    \caption{SART accuracy as a function of number of projections and range of projection angles.}
     \label{fig:tomo_sim_art2D}
     \vspace*{3.0cm}
 \end{figure}
