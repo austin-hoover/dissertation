@@ -62,7 +62,7 @@ We first performed correlated painting for later comparison. The measured wire-s
     \begin{subfigure}{\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter5/exp1a/rms.png}
     \end{subfigure}
-    \caption{Measured wire-scanner profiles from Experiment 1a.}
+    \caption{Measured wire-scanner profiles from Experiment 1a. The top figure shows the measured profiles on each wire as a function of time. The bottom plots show the moments extracted from the profiles.}
     \label{fig:exp1a_wsmeas}
 \end{figure}
 %
@@ -292,9 +292,11 @@ Although the error bars remain large, the reconstructed $\varepsilon_{1,2}$ sign
 %
 \begin{figure}[!p]
     \centering
+    \vspace*{5cm}
     \includegraphics[width=\textwidth]{Images/chapter5/exp3/target_scan/target_scan.png}
     \caption{Scan of the phase advances at the target. Left: processed images on last two steps in the scan. Top right: $x$-$y$ correlation coefficients computed from the images. Bottom right: Phase advances at the target.}
     \label{fig:exp3_target_scan}
+    \vspace*{5cm}
 \end{figure}
 %
 The $x$-$y$ correlation coefficient, although small, clearly depends on the phase advances, demonstrating that there were cross-plane correlations in the beam.\footnote{The $x$-$y$ correlation coefficient is calculated directly from the image.}
@@ -318,7 +320,7 @@ We conclude with a simulation of this experiment in Fig.~\ref{fig:exp3_sim}.
     \label{fig:exp3_sim}
 \end{figure}
 %
-This looks closer to the best-case scenario from Chapter \ref{chap-3}, even though solenoids are not present in the ring and the vertical injection angle is limited. Again, the predicted ratio $\varepsilon_1 / \varepsilon_2$ is larger than what was measured. The zero-current tunes in the simulation were equal at $\nu_x = \nu_y = 6.18$. The measured tunes in the experiment were also equal, but there may be some uncertainty in the measurement; therefore, the simulation was repeated as the horizontal tune was varied in steps of 0.005. At $\nu_x = 6.19$, there was not a large change from the original case. At $\nu_x = 6.2$, all cross-plane correlation in the beam was eliminated. Fig.~\ref{fig:exp3_sim_nux6.195_nuy6.18} shows the case when $\nu_x = 6.195$. 
+This looks closer to the best-case scenario from Chapter \ref{chap-3}, even though solenoids are not present in the ring and the vertical injection angle is limited. Again, the predicted ratio $\varepsilon_1 / \varepsilon_2$ is larger than what was measured. We repeated the simulation as the horizontal tune was varied in steps of 0.005 around its original value of 6.18. At $\nu_x = 6.2$, all cross-plane correlation in the beam was eliminated. Fig.~\ref{fig:exp3_sim_nux6.195_nuy6.18} shows the case when $\nu_x = 6.195$. 
 %
 \begin{figure}[!p]
     \centering
@@ -335,7 +337,7 @@ This looks closer to the best-case scenario from Chapter \ref{chap-3}, even thou
     \label{fig:exp3_sim_nux6.195_nuy6.18}
 \end{figure}
 %
-The time at which the intrinsic emittances diverge from the apparent emittances has been pushed towards the end of injection, more closely resembling the measurements in Fig.~\ref{fig:exp3_emittances}. Thus, for now, we assume that this simulation is an accurate representation of reality. If this is a valid assumption, it reveals that the elliptical painting method (without solenoids) is sensitive to the tune split in the ring and may place a practical lower limit on the smaller intrinsic emittance at this time. But it also raises the probability that tuning of the injection region and the addition of solenoid magnetic fields to the ring should bring the beam closer to a self-consistent state.
+The time at which the intrinsic emittances diverge from the apparent emittances has been pushed towards the end of injection. Although it is difficult to make detailed comparisons between the measurements and the simulations due to possible differences in the ring Twiss parameters at the injection point (resulting in a different beam size for the same kicker settings), uncertainty in the total beam charge, some uncertainty in the measured injection position/angle, and relatively large error bars on the measured emittances, the similarities between the measured emittances in Fig.~\ref{fig:exp3_emittances} and the simulated emittances in Fig.~\ref{fig:exp3_sim_nux6.195_nuy6.18} are striking. \footnote{Although the tune split was measured to be $\approx$ 0.01 with small expected uncertainty $\cite{Pelaia2016}$, the uncertainty in the tune measurement should be re-examined and work should be done to synchronize the ring model in PyORBIT with the online model in OpenXAL. The measurement should also be repeated as the tune split is varied.} These simulations indicate that the elliptical painting method (without solenoids) is very sensitive to the tune split in the ring, which may place a practical lower limit on the 4D emittance at this time; however, the qualitative agreement between measurement and simulation obtained here leaves open the possibility that tuning of the injection region and the addition of solenoid magnetic fields to the ring will bring the beam closer to a self-consistent state.
 
 
 
@@ -401,6 +403,6 @@ In Experiment 1, the Ring Injection Control (RIC) application was tested at 1 Ge
 
 In Experiment 2, the beam energy was lowered to 0.8 GeV. BPM measurements verified that the initial kicker settings could be achieved so that particles were injected onto the closed orbit. The final kicker settings were chosen so that ($x$, $x'$, $y$, $y'$) $\approx$ (21 mm, 0 mrad, 0 mmm, 1.1 mrad). Wire-scanner measurements showed that the beam size grew with approximate square root time-dependence, as intended, but only a small split in the intrinsic emittances was measured at the end of injection. Additionally, the wire-scanner profiles were more consistent with a Gaussian distribution.
 
-In Experiment 3, the beam size and intensity were varied. The most promising case — 20\% reduction in beam intensity and 50\% increase in horizontal beam size — was investigated in more detail. A larger split in the intrinsic emittances was measured during the last hundred turns of injection. Additionally, the tilt angle of the beam image on the target was shown to depend on the phase advances at the target (even though the bunch length was inadvertently reduced). Although most of the wire-scanner profiles still appeared to be consistent with a Gaussian distribution, one could argue that there were subtle differences from the previous experiment. For example, in Fig.~\ref{fig:exp3_fits}, the horizontal projection at WS21 exhibits a sharp peak, resembling the $y'$ projection in Fig.~\ref{fig:Holmes_corner_compare}. (This is also present at WS20 to a lesser extent.) These features only appeared after 300 turns, when the intrinsic emittances began to split. Finally, simulations were performed to reproduce the measured emittance growth during injection. By splitting the tunes by 0.015 in the simulation, the qualitative behavior of the emittance growth was reproduced. This showed that the distribution is quite sensitive to the ring tunes.
+In Experiment 3, the beam size and intensity were varied. The most promising case — 20\% reduction in beam intensity and 50\% increase in horizontal beam size — was investigated in more detail. A larger split in the intrinsic emittances was measured during the last hundred turns of injection. Additionally, the tilt angle of the beam image on the target was shown to depend on the phase advances at the target (even though the bunch length was inadvertently reduced). Although most of the wire-scanner profiles still appeared to be consistent with a Gaussian distribution, one could argue that there were subtle differences from the previous experiment. For example, in Fig.~\ref{fig:exp3_fits}, the horizontal projection at WS21 exhibits a sharp peak, resembling the $y'$ projection in Fig.~\ref{fig:Holmes}. (This is also present at WS20 to a lesser extent.) These features only appeared after 300 turns, when the intrinsic emittances began to split. Finally, simulations were performed to reproduce the measured emittance growth during injection. By splitting the tunes by 0.015 in the simulation, the qualitative behavior of the emittance growth was reproduced. This showed that the distribution is quite sensitive to the tune split in the ring.
 
 These results are promising: extensive troubleshooting has occurred during machine setup, the ring orbit has been measured and controlled, and modifications to the machine have been shown to have a positive effect on the painted distribution. Furthermore, the simulation-measurement agreement in Experiment 3 offers hope that future optimization of the SNS will result in the production of a Danilov-like distribution in the ring. One immediate need is to modify the injection region to increase the maximum vertical injection angle so that a larger, rounder beam can be painted.

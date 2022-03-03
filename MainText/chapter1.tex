@@ -10,7 +10,7 @@ Uniform density beams producing linear space charge forces are frequently used i
 
 It is, however, difficult to produce such a distribution: real beam transport involves nonlinear external fields, for which no known self-consistent distributions exist, and control of the phase space distribution at early stages of acceleration is limited. Nonetheless, several recently derived self-consistent distributions are possible to produce in a circular accelerator in the linear approximation \cite{Danilov2003}. Furthermore, simulations predict that one of these distributions — the Danilov distribution — could be approximately produced in a real machine \cite{Holmes2018}. This dissertation contributes to efforts to test this prediction in the Spallation Neutron Source (SNS).
 
-The structure of this introductory chapter is as follows. The relevant theory of beam dynamics is reviewed in Section \ref{sec:High-intensity beam dynamics}. The definition and properties of self-consistent distributions are discussed in Section \ref{sec:Self-consistent phase space distributions}. A method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in Section \ref{sec:Producing a self-consistent distribution}. The structure and goals of this dissertation are laid out in Section \ref{sec:Goals of this dissertation}.
+The structure of this introductory chapter is as follows: the relevant theory of beam dynamics is reviewed in Section \ref{sec:High-intensity beam dynamics}; the definition and properties of self-consistent distributions are discussed in Section \ref{sec:Self-consistent phase space distributions}; a method to generate an approximate Danilov distribution in a ring, as well as the implementation of the method in the SNS, is presented in Section \ref{sec:Producing a self-consistent distribution}; the structure and goals of this dissertation are laid out in Section \ref{sec:Goals of this dissertation}.
 
 
 
@@ -90,7 +90,7 @@ The particle jumps around an ellipse. The so-called Twiss parameters $\beta$, $\
 We define the tune $\nu$ as the number of phase space oscillations per turn; i.e.,
 %
 \begin{equation}
-    2\pi\nu = \oint{\frac{ds}{\beta(s)}},
+    \nu = \frac{1}{2\pi}\oint{\frac{ds}{\beta(s)}},
 \end{equation}
 %
 where the integral is around the entire ring.
@@ -129,12 +129,12 @@ In the presence of linear coupling, the equations of motion take the following f
     \mathbf{x}'' + \mathbf{K_0}(s) \mathbf{x} + \mathbf{K_1}(s) \mathbf{x}' = 0,
 \end{equation}
 %
-where $\mathbf{x} = (x, y)^T$ and $\mathbf{K}_{0, 1}$ are $2 \times 2$ matrices.\footnote{I will occasionally switch between $\mathbf{x} = (x, x', y, y')^T$ and $\mathbf{x} = (x, y)^T$. The correct definition should be clear from context.} The particle now moves along an ellipsoid in 4D phase space ($x$-$x'$-$y$-$y'$), the volume of which is conserved. For example, Fig.~\ref{fig:skew_quad_single_particle_tbt} shows the turn-by-turn trajectory of a single particle in the presence of linear coupling from a rotated (skew) quadrupole.
+where $\mathbf{x} = (x, y)^T$ and $\mathbf{K}_{0, 1}$ are $2 \times 2$ matrices.\footnote{I will occasionally switch between $\mathbf{x} = (x, x', y, y')^T$ and $\mathbf{x} = (x, y)^T$. The correct definition should be clear from context.} The particle now moves on an ellipsoid in 4D phase space ($x$-$x'$-$y$-$y'$), the volume of which is conserved. For example, Fig.~\ref{fig:skew_quad_single_particle_tbt} shows the turn-by-turn trajectory of a single particle in the presence of linear coupling from a rotated (skew) quadrupole.
 %
 \begin{figure}[!p]
     \centering
     \includegraphics[width=0.85\textwidth]{Images/chapter1/skew_quad_single_particle_tbt.png}
-    \caption{Turn-by-turn trajectory of a particle in a linear lattice with the addition of a skew quadrupole.}
+    \caption{Turn-by-turn trajectory of a particle in a linear focusing system with the addition of a skew quadrupole.}
     \label{fig:skew_quad_single_particle_tbt}
 \end{figure}
 %
@@ -224,18 +224,7 @@ where $\nu_{x, y}$ are the single-particle tunes, $M_x$, $M_y$, and $N$ are inte
 
 \subsection{Collective beam description}
 
-A beam is a distribution of particles in phase space. In the limit of many particles, we define a distribution function $f(\mathbf{x})$ such that $f(\mathbf{x}) d\mathbf{x}$ is the number of particles in an infinitesimal volume of phase space $d\mathbf{x}$. The measurable quantities are generally the projections of the distribution; e.g.
-%
-\begin{equation}
-    f(x) = 
-    \int_{-\infty}^{\infty}
-    \int_{-\infty}^{\infty}
-    \int_{-\infty}^{\infty}
-    f(x, x', y, y') dx' dy dy'.
-\end{equation}
-%
-
-It is often sufficient to characterize a distribution by its covariance matrix {$\bm{\Sigma} = \langle{\mathbf{x}\mathbf{x}^T}\rangle$}, where $\langle{\dots}\rangle$ represents the average over the distribution. In the transverse plane:
+A beam is a distribution of particles in phase space. In the limit of many particles, we define a distribution function $f(\mathbf{x})$ such that $f(\mathbf{x}) d\mathbf{x}$ is the number of particles in an infinitesimal volume of phase space $d\mathbf{x}$. It is often sufficient to characterize a distribution by its covariance matrix {$\bm{\Sigma} = \langle{\mathbf{x}\mathbf{x}^T}\rangle$}, where $\langle{\dots}\rangle$ represents the expected value. In the transverse plane:
 %
 \begin{equation}\label{eq:covariance_matrix}
 \begin{aligned}
@@ -254,7 +243,7 @@ It is often sufficient to characterize a distribution by its covariance matrix {
 \end{aligned}
 \end{equation}
 %
-If a linear transformation $\mathbf{x} \rightarrow \mathbf{M}\mathbf{x}$ is applied to the coordinates, the covariance matrix transforms as
+If a symplectic linear transformation $\mathbf{x} \rightarrow \mathbf{M}\mathbf{x}$ is applied to the coordinates, the covariance matrix transforms as
 %
 \begin{equation}\label{covariance_matrix_transport}
     \bm{\Sigma} 
@@ -262,28 +251,13 @@ If a linear transformation $\mathbf{x} \rightarrow \mathbf{M}\mathbf{x}$ is appl
     \mathbf{M} \, \bm{\Sigma} \, \mathbf{M}^T.
 \end{equation}
 %
-The 4D emittance $\varepsilon_{4D}$ is proportional to the volume of the ellipsoid defined by the covariance matrix:
+There are several invariant quantities under such a transformation. The first is the 4D emittance $\varepsilon_{4D}$, which is proportional to the volume of the ellipsoid defined by the covariance matrix:
 %
 \begin{equation} 
-    \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2}
+    \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2} = \varepsilon_1\varepsilon_2 \le \varepsilon_x\varepsilon_y,
 \end{equation}
 %
-where $|...|$ is the determinant. The 4D emittance is conserved under any linear transformation of the phase space coordinates. The horizontal and vertical emittances $\varepsilon_x$ and $\varepsilon_y$ are individually conserved if the transformation is uncoupled:
-%
-\begin{equation}
-\begin{aligned}
-    \varepsilon_x = \left|{\bm\sigma}_{xx}\right|^{1/2}, \quad
-    \varepsilon_y = \left|{\bm\sigma}_{yy}\right|^{1/2}
-\end{aligned}
-\end{equation}
-%
-These correspond to the areas in the $x$-$x'$ and $y$-$y'$ planes. In the absence of cross-plane correlations ($\bm{\sigma}_{xy} = 0$), the 4D emittance is equal to the product of the horizontal and vertical emittances, which are referred to as the \textit{apparent} emittances from now on. In the presence of cross-plane correlations, the 4D emittance is instead the product of the \textit{intrinsic} emittances $\varepsilon_1$ and $\varepsilon_2$:
-%
-\begin{equation} \label{eq:mode_emittances1}
-    \varepsilon_{4D} = \left|{\bm{\Sigma}}\right|^{1/2} = \varepsilon_1\varepsilon_2 \le \varepsilon_x\varepsilon_y.
-\end{equation}
-%
-The intrinsic emittances are found by a symplectic diagonalization of $\bm{\Sigma}$, i.e., they are the imaginary components of the eigenvalues of $\bm{\Sigma}\mathbf{U}$, where $\mathbf{U}$ is the unit symplectic matrix:
+where $|...|$ is the determinant. The \textit{intrinsic} emittances $\varepsilon_{1,2}$ are individually conserved; they are found by a symplectic diagonalization of $\bm{\Sigma}$; i.e., they are the imaginary components of the eigenvalues of $\bm{\Sigma}\mathbf{U}$, where $\mathbf{U}$ is the unit symplectic matrix:
 %
 \begin{equation}
     \mathbf{U} = 
@@ -295,17 +269,17 @@ The intrinsic emittances are found by a symplectic diagonalization of $\bm{\Sigm
     \end{bmatrix}.
 \end{equation}
 %
-The answer can be written compactly \cite{Xiao2013}:
+Equivalently \cite{Xiao2013},
 %
 \begin{equation}
     \varepsilon_{1, 2} = \frac{1}{2}\sqrt{
-      -tr\left[(\bm{\Sigma} \mathbf{U})^2\right] \pm \sqrt{tr^2\left[(\bm{\Sigma} \mathbf{U})^2\right] - 16|{\bm{\Sigma}}|},
+      -tr\left[(\bm{\Sigma} \mathbf{U})^2\right] \pm \sqrt{tr^2\left[(\bm{\Sigma} \mathbf{U})^2\right] - 16|{\bm{\Sigma}}|}.
     }
 \end{equation}
 %
-The intrinsic emittances are individually conserved in any linear focusing system. Their product is less than or equal to the product of the apparent emittances \cite{Buon1993}.
+In the absence of cross-plane correlations ($\bm{\sigma}_{xy} = 0$), the intrinsic emittances are equal to the \textit{apparent} emittances $\varepsilon_x = \left|{\bm\sigma}_{xx}\right|^{1/2}$ and $\varepsilon_y = \left|{\bm\sigma}_{yy}\right|^{1/2}$ \cite{Buon1993}. The apparent emittances correspond to the areas of the projected ellipses in the $x$-$x'$ and $y$-$y'$ planes and are only conserved if $\mathbf{M}$ is block-diagonal, i.e., if there is no coupling between the horizontal and vertical motion. 
 
-It is challenging to generate initial distributions for simulations \cite{Lund2009}. A simple strategy is to assume elliptical symmetry and construct a distribution from the single-particle invariants $J_{x,y}$.\footnote{Alternatively, the generalized invariants $J_{1, 2}$ can be used.} We define the ellipsoid parameter $T = {J_x}/{\varepsilon_x} + {J_y}/{\varepsilon_y}$ and stack ellipsoids to create the distribution, writing $f = f(T)$. One option is a Gaussian distribution: $f \propto \exp(-T/2)$. Another is the Waterbag distribution, which is a uniformly filled ellipsoid: $f \propto \Theta(1 - T)$, where $\Theta$ is the Heaviside step function. Another is the KV distribution, which is a uniformly populated ellipsoidal shell: $f \propto \delta(1 - T)$. The 1D and 2D projections of these 4D distributions are shown in Fig.~\ref{fig:distributions_gaussian}, Fig.~\ref{fig:distributions_waterbag}, and Fig.~\ref{fig:distributions_kv}. The black ellipse shows the covariance matrix ellipsoid projected onto the planes, multiplied by a factor of four. Since the distributions share the same covariance matrix, they are said to be rms-equivalent.
+It is challenging to generate realistic initial distributions for simulations due to the current lack of high-resolution 6D phase space measurements \cite{Lund2009, Ruisard2020}; however, a simple and often-justified strategy is to assume elliptical symmetry and construct a distribution from the single-particle invariants $J_{x,y}$.\footnote{Alternatively, the generalized invariants $J_{1, 2}$ can be used.} We define the ellipsoid parameter $T = {J_x}/{\varepsilon_x} + {J_y}/{\varepsilon_y}$ and stack ellipsoids to create the distribution, writing $f = f(T)$. One option is a Gaussian distribution: $f \propto \exp(-T/2)$; another is the Waterbag distribution, which is a uniformly filled ellipsoid: $f \propto \Theta(1 - T)$, where $\Theta$ is the Heaviside step function; another is the KV distribution, which is a uniformly populated ellipsoidal shell: $f \propto \delta(1 - T)$. The 1D and 2D projections of these 4D distributions are shown in Fig.~\ref{fig:distributions_gaussian}, Fig.~\ref{fig:distributions_waterbag}, and Fig.~\ref{fig:distributions_kv}. 
 %
 \begin{figure}[!p]
     \begin{subfigure}{0.49\textwidth}
@@ -331,13 +305,11 @@ It is challenging to generate initial distributions for simulations \cite{Lund20
         \caption{Danilov distribution}
         \label{fig:distributions_danilov}
     \end{subfigure}
-    \caption{1D and 2D projections of various 4D phase space distributions. Black ellipses are defined by four times the distribution covariance matrix.}
+    \caption{1D and 2D projections of various 4D phase space distributions. The black ellipses are defined by four times the distribution covariance matrix.}
     \label{fig:distributions}
 \end{figure}
 %
-
-
-
+The black ellipses show the projections of the covariance matrix ellipsoid (multiplied by a factor of four).
 
 
 
@@ -356,19 +328,18 @@ Following Hofmann \cite{Hofmann2017Book}, we divide space charge effects into tw
 
 \subsubsection{Incoherent effects}
 
-We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak. If the beam's electric field has a linear dependence on the transverse coordinates, it will simply modify the external linear focusing, reducing the single-particle tunes. A primary concern in rings is that the depressed tunes cross one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here. 
+We first assume that the beam is matched — i.e., oscillates with the same periodicity as the external focusing — and track a particle in the field of the matched beam. This may be justified if space charge is weak or if the particle is very far from the beam core. If the beam's electric field has a linear dependence on the transverse coordinates, it will simply modify the external linear focusing, reducing the single-particle tunes. A primary concern in rings is that the depressed tunes cross one of the low-order resonance lines in Fig.~\ref{fig:resonance_lines}. Approximate analytical formulas for the tune shift can be obtained \cite{Ng2005} but are not presented here. 
 
 If the electric field is nonlinear, the tune shift will depend on the particle amplitude, leading to a spread of tunes. An intuitive explanation is that large-amplitude particles experience a weaker average electric field throughout one turn in the ring \cite{Franchetti2017}. A recent study of the space charge tune spread in rings is found in \cite{Hotchi2020}; Fig.~\ref{fig:jparc_montague}, taken from the paper, shows the simulated tune spread in the Japan Proton Accelerator Research Center (J-PARC).
 %
 \begin{figure}[!p]
     \centering
     \includegraphics[width=0.6\textwidth]{Images/chapter1/montague.png}
-    \caption{Simulated tune footprint in the JPARC accelerator. (From \cite{Hotchi2020})}
+    \caption{Simulated tune footprint in the JPARC accelerator. (From \cite{Hotchi2020}.)}
     \label{fig:jparc_montague}
 \end{figure}
 %
-
-Thus, the beam intensity in a ring is limited by the incoherent space charge tune shift/spread. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application. But this condition is likely too conservative, and research in the area of intensity limits in circular accelerators is ongoing \cite{Hofmann2017Book}. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in this model.
+Thus, the beam intensity in a circular accelerator is limited by the incoherent space charge tune shift/spread. A rough guideline is that the maximum tune shift should be kept below 0.25 to avoid fourth-order resonance lines \cite{book:Reiser}, but specific requirements depend on the application.\footnote{This condition is likely too conservative, and research in the area of intensity limits in circular accelerators is ongoing \cite{Cousineau2003, Hofmann2017Book, Kojima2019, Kojima2022}. Note that, as described in Appendix \ref{app-B}, it is also possible for the beam's electric field to drive single-particle resonances in the frozen-beam model.}
 
 
 
@@ -434,7 +405,7 @@ Danilov et al. enumerated a class of self-consistent distributions in $2n$-dimen
 %
 where $\mathbf{x}$, $\mathbf{x}'$ are the $n$ dimensional vector coordinates and momenta, $g$ is a function of $H$ — a quadratic positively defined function of the phase space coordinates — and $H_b$ — an upper bound on $H$ — $\delta$ is the Dirac delta function, and $\mathbf{e}_i$ and $\mathbf{e}'_i$ are vectors of constants. This is labeled as the $\{n,m\}$ case. It was proven that the electric field within any uniformly filled ellipsoid is linear, and that any distribution of the form of $\eqref{eq:scdist_general_form}$ that produces a linear electric field will do so under any linear transformation of the phase space coordinates.
 
-In other words, one class of self-consistent distributions consists of those that generate linear space charge forces and are constructed from quantities that are invariant in the presence of linear focusing. We now focus on the \{2, 0\} and \{2, 2\} cases. \footnote{Qin and Davidson derived a self-consistent distribution in two spatial dimensions in \cite{Qin2013} using their recent parameterization of coupled motion but did not refer to \cite{Danilov2003}. The connection between Danilov's work and Qin and Davidson's work should be explored in the future.}
+In other words, one class of self-consistent distributions consists of those that generate linear space charge forces and are constructed from quantities that are invariant in the presence of linear focusing. We now focus on the \{2, 0\} and \{2, 2\} cases.\footnote{Qin and Davidson derived a self-consistent distribution in two spatial dimensions in \cite{Qin2013} using their recent parameterization of coupled motion but did not refer to \cite{Danilov2003}. The connection between Danilov's work and Qin and Davidson's work should be explored in the future.}
 
 
 \subsubsection{The KV distribution}
@@ -516,7 +487,7 @@ The field is linear in $x$ and $y$, as required. And it is worth repeating: the 
 
 The delta functions in the Danilov distribution function cause the four-dimensional emittance, and therefore one of the intrinsic emittances, to be zero. The following relationship has been found to hold:
 %
-\begin{equation} \label{eq:mode_emittances2}
+\begin{equation}
     \varepsilon_1 = \varepsilon_x + \varepsilon_y, \quad
     \varepsilon_2 = 0
 \end{equation}
@@ -658,7 +629,7 @@ The SNS is a neutron scattering facility. Sixty times per second, a microsecond-
 \begin{figure}[!p]
     \centering
     \includegraphics[angle=-90, width=0.5\textwidth]{Images/chapter1/SNS.png}
-    \caption{Overview of the Spallation Neutron Source.}
+    \caption{The Spallation Neutron Source accelerator.}
     \label{fig:SNS}
 \end{figure}
 %
@@ -673,19 +644,19 @@ Fig.~\ref{fig:SNS_injection_region} zooms in on the injection region.
         \caption{}
     \end{subfigure}
     \vfill
-    \vspace*{1.5cm}
+    \vspace*{0.5cm}
     \vfill
     \begin{subfigure}{\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/chapter1/SNS_injection_region_2b.png}
+        \includegraphics[width=\textwidth]{Images/chapter1/inj_region_elements.pdf}
         \caption{}
         \label{fig:SNS_injection_region_b}
     \end{subfigure}
-    \caption{SNS injection region. (a) Overhead view of H$^-$ beam trajectory. (b) Schematic layout of the horizontal plane of the injection region: red = chicane dipoles, blue = quadrupoles, green = horizontal kickers, yellow = vertical kickers. (From \cite{Henderson2014}.)}
+    \caption{The SNS injection region. (a) Overhead view of H$^-$ beam trajectory. (b) Example trajectories of the closed orbit in the injection region. The bottom plot shows the focusing elements (excluding the Chicane dipoles): injection foil (gold), quadrupoles (black), horizontal kickers (blue), vertical kickers (orange), and vertical orbit corrector dipoles (green).}
     \label{fig:SNS_injection_region}
 \end{figure}
 %
-Four Chicane dipole magnets align the horizontal orbit with the beam from the linac at the foil. Painting is performed by eight kicker magnets — four per plane — which modify the transverse position and angle of the circulating beam. The injected beam trajectory is held fixed so that remaining H$^0$ or H$^-$ particles can be reliably guided to a dump.
+Four Chicane dipole magnets provide a time-independent bump to align the horizontal orbit with the H$^-$ trajectory at the foil. Painting is performed by eight kicker magnets — four per plane — which modify the transverse position and angle of the circulating beam. The injected beam trajectory is held fixed so that remaining H$^0$ or H$^-$ particles can be reliably guided to a dump.
 
 
 \subsubsection{Generation of elliptical modes in the ring}
@@ -716,17 +687,21 @@ The coordinates are then transported to the injection point using the model tran
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=\textwidth]{Images/chapter1/bpm_avg.png}
-    \caption{Measured turn-by-turn BPM signal in the SNS ring — averaged over 50 pulses and fit with Eq.~\eqref{eq:damped_sinusoid}.}
-    \label{fig:bpm_avg}
-\end{figure}
-%
-%
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{Images/chapter1/minipulse_chromaticity_black.png}
-    \caption{Simulated minipulse in the (linearized) SNS ring. The $x$-$x'$ distribution is plotted at the injection point along with the Courant-Snyder ellipse.}
-    \label{fig:minipulse}
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter1/bpm_avg.png}
+        \caption{}
+        \label{fig:bpm_avg}
+    \end{subfigure}
+    \vfill
+    \vspace*{0.5cm}
+    \vfill
+    \begin{subfigure}{\textwidth}
+         \includegraphics[width=\textwidth]{Images/chapter1/minipulse_chromaticity_black.png}
+        \caption{}
+        \label{fig:minipulse}
+    \end{subfigure}
+    \caption{(a) Measured turn-by-turn BPM signal in the SNS ring — averaged over 50 pulses and fit with Eq.~\eqref{eq:damped_sinusoid}. (b) Simulated minipulse in the (linearized) SNS ring. The $x$-$x'$ distribution is plotted at the injection point along with the Courant-Snyder ellipse.}
+    \label{fig:bpm_fits}
 \end{figure}
 %
 

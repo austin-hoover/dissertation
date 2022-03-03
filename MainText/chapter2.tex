@@ -67,7 +67,7 @@ Before presenting our solution, we highlight the space-charge-driven mismatch os
 \begin{figure}[!p]
     \centering
     \includegraphics[width=\textwidth]{Images/chapter2/fodo_mismatch_tbt.png}
-    \caption{Turn-by-turn mismatch oscillations of the Danilov distribution at the entrance of an uncoupled FODO lattice. The beam would be matched to the lattice without space charge. In the right column, blue (orange) corresponds to $x$ ($y$).}
+    \caption{Turn-by-turn mismatch oscillations of the Danilov distribution at the entrance of an uncoupled lattice. The beam would be matched to the lattice without space charge. In the right column, blue (orange) corresponds to $x$ ($y$).}
     \label{fig:fodo_mismatch_tbt}
 \end{figure}
 %
@@ -80,9 +80,11 @@ The problem of computing the matched envelope can be approached in the following
 %
 \begin{figure}
     \centering
+    \vspace*{1cm}
     \includegraphics[width=1.0\textwidth]{Images/chapter2/effective_lattice.png}
     \caption{Illustration of the effective lattice — the net linear focusing after space charge is included. The coefficients $k_{ij}$ are defined by $x'' + k_{11}x + k_{13}y = 0$; $y'' + k_{33}y + k_{31}x = 0$.}
     \label{fig:effective_lattice}
+    \vspace*{1cm}
 \end{figure}
 %
 
@@ -139,7 +141,7 @@ The subscript will be dropped from now on since it has no effect. As mentioned i
     \centering
     \vspace*{2cm}
     \includegraphics[width=0.8\textwidth]{Images/chapter2/splittunes_tbt.png}
-    \caption{Turn-by-turn $x$-$y$ projections of a Danilov distribution in a lattice with a tune split of 0.01. The horizontal and vertical phase space projections are matched to the lattice.}
+    \caption{Turn-by-turn $x$-$y$ projections of a Danilov distribution in a lattice with a tune split of 0.01. The $x$-$x'$ and $y$-$y'$ projections are matched to the lattice.}
     \label{fig:splittunes_tbt}
     \vspace*{2cm}
 \end{figure}
@@ -160,7 +162,7 @@ We denote the choice $\varepsilon_2 = 0$ as solution $1$ and $\varepsilon_1 = 0$
 
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/chapter2/optimizer_iters.png}
+    \includegraphics[width=0.9\textwidth]{Images/chapter2/optimizer_iters.png}
     \caption{Turn-by-turn oscillations of the beam parameters after the first few iterations of the matching routine. The custom update method is used. Faint horizontal lines give the average of the oscillations. Blue (orange) corresponds to $x$ ($y$).}
     \label{fig:optimizer_iters}
 \end{figure}
@@ -270,7 +272,7 @@ The presence of space charge leads to two solutions with the same tilt angle in 
         \label{fig:optimizer_comparison_a}
     \end{subfigure}
     \vfill
-    \vspace*{1cm}
+    \vspace*{0.5cm}
     \vfill
     \begin{subfigure}{1.0\textwidth}
         \includegraphics[width=\textwidth]{Images/chapter2/optimizer_comparison_tbt.png}

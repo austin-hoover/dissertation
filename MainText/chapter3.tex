@@ -67,12 +67,8 @@ For a grid with $N$ total points, the time-complexity of the convolution is $O(N
 %
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/chapter3/poisson.pdf}
-    \vfill
-    \vspace*{0.5cm}
-    \vfill
-    \includegraphics[width=0.9\textwidth]{Images/chapter3/Efield.pdf}
-    \caption{Solution of the Poisson equation. Top: charge density and electric potential on the doubled grid; bottom: electric field on the original grid.}
+    \includegraphics[width=\textwidth]{Images/chapter3/poisson.pdf}
+    \caption{Solution of the Poisson equation on a doubled grid.}
     \label{fig:poisson}
 \end{figure}
 %
@@ -112,29 +108,28 @@ Phase space painting can be simulated by adding an artificial time-dependent bum
 
 \subsection{Best-case scenario}
 
-Holmes et al. performed realistic simulations of elliptical painting in the SNS using the original ORBIT code \cite{Holmes2018}. Their final simulation produced an approximate Danilov distribution. Only the final 1D projections of the distribution were displayed in the publication, and the intrinsic emittances were not calculated, so it is worth revisiting these results. Projections of the final distribution are shown in Fig.~\ref{fig:Holmes_corner_compare}.
+Holmes et al. performed realistic simulations of elliptical painting in the SNS using the original ORBIT code \cite{Holmes2018}. Their final simulation produced an approximate Danilov distribution. Only the final 1D projections of the distribution were displayed in the publication, and the intrinsic emittances were not calculated, so it is worth revisiting these results.
+The beam emittances and the projections of the 4D phase space distribution during accumulation are shown in Fig.~\ref{fig:Holmes}.
+
 %
 \begin{figure}[!p]
     \centering
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Images/chapter3/Holmes_snapshots.png}
+    \end{subfigure}
+    \vfill
+    \vspace*{1.0cm}
+    \vfill
     \begin{subfigure}{0.8\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter3/Holmes_corner_compare.png}
-        \caption{1D and 2D projections of the final distribution at the injection point. The faint lines show the projections of an ideal Danilov distribution with the same Twiss parameters and apparent emittances as the simulated distribution.}
-        \label{fig:Holmes_corner_compare}
+        \includegraphics[width=\textwidth]{Images/chapter3/Holmes_emittances.pdf}
     \end{subfigure}
-    \vfill
-    \vspace*{1.25cm}
-    \vfill
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{Images/chapter3/Holmes_emittances.png}
-        \caption{RMS emittances every 60 turns during injection.}
-        \label{fig:Holmes_emittances}
-    \end{subfigure}
-    \caption{Distribution from the final simulation in \cite{Holmes2018}.}
+    \caption{Simulation of elliptical painting in the SNS from \cite{Holmes2018}.}
     \label{fig:Holmes}
 \end{figure}
 %
-The faint pink lines represent the projections of an ideal Danilov distribution with the same Twiss parameters and apparent emittances as the simulated distribution. Although the 1D projections have developed tails, they are relatively close to the ideal case. The exception is the $x'$ projection, which has developed a sharp peak. The 2D projections are also not too far from ideal: the $x$-$y'$ and $y$-$x'$ projections have been broadened, but they exhibit the correct correlations, and the beam is round in the $x$-$y$ plane. Fig.~\ref{fig:Holmes_emittances} shows that the smaller intrinsic emittance remains close to its lower limit throughout injection, meaning that particles have been injected mostly into one mode. 
+
+The faint pink ellipses represent the projections of an ideal Danilov distribution with the same Twiss parameters and apparent emittances as the final simulated distribution. The $x$-$y$ projection has an elliptical shape and an approximately uniform density with small halo. The most striking features are the $x$-$y'$ and $y$-$x'$ projections, which, although broadened by nonlinear effects, exhibit strong correlations. As a consequence, the smaller intrinsic emittance $\varepsilon_2$ remains close to its lower limit throughout injection; particles have been injected mostly into one mode, as intended.
 
 Several steps were necessary to achieve this simulated result. First, the painting path was chosen to follow a line in the $x$-$y'$ plane and the apparent emittances were kept somewhat equal; both these steps were discussed in Chapter \ref{chap-2}. Third, the ring RF cavity voltages were decreased to better approximate a coasting beam. Fourth, the beam energy was lowered to 0.6 GeV to increase the effective kicker strength; additionally, orbit corrector dipoles in the injection region provided a closed vertical bump. These modifications allowed a vertical injection angle of 1.58 mrad at the injection point. Fifth, the number of injected turns was reduced from 1000 to 300 to compensate for the increased space charge strength at the lower energy. Finally, a solenoid magnet was added to the ring to mitigate the effect of fringe fields. (The stabilizing effect of solenoids on the motion is examined in Appendix \ref{app-C}.)
 
-It is encouraging that even with the inclusion of space charge, wake fields, nonlinear external fields, beam bunching, foil scattering, chromaticity, etc., simulations predict that an approximate Danilov distribution can be produced. This is likely the best-case scenario in the SNS. But as will be discussed in Chapter \ref{chap-5}, new experimental constraints have come to light. The SNS cannot easily reach 0.6 GeV, and the use of orbit correctors in the injection region is difficult. The net result is that the maximum vertical injection angle may be limited (at least in initial experiments). Additionally, the minipulse may be mismatched at the injection point, but we expect this to have only a small effect if a sizeable beam is painted. Finally, solenoid magnets will not be installed in the SNS ring until a later date, so initial experiments will create elliptical modes in the ring by setting equal horizontal and vertical tunes. The distribution is expected to be less stable with such a machine configuration.\footnote{Holmes found that the beam should be somewhat insensitive to the tune split in the ring, but as mentioned in Chapter \ref{chap-3}, his studies were performed with a solenoid to the ring — the tune split was calculated without the solenoid.} Simulations with these constraints will be shown after several of the experiments in Chapter \ref{chap-5}.
+It is encouraging that even with the inclusion of space charge, wake fields, nonlinear external fields, beam bunching, foil scattering, chromaticity, limited kicker strengths, etc., simulations predict that an approximate Danilov distribution can be produced. This is likely the best-case scenario in the SNS. But as will be discussed in Chapter \ref{chap-5}, new experimental constraints have come to light. The SNS cannot easily reach 0.6 GeV, and the use of orbit correctors in the injection region is difficult. The net result is that the maximum vertical injection angle may be limited (at least in initial experiments). Additionally, the minipulse may be mismatched at the injection point, but we expect this to have only a small effect if a sizeable beam is painted. Finally, solenoid magnets will not be installed in the SNS ring until a later date, so initial experiments will create elliptical modes in the ring by setting equal horizontal and vertical tunes. The distribution is expected to be less stable with such a machine configuration.\footnote{Holmes found that the beam should be somewhat insensitive to the tune split in the ring, but as mentioned in Chapter \ref{chap-3}, his studies were performed with a solenoid to the ring — the tune split was calculated without the solenoid.} Simulations with these constraints will be shown after several of the experiments in Chapter \ref{chap-5}.
